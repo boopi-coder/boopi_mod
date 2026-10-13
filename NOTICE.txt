@@ -1,0 +1,41 @@
+boopi_mod — notices / уведомления
+Copyright (c) 2026 boopi-coder. All rights reserved. Все права защищены.
+
+boopi_mod is freeware for personal, non-commercial use under the license agreement in LICENSE.txt.
+boopi_mod — бесплатная программа для личного некоммерческого использования; условия — в LICENSE.txt.
+
+=======================================================================
+
+boopi_mod — third-party components / сторонние компоненты
+
+Shipped in the release archive (each under its own license):
+
+- 7-Zip (7z.exe, 7z.dll), unmodified — Igor Pavlov, GNU LGPL 2.1 + unRAR license restriction (the unRAR code may not be
+  used to re-create the RAR compression algorithm). https://www.7-zip.org — license text: core/tools/7z/License.txt
+- texconv (DirectXTex) — Microsoft Corporation, MIT License. https://github.com/microsoft/DirectXTex
+- Microsoft Visual C++ runtime DLLs (vcruntime140, vcruntime140_1, msvcp140, vcomp140), app-local next to texconv and the
+  core — redistributed under the Microsoft Visual Studio redistributable terms.
+- Python 3.12 runtime (bundled by PyInstaller) — Python Software Foundation License. PyInstaller bootloader — GPL 2.0
+  with the bootloader exception (allows distribution of bundled applications).
+- Desktop shell: Tauri 2 (MIT / Apache-2.0), WebView2 (Microsoft, installed by Windows or by the user).
+- App UI: React, React Router, i18next, three.js (MIT); fonts IBM Plex (SIL Open Font License 1.1).
+- Our F4SE plugins (OldGenAI.dll, GAM.dll, BoopiUI.dll) contain: CommonLibF4 (MIT), fmt (MIT), spdlog (MIT),
+  rsm-mmio (MIT), boost-stl-interfaces (Boost Software License 1.0).
+- Core (Python) libraries: fastapi, starlette, uvicorn (BSD-3/MIT), pydantic, pydantic-core (MIT), httpx, httpcore
+  (BSD-3), anyio, sniffio, h11 (MIT), websockets (BSD-3), watchfiles, httptools (MIT), PyYAML (MIT), numpy (BSD-3),
+  pillow (MIT-CMU), keyring, jaraco.* , more-itertools (MIT), pywin32-ctypes (BSD-3), certifi (MPL 2.0), idna (BSD-3),
+  click (BSD-3), colorama (BSD), python-dotenv (BSD-3), truststore (MIT), openai (Apache-2.0),
+  opentelemetry-api (Apache-2.0), packaging (Apache-2.0 / BSD-2), typing_extensions (PSF-2.0),
+  annotated-types / annotated-doc / typing-inspection / jiter (MIT).
+
+NOT shipped — downloaded by the user from the official sources (the app only helps):
+F4SE, Address Library, Buffout 4 NG, Unofficial Fallout 4 Patch (UFO4P), High FPS Physics Fix, Mod Configuration Menu,
+Baka ScrapHeap and any other third-party mod.
+
+Optional engines installed on demand, after you accept their licenses:
+- XTTS-v2 — Coqui Public Model License (non-commercial).
+- Silero TTS / VAD — CC BY-NC-SA 4.0 (TTS models, non-commercial) / MIT (VAD).
+- Piper (MIT) and its voices (each voice under its own license, see the voice card).
+- faster-whisper (MIT) with Whisper models (MIT, OpenAI). Microsoft Edge TTS (online service, Microsoft terms).
+
+Fallout and related marks are trademarks of Bethesda Softworks / ZeniMax Media. boopi_mod is not affiliated with them.

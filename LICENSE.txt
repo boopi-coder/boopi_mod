@@ -1,0 +1,53 @@
+boopi_mod — License Agreement / Лицензионное соглашение
+Copyright (c) 2026 boopi-coder. All rights reserved. Все права защищены.
+
+ENGLISH
+
+1. Grant. boopi_mod ("the Software") is free of charge. You may download, install and use it for your own personal,
+   non-commercial purposes.
+2. Sharing. You may share the original, unmodified release archive free of charge, with credit to the author
+   (boopi-coder) and a link to https://github.com/boopi-coder/boopi_mod.
+3. Restrictions. You may NOT:
+   a) sell the Software, charge for access to it or include it in paid products or services;
+   b) modify, adapt or translate the Software, or distribute modified versions or parts of it;
+   c) decompile, disassemble or otherwise reverse-engineer the Software, or try to bypass or disable any of its
+      built-in content rules, except to the extent applicable law expressly permits this despite this restriction;
+   d) remove or change copyright notices or this agreement.
+4. Your creations. Mods you make with the Software from your own material (dialogue trees, scenes, animations, voice
+   lines, .ogmod packages) belong to you. Respect the rights of the authors of anything you include.
+5. Third-party components and services. Components listed in NOTICE.txt are under their own licenses, which this
+   agreement does not change. Third-party mods are downloaded by you from their official sources. Text you send in the
+   AI modes goes to the language-model provider you choose, under that provider's terms.
+6. Game. boopi_mod is an unofficial fan project, not affiliated with, endorsed or sponsored by Bethesda Softworks or
+   ZeniMax Media. Fallout is a trademark of its owners. A legally obtained copy of Fallout 4 is required.
+7. Adult content. The Software contains content for adults (18+). Use it only if you are of legal age in your country.
+8. No warranty. The Software is provided "as is", without warranty of any kind. To the maximum extent permitted by law
+   the author is not liable for any damage, including loss of game saves or data. Back up your saves.
+9. Termination. This license ends automatically if you break its terms; you must then delete the Software.
+10. Anything beyond this agreement requires the author's written permission: https://github.com/boopi-coder
+
+РУССКИЙ
+
+1. Права. boopi_mod («Программа») бесплатна. Вы можете скачивать, устанавливать и использовать её для личных
+   некоммерческих целей.
+2. Распространение. Можно бесплатно делиться оригинальным неизменённым архивом релиза с указанием автора (boopi-coder)
+   и ссылкой на https://github.com/boopi-coder/boopi_mod.
+3. Ограничения. НЕЛЬЗЯ:
+   а) продавать Программу, брать плату за доступ к ней или включать её в платные продукты и услуги;
+   б) изменять, адаптировать или переводить Программу, распространять изменённые версии или её части;
+   в) декомпилировать, дизассемблировать или иным образом исследовать устройство Программы, пытаться обойти или
+      отключить встроенные правила содержимого — кроме случаев, прямо разрешённых законом вопреки этому ограничению;
+   г) удалять или менять сведения об авторских правах и это соглашение.
+4. Ваши работы. Моды, созданные вами в Программе из своих материалов (деревья диалогов, сцены, анимации, озвучка,
+   пакеты .ogmod), принадлежат вам. Уважайте права авторов чужих материалов.
+5. Сторонние компоненты и сервисы. Компоненты из NOTICE.txt распространяются по своим лицензиям, это соглашение их не
+   меняет. Сторонние моды вы скачиваете сами с официальных источников. Реплики, отправленные в ИИ-режимах, уходят
+   выбранному вами провайдеру языковой модели на его условиях.
+6. Игра. boopi_mod — неофициальный фанатский проект, не связан с Bethesda Softworks / ZeniMax Media. Fallout — торговая
+   марка её владельцев. Нужна законная копия Fallout 4.
+7. Контент 18+. Программа содержит материалы для взрослых. Пользуйтесь ею, только если достигли совершеннолетия в
+   своей стране.
+8. Без гарантий. Программа предоставляется «как есть», без каких-либо гарантий. В максимальной степени, допустимой
+   законом, автор не отвечает за ущерб, включая потерю сохранений и данных. Делайте резервные копии сохранений.
+9. Прекращение. Лицензия прекращается автоматически при нарушении условий; Программу тогда нужно удалить.
+10. Всё, что выходит за рамки соглашения, — только с письменного разрешения автора: https://github.com/boopi-coder
