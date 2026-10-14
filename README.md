@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img alt="версия 0.1.6 beta" src="https://img.shields.io/badge/версия-0.1.6%20beta-3cff6b?style=flat-square">
+  <img alt="версия 0.1.7 beta" src="https://img.shields.io/badge/версия-0.1.7%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="Звёзды на GitHub" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20%D0%B7%D0%B2%D1%91%D0%B7%D0%B4%D1%8B&color=f2b705"></a>
   <img alt="Fallout 4 1.10.163 Old-Gen" src="https://img.shields.io/badge/Fallout%204-1.10.163%20Old--Gen-f2b705?style=flat-square">
   <img alt="Windows 10/11 x64" src="https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-0078d4?style=flat-square">
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.1.6 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.1.6%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.1.7 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.1.7%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Поддержать автора на Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -43,7 +43,7 @@
 </p>
 
 > [!WARNING]
-> **Это бета (0.1.6).** Возможны неточности и баги — пожалуйста, пишите о них, чтобы я мог оперативно исправить:
+> **Это бета (0.1.7).** Возможны неточности и баги — пожалуйста, пишите о них, чтобы я мог оперативно исправить:
 > [откройте issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose) (шаблон подскажет, что приложить) — я читаю всё.
 > **Жду обратной связи: о проблемах и идеях — будем решать.**
 
@@ -148,6 +148,8 @@
 ## Что нового
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="Что нового" width="100%"></p>
+
+**0.1.7** — G.A.M.: отмена и повтор, правка ключей, зеркало, во весь экран, лицо и камера, «▶ В игре», события сцен в игре, библиотека с поиском и превью, точный ИИ-аниматор; Студия: триггеры для своих историй, «+ История», проигрыватель диалога; моды из Студии ставятся из каталога boopi.site с требованиями. [Заметки к 0.1.7](docs/release/v0.1.7.md).
 
 **0.1.6** — импорт анимаций из модов Fallout 4, Skyrim SE и походок OAR, сцены «Жизни» через G.A.M., обновлённые инструкции. [Заметки к 0.1.6](docs/release/v0.1.6.md).
 
@@ -380,7 +382,7 @@
 
 ### Шаг 0. Скачать и распаковать
 
-1. Скачайте **`boopi_mod-0.1.6-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+1. Скачайте **`boopi_mod-0.1.7-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
    и сверьте SHA-256 с файлом `SHA256SUMS.txt` из того же релиза.
 2. Распакуйте в **короткий путь**, например `C:\Games\boopi_mod` (не в «Загрузки» и не в глубокие папки: Windows не
    запускает программы с путём длиннее 260 символов).

@@ -19,6 +19,7 @@
 | install and launch | [Install and first run](../../README.en.md#install-and-first-run) |
 | make my own dialogue, scene, mod | [Script Studio](SCRIPT_STUDIO.md) |
 | import animations or draw my own | [Animation import and the G.A.M. editor](ANIMATION_IMPORT.md) |
+| my own story: a world event → a talk, a scene, a quest | [Studio triggers](SCRIPT_STUDIO.md#12-triggers-your-own-story), quickest: [«+ Story» and the ready example](SCRIPT_STUDIO.md#128--story-and-the-ready-example) |
 | call animations from dialogues and scripts | [Animations in mods](ANIMATION_GUIDE.md) |
 | free conversation with people in the game | [AI dialogue](AI_DIALOGUE.md) |
 | voice and voice input | [Voice](VOICE.md) |
@@ -30,7 +31,7 @@
     <td width="72" align="center"><img src="../../docs/images/icons/studio.png" width="64" alt=""></td>
     <td><b><a href="SCRIPT_STUDIO.md">Script Studio</a></b> · <a href="../SCRIPT_STUDIO.md">RU</a><br>
     Your own dialogues, lines from the game and branches off its wheels, voice with lip sync, "Build and check", your own mod
-    (<code>.ogmod</code>) and installing someone else's, animations in lines, Papyrus, the AI assistant and "Check in AI mode".</td>
+    (<code>.ogmod</code>) and installing someone else's, animations in lines, triggers of your own story, Papyrus, the AI assistant and "Check in AI mode".</td>
   </tr>
   <tr>
     <td align="center"><img src="../../docs/images/icons/import.png" width="64" alt=""></td>

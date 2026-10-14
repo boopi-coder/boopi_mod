@@ -66,6 +66,11 @@ the dialogue studio: [SCRIPT_STUDIO.md](SCRIPT_STUDIO.md).
 
 After that «Life» and dialogues find the new scenes by tags at once.
 
+**The same pack again makes no duplicates.** The same file (it is recognised by its content, whatever it is called) or the same
+folder is the same source: it is parsed again in place and its scenes are updated under their old ids. Scenes you changed yourself
+(or saved by hand from the editor) are not overwritten by the pack — the result says «yours kept: N». A different file with the
+same name is a different source (`name_2`).
+
 > [!TIP]
 > For scale: a Skyrim pack of 990 clips, 8 gait sets — became 184 scenes already installed in the game in just over a minute.
 
@@ -96,6 +101,8 @@ The source is unpacked once into your folder (`%APPDATA%\BoopiMod\gam\imports`) 
 What you can do with the list:
 
 - **Filter** by name or tag.
+- **«✕»** — remove the source. The app shows how many of its scenes are in the library and asks: remove those too (from the
+  library **and from the game**) or keep them. The scenes you changed always stay, as your own.
 - **«To a scene»** on an item: it opens in the editor — roles from the clips (a pair faces each other), bones from the HKX.
   Edit it from there ([section 4](#4-your-own-scene-in-the-editor)) and press «Save» / «To the game».
 - **«All into the game»** — the whole pack as tagged scenes straight into the game (same as dragging it in).
@@ -188,11 +195,37 @@ an unsaved scene returns after a restart («An unsaved draft of the scene was re
 
 **Keys, tracks and the scene:**
 - **Key**: time, transition (smooth / linear / step / curve), ease in and ease out.
-- **Tracks**: the actor's place, bones, face (morphs), camera.
+- **Tracks**: the actor's place, bones, face, camera (how they play in the game — below, «Face and scene camera»).
 - **Scene**: name, length, mode — «Animation» (a whole pose) or «Layer over the game» (a sway over vanilla walking); blend in and out
   (seconds, a smooth blend with the current pose); **loop** («Loop start» / «Loop end»): an activity — entry, loop until stopped, exit.
-- **Events** at a moment in time: sound, line, facial expression, equip / unequip, stage.
+- **Events** at a moment in time: sound, line, facial expression, equip / unequip, quest stage, a word of your own for scripts. In the
+  game G.A.M. performs them itself (since 0.4.0); what to write in «Value» — the hint under the field and
+  [ANIMATION_GUIDE.md](ANIMATION_GUIDE.md) §5.2.
 - **«Optimise»**: smooth out jitter and keep the minimum of smooth keys within the tolerance (rotation °, position).
+
+#### Face and scene camera
+
+**Face** (the «Face» section of the inspector): pick an expression (happy, angry, sad, afraid, surprised, in pain… — Fallout 4's 35
+facial expressions) and a weight and press «+ Face key» — the selected role gets a «face: …» track at the current moment. Several keys —
+the face changes during the scene.
+
+- In the game **one expression** shows — the strongest at 0.5 and over; when all are weaker the actor has their own face. After the
+  scene the face comes back.
+- Weights between 0 and 1 are not mixed in the game: an expression is either on or off. **Single morphs** (a brow, the lips, a blink)
+  G.A.M. does not play in the game yet — Fallout 4 1.10.163 has no documented way to set them from a plugin without risking a crash.
+- «In the game now: …» under the title shows which expression will be seen at this moment.
+
+**Scene camera** (the «Scene camera» section): set the view in the window the way the camera should film and press **«🎥 Camera key
+from this view»**; go to another moment, change the view — another key: the camera moves between them. «Field of view, °» (optional) is
+written into the key; empty — the game's field of view. **«Look through the scene camera»** — the window shows what the camera will see
+when it plays; the light blue pyramid in the window is where the scene camera stands.
+
+- In the game a scene with a camera track is filmed by it by itself (the «scene camera» mode, `track`); F7 switches to auto, free and
+  the game's camera. Camera keys are relative to the scene's origin, like the actors' places: wherever the scene plays, the shot is the
+  same.
+- When the scene ends the camera, the first person view and the game's field of view come back.
+- The field of view from the keys is experimental (check it in the game); the camera's place and turn work the same way as the auto
+  camera of 0.3.0.
 
 #### The AI animator
 
@@ -223,21 +256,50 @@ means exactly that: add tags.
 
 ### 4.4 Save and send to the game
 
-- **«Save»** — to your library (`%APPDATA%\BoopiMod\gam\scenes`).
+- **«Save»** — to your library (`%APPDATA%\BoopiMod\gam\scenes`). A new scene gets its id from the name («Кивок» →
+  `my/kivok`). **A taken id is never overwritten**: the scene gets a suffix (`my/kivok_2`) and the app tells you so.
+- **«Save as…»** — a copy of the open scene under a new name in the folder you pick (a folder is part of the id: «Dances» →
+  `dances/…`). The copy is your own even if the original came from someone else's pack.
+- **«Delete»** — the open scene leaves the library and its copy leaves the game (after a confirmation). What is on the screen
+  stays as an unsaved scene: you can save it again.
 - **«To the game»** — the scene is installed and available in the game at once (the game re-reads the library).
+- **«▶ In game»** — play what is in the editor right now in the running game on the player or an NPC nearby, without saving or
+  installing it; the game's log about this scene is there too: why it did not play and what to do
+  ([ANIMATION_GUIDE.md](ANIMATION_GUIDE.md) §11).
+
+### 4.5 The library: find, group, remove
+
+The **Library → «G.A.M. scenes»** tab holds everything you have: your own scenes, imported ones and those that ship with the app.
+
+- **Search** — one field: a name, an id, a tag or a pack name. Several terms with commas must all hold (`kiss, couch`); `-tag`
+  leaves scenes out (`-intimate`). Tag words are understood in Russian and English.
+- **Groups** — by folder (a part of the id: `my`, `import/<source>`, `gait/…`) or by import source; a group can be folded.
+  **Order** — by name, newest first, longest first, by number of roles.
+- **★** — favourites: those scenes stay on top, the «★» button above the list shows only them.
+- **Preview** — each scene has a thumbnail: a skeleton silhouette in one pose (the middle of the loop), one colour per role. It is
+  drawn on your computer once and kept until the scene changes. While there is no skeleton from the game (check the game path)
+  you get plain figures, one per role, instead.
+- **What the game has** — a «in game» or «game copy is old» badge (the scene was saved after it was put into the game) and the
+  buttons «To the game» / «Update» / «Remove» (the game copy goes, the scene stays in the library).
+- **Copy** — your own copy of a scene (of any, bundled ones too); **✕** — delete the scene from the library and from the game
+  (after a confirmation; the app's bundled scenes cannot be deleted).
 
 ---
 
 ## 5. How animations reach the player
 
 - **«Life»**: contexts («Hug», «Sit together», «Closeness»…) pick scenes by tags, furniture and participants.
-- **Dialogues**: in Script studio a line has an «Animation» field — by tags (you see how many scenes fit) or by a «Life» context
-  ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md), step 3).
+- **Dialogues**: in Script studio a line has an «Animation» field — your own scene of the library picked by name, by tags (you see
+  how many scenes fit) or by a «Life» context ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md#2-your-first-conversation-in-5-minutes), step 3).
+- **Triggers of your own story**: the «G.A.M. scene» action — by name from the library, by tags or by a context
+  ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md#12-triggers-your-own-story)). The library scenes lines and triggers play go into the game with
+  the studio's «To the game».
 - **Scripts**: `GAM.Gesture`, `GAM.RunScene`, a tag query `"hug,pair,-intimate"` ([ANIMATION_GUIDE.md](ANIMATION_GUIDE.md)).
-- **Your own mod**: in Script studio press «Save the mod» → tick your G.A.M. scenes — they travel in the `.ogmod` together with the
-  dialogues. For whoever installs the mod, the scenes land in their library and straight in the game (`Data\GAM\Scenes`) and are
-  removed together with the mod on uninstall. If a scene plays clips of someone else's pack, the mod remembers which pack is needed and
-  shows it at install time ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md), section 8).
+- **Your own mod**: in Script studio press «Save the mod» — the scenes your files play by id go in by themselves, tick others — they
+  travel in the `.ogmod` together with the dialogues. For whoever installs the mod, the scenes land in their library and straight in the
+  game (`Data\GAM\Scenes`) and are removed together with the mod on uninstall. If a scene plays clips of someone else's pack, the mod
+  remembers which pack is needed and shows it at install time ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md#9-your-own-mod-save-and-share),
+  section 9).
 
 ---
 

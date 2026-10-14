@@ -19,9 +19,11 @@ dialogue line or from the «Life» system, how to build a cinematic scene with a
 >   (the whole body, several actors, stages, a camera).
 > - In Papyrus: `GAM.Gesture(actor, "gesture,talk,friendly")` for a gesture and `GAM.RunScene("hug,pair", actors)` for a scene.
 > - An animation is chosen by a **scene id** or a **tag query** (`"hug,pair,-intimate"`): that way any installed pack can supply it.
-> - From a dialogue: the `anim` block in a line's `do:` (`tags` or `context`, `who`, `part`, `when`); from «Life»: `OGAIAnim.Context(...)`.
+> - From a dialogue: the `anim` block in a line's `do:` (`id`, `tags` or `context`, `who`, `part`, `when`); from «Life»: `OGAIAnim.Context(...)`.
 > - Intimate scenes and children: the protection in the core and in GAM.dll always works and cannot be bypassed; your own mod is
 >   `.gam` scenes with honest tags.
+> - Scene events (a sound, a line, a face, equip/unequip, a quest stage) are performed by G.A.M. itself; your script catches them and
+>   every scene's start/end through `RegisterForExternalEvent("GAM_SceneEvent", ...)`.
 
 Importing other people's animations (Skyrim, OAR) and the scene editor are described in [ANIMATION_IMPORT.md](ANIMATION_IMPORT.md).
 
@@ -31,6 +33,12 @@ Importing other people's animations (Skyrim, OAR) and the scene editor are descr
 
 Everything described here was tested in the game (Fallout 4 1.10.163, G.A.M. 0.3.0, BoopiCorp 2.4.4): Stella's gesture in a dialogue,
 «hands up» on an NPC and on the hero, a nod with the head only, a hug with the camera in both modes.
+
+> [!IMPORTANT]
+> New in **G.A.M. 0.4.0** — scene events performed and external events for your scripts ([5.2](#52-scene-events)), the scene's face and
+> camera tracks ([6](#6-scene-camera)), «Play in game» and the game's log right in the editor ([11](#11-how-to-test-in-the-game)) — is
+> built and tested without the game but **not yet tested in the game**. If any of it does not behave as written, that is a bug, not
+> your mistake.
 
 ## Contents
 
@@ -43,7 +51,7 @@ Everything described here was tested in the game (Fallout 4 1.10.163, G.A.M. 0.3
 7. [Animation from a dialogue](#7-animation-from-a-dialogue) — [our trees](#71-our-dialogue-trees-datatalkyaml), [Creation Kit](#72-your-own-dialogue-in-creation-kit)
 8. [Through the «Life» system: contexts](#8-through-the-life-system-contexts)
 9. [Safety](#9-safety)
-10. [A mod for our manager](#10-a-mod-for-our-manager)
+10. [A mod for our manager](#10-a-mod-for-our-manager) — [editing a scene in the editor](#104-editing-a-scene-in-the-editor-undo-keys-mirror-time)
 11. [How to test in the game](#11-how-to-test-in-the-game)
 12. [Common mistakes](#12-common-mistakes)
 13. [What next](#13-what-next)
@@ -137,7 +145,8 @@ The tag vocabulary is in `data/gam/tags.yaml`. The most useful tags:
 
 **See what is installed:**
 - in the game: `GAM.ListScenes("gesture,talk")` — an array of ids;
-- in the app: boopi_mod → G.A.M. → Library (filter by tags).
+- in the app: boopi_mod → G.A.M. → Library (search by name, id and tags; an «in game» badge, thumbnails, groups by folder and
+  source — [details](ANIMATION_IMPORT.md#45-the-library-find-group-remove)).
 
 <p align="center"><img src="../../docs/images/gam-library-import.en.png" alt="G.A.M. library: a scene list filtered by tag and the pack import tab" width="860"></p>
 
@@ -235,6 +244,8 @@ Stages are set in the scene file in one of two ways:
 - `meta.stages: [{ "name": "stage1", "start": 0, "end": 4, "loops": 2 }, ...]` — exact boundaries and the number of passes;
 - markers `markers: { "stage1": 0.0, "stage2": 4.0, "stage3": 9.5 }` — a stage runs from its marker to the next one (the last — to the end), one pass each.
 
+In the G.A.M. editor stages are marked up without JSON — the Body part and stages section ([10.4](#104-editing-a-scene-in-the-editor-undo-keys-mirror-time)).
+
 Functions:
 - `GAM.StageCount(h)` — how many stages (0 — a scene without stages, just a loop);
 - `GAM.GetStage(h)` — the current stage, 1…N;
@@ -243,11 +254,63 @@ Functions:
 
 ### 5.2 Scene events
 
-A scene can carry events (`events` in the file: a sound, a line, a change of expression). In Papyrus you can read them in turn:
+A scene can carry events (`events` in the file; «Events» in the editor). At its moment G.A.M. **performs each one itself** (since 0.4.0) on
+the actor of the event's role (`target`; empty — the scene's first role), wherever the scene was started — a script, a dialogue, «Life» or
+the editor:
+
+| Type | Value | What happens in the game |
+|---|---|---|
+| `sound` | a sound descriptor (SNDR): `Plugin\|0xID`, e.g. `Fallout4.esm\|0x0001A4E1` | a sound at the actor (`Sound.Play`) |
+| `say` | a topic (DIAL): `Plugin\|0xID` | the actor says the line (`Say`) |
+| `expression` | a face: `happy`, `angry`, `sad`, `afraid`, `surprised`, `in_pain` … (Fallout 4's 35 expressions, listed in the editor); empty — their own face | the face until the next one or the end of the scene (`ChangeAnimFaceArchetype`) |
+| `equip` | an item: `Plugin\|0xID` | the actor puts it on (silently; added when it is not in the inventory) |
+| `unequip` | an item: `Plugin\|0xID` | the actor takes it off |
+| `stage` | a quest and a stage: `Plugin\|0xID\|stage` | the quest's `SetStage` |
+| a word of your own | anything | nothing by itself — an event for your script |
+
+`0xID` is the form's number in its own plugin as xEdit and the Creation Kit show it, without the load order index (ESL plugins work too).
+A face the scene put on goes back when it ends.
+
+Your script hears every event (your own words too) and the start and end of every scene through **F4SE's external events** (Fallout 4's
+stand-in for Skyrim's ModEvent):
 
 ```papyrus
-string e = GAM.NextEvent(h)   ; "type|target|value", "end||" when the scene is over, "" - nothing yet
+Scriptname MyGamListener extends Quest
+
+Event OnQuestInit()
+    Listen()
+    RegisterForRemoteEvent(Game.GetPlayer(), "OnPlayerLoadGame")
+EndEvent
+
+Event Actor.OnPlayerLoadGame(Actor akSender)
+    Listen()                                   ; once more after a save is loaded, to be safe
+EndEvent
+
+Function Listen()
+    RegisterForExternalEvent("GAM_SceneEvent", "OnGamEvent")
+    RegisterForExternalEvent("GAM_SceneStart", "OnGamStart")
+    RegisterForExternalEvent("GAM_SceneEnd", "OnGamEnd")
+EndFunction
+
+Function OnGamEvent(int aiHandle, string asScene, string asType, string asValue, Actor akActor, string asRole)
+    if asType == "door_knock"                  ; your own event: the editor's type «your own (for scripts)»
+        Debug.Notification(asScene + ": a knock at the door")
+    endif
+EndFunction
+
+Function OnGamStart(int aiHandle, string asScene, Actor[] akActors)
+EndFunction
+
+Function OnGamEnd(int aiHandle, string asScene, Actor[] akActors)
+EndFunction
 ```
+
+- The functions' signatures must be exactly these (the names are yours: you pass them to `RegisterForExternalEvent`).
+- `GAM_SceneStart` / `GAM_SceneEnd` come for scenes, gestures and layers (not for gaits).
+- The queue `GAM.NextEvent(h)` is still there for a script that wants to read the events in its own loop:
+  `"type|target|value"`, `"end||"` when the scene is over, `""` — nothing yet.
+- `GAM.log` has a line for each event performed — `event <type> '<value>' on <actor>`; a form not found or a role without an actor
+  is a warning `event say: no topic '…'`.
 
 ---
 
@@ -258,13 +321,18 @@ Gestures do not touch it.
 
 | Mode | How it behaves |
 |---|---|
+| `track` (scene camera) | A scene with a **camera track** (editor → «Scene camera») is filmed by it: place, turn and field of view by keys, relative to the scene's origin. Such a scene takes this mode by itself. |
 | `auto` (default) | By itself: 6 shots in a cycle — front side, closer side, over the shoulder from behind, from above on the other side, low and close, wide front. Within a shot it slowly orbits the people and creeps in a little; between shots it glides over smoothly (2.5 s). It looks at chest level, with all the people in frame. |
 | `free` | Manual: mouse or arrows — around the people, PageUp / PageDown or the wheel — closer / further. |
 | `off` | The game's normal camera. |
 
 How to control the camera:
-- **F7** during a scene cycles the modes: `auto → free → off → auto`.
-- If the hero was in first person, the camera switches to third person for the scene and goes back after it.
+- **F7** during a scene cycles the modes: `auto → free → off → auto`; for a scene with a camera track `track → auto → free → off →
+  track` (leaving `track`, the orbit starts where the scene camera was).
+- If the hero was in first person, the camera switches to third person for the scene and goes back after it. For `track` too, even
+  when the hero is not in the scene.
+- Leaving is always safe: the scene ends (or is stopped) — the camera, the first person view and the game's field of view come back;
+  F7 to `off` — the game's camera at once.
 - The mode from a script: `GAM.Camera(h, "free")`; to read the current one — `GAM.CameraMode()` (an empty string if the camera follows nothing).
 
 Settings are in `Data\F4SE\Plugins\GAM.ini`, section `[Camera]`:
@@ -280,12 +348,18 @@ Settings are in `Data\F4SE\Plugins\GAM.ini`, section `[Camera]`:
 | `fHeight` | `35` | height of the look-at point above the people's centre (35 — chest) |
 | `bMessages` | `1` | an on-screen note about a mode change (visible if the HUD is not hidden) |
 | `bDebug` | `0` | 1 — camera shots are written to `Documents\My Games\Fallout4\F4SE\GAM.log` |
+| `bSceneCamera` | `1` | a scene with a camera track is filmed by it (`track`) unless the script names a mode; 0 — never |
+
+Section `[Editor]`: `bLink=1` — the game takes scenes from the editor («Play in game», [11](#11-how-to-test-in-the-game)); 0 — it never asks
+the app at all.
 
 > [!WARNING]
 > Camera limits:
 > - The camera does not know about walls: in a tight place a shot may end up behind a pillar or a microphone stand. F7 → manual mode or
 >   a smaller `fDistance` helps then.
 > - The HUD is hidden during a scene, so the mode note may not appear.
+> - The camera track's field of view (its «Field of view» keys) is put into the game's field of view for the scene — this is
+>   experimental; without those keys the game's own stays.
 
 ---
 
@@ -302,13 +376,15 @@ do: { anim: { tags: "gesture,talk,friendly", who: npc, part: head, when: line } 
 
 | Field | Values | Meaning |
 |---|---|---|
+| `id` | a scene id of the G.A.M. library (`my/wave`) | exactly that scene (one role for a gesture, two for `both`); the studio's «To the game» puts a library scene into the game |
 | `tags` | a tag query | an animation straight from G.A.M. (a gesture for one, a scene for `both`) |
 | `context` | a context id (`data/gam/contexts`) | the core picks the animation; an intimate one — only with consent ([section 8](#8-through-the-life-system-contexts)) |
 | `who` | `npc` (default) / `player` / `both` | on the interlocutor, on the hero, or a scene for both |
 | `part` | `head`, `upper`, `arms`, `left_arm`, `right_arm`, `lower`, `full` | the body part (by default — as in the scene) |
 | `when` | `line` (default) / `after` | now, while the line is spoken, or when the conversation ends |
 
-One of two is required: `tags` or `context`. A string with a comma in `context` is treated as a tag query. With `who: both` it is
+One of three is required: `id`, `tags` or `context`. By `id` and by tags an intimate scene is never taken (only a context, with
+consent). A string with a comma in `context` is treated as a tag query. With `who: both` it is
 always a **scene** with a camera. It is better to set it with `when: after` so that it does not fight the dialogue camera.
 
 **Example: a small dialogue with a head and arm gesture.**
@@ -501,15 +577,93 @@ there. How to work with it: [ANIMATION_IMPORT.md](ANIMATION_IMPORT.md).
 if GAM.GetVersion() >= 300        ; 0.3.0: stages, camera, PickScene, RunScene, Gesture
     GAM.Gesture(akSpeaker, "gesture,salute")
 endif
+if GAM.GetVersion() >= 400        ; 0.4.0: events performed, GAM_SceneEvent, the scene's face and camera, SetFace
+    GAM.SetFace(akSpeaker, "happy")
+endif
 ```
 
 > [!TIP]
 > If your mod must also work without G.A.M., call its functions from a separate script: then a missing GAM.pex breaks only that script,
 > not the whole mod. Papyrus scripts are bound late.
 
+### 10.4 Editing a scene in the editor: undo, keys, mirror, time
+
+Everything below is in G.A.M. (boopi_mod → G.A.M.), in the inspector on the right: the **Body part and stages** and **Edit**
+sections. The full list of keys is behind the **«?»** button of the editor's tool bar (or the `?` key); the keys work in any
+keyboard layout.
+
+**Undo.** Every edit of the scene can be undone: keys, rotations, dragging an IK ball (one drag is one step), roles, props, events,
+markers, stages, the scene's settings, optimisation and the AI animator's result. `Ctrl+Z` undoes, `Ctrl+Y` or `Ctrl+Shift+Z`
+redoes; the Undo / Redo buttons of the tool bar say what exactly. Typing in one field (the scene's name) or moving one slider is one
+step. The history keeps up to 100 steps while the program is open. `Ctrl+S` saves; the program does not let a window with an
+unsaved scene close silently, and the scene survives a restart as a draft anyway.
+
+**Keys on the timeline.**
+
+| Action | How |
+|---|---|
+| Pick a key | click |
+| Add to / take from the picked keys | `Shift` or `Ctrl` + click |
+| Pick with a box | drag over the empty part of the rows (with `Shift` — add) |
+| Move the picked keys | drag any picked key — all of them go, by frames; `Alt+←/→` — one frame (`Alt+Shift` — 10) |
+| Delete the picked keys | `Delete` |
+| All keys / the keys at this moment | `Ctrl+A` / the «Keys at the playhead» button |
+| Playhead | the ruler on top; `←/→` — a frame, `Shift+←/→` — 10 frames, `Home`/`End`, `[`/`]` — previous / next key |
+
+Interpolation and ease in the Key section change on every picked key at once. The **track weight** is there too — how much of the
+track applies over the rest (a layer).
+
+**Pose.** `Ctrl+C` copies a role's pose at this moment (every animated bone), `Ctrl+V` pastes it as keys at this moment — onto the
+same role or another one (the «→ role» choice in Edit): this is how a pose moves from actor to actor or from one scene to another.
+
+**Mirror (left ↔ right).**
+- **Mirror pose** (`M`) — the pose at this moment is flipped: a wave of the right hand becomes a wave of the left one.
+- **Mirror** (`Shift+M`) — the picked keys move to the other side; with both sides picked they swap. Pick all keys (`Ctrl+A`) and
+  the whole clip is mirrored, the character's path through the scene included.
+- **Copy to the other side** — the picked keys stay and their mirror image goes to the other side: a symmetric motion (both arms
+  up) from one arm.
+
+Bone pairs come from the skeleton's names (`LArm_*` ↔ `RArm_*`, `LLeg_*` ↔ `RLeg_*`); the mirror goes through the skeleton's rest
+pose, so the mirrored pose is an exact mirror image, not «roughly alike». The face and the helper bones (weapon, camera) are not
+mirrored.
+
+**Time.** The «Time factor» field: `2` — twice as slow, `0.5` — twice as fast.
+- «Stretch picked keys» — only the picked keys, from the first of them; with «Shift what follows» everything after them (keys,
+  events, markers, stages) moves along.
+- «Stretch the scene» — the whole scene: keys, events, markers, stages, props and the length.
+
+**Loop seam.** A looping scene (the Loop box or the loop markers) jerks when the loop's last frame does not match its first — a
+common trouble of imported clips. «Fix loop seam» makes the loop's end equal to its start and bends the keys in the «blend window»
+before the end (0.3 s by default) smoothly into the seam.
+
+**Stages and body part.** «Default body part» is `meta.part`: the bones the scene drives unless the call says otherwise (a gesture of
+the arms over a walk and so on). «Stages» are `meta.stages` ([5.1](#51-stages-how-a-scene-develops)): name, start, end and the
+number of passes; «+ Stage to the playhead» and «Split at the playhead» mark the scene up along the timeline, and the stages show
+as bands on the ruler.
+
+**Full screen.** The **«⛶ Full screen»** button in the editor's tool bar (or `F11`) gives the whole window to the 3D view and the
+timeline: the sidebar, the top strip and the right column go away, and the properties and the library open with the **«☰ Panel»**
+button — they slide in over the picture. **«⤢ Screen»** takes the whole monitor too (no window frame); the program remembers which
+mode you used last. To leave, press `F11` or «Exit»; `Esc` closes the panel first, then lets the picked keys go, then leaves. The
+scene, the selection, the playhead and the undo history stay as they are.
+
 ---
 
 ## 11. How to test in the game
+
+**Quickest — right from the G.A.M. editor** (G.A.M. 0.4.0):
+
+1. Start the game and load a save; boopi_mod is open.
+2. In G.A.M. open or make a scene and press **«▶ In game»** (or the «In game» tab on the right). No need to save it: what is in the
+   editor right now goes to the game.
+3. Pick who plays each role — **The player**, **NPC in front** (picked in the console with a click, or standing right in front of the
+   player) or **Nearest NPC** — the camera and a limit in seconds, and press **«▶ Play in game»**.
+4. The status line: «Sent» → «The game took the scene» → «Playing» → «Played». «Did not play» comes with the reason (no save loaded,
+   nobody in front of the player, the race does not fit the role…). **«■ Stop»** ends the scene; the player's controls come back.
+5. Below is the **«Game log (GAM.log)»**: the lines about this scene (or all of them) with a hint on what to do.
+
+The game takes scenes only while `GAM.ini` has `[Editor] bLink=1` (the default). «The game is connected» means GAM.dll is asking the app
+for scenes.
 
 The console (`~`) — call any global function from it:
 
@@ -529,6 +683,10 @@ The log `Documents\My Games\Fallout4\F4SE\GAM.log`:
 | `scene 1 asked to stop at 20.8 s` | a script asked it to finish (`Stop`, the `WaitScene` limit) |
 | `camera: following scene 1 (auto)` | the camera took hold of the scene |
 | `no scene 'x'` / `needs 2 actors, got 1` / `does not fit role` | id not found / not enough actors / the race does not fit the role |
+| `scene 3 'x' event sound 'Fallout4.esm\|0x0001A4E1' on 00000014` | a scene event was performed |
+| `scene 3 'x' event say: no topic '…'` | the event found no form (check `Plugin\|0xID` and that the plugin is enabled) |
+| `scene 3 'x' face 'happy' on 0001A4D7` | the face track changed the expression |
+| `G.A.M. editor: command 5 play 'editor/my/hug'` / `command 5 failed: …` | a scene from the editor («Play in game») and why it did not play |
 
 In the app all logs — the core's, the game's, Papyrus and F4SE — are collected into a single file `%APPDATA%\BoopiMod\logsll.log`, and
 errors into `errors.log` next to it.
