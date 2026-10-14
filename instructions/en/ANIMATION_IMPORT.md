@@ -19,6 +19,8 @@ Skyrim / OAR / Fallout 4 mods, the AI animator, and playback of scenes right in 
 > - The fastest way: open **G.A.M.** and **drag** a mod archive, folder, plugin, BA2 or HKX into the window — the pack
 >   converts itself into tagged scenes and goes into the game («All into the game»).
 > - It reads Fallout 4 mods (HKX, idles, OAR gaits) and **Skyrim SE** mods (FNIS, SexLab Animation Loader).
+> - Importing is your choice: the app itself depends on no animation mod of anyone else. When no scene fits, the game's
+>   own animation plays.
 > - Make your own in the editor: set up roles, drag **IK handles**, place keys — or ask the **AI animator** in plain words.
 > - Then the scene is found by «Life», by dialogue lines (via tags) and by Papyrus scripts, and your mod (`.ogmod`) carries it to other players.
 
@@ -161,6 +163,12 @@ Press **«New»** (or «Open a scene…» to edit an existing one). What you see
 
    The «from, s» / «to, s» fields set when the object appears and disappears.
 
+   An object is named by a form, `Plugin.esm|0x0004D1F9` (the plugin and the record's number inside it, as xEdit shows them). From
+   it the viewport draws the record's **real model** from your game — furniture, statics, items, weapons, activators — not a box;
+   an anchor furniture piece is tinted green. When there is no model (armour, a model on a skeleton — a creature or a robot, the
+   plugin is not loaded, the game is not found), the box stays. This is only how it looks in the viewport: the model is not written
+   into the scene file, and in the game G.A.M. places the object by the same form.
+
 ### 4.2 Motion
 
 **Bone.** Click a joint or the body and pick a tool above the viewport:
@@ -175,8 +183,9 @@ Press **«New»** (or «Open a scene…» to edit an existing one). What you see
 
 A key lands at the current moment; «Key the current pose» makes a key with whatever the bone shows right now.
 
-**IK.** With the «Move» tool drag a handle and the arm or leg bends after it (the elbow and knee follow on their own, bone lengths do
-not change). Let go — keys are written onto the chain. The head looks at a point.
+**IK.** Turn IK on (`I`) and drag an orange handle, with any tool: the arm or leg bends after it (the elbow and knee follow on their
+own, bone lengths do not change; `Shift` drags along the floor, `Alt` up and down). Let go — keys are written onto the chain. The
+head looks at a point.
 
 **Base pose.** A bone's first key later than 0 s with no key at 0 s makes the pose from the very start. The **«Base pose at 0 s»**
 checkbox (on by default) puts the rest pose at 0 s by itself, and the motion goes FROM it. Buttons:
@@ -193,6 +202,12 @@ checkbox (on by default) puts the rest pose at 0 s by itself, and the motion goe
 **Nothing is lost.** Going to another page and back does not reset the scene, the selection, the request text or the library tabs;
 an unsaved scene returns after a restart («An unsaved draft of the scene was restored.»).
 
+**Editing.** Every change of the scene can be undone (`Ctrl+Z`, `Ctrl+Y`). Several keys are picked with a box or `Shift` / `Ctrl` +
+click and move together; you can copy a pose (`Ctrl+C` / `Ctrl+V`), mirror it left ↔ right, stretch the time, «Fix loop seam» on a
+looping scene and mark up stages. The **«⛶ Full screen»** button (or `F11`) gives the window to the viewport and the timeline, the
+**«?»** button lists the keys. Details: [ANIMATION_GUIDE.md](ANIMATION_GUIDE.md#104-editing-a-scene-in-the-editor-undo-keys-mirror-time),
+section 10.4.
+
 **Keys, tracks and the scene:**
 - **Key**: time, transition (smooth / linear / step / curve), ease in and ease out.
 - **Tracks**: the actor's place, bones, face, camera (how they play in the game — below, «Face and scene camera»).
@@ -206,14 +221,14 @@ an unsaved scene returns after a restart («An unsaved draft of the scene was re
 #### Face and scene camera
 
 **Face** (the «Face» section of the inspector): pick an expression (happy, angry, sad, afraid, surprised, in pain… — Fallout 4's 35
-facial expressions) and a weight and press «+ Face key» — the selected role gets a «face: …» track at the current moment. Several keys —
+facial expressions) and a weight and press «+ Face key on …» (with the selected role's name) — that role gets a «face: …» track at the current moment. Several keys —
 the face changes during the scene.
 
 - In the game **one expression** shows — the strongest at 0.5 and over; when all are weaker the actor has their own face. After the
   scene the face comes back.
 - Weights between 0 and 1 are not mixed in the game: an expression is either on or off. **Single morphs** (a brow, the lips, a blink)
   G.A.M. does not play in the game yet — Fallout 4 1.10.163 has no documented way to set them from a plugin without risking a crash.
-- «In the game now: …» under the title shows which expression will be seen at this moment.
+- «in the game now: …» under the title shows which expression will be seen at this moment.
 
 **Scene camera** (the «Scene camera» section): set the view in the window the way the camera should film and press **«🎥 Camera key
 from this view»**; go to another moment, change the view — another key: the camera moves between them. «Field of view, °» (optional) is
@@ -245,23 +260,30 @@ them shake hands», and press **«Do it»**.
 
 ### 4.3 Tags: so that the scene can be found
 
-**Tags** are entered comma-separated or with «Tag + Enter»:
+**Tags** are added one at a time: type a tag in the «Tag + Enter» field and press Enter (to remove a tag, click it):
 - kind — talk, romance, activity, dance…;
 - action — handshake, hug, smoking…;
 - participants — solo, pair…;
 - place — chair, wall, bed…
 
 Under the tags you see **«Plays in contexts»** — where «Life» will pick the scene up. The line «No context takes this scene — add tags»
-means exactly that: add tags.
+means exactly that: add tags. The list of contexts, and your own contexts, are in the library's «Contexts» tab
+([4.5](#45-the-library-find-group-remove)).
 
 ### 4.4 Save and send to the game
 
 - **«Save»** — to your library (`%APPDATA%\BoopiMod\gam\scenes`). A new scene gets its id from the name («Кивок» →
   `my/kivok`). **A taken id is never overwritten**: the scene gets a suffix (`my/kivok_2`) and the app tells you so.
 - **«Save as…»** — a copy of the open scene under a new name in the folder you pick (a folder is part of the id: «Dances» →
-  `dances/…`). The copy is your own even if the original came from someone else's pack.
+  `dances/…`). The copy is your own even if the original came from someone else's pack: re-importing the pack will not touch it. But
+  its motion is still somebody else's, and «Save the mod» will say so ([section 5](#5-how-animations-reach-the-player)).
 - **«Delete»** — the open scene leaves the library and its copy leaves the game (after a confirmation). What is on the screen
   stays as an unsaved scene: you can save it again.
+- **«History»** — earlier versions of the open scene (the button works for your own scenes). Before every save, and before a delete
+  too, the previous version is kept: the last 12 stay (`%APPDATA%\BoopiMod\gam\history\<id>\`), and saving the same thing again adds
+  none. The list shows the time, the name and the length; **«Restore»** makes the scene what it was. The current version is not lost:
+  it goes into the history itself, so a restore can be undone the same way. Unsaved changes in the window are lost on a restore (the
+  app warns you). Until the scene has been saved again there are no versions.
 - **«To the game»** — the scene is installed and available in the game at once (the game re-reads the library).
 - **«▶ In game»** — play what is in the editor right now in the running game on the player or an NPC nearby, without saving or
   installing it; the game's log about this scene is there too: why it did not play and what to do
@@ -283,6 +305,10 @@ The **Library → «G.A.M. scenes»** tab holds everything you have: your own sc
   buttons «To the game» / «Update» / «Remove» (the game copy goes, the scene stays in the library).
 - **Copy** — your own copy of a scene (of any, bundled ones too); **✕** — delete the scene from the library and from the game
   (after a confirmation; the app's bundled scenes cannot be deleted).
+- **The «Contexts» tab** — where the systems (the body, «Life», «The living world», your own contexts) want an animation, and how
+  many installed scenes fit each place («fits: N»; «nothing installed — the game keeps its own»). Its **«+ Own context»** makes your
+  own tag query so that lines, triggers and «Life» find your scenes (how contexts work:
+  [ANIMATION_GUIDE.md](ANIMATION_GUIDE.md#8-through-the-life-system-contexts)).
 
 ---
 
@@ -299,20 +325,24 @@ The **Library → «G.A.M. scenes»** tab holds everything you have: your own sc
   travel in the `.ogmod` together with the dialogues. For whoever installs the mod, the scenes land in their library and straight in the
   game (`Data\GAM\Scenes`) and are removed together with the mod on uninstall. If a scene plays clips of someone else's pack, the mod
   remembers which pack is needed and shows it at install time ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md#9-your-own-mod-save-and-share),
-  section 9).
+  section 9). Your own G.A.M. contexts and race groups that its files and packed scenes name travel with the mod too.
+- **Rights to other people's work.** A scene made of somebody else's animations (an imported pack, Skyrim, OAR gaits, a plugin's
+  clips) carries somebody else's motion: in the «Save the mod» list it is marked «not yours», the warnings name it («you need the
+  author's permission to share it»), and the «Only my own scenes» box keeps in the mod only what you made yourself. Share other
+  people's work only with their author's permission.
 
 ---
 
 ## 6. FAQ
 
-**«gamtool not found».**
+**«gamtool (the G.A.M. animation library) is missing».**
 The G.A.M. animation library is missing — reinstall boopi_mod.
 
 **«No skeleton: …».**
 The skeleton is extracted from the game files; check the game path in the settings. For Skyrim, drag XPMSE in or wait until the app
 downloads the vanilla SE skeleton at startup.
 
-**Import: «not everything could be read».**
+**Import: «some parts could not be read».**
 Some files of the pack are damaged or in an unfamiliar format; the rest was imported, the list is in the message.
 
 **Skyrim clips were skipped.**

@@ -19,8 +19,19 @@ Shipped in the release archive (each under its own license):
   with the bootloader exception (allows distribution of bundled applications).
 - Desktop shell: Tauri 2 (MIT / Apache-2.0), WebView2 (Microsoft, installed by Windows or by the user).
 - App UI: React, React Router, i18next, three.js (MIT); fonts IBM Plex (SIL Open Font License 1.1).
-- Our F4SE plugins (OldGenAI.dll, GAM.dll, BoopiUI.dll) contain: CommonLibF4 (MIT), fmt (MIT), spdlog (MIT),
-  rsm-mmio (MIT), boost-stl-interfaces (Boost Software License 1.0).
+- Our F4SE plugins (OldGenAI.dll, GAM.dll, BoopiUI.dll) are linked statically with these libraries (copyright holders
+  and the MIT text: the section "License texts" below):
+    CommonLibF4 - Copyright (c) 2019 ryan-rsm-mckenzie, MIT. https://github.com/Ryan-rsm-McKenzie/CommonLibF4 (its
+        Address Library based relocation and the game's class layouts; the plugins' entry points, PCH.h and version
+        templates follow its ExampleProject; a two-line compile fix is kept in game-plugin/patches);
+    fmt - Copyright (c) 2012 - present, Victor Zverovich and {fmt} contributors, MIT;
+    spdlog - Copyright (c) 2016 - present, Gabi Melman and spdlog contributors, MIT;
+    rsm-mmio - Copyright (c) 2021 Ryan McKenzie, MIT;
+    Boost header libraries (boost-stl-interfaces and the headers it needs) - Boost Software License 1.0,
+        https://www.boost.org/LICENSE_1_0.txt (no notice is needed in compiled form).
+  The plugins use the static Microsoft Visual C++ runtime (/MT, redistributable code under the Microsoft Visual Studio
+  terms). The in-game menus (BoopiHUD.swf, BoopiInput.swf) are compiled from our ActionScript with the Apache Flex SDK
+  (Apache License 2.0); only the compiler's metadata ends up in the SWF, no SDK classes.
 - Core (Python) libraries: fastapi, starlette, uvicorn (BSD-3/MIT), pydantic, pydantic-core (MIT), httpx, httpcore
   (BSD-3), anyio, sniffio, h11 (MIT), websockets (BSD-3), watchfiles, httptools (MIT), PyYAML (MIT), numpy (BSD-3),
   pillow (MIT-CMU), keyring, jaraco.* , more-itertools (MIT), pywin32-ctypes (BSD-3), certifi (MPL 2.0), idna (BSD-3),
@@ -39,3 +50,27 @@ Optional engines installed on demand, after you accept their licenses:
 - faster-whisper (MIT) with Whisper models (MIT, OpenAI). Microsoft Edge TTS (online service, Microsoft terms).
 
 Fallout and related marks are trademarks of Bethesda Softworks / ZeniMax Media. boopi_mod is not affiliated with them.
+
+=======================================================================
+
+License texts / тексты лицензий
+
+CommonLibF4, fmt, spdlog and rsm-mmio are distributed under the MIT License. The copyright lines are:
+
+    CommonLibF4: Copyright (c) 2019 ryan-rsm-mckenzie
+    fmt:         Copyright (c) 2012 - present, Victor Zverovich and {fmt} contributors
+    spdlog:      Copyright (c) 2016 - present, Gabi Melman and spdlog contributors
+    rsm-mmio:    Copyright (c) 2021 Ryan McKenzie
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

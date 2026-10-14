@@ -21,7 +21,9 @@
 > - In the game: **E** next to a person → **"Say your own…"** → type and press **Enter**; by voice, hold **V**; finish with **Esc**.
 > - The AI only **asks** (a joke, an item, a quest stage, a flag); the **core checks and carries it out**. The safety rules are
 >   not in the model's hands.
-> - Honest limits of the first version: no lip sync, and vanilla quest dialogues do not get the AI yet.
+> - In the **game's own dialogues** (quests, Codsworth, Preston, traders, settlers) press **T** and answer in your own words:
+>   the AI picks the matching reply of the wheel and the quest goes on as written.
+> - Honest limits: no lip sync; a free line in the game's own dialogue does not move the story — only the game's replies do.
 
 ## Contents
 
@@ -29,13 +31,14 @@
 2. [Turn the mode on](#2-turn-the-mode-on)
 3. [Start a conversation](#3-start-a-conversation)
 4. [How to speak](#4-how-to-speak)
-5. [What the person knows](#5-what-the-person-knows)
-6. [What the AI can do](#6-what-the-ai-can-do)
-7. [What the AI cannot do](#7-what-the-ai-cannot-do)
-8. [Limits of the first version](#8-limits-of-the-first-version)
-9. [For modders: check a dialogue in AI mode](#9-for-modders-check-a-dialogue-in-ai-mode)
-10. [Troubleshooting](#10-troubleshooting)
-11. [Other guides](#11-other-guides)
+5. [In the game's own dialogues](#5-in-the-games-own-dialogues)
+6. [What the person knows](#6-what-the-person-knows)
+7. [What the AI can do](#7-what-the-ai-can-do)
+8. [What the AI cannot do](#8-what-the-ai-cannot-do)
+9. [Limits of the first version](#9-limits-of-the-first-version)
+10. [For modders: check a dialogue in AI mode](#10-for-modders-check-a-dialogue-in-ai-mode)
+11. [Troubleshooting](#11-troubleshooting)
+12. [Other guides](#12-other-guides)
 
 ---
 
@@ -88,10 +91,11 @@ On the same tab, in the AI dialogue options block:
 | **Reply length** | short (1–2 sentences), medium (2–3) or long (3–5) |
 | **Voice the replies** | the reply is spoken by the voice provider and handed to the game as a sound file (voice setup — [VOICE.md](VOICE.md)) |
 | **Show reply ideas** | the game offers 2–4 short lines you can say |
+| **AI in vanilla dialogues** | **off** / **pick a reply** (default) / **pick a reply and free lines** — your own line in the game's own wheel ([section 5](#5-in-the-games-own-dialogues)) |
 
 ### Step 5. The game
 
-The game must be launched through F4SE, and the `BoopiUI.dll` plugin must be installed (the base pack and "the in-game plugin"
+The game must be launched through F4SE, and the `BoopiUI.dll` plugin must be installed (the base pack and "OldGenAI — in-game plugin"
 are installed from **Mods**). The game rereads the mode from the core every few seconds — **no game restart is needed after
 switching**.
 
@@ -113,6 +117,10 @@ Walk up to a person and press **E** — the dialogue wheel opens. In AI mode:
 - the **"Say your own…"** option (in the game it reads «Сказать своё…») opens a free conversation at once;
 - choosing a line "of a kind" (flirt, the mission, persuade, trade, small talk, romance, have a drink, push, apologise…) also
   opens a free conversation — with that intent. The line you chose becomes the first phrase.
+
+People with dialogue of their own (the Rocket's bartender, the club staff, the HQ synths, characters with script studio trees)
+have **"Say your own…"** in the first wheel of their talk, next to the authored lines. If **E** opens the game's own talk (a
+quest, a trader), press **H** in front of the person: the Life wheel opens with the same option.
 
 <p align="center"><img src="../../docs/images/ingame-ai-hud.jpg" alt="In the game: Piper answers with a subtitle, the relationship card is on the right" width="860"></p>
 
@@ -140,7 +148,7 @@ lines.*
 |---|---|
 | Type a line | Type; **Enter** says it. Russian and English layouts both work (the console key "ё" types too). Up to 400 characters |
 | Speak aloud | **Hold V**, speak, release. The recognised text appears in the line — check it and press **Enter** (in `BoopiUI.ini` you can turn on sending at once). Needs a microphone and speech recognition ([VOICE.md](VOICE.md)) |
-| A ready-made line | Under the line there are 2–4 ideas; **Tab** or the digits put them in |
+| A ready-made line | Under the line there are 2–4 ideas; **↑/↓** pick one, **Tab** or the digits (while the line is empty) put it in |
 | Cancel an answer | **Esc** while the person is "thinking" |
 | End the conversation | **Esc**. The conversation also ends by itself: if you said goodbye, a scene started, an "after the talk" action was chosen, or the conversation dragged on |
 
@@ -161,32 +169,73 @@ Keys, the pause and the volume are set in `Data\F4SE\Plugins\BoopiUI.ini` (**clo
 |---|---|
 | `iPushToTalk` | the "speak by voice" key (default V = 86) |
 | `iToggleWidgets` | the widgets key (default F10 = 121) |
+| `iOwnLine` | "in your own words": in the game's own wheel — your answer; with no menu — a free talk with the person in front (default T = 84) |
 | `bPauseWhileTyping` | pause the world while you type |
 | `bSuggestions` | reply ideas |
 | `bAutoSend` | send the recognised voice at once, without waiting for Enter |
 | `bPlayReply` | play the voiced reply (`1` — yes) |
 | `sLanguage` | language |
-| `bTextEntryMode` | at `1` (the default) the game hotkeys are off while the input line is open |
+| `iMaxChars` | the length limit of a line (default 400, from 20 to 600) |
+| `bSubtitles` | show the reply as a subtitle (the `[HUD]` section) |
 
 ---
 
-## 5. What the person knows
+## 5. In the game's own dialogues
+
+The game's own quest and everyday talks — Codsworth and Preston in the story, Daisy, traders, settlers, DLC people — use their
+own wheel: "Yes / No / Sarcastic / Question". In AI mode you can answer in such a wheel in your own words.
+
+1. While the game's wheel is open, press **T**. A line **"In your own words — Name"** appears at the bottom (in the game:
+   «Своими словами — Имя»), with the replies the game offers right now under it.
+2. Type or say (holding **V**) what you want to answer and press **Enter**.
+3. The AI works out which of the replies you mean and picks it — exactly as if you had pressed its key. The screen shows
+   **"» reply"**, and the quest goes on just as the game's authors wrote it: the same voice, the same consequences.
+4. If none of the replies fits:
+   - with **"Pick a reply"** the game says that none fits («Ни один вариант не подходит») — say it differently or choose yourself;
+   - with **"Pick a reply and free lines"** the person answers you in character, changing nothing in the story, and the wheel
+     stays open.
+5. **Esc** — back to the replies: choose as usual.
+
+| Rule | How it works |
+|---|---|
+| Only what you could press is picked | the AI names just a number from the list of replies the wheel shows; an empty, hidden or unavailable reply is never picked |
+| A free line changes nothing | no items, no quest stages, no flags: only the game's own replies move the story |
+| The wheel changed meanwhile | the reply is not pressed; the game says «Вариант не выбран: колесо уже другое» ("no reply chosen: the wheel has changed") |
+| A reply as it is | type a reply's text (or take it with **Tab**/a digit from the ideas under the line) — it is picked at once, without asking the AI |
+
+The setting is Settings → Dialogues → **AI in vanilla dialogues**: **off**, **pick a reply** (default) or **pick a reply and free
+lines**. In the Vanilla mode it is always off: the game does not read the wheel and the AI is never called. The T key is changed in
+`BoopiUI.ini` (`iOwnLine`).
+
+> [!TIP]
+> You can talk freely with **anyone** in the game, not only the characters of our trees: the same **T** key, with someone in front
+> of you and no menu open, starts a free conversation at once — with a settler, a trader, a robot, a DLC person. With a child it
+> is ordinary talk only: flirting and anything romantic are always closed. The wheel with **"Say your own…"** still opens on **E**
+> (for those without a greeting of their own) and **H**. The AI knows what the game reports about the person (see the next
+> section).
+
+---
+
+## 6. What the person knows
 
 Every answer is assembled from what the core has (not from the model's "general knowledge"):
 
 - **Themselves:** the character card, their character and manner of speech; for people from mods — the `ai` block written by the
-  author of the tree.
+  author of the tree. For anyone else in the game (a settler, a trader, a raider, a DLC person) — what the game reports: race,
+  factions, trade, voice, where they are now.
 - **You:** name, sex, looks, level, **S.P.E.C.I.A.L.**, persuasion skill, karma, reputation and fame in this place.
 - **The two of you:** the relationship stage, disposition, trust, attraction, the memory of earlier talks (it is written when a
   conversation ends).
 - **The story:** started story missions — the stage, the journal entry, what this person is supposed to touch on; story flags.
+  And the game's own quests the person is part of right now: the name, the journal entry at this stage and the objectives up to
+  it — the texts come from the game's own files (in its language); the AI does not see objectives of later stages.
 - **Place and time:** where you are, what time it is, who is nearby.
 
 What the game does not report, the core does not invent.
 
 ---
 
-## 6. What the AI can do
+## 7. What the AI can do
 
 The AI **asks**, the core **checks and carries it out**. In one turn it may ask for the following (the list of what is allowed is
 rebuilt every turn):
@@ -209,7 +258,7 @@ something that is forbidden right now, the person refuses **in character** (not 
 
 ---
 
-## 7. What the AI cannot do
+## 8. What the AI cannot do
 
 - **Anything outside the list.** It cannot hand out an item or set a quest or a flag that is not in the person's dialogues, however
   hard the model asks. The core drops everything extra.
@@ -228,21 +277,23 @@ something that is forbidden right now, the person refuses **in character** (not 
 
 ---
 
-## 8. Limits of the first version
+## 9. Limits of the first version
 
 > [!WARNING]
 > This is the first version, and here is honestly what it does not have yet:
 >
 > - No **lip sync**: the line goes as a subtitle and as voice, but the lips do not move.
-> - **Vanilla quest dialogues** (from the game itself) do not get the AI yet — only our trees, modders' trees and the wheel, which
->   has the "Say your own…" option. The vanilla part is planned for the next release.
+> - In the **game's own dialogues** the AI only picks one of the game's replies (or answers without changing anything): it has
+>   no outcomes of its own there — items, stages, flags; the story goes on through the game's replies.
+> - The AI sees a quest's objectives by the quest's stage (as in the journal), not by the game's own marks: now and then it may
+>   know one objective more or less than the Pip-Boy shows.
 > - The answer takes a few seconds (network and model); the voice a little longer (speech synthesis).
 > - Every line is a request to your AI provider: that is tokens and possibly money; lines and data about the hero and the character
 >   go to the provider (a local Ollama model keeps everything on the machine).
 
 ---
 
-## 9. For modders: check a dialogue in AI mode
+## 10. For modders: check a dialogue in AI mode
 
 In the Script studio, the **AI dialogue** card of every person has the **Check in AI mode** button — a test chat with the tree as it
 is in the editor right now (saved or not), in a save of its own. You pick the kind of talk, the hero, the stage between you, the
@@ -258,17 +309,21 @@ Details — [SCRIPT_STUDIO.md](SCRIPT_STUDIO.md).
 
 ---
 
-## 10. Troubleshooting
+## 11. Troubleshooting
 
 - **There is no "Say your own…" option.** The "AI" mode is off (Settings → Dialogues), or `BoopiUI.dll`/`BoopiCorp.esp` is not
   installed (check in **Mods**), or the game was launched without F4SE.
+- **T does nothing in the game's wheel.** Are the "AI" mode and "AI in vanilla dialogues" on? The game rereads the setting every
+  few seconds. The replies must be visible: while the person says their opening line the wheel may still be closed.
+- **«Вариант не выбран: колесо уже другое» ("no reply chosen: the wheel has changed").** The talk went on while the AI was
+  thinking. Choose yourself or press T again.
 - **"No model key is set".** Settings → LLM providers and Routing → Dialogue.
 - **"The conversation is lost (the core restarted)".** Start the conversation again.
 - **No voice.** Turn on "Voice the replies" and check the voice provider ([VOICE.md](VOICE.md)); in `BoopiUI.ini` set
   `bPlayReply=1`.
 - **V does not record.** There is no microphone or speech recognition is not installed; the key can be changed in `BoopiUI.ini`.
-- **I write in Russian but Latin letters appear.** Switch the Windows keyboard layout; in `BoopiUI.ini`, `bTextEntryMode=1` (the
-  default) turns off the game hotkeys while the line is open.
+- **I write in Russian but Latin letters appear.** Switch the Windows keyboard layout (the input line reads the one that is on
+  now). While the line is open, key presses go into it and not into the game's commands: it is a window of its own.
 
 **Logs:**
 - the core — `%APPDATA%\BoopiMod\logs\`;
@@ -280,7 +335,7 @@ Details — [SCRIPT_STUDIO.md](SCRIPT_STUDIO.md).
 
 ---
 
-## 11. Other guides
+## 12. Other guides
 
 | Guide | What it is about |
 |---|---|

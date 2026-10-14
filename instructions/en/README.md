@@ -9,7 +9,7 @@
 > that you can share as a single file.
 
 > [!WARNING]
-> **This is the first beta (0.1.1):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
+> **This is a beta (0.1.8):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
 > problems and ideas is very welcome. [Open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose)
 
 ## Where to start
@@ -18,6 +18,8 @@
 |---|---|
 | install and launch | [Install and first run](../../README.en.md#install-and-first-run) |
 | make my own dialogue, scene, mod | [Script Studio](SCRIPT_STUDIO.md) |
+| check a dialogue without starting the game | [«▶ Try the dialogue»](SCRIPT_STUDIO.md#31-play-try-a-conversation-without-the-game) |
+| publish my mod to boopi.site | [Publish to boopi.site](SCRIPT_STUDIO.md#97-publish-to-boopisite) |
 | import animations or draw my own | [Animation import and the G.A.M. editor](ANIMATION_IMPORT.md) |
 | my own story: a world event → a talk, a scene, a quest | [Studio triggers](SCRIPT_STUDIO.md#12-triggers-your-own-story), quickest: [«+ Story» and the ready example](SCRIPT_STUDIO.md#128--story-and-the-ready-example) |
 | call animations from dialogues and scripts | [Animations in mods](ANIMATION_GUIDE.md) |
@@ -30,31 +32,33 @@
   <tr>
     <td width="72" align="center"><img src="../../docs/images/icons/studio.png" width="64" alt=""></td>
     <td><b><a href="SCRIPT_STUDIO.md">Script Studio</a></b> · <a href="../SCRIPT_STUDIO.md">RU</a><br>
-    Your own dialogues, lines from the game and branches off its wheels, voice with lip sync, "Build and check", your own mod
-    (<code>.ogmod</code>) and installing someone else's, animations in lines, triggers of your own story, Papyrus, the AI assistant and "Check in AI mode".</td>
+    Your own dialogues, lines from the game and branches off its wheels, voice with lip sync, "Try the dialogue" without the game
+    and file versions, "Build and check", your own mod (<code>.ogmod</code>), installing someone else's and publishing to
+    boopi.site, animations in lines, triggers of your own story ("+ Story" and a ready example), Papyrus, the AI assistant and
+    "Check in AI mode".</td>
   </tr>
   <tr>
     <td align="center"><img src="../../docs/images/icons/import.png" width="64" alt=""></td>
     <td><b><a href="ANIMATION_IMPORT.md">Animation import and the G.A.M. editor</a></b> · <a href="../ANIMATION_IMPORT.md">RU</a><br>
     Fallout 4 mods, Skyrim animations, OAR gaits, "drop it — it plays", your own scenes in the 3D editor: the
-    Rotate / Move / Character / Heading tools, IK handles, lighting, the AI animator.</td>
+    Rotate / Move / Character / Heading tools, IK handles, lighting, a scene's face and camera, the AI animator, the scene library.</td>
   </tr>
   <tr>
     <td align="center"><img src="../../docs/images/icons/gam.png" width="64" alt=""></td>
     <td><b><a href="ANIMATION_GUIDE.md">Animations in G.A.M. mods</a></b> · <a href="../ANIMATION_GUIDE.md">RU</a><br>
-    A gesture and a scene, the camera, calling from scripts, dialogues and "Life", scene files, a mod for the manager,
+    A gesture and a scene, scene events, the camera, calling from scripts, dialogues and "Life", scene files, a mod for the manager,
     checking in the game, safety.</td>
   </tr>
   <tr>
     <td align="center"><img src="../../docs/images/icons/ai-dialogue.png" width="64" alt=""></td>
     <td><b><a href="AI_DIALOGUE.md">AI dialogue</a></b> · <a href="../AI_DIALOGUE.md">RU</a><br>
     The "Progressive AI dialogue" mode: how to switch it on, "Say your own…", keyboard input (Russian included), voice on
-    <b>V</b>, widgets on <b>F10</b>, what the AI can and cannot do.</td>
+    <b>V</b>, widgets on <b>F10</b>, what the AI can and cannot do; for modders — checking a dialogue in AI mode.</td>
   </tr>
   <tr>
     <td align="center"><img src="../../docs/images/icons/voice.png" width="64" alt=""></td>
     <td><b><a href="VOICE.md">Voice</a></b> · <a href="../VOICE.md">RU</a><br>
-    Text-to-speech (Edge, ElevenLabs, OpenAI, Piper, XTTS-v2, Silero), voice cloning, speech recognition and push-to-talk.</td>
+    Text-to-speech (Edge, ElevenLabs, OpenAI, XTTS-v2, Silero), voice cloning, speech recognition and push-to-talk.</td>
   </tr>
 </table>
 
@@ -64,7 +68,11 @@
 |---|---|
 | Data and settings | `%APPDATA%\BoopiMod\` |
 | Your dialogues | `%APPDATA%\BoopiMod\talk` |
+| Versions of studio files | `%APPDATA%\BoopiMod\talk\.history` |
+| Installed studio mods | `%APPDATA%\BoopiMod\studio_mods` |
+| Record ranges of the trees | `%APPDATA%\BoopiMod\plugin\tree_slots.json` |
 | G.A.M. scenes | `%APPDATA%\BoopiMod\gam\scenes` |
+| Your G.A.M. contexts | `%APPDATA%\BoopiMod\gam\contexts` |
 | Saved mods | `Documents\BoopiMod\Mods` |
 | Logs | `%APPDATA%\BoopiMod\logs` |
 | The program | usually `C:\Games\boopi_mod` |

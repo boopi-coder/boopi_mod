@@ -13,7 +13,7 @@
 
 > ### ⏱ In 1 minute
 >
-> - **Voicing (TTS)** decides who speaks the lines: online (Edge TTS, ElevenLabs, OpenAI) or local (Piper, XTTS-v2, Silero).
+> - **Voicing (TTS)** decides who speaks the lines: online (Edge TTS, ElevenLabs, OpenAI) or local (XTTS-v2, Silero).
 > - The easiest start is **Microsoft Edge TTS**: free, no key, Russian voices Dmitry and Svetlana.
 > - Choose the provider: Settings → LLM providers → the "Text to speech (TTS)" block → **Use for voicing**.
 > - **Speech recognition (STT)** — Settings → Voice: built in (faster-whisper) or OpenAI Whisper; in the game, hold **V**.
@@ -57,7 +57,6 @@ Settings → LLM providers → the **"Text to speech (TTS)"** block. The provide
 | **Microsoft Edge TTS** | online | nothing (no key), internet | Free, Russian voices Dmitry and Svetlana; speed is adjustable in percent. A good start |
 | **ElevenLabs** | online | an API key | Voices and models come from your account (Multilingual v2, Turbo, Flash, v3); streaming output |
 | **OpenAI TTS** | online | the same key as the OpenAI provider | Models gpt-4o-mini-tts, tts-1, tts-1-hd |
-| **Piper** | local | "Install" (about 110 MB) | Light, runs fast on the CPU; Russian voices are downloaded from a list |
 | **XTTS-v2** | local | "Install" (about 4.7 GB), accept the licence | The best quality and **voice cloning**; an NVIDIA graphics card (CUDA) is desirable |
 | **Silero TTS** | local | "Install" (about 280 MB), accept the licence | Russian voices, light |
 
@@ -74,9 +73,9 @@ Settings → LLM providers → the **"Text to speech (TTS)"** block. The provide
 2. For a local engine press **Install**. The app creates the environment and downloads the model itself; progress is shown. For XTTS
    pick the graphics card ("Auto (CUDA if there is an NVIDIA card)", "CPU only", "Force CUDA") and tick the licence box.
 
-   <p align="center"><img src="../../docs/images/settings-voice-tts.en.png" alt="Settings, voicing providers: Piper, XTTS-v2 and Silero TTS with Install buttons and the XTTS voices block" width="860"></p>
+   <p align="center"><img src="../../docs/images/settings-voice-tts.en.png" alt="Settings, voicing providers: XTTS-v2 and Silero TTS with Install buttons and the XTTS voices block" width="860"></p>
 
-   *The local engines Piper, XTTS-v2 and Silero TTS: Install, the graphics card choice and the licence box for XTTS, the "XTTS
+   *The local engines XTTS-v2 and Silero TTS: Install, the graphics card choice and the licence box for XTTS, the "XTTS
    voices (cloning)" block. The screenshot is in Russian.*
 
 3. Pick the default voice for Russian and English and press **Listen**.
@@ -84,18 +83,19 @@ Settings → LLM providers → the **"Text to speech (TTS)"** block. The provide
 
 > [!IMPORTANT]
 > **Engine licences.** XTTS-v2 is distributed under the Coqui Public Model License, Silero under CC BY-NC-SA 4.0: both are
-> **non-commercial**. That is why they are not in the archive and are installed only after your explicit consent; Piper, Edge TTS
+> **non-commercial**. That is why they are not in the archive and are installed only after your explicit consent; Edge TTS
 > and Whisper have no such restrictions.
 
 ### 2.3 A particular character's voice
 
 Characters → the character → **Profile**: the voice card shows the fields of the chosen provider (ElevenLabs voice, OpenAI voice,
-Edge voice, Piper voice, Silero speaker, XTTS speaker). Choose and press **Listen** — the choice is saved in your layer of
+Edge voice, Silero speaker, XTTS speaker). Choose and press **Listen** — the choice is saved in your layer of
 edits. If nothing is chosen for the character, the default voice for the language from the provider settings is used.
 
 ### 2.4 Voicing in the chat and in the game
 
-- **The chat in the app:** the **Voice the replies** box under the input field (or Settings → Voice → "Voice the replies in the chat").
+- **The chat in the app:** the **Voice the replies** box above the input field (or Settings → Voice → "Voice the replies in the chat");
+  a single reply can be voiced with the **Listen** button next to the character's name.
 - **The AI dialogue in the game:** Settings → Dialogues → **Voice the replies**. The core gets the answer, synthesises a WAV and
   hands it to the game, which plays it (not positional, no lip sync).
 - **WAV sample rate for the game** — 44100 Hz (like the game's lines) or 22050 Hz (half the size). Always mono, 16 bit — that is
@@ -164,7 +164,7 @@ The text appears in the input line; **Enter** sends it (`bAutoSend=1` sends at o
 | What you see | What to do |
 |---|---|
 | "The engine is not installed" | Press "Install" on the provider (or on recognition) |
-| "The voice or model is not downloaded" | Download a Piper voice or a Whisper model in the provider block |
+| "The voice or model is not downloaded" | Download a Silero or a Whisper model in the provider block |
 | "You need to accept the licence terms" | Tick the XTTS or Silero terms box and repeat the install |
 | "The provider's API key is not set" | Paste the provider's key and press "Save key" |
 | "Speech recognition is off" | Settings → Voice: choose built-in recognition or OpenAI Whisper |

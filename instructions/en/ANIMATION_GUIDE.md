@@ -37,8 +37,8 @@ Everything described here was tested in the game (Fallout 4 1.10.163, G.A.M. 0.3
 > [!IMPORTANT]
 > New in **G.A.M. 0.4.0** — scene events performed and external events for your scripts ([5.2](#52-scene-events)), the scene's face and
 > camera tracks ([6](#6-scene-camera)), «Play in game» and the game's log right in the editor ([11](#11-how-to-test-in-the-game)) — is
-> built and tested without the game but **not yet tested in the game**. If any of it does not behave as written, that is a bug, not
-> your mistake.
+> built and tested without the game. «Play in game» has been tested in the game (start, «Stop», the refusal when nobody is in front of
+> the player); the rest is **not yet tested in the game**. If any of it does not behave as written, that is a bug, not your mistake.
 
 ## Contents
 
@@ -133,8 +133,9 @@ The tag vocabulary is in `data/gam/tags.yaml`. The most useful tags:
 | Upper / lower body | `upper_body` / `lower_body` |
 
 **Gestures out of the box.**
-- The «Gestures from the game» pack (`gam_gestures`, installed by the manager) builds 64 gestures from your own game's animations at
-  install time: 8 moods × male/female × 4 clips, plus «hands up», «smokes and talks», three kinds of «salute» and «point» in four directions.
+- The «Gestures from the game» pack (`gam_gestures`, installed by the manager) builds from your own game's animations at install
+  time 64 conversation gestures (8 moods × male/female × 4 clips) and 9 single ones: «hands up», «smokes and talks», three kinds of
+  «salute» and «point» in four directions.
 - No game files are copied into the pack: the clips are read from your archives during the build.
 - Ids: `gesture/talk_<mood>_<m|f>_<s1|s2|m1|m2>`, `gesture/hands_up`, `gesture/smoke_talk`, `gesture/salute`, `gesture/salute_military`,
   `gesture/salute_bos`, `gesture/point_<forward|back|left|right>`.
@@ -176,7 +177,7 @@ How a gesture behaves:
 - It plays **once** and smoothly returns the actor to their own animation (blend in 0.3 s, out 0.45 s).
 - The rest of the body stays its own: you can wave while walking.
 - The camera and control are not touched. The function returns a handle (0 — no suitable scene) and hands control back to the script at once.
-- A clip for the actor's sex is looked for first: for a woman, one with the tag `female`. Only if there is none, any clip is taken.
+- A clip for the actor's sex is looked for first: one with the tag `male` or `female`. Only if there is none, any clip is taken.
 
 Examples:
 
@@ -383,9 +384,15 @@ do: { anim: { tags: "gesture,talk,friendly", who: npc, part: head, when: line } 
 | `part` | `head`, `upper`, `arms`, `left_arm`, `right_arm`, `lower`, `full` | the body part (by default — as in the scene) |
 | `when` | `line` (default) / `after` | now, while the line is spoken, or when the conversation ends |
 
-One of three is required: `id`, `tags` or `context`. By `id` and by tags an intimate scene is never taken (only a context, with
-consent). A string with a comma in `context` is treated as a tag query. With `who: both` it is
+**Exactly one** of three is required: `id`, `tags` or `context` (none, or several named — the studio's check and `check_talk.py`
+report an error). By `id` and by tags an intimate scene is never taken (only a context, with consent). A tag query (it has a comma)
+written in `id` or `context` is read as `tags`. With `who: both` it is
 always a **scene** with a camera. It is better to set it with `when: after` so that it does not fight the dialogue camera.
+
+The same «play a scene» shape is used in Studio triggers (`scene:`) and in the rows of a mission's world
+([MISSION_WORLD.md](../../docs/story/MISSION_WORLD.md)): exactly one of `id` / `tags` / `context`. Instead of `who: npc | player |
+both` and `when` they have `actors: [hero, EDID…]` (for `id` and `tags`) or `npc` + `who: both | npc` + `part` (for `context`, no
+`actors`); world rows take `context` too. Details: [SCRIPT_STUDIO.md](SCRIPT_STUDIO.md#123-actions-what-happens).
 
 **Example: a small dialogue with a head and arm gesture.**
 
@@ -430,9 +437,12 @@ Checking the tree (errors in `anim` — an unknown field, `who`, `part`, `when` 
 uv run --project core python scripts/check_talk.py data/talk/my_barman.yaml
 ```
 
+You can also click through such a conversation without the game: **«▶ Try the dialogue»** in the Studio ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md#31-play-try-a-conversation-without-the-game)).
+The player does not play the animation; it shows how many scenes fit the line's tags.
+
 After that the tree is built into a plugin together with the others:
 - every line with `anim` gets the properties `AnimContext` / `AnimTags` / `AnimPart` / `AnimWho` / `AnimWhen` of the script
-  `OGAITreeInfoScript`;
+  `OGAITreeInfoScript` (a scene id goes into `AnimTags`: `GAM.PickScene` looks for a scene with that id first);
 - in the game the line calls `OGAILifeScript.TreeAnim`.
 
 A live example is `data/talk/black_acorn_singer.yaml`, Stella: a compliment — a friendly gesture; «Sing something» — a confident one;
@@ -471,6 +481,19 @@ A **context** is a meaningful place where an animation is wanted: «wave», «a 
 `scene` — a scene, `gait` — a gait), the number of actors, the body part and suitable furniture. The files are
 `data/gam/contexts/*.yaml`. Your own contexts go into `%APPDATA%\BoopiMod\gam\contexts\*.yaml`.
 
+**Your own contexts in the app.** You do not have to write them by hand: **G.A.M. → Library → «Contexts» → «+ Own context»**. The form has
+an id (Latin letters, digits, `_`), a kind («scene», «layer» — that is `overlay`, «gait»), a name in Russian and in English, tag
+queries (one per line, the first that finds anything wins), for a scene the number of actors and «Where it may play» (furniture), and
+the part of the body. The app keeps such contexts in `%APPDATA%\BoopiMod\gam\contexts\app.yaml` and lists them under «My contexts»
+with «Edit» and «Delete» buttons. Files you wrote yourself it leaves alone and shows read-only («your file»); the contexts of
+installed mods are marked «from the mod …». An id that the program, a mod or a file of yours already has cannot be taken. The editor
+sets no 18+ mark: your context never takes an intimate scene. Next to each context you see how many installed scenes fit it («fits: N»).
+
+Your own contexts that your mod's lines and triggers name (`anim.context`, `scene.context`) and your own race groups mentioned in the
+roles of the packed scenes (`@group`) are put into the `.ogmod` by «Save the mod» by itself. For whoever installs the mod they are
+read next to their own and leave together with the mod; another context or group with the same id is not overridden — the install
+refuses ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md#9-your-own-mod-save-and-share)).
+
 A call from Papyrus (BoopiCorp.esp and a running boopi_mod are needed):
 
 ```papyrus
@@ -486,6 +509,14 @@ How a call through the core differs from a direct one:
 
 «Life» actions (`act: hug`, `act: kiss` in trees) are already linked to contexts through `verbs:` in `life.yaml`: a successful action
 plays its own context by itself.
+
+**Gaits and smoking.** Sickness, withdrawal, a hangover, exhaustion and a worn body ask for a **gait** by a context of
+`body.yaml` (`sick_cough`, `withdrawal_crisis`, `worn` …), the living town for **smoking** (`amb_smoke`); scripts also have
+`smoke_light`, `smoke_out`, `smoke_wall` (against a wall) and `smoke_sit` (seated). Whatever is installed in the game and carries
+the tags answers. The app needs no animation mod of anyone else: when nothing fits, the person walks with the game's own walk and
+the gesture simply does not play — nothing breaks. You can make a gait of your own in the editor: a set of scenes with
+`meta.gait` (a stance, a walk and a run by direction, male and female) in a `…/gait/<set>/` folder — details in `docs/GAM.md`,
+«Походка по условию» (gaits by condition).
 
 ---
 
@@ -533,7 +564,14 @@ MyMod.zip
 
 > [!TIP]
 > The easiest way to build a mod is in «Script studio»: «Save the mod» → tick your G.A.M. scenes — they travel in the `.ogmod` together
-> with the dialogues ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md)).
+> with the dialogues, and with them your own contexts and race groups ([section 8](#8-through-the-life-system-contexts),
+> [SCRIPT_STUDIO.md](SCRIPT_STUDIO.md)).
+
+> [!WARNING]
+> **Other people's animations.** A scene made of somebody else's animations (an imported pack, Skyrim, converted OAR gaits, a plugin's
+> clips) carries somebody else's motion: share it only with its author's permission. «Save the mod» does not decide that for you, but
+> it warns: such scenes are named in the warnings and marked «not yours» in the list, and the «Only my own scenes» box keeps only what
+> you made yourself in the mod. A copy («Save as…», «Copy») of such a scene stays «not yours».
 
 ### 10.2 A minimal scene file
 
@@ -558,6 +596,9 @@ Main fields:
   - `kind: root` — the actor's place and heading relative to the scene origin (for pairs).
 - `markers` — `loop_start` / `loop_end` (a loop: entry — loop until stopped — exit) and `stage1…N` (stages, [5.1](#51-stages-how-a-scene-develops)).
 - `meta.part` — the default body part; `meta.stages` — stages with the number of passes.
+- `props` — objects: an anchor furniture piece (`anchor: true`), an item in place or an item in the hand (`kind: held`, `role` +
+  `bone`); `form` is `Plugin.esm|0x0004D1F9`. In the editor's viewport they show as the game's real models from your game (when
+  there is a model), not as boxes.
 
 Scenes are easier to make in the G.A.M.
 editor (boopi_mod → G.A.M.): the skeleton, timeline, keys, IK handles, a check and one-button installation into the game are all
@@ -597,6 +638,10 @@ markers, stages, the scene's settings, optimisation and the AI animator's result
 redoes; the Undo / Redo buttons of the tool bar say what exactly. Typing in one field (the scene's name) or moving one slider is one
 step. The history keeps up to 100 steps while the program is open. `Ctrl+S` saves; the program does not let a window with an
 unsaved scene close silently, and the scene survives a restart as a draft anyway.
+
+**Version history.** Undo lives while the program is open. What is already saved is not lost: before every save or delete the scene's
+previous version is kept (the last 12), and the **«History»** button in the tool bar brings any of them back
+([ANIMATION_IMPORT.md](ANIMATION_IMPORT.md#44-save-and-send-to-the-game)).
 
 **Keys on the timeline.**
 
@@ -688,7 +733,7 @@ The log `Documents\My Games\Fallout4\F4SE\GAM.log`:
 | `scene 3 'x' face 'happy' on 0001A4D7` | the face track changed the expression |
 | `G.A.M. editor: command 5 play 'editor/my/hug'` / `command 5 failed: …` | a scene from the editor («Play in game») and why it did not play |
 
-In the app all logs — the core's, the game's, Papyrus and F4SE — are collected into a single file `%APPDATA%\BoopiMod\logsll.log`, and
+In the app all logs — the core's, the game's, Papyrus and F4SE — are collected into a single file `%APPDATA%\BoopiMod\logs\all.log`, and
 errors into `errors.log` next to it.
 
 ---

@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img alt="version 0.1.7 beta" src="https://img.shields.io/badge/version-0.1.7%20beta-3cff6b?style=flat-square">
+  <img alt="version 0.1.8 beta" src="https://img.shields.io/badge/version-0.1.8%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20stars&color=f2b705"></a>
   <img alt="Fallout 4 1.10.163 Old-Gen" src="https://img.shields.io/badge/Fallout%204-1.10.163%20Old--Gen-f2b705?style=flat-square">
   <img alt="Windows 10/11 x64" src="https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-0078d4?style=flat-square">
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.1.7 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.1.7%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.1.8 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.1.8%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Support the author on Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -36,25 +36,37 @@
   <a href="#for-modders">For modders</a> ·
   <a href="#lullaby-the-new-story">The story</a> ·
   <a href="#faq">FAQ</a> ·
-  <a href="#plans-skyrim-starfield-cyberpunk-2077-the-sims-4">Plans</a> ·
+  <a href="#whats-coming">What's coming</a> ·
   <a href="instructions/en/README.md">Guides</a> ·
   <a href="https://github.com/boopi-coder/boopi_mod/issues/new">Report a problem</a> ·
   <a href="https://boosty.to/boopi_coder">Boosty</a>
 </p>
 
 > [!WARNING]
-> **This is a beta (0.1.7).** Expect rough edges and bugs — please report them so I can fix them quickly:
+> **This is a beta (0.1.8).** Expect rough edges and bugs — please report them so I can fix them quickly:
 > [open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose) (the template tells you what to attach) — I read everything.
 > **Feedback on problems and ideas is very welcome — we'll sort it out.**
 
 ---
 
-**boopi_mod** is a desktop app plus a set of game plugins for **Fallout 4 (1.10.163, Old-Gen)**. First of all it is a **mod
-manager**: it installs and runs your mods, prepares the game and puts the load order straight. But above all **you create
-here**: draw animations in a 3D editor, write scenarios, scenes and dialogues in the studio, voice them and hand them to
-friends as a single file. You can do it by hand — or let an AI assistant take over the routine. And then you can **play**
-what you built: free-form conversations with the people of the Wasteland, "Life", voice and the new detective story
-"Lullaby".
+**boopi_mod** is a desktop app plus a set of game plugins for **Fallout 4 (1.10.163, Old-Gen)**. It makes a Fallout where
+people remember you: flirt, go on dates, become a couple, take someone to the night club — and just say what you want in
+your own words: AI dialogue answers in character. And when you want something of your own, everything for making it is at
+hand: a 3D animation editor, a studio for dialogues and scenes, voice, and your own mod as a single file. It is all held
+together by a **mod manager** that installs and runs your mods, prepares the game and puts the load order straight.
+
+## What you get
+
+- **💋 Relationships that actually go somewhere.** Flirt, ask someone out, become a couple, spend the night, deal with
+  jealousy, get married — and people remember what you said and did. [More](#life-and-living-people)
+- **🗣 Win people over in your own words.** Switch on AI dialogue and just type or say whatever you want. The person answers
+  in character and makes up their own mind. [More](#ai-help-and-ai-dialogue)
+- **🌃 Nightlife.** The Black Acorn night club with a singer you can win over, a VIP room and rooms upstairs, Boopi Corp. and
+  its Gen 4 synths, and the Red Rocket turned into a bar. [More](#boopi-corp-and-the-black-acorn)
+- **🎬 Romantic and intimate scenes on our own engine.** G.A.M. plays scenes for two or more — and you can make your own:
+  describe the scene in a sentence and the AI animator builds it. [More](#gam-create-and-import-animations)
+- **🛠 Make your own and share it.** Dialogues, quests and scenes in the Studio, packed into one file that anyone installs
+  in one click. [More](#script-studio-dialogues-scenes-and-your-own-mod)
 
 ## What is inside
 
@@ -139,7 +151,7 @@ what you built: free-form conversations with the people of the Wasteland, "Life"
 | Your own dialogues and scenes | Creation Kit | CK, Papyrus scripts | **Script Studio**, no programming, branches right on the game's wheel |
 | AI help while creating | no | no | an AI assistant drafts a dialogue branch and builds a scene; the "Check in AI mode" chat |
 | Sharing your mod | an archive and instructions | an archive and instructions | **a single `.ogmod` file**: installs in one click and is removed as one |
-| Free conversation with NPCs | a wheel of lines | separate AI mods: talk only | in the game, with **real outcomes** (an item, a quest, a scene) validated by the core |
+| Free conversation with NPCs | a wheel of lines | separate AI mods: talk only | in the game, with **real outcomes** (an item, a quest, a scene) validated by the core; works in the game's own quest dialogues too (**T**) |
 | Install rollback | no | partial | a journal: removing restores the files byte for byte |
 | Story | the original | — | a new detective story, "Lullaby", with the vanilla game woven in |
 
@@ -149,6 +161,8 @@ what you built: free-form conversations with the people of the Wasteland, "Life"
 ## What is new
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="What is new" width="100%"></p>
+
+**0.1.8** — AI inside the game's own conversations (T: type your line, the AI picks the answer on the wheel) and free talk with anyone; AI dialogue outcomes reach the game; Studio trees on the game's and DLC characters; lines from the game itself by reference; LM Studio and any OpenAI-compatible server; "Lullaby" playable to all 9 endings; a sharper AI animator and a stricter anatomy check. [0.1.8 notes](docs/release/v0.1.8.md).
 
 **0.1.7** — G.A.M.: undo and redo, key editing, mirror, full screen, face and camera, "▶ In game", scene events in the game, a library with search and previews, a sharper AI animator; Studio: triggers for your own stories, "+ Story", the dialogue player; Studio mods install from the boopi.site catalog with requirements. [0.1.7 notes](docs/release/v0.1.7.md).
 
@@ -160,8 +174,7 @@ what you built: free-form conversations with the people of the Wasteland, "Life"
 
 **0.1.3** — fixes and an updated license: the app is freeware, all rights reserved. [0.1.3 notes](docs/release/v0.1.3.md).
 
-**0.1.2** — the component "G.A.M. — animation manager" was removed at the request of a rights holder; installing 0.1.2
-removes it from your game automatically. [0.1.2 notes](docs/release/v0.1.2.md).
+**0.1.2** — a maintenance release: descriptions and screenshots refreshed. [0.1.2 notes](docs/release/v0.1.2.md).
 
 **0.1.1** — in-app updates: at startup the app finds a new version by itself, and the "Download and install" button
 installs it in one click (with a checksum check and a rollback if anything goes wrong). [0.1.1 notes](docs/release/v0.1.1.md).
@@ -203,14 +216,22 @@ Details: [Install and first run](#install-and-first-run).
 
 <p align="center"><img src="docs/images/gam-editor-ik-ai.en.png" alt="The G.A.M. editor: IK handles, lighting and the AI animator's log" width="880"></p>
 
-- **A 3D editor:** timeline, bones, the Rotate / Move / Character / Heading tools, **IK handles** on hands, feet and head,
-  lighting, camera, several actors, creatures and furniture, a key optimiser. What you see in the editor is what plays in
-  the game.
-- **The AI animator:** "make him wave in greeting" — and the model builds the scene; the log shows every step, and you can
-  refine the result by hand.
-- **Animation import.** Animation packs you have installed: Fallout 4 animation mods (HKX, idles), **OAR** gait sets and
-  **Skyrim SE** animations — they are retargeted onto the Fallout 4 skeleton and become tagged scenes you can edit in
-  G.A.M. Rights to imported animations stay with their authors.
+- **3D editor:** timeline, bones, the Rotate / Move / Character / Heading tools, **IK handles** on hands, feet and head,
+  lighting, several actors, creatures, furniture and props. What you see in the editor is what plays in the game.
+- **AI animator:** describe a scene in a sentence ("make him wave in greeting", "they embrace and sway") and it builds it
+  step by step; you see every step and polish the result by hand. It keeps elbows out of bodies, wrists natural and palms
+  on the body they touch.
+- **Anatomy check:** arms going through bodies, twisted wrists, hands that miss, props out of the hand, sliding feet —
+  before you ever load the game.
+- **Editing tools:** undo/redo, multi-select keys, copy a pose onto another actor, mirror, stretch or squeeze time, fix
+  the loop seam, a key optimiser, fullscreen.
+- **Face and camera tracks** that play in the game.
+- **▶ In game:** plays the scene in your running game on the hero or the NPC in front of you — no install, no restart.
+- **Scene events:** a sound, a line, an expression, an outfit change, a quest stage, your own script events.
+- **Library:** search, folders and packs, favourites, previews, version history.
+- **Import** animations you own: Fallout 4 mod animations (HKX, idles), **OAR** gait sets and **Skyrim SE** animations are
+  retargeted onto the Fallout 4 skeleton and become tagged scenes you can edit. Rights to imported animations stay with
+  their authors.
 - **Scenes work everywhere:** in dialogues and scripts (gestures, scenes, camera) and in "Life".
 
 <p align="center"><img src="docs/images/gam-library-import.en.png" alt="The scene library and pack import" width="560"></p>
@@ -230,14 +251,22 @@ Guides: [import and the editor](instructions/en/ANIMATION_IMPORT.md) · [animati
   </tr>
 </table>
 
-- **Dialogues and scenes without programming:** trees in forms or YAML, a branch map, a checker that jumps to the error,
-  gestures and G.A.M. scenes right inside the lines.
+- **Dialogue trees** in forms or YAML: greetings, answers, conditions (SPECIAL, relationship, flags, items, time),
+  outcomes, gestures and G.A.M. scenes right inside a line.
+- **Branch map and checker** that jumps straight to the mistake.
+- **Dialogue player:** click through your wheel in the app with a test state — no build, no game.
+- **Triggers:** when the hero enters a place, an hour comes, a timer ends, a quest stage is set, someone is killed or
+  something is used — show a message, start a talk, play a scene, give a reward, set a flag.
+- **Your own dialogues for the game's and DLC characters** (Daisy, Vadim, settlers…) — they open first in that person's
+  everyday talk.
 - **Branches off the game's wheels:** take a real Fallout 4 conversation and add your own line to its wheel.
-- **Voice** with your own recordings or synthesis, with lip sync; Papyrus stubs for those who need a script.
-- **Your own mod as one `.ogmod` file:** another player drags it into the boopi_mod window — dialogues, voice and G.A.M.
-  scenes install together and are removed together.
-- **AI helps:** it drafts a branch from a description, and the **"Check in AI mode"** button opens a test chat that shows which
-  goals and flags fired — before you even start the game.
+- **Lines from the game itself:** point a reply at a vanilla line and the character says it in their own voice with lip sync.
+- **Voice** from your recordings or a synthetic voice, with lip sync; Papyrus stubs for those who need a script.
+- **"+ Story":** a ready dialogue with two triggers to start from; an example story in one click.
+- **"Check in AI mode":** chat with your dialogue the way the AI will play it, before the game — it shows which goals and
+  flags fired.
+- **Your mod as one `.ogmod`** with requirements (app version, plugins, other mods): another player drags it into the
+  boopi_mod window, and everything installs and is removed together; publish it on boopi.site right from the Studio.
 
 Guide: [instructions/en/SCRIPT_STUDIO.md](instructions/en/SCRIPT_STUDIO.md).
 
@@ -249,13 +278,14 @@ AI in boopi_mod is a **modder's assistant** and, separately, a **way to play**. 
 AI altogether, and the mod manager, the studio, G.A.M. and graphics work without it.
 
 **Help while creating.** A dialogue branch from a description, a scene from a sentence, load order sorted "with AI",
-your trees checked in the test chat. An API key — OpenRouter, DeepSeek, OpenAI — or a local Ollama; keys live in the Windows
-Credential Manager.
+your trees checked in the test chat.
 
-**Free conversation in the game.** In the **"Progressive AI dialogue"** mode the wheel stays, but it gains a **"Say your
-own…"** entry: you type (Russian or English layout) or speak by holding **V**.
+**Talk like a person, not a menu.** In the **"Progressive AI dialogue"** mode the wheel stays, but it gains a **"Say your
+own…"** entry: you type (Russian or English layout) or speak by holding **V**. The person answers in character, out loud and
+with a subtitle. They know who you are, what you've been through together, your **S.P.E.C.I.A.L.**, level, karma and the
+story so far — and the right words can lead to a date or to closeness, if they want it too.
 
-<p align="center"><img src="docs/images/ingame-ai-hud.jpg" alt="In game: Piper's reply as a subtitle and the relationship card" width="880"></p>
+<p align="center"><img src="docs/images/ingame-ai-hud.jpg" alt="In game: Piper Wright's reply as a subtitle and the relationship card" width="880"></p>
 <table>
   <tr>
     <td width="50%"><img src="docs/images/ingame-ai-input.jpg" alt="The in-game input line: Russian text and ready-made replies"></td>
@@ -263,11 +293,23 @@ own…"** entry: you type (Russian or English layout) or speak by holding **V**.
   </tr>
 </table>
 
-- The person knows who they are, what happened between you, your **S.P.E.C.I.A.L.**, level, karma and the story so far —
-  and answers in character, with a subtitle and a voice. HUD widgets on **F10**.
-- **The outcomes are real.** The AI only *asks*; the core *validates and executes*: it may hand over an item, set a quest
-  stage or a story flag, start a scene — but only what that person's authored dialogue offers, and only when the talk has
-  really got there.
+- **It changes the game, not just the chat.** The AI only *asks*; the core *validates and executes*: it may hand you an
+  item, move a quest along, start a scene or take your relationship a step further — but only what that person's authored
+  dialogue offers, and only when the talk has really got there. So it can't break your game.
+- **Memory.** People remember past conversations and how you treated them.
+- **Any model you like.** OpenRouter, DeepSeek or OpenAI with your own key — or a local model on your PC: Ollama, LM Studio
+  or any OpenAI-compatible server. Local means no key and no internet, and nothing leaves your computer. Mid-size local
+  models (around 27B) already hold a conversation well. Keys live in the Windows Credential Manager.
+- **Voices.** Edge TTS works out of the box with no key; ElevenLabs and OpenAI TTS online; XTTS-v2 (it can clone a voice
+  from the game's own lines) and Silero locally. Talk with your voice — speech recognition runs locally with faster-whisper.
+- **New in 0.1.8 — AI in the game's own conversations.** When the vanilla wheel is open, press **T** and type what you want
+  to say — the AI picks the matching answer on the wheel and the quest goes on exactly as designed. If nothing fits, the
+  person just answers you in character and the wheel stays open. The "AI in vanilla dialogues" setting: off / pick the
+  answer / pick the answer and free lines.
+- **New in 0.1.8 — talk to anyone.** Press **T** in front of any person — a named character, a settler, a robot, someone
+  from a DLC — and start a free conversation. They know their faction, place and the quests they're part of.
+- **New in 0.1.8 — outcomes reach the game:** flags, items, quest stages and gestures from an AI conversation now fire in
+  the game; "Say your own…" is in every authored dialogue. HUD widgets on **F10**.
 - **A modder's own trees** get the AI mode too: the "AI dialogue" section of the studio says who the person is and where
   the conversation should lead.
 
@@ -282,11 +324,35 @@ Guide: [instructions/en/AI_DIALOGUE.md](instructions/en/AI_DIALOGUE.md).
   </tr>
 </table>
 
-- **27 key characters** with lore, personality and memory: talk to them right in the app (chat with voice) — even before
-  you start the game. You can edit their cards and create your own.
-- **"Life"** is one coherent system: a relationship with every NPC (affinity, trust, attraction),
-  reputation with factions, law and wanted levels, dates, a night together, jealousy, shift work, weddings, diseases,
-  settler abductions. Defeat is your choice: death as in the vanilla game, captivity or a "bad ending".
+Everyone has their own attitude to you: how much they like you, trust you, and are drawn to you. Flirt, ask them out, pick a
+place for the evening, become a couple, propose — or get caught and see how jealous they get. The world reacts too:
+reputation, the law, jobs, even diseases.
+
+- **Every NPC has a relationship with you** — affinity, trust and attraction that grow or drop with what you do, say and give.
+- **Flirt and compliments, dates in real places** — a table at the club, a walk, a room for the night, alone or with the one
+  you love.
+- **A night together** plays as a scene on our own engine; mood, your relationship, how much they had to drink and the
+  moment all matter — and they can say no.
+- **Partners, a proposal and a wedding**; partners and spouses live their own lives — and get jealous if they catch you.
+- **Faction reputation, law and bounties:** guards remember crimes, factions remember whose side you took. Settlers can
+  be abducted.
+- **Jobs and shift work** for caps; **diseases** (cold, flu, fever, poisoning, radiation sickness) with their own walk —
+  caught from the weather, bites, food and people; settlement doctors treat them and cure addiction.
+- **Defeat is your choice:** death as in the vanilla game, captivity, or a "bad ending".
+- **27 key characters** with a backstory, character and memory — chat with them right in the app (with voice), even before
+  you start the game; edit their cards or create your own.
+- **OldGen OS on the Pip-Boy** (**H**): people, reputation and karma, dossiers, health and **57 achievements**.
+
+## Boopi Corp. and the Black Acorn
+
+A new corner of the Commonwealth — living places with their own people and dialogues:
+
+- **The Black Acorn night club** near Diamond City: bouncers, a bar, Stella singing on stage (and you can try your luck
+  with her), a dance floor in soft coloured light, a VIP room and cosy rooms upstairs.
+- **The Boopi Corp. HQ** with its Gen 4 synths — each one with her own job, look and story.
+- **The Red Rocket** is now a bar for settlers.
+- The dates of "Life" take place in real places — a table at the club, for one. These places are also part of the story
+  [«Lullaby»](#lullaby-the-new-story).
 
 ## "Lullaby": the new story
 
@@ -301,13 +367,16 @@ for you. To understand who you are you must find those who came, and remember th
   spouse. The OldGenAI core wakes you at **09:44**, while Nora left **sixteen days ago** to find her son. You know neither
   who you are nor who woke you.
 - **Boopi Corp.** The headquarters, its Gen 4 synths, the Black Acorn night club and the Red Rocket bar — living places with
-  their own people and dialogues. The core looks after you the way it was taught to, and that care can be suffocating.
+  their own people and dialogues ([more](#boopi-corp-and-the-black-acorn)). The core looks after you the way it was taught
+  to, and that care can be suffocating.
 - **"Case K-1" is a detective story.** Who am I? Who woke me? Why am I being hunted? An evidence board, a cipher,
   mini-games; every truth you find asks a more frightening question. And the answer to the last one may not be what you
   expect: **you may not be who you think you are.**
 - **Four acts, 18 main missions, 13 side quests, 9 endings.** The ending is decided not by the last button but by your whole
   road: your decisions and your reputation with people, factions and the core. There is one truly good ending, one truly bad
   one, and seven in between.
+- **How long:** about **20–25 hours** for the main line and **30+** with the side quests; romance along the way. Since
+  0.1.8 the whole story can be played to every one of the 9 endings, and the Pip-Boy journal shows all the objectives.
 - **The vanilla game is woven in, not thrown out.** The best vanilla quests — Vault 114, Fort Hagen, Kellogg's memory, the
   Glowing Sea — you play **yourself**, inside the new line, while Nora's path is told to you by the people you meet. All other
   side quests, companions, factions, settlements and DLC stay available.
@@ -324,9 +393,9 @@ for you. To understand who you are you must find those who came, and remember th
   </tr>
 </table>
 
-- **Text-to-speech (TTS):** online — Microsoft Edge TTS (no key), ElevenLabs, OpenAI; local — Piper, XTTS-v2, Silero.
+- **Text-to-speech (TTS):** Microsoft Edge TTS works out of the box with no key; ElevenLabs and OpenAI TTS online; XTTS-v2 and Silero locally.
 - **Voice cloning** (XTTS-v2): a clone is made from the game's own lines by an NPC's voice type, or from your recordings.
-- **Speech recognition (STT):** the built-in faster-whisper (runs on the CPU) or OpenAI Whisper; in the game —
+- **Speech recognition (STT):** the built-in faster-whisper (runs locally, on the CPU) or OpenAI Whisper; in the game —
   push-to-talk on **V**.
 - The heavy engines are not part of the app: they install on a button, and the XTTS and Silero licences (non-commercial)
   are accepted explicitly.
@@ -355,9 +424,11 @@ the core itself, whatever the AI says.
 
 ## Honest limitations
 
-- **The in-game AI dialogue is a first version.** There is no **lip sync** yet (a reply arrives as a subtitle and a voice;
-  the lips do not move). **Vanilla quest dialogues** do not get the AI mode yet — only our trees, modders' trees and the
-  wheel with the "Say your own…" entry; the vanilla part comes in the next release.
+- **The in-game AI dialogue is still a beta.** Since 0.1.8 the AI works in the vanilla quest dialogues too (**T** on an open
+  wheel), but AI replies have no **lip sync** yet: a reply arrives as a subtitle and a voice, and the lips do not move.
+  Lip sync is planned for 0.1.9.
+- **Your own dialogues on the game's and DLC characters:** while a story quest of the game holds the character (for
+  example Cassie or Kent), that quest goes first and your tree comes after it.
 - **Next-Gen / Anniversary (1.10.98x, 1.11.x) are not supported.** The target is 1.10.163 (Old-Gen); Steam and GOG have
   not been tested.
 - **This is a beta:** expect rough edges and bugs — [report them](https://github.com/boopi-coder/boopi_mod/issues/new/choose) and I'll fix them quickly.
@@ -381,14 +452,14 @@ The full list is in the [release notes](docs/release/v0.1.0.md#known-limitations
 | System | Windows 10 (22H2) or 11, x64; WebView2 (present in Windows 11 and in an up-to-date Windows 10) |
 | Game | A legitimate **Fallout 4 version 1.10.163 (Old-Gen)** |
 | F4SE | Required, **not included**: the app downloads it from the author's official page on your button |
-| AI (optional) | An API key of one provider (OpenRouter, DeepSeek, OpenAI) **or** a local Ollama. Without AI the mod manager, the studio, G.A.M. and graphics work |
+| AI (optional) | An API key of one provider (OpenRouter, DeepSeek, OpenAI) **or** a local model (Ollama, LM Studio, any OpenAI-compatible server). Without AI the mod manager, the studio, G.A.M. and graphics work |
 | Internet | For installing mods, the AI provider and online voice |
 | Disk space | A few GB for the mod cache; the local XTTS-v2 is about 5 GB more (optional) |
 
 ### Step 0. Download and unpack
 
-1. Download **`boopi_mod-0.1.7-win-x64.zip`** from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   page and compare its SHA-256 with `SHA256SUMS.txt` from the same release.
+1. Download **`boopi_mod-0.1.8-win-x64.zip`** from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   page and compare its SHA-256 with `SHA256SUMS.txt` from the same release (for 0.1.8 it is `5e45a90ac3f0e8ee1ddecde532db0d7ece31aaf5feb2b1493691f5530673b151`).
 2. Unpack to a **short path** such as `C:\Games\boopi_mod` (not into "Downloads" or deep folders: Windows will not run
    programs whose path is longer than 260 characters).
 3. Run **`boopi_mod.exe`** — the app starts the core by itself.
@@ -429,7 +500,8 @@ any mod can be removed.
 
 For AI dialogue and the AI assistant: **Settings → LLM providers** → paste the API key → **"Save key"** → **"Check"**. The key
 is kept in the Windows Credential Manager and is never shown again. Which model answers for what is set on the **"Routing"**
-tab. Without a key, skip this step: the mod manager, the studio, G.A.M. and graphics work anyway. A local Ollama needs no key.
+tab. Without a key, skip this step: the mod manager, the studio, G.A.M. and graphics work anyway. A local model (Ollama,
+LM Studio or your own OpenAI-compatible address) needs no key — the provider list has ready entries for them.
 
 ### Step 5. Dialogue mode
 
@@ -445,6 +517,16 @@ The answer length, voice and line suggestions are here too.
 1. **Hero** — the name and sex come from your latest save; fill in the appearance and backstory: the characters will see them.
 2. **Graphics → "Apply recommended"** (edits the game's INI files and makes backups).
 3. Press **"Play"** — the game starts through F4SE. AI dialogue and "Life" work at once, the story from a new game.
+
+### "Core executable not found" or your antivirus complains
+
+1. Your antivirus most likely moved `core\oldgenai-core.exe` to quarantine. It's a false alarm: the core is an unsigned
+   program built with Python, and some antiviruses flag those by pattern.
+2. Download the archive only from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest) page and check
+   its SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.1.8-win-x64.zip`). For 0.1.8 it must be `5e45a90ac3f0e8ee1ddecde532db0d7ece31aaf5feb2b1493691f5530673b151`.
+3. Restore the file from quarantine or add the boopi_mod folder to your antivirus exclusions, then unzip the archive again.
+4. Unzip to a normal folder (not Program Files) and don't run it from inside the zip.
+5. Tell me which antivirus it was and the detection name — I'll report the false positive.
 
 <details>
 <summary><b>If something went wrong (click to expand)</b></summary>
@@ -489,7 +571,7 @@ Everything the app does can be extended — without programming and without othe
 
 - **Your own animation** — in the G.A.M. 3D editor with IK handles, or in words through the AI animator; import animations from
   mods you have installed.
-- **Your own conversation** — a dialogue tree with branching, gestures and scenes; a branch off the game's wheel; voice and lip sync.
+- **Your own conversation** — a dialogue tree with branching, gestures and scenes; a branch off the game's wheel; a dialogue on a game or DLC character; voice and lip sync.
 - **Your own scene** — actors, movement, camera, tags so that "Life", dialogues and other mods can find it.
 - **Your own mod as a single `.ogmod`** that others install in one click, and **your own AI dialogues** — checked in the test chat.
 
@@ -516,7 +598,8 @@ different; launch is not blocked, but it is not guaranteed to work. The Steam an
 <summary><b>Do I need AI to use the program?</b></summary>
 
 No. The mod manager, Script Studio, the G.A.M. editor and import, and the graphics presets work without AI. AI is needed for
-the assistant, AI dialogue in the game and (optionally) cloud voice.
+the assistant, AI dialogue in the game and (optionally) cloud voice. And if you want AI without the cloud, a local model works
+(Ollama, LM Studio, any OpenAI-compatible server): mid-size models (around 27B) already hold a conversation well.
 </details>
 
 <details>
@@ -531,7 +614,7 @@ Adding and removing plugins mid-playthrough is the usual risk of any mods: back 
 
 There is no telemetry. Dialogue lines and the hero's and character's data go to **the AI provider you chose** (OpenRouter,
 DeepSeek, OpenAI; the text to be spoken goes to Microsoft Edge TTS or ElevenLabs/OpenAI if you chose them). If you want
-nothing to leave your PC, use a local Ollama and local Piper / Whisper. The update check is one request to github.com a day,
+nothing to leave your PC, use a local model (Ollama, LM Studio) and local XTTS / Silero / Whisper. The update check is one request to github.com a day,
 with no data about you; it can be turned off in the settings. API keys are kept in the **Windows Credential
 Manager** (service `BoopiMod`) and are never written to files.
 </details>
@@ -552,10 +635,19 @@ belong to you (see `NOTICE.txt`). Respect the rights of the authors of anything 
 </details>
 
 <details>
-<summary><b>Why does AI dialogue have no lip sync yet?</b></summary>
+<summary><b>Does the AI work in the game's regular quest dialogues?</b></summary>
 
-This is the first version: a reply arrives as a subtitle and a voice, but the lips do not move yet. Vanilla quest dialogues
-will get the AI mode in the next release.
+Yes, since 0.1.8. When the vanilla wheel is open, press **T** and type what you want to say: the AI picks the matching answer
+on the wheel and the quest goes on exactly as designed. If nothing fits, the person answers in character and the wheel stays
+open. The "AI in vanilla dialogues" setting: off / pick the answer / pick the answer and free lines. And **T** in front of
+any person starts a free conversation.
+</details>
+
+<details>
+<summary><b>Why do AI replies have no lip sync yet?</b></summary>
+
+A reply arrives as a subtitle and a voice, but the lips do not move yet. Lip sync is planned for 0.1.9 — see
+[What's coming](#whats-coming).
 </details>
 
 <details>
@@ -568,11 +660,32 @@ ideas, we'll fix them.**
 🧡 **Questions and requests posted on [Boosty](https://boosty.to/boopi_coder) are handled first.**
 </details>
 
-## Plans: Skyrim, Starfield, Cyberpunk 2077, The Sims 4
+## What's coming
 
-Planned: boopi_mod for other games — **Skyrim**, **Starfield**, **Cyberpunk 2077** and **The Sims 4** — the same mod
-manager and the same creation of animations, scenes and dialogues by hand or with AI. What comes first and when depends on
-**interest in the project, support and stars on GitHub**:
+**0.1.9 — next:**
+
+- **Our own animation packs as mods:** couples, romance and intimate scenes, everyday life, work, emotions, gaits for illnesses, smoking — installed in one click and working in the game.
+- **AI polish for animations:** smooth curves with easing, body parts that follow through, arcs instead of straight lines, weight shifts, breathing and small life movements, clean loops and fewer keys — in one click.
+- **The AI checks motion, not just poses:** jerks, balance, shaking contacts — and a visual judge that watches the rendered scene and fixes what looks wrong.
+- **Editor tools for hand polishing:** a curve editor, onion skin, motion trails, before/after comparison, slow motion.
+- **Couples of different height**, richer finger poses and grips that fit the object.
+- **Lip sync:** mouths move with AI replies and with your voiced lines.
+- **Auto-voicing in the dialogue editor:** every line of your dialogue voiced in one click, right in the Studio.
+- **Sounds on the animation timeline:** drop sounds onto the G.A.M. timeline and they play with the scene in the game.
+- **Our scenes for living places:** club dancers, card players at the Red Rocket and the Boopi HQ staff move with our own animations.
+
+**Fallout 4 — lots more on the way:**
+
+- People who talk to each other, and group conversations.
+- Side quests the AI makes up in the world: find, escort, investigate.
+- Longer memory: people keep the gist of everything you've been through.
+- More "Lullaby", more Boopi Corp. and the club.
+- A FOMOD installer, mod profiles and a smarter load order.
+- Next-Gen and Anniversary editions of the game.
+
+**Soon — other games:** Cyberpunk 2077, Skyrim, Starfield and The Sims 4 — the same mod manager and the same creation of
+animations, scenes and dialogues by hand or with AI. What comes first and when depends on **interest in the project, support
+and stars on GitHub**:
 
 - ⭐ [Star the repo](https://github.com/boopi-coder/boopi_mod/stargazers) — the best way to show the project is wanted;
 - 💬 [tell me](https://github.com/boopi-coder/boopi_mod/issues/new/choose) which game you want most;
@@ -591,7 +704,7 @@ manager and the same creation of animations, scenes and dialogues by hand or wit
 </p>
 
 boopi_mod is made by one person. If the project is useful to you, support it on **[Boosty](https://boosty.to/boopi_coder)**: it
-directly pays for development time (Next-Gen support, AI in vanilla dialogues, lip sync, new scenes and presets).
+directly pays for development time (lip sync, new animation packs and scenes, Next-Gen support, other games).
 Questions and requests posted on Boosty are handled **first**.
 
 ### ₿ Crypto

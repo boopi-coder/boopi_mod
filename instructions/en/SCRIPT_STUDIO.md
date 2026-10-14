@@ -15,12 +15,12 @@
 >
 > - **What it is.** The boopi_mod section where you make dialogues for the game's characters or for your own mod without code: in forms or in YAML.
 > - **The fastest path.** «Script studio» → **«New»** → pick a character → build the conversation in the builder → **«To the game»** → in the game press **E** on the character.
-> - **Checking without the game.** **«▶ Try the dialogue»** — the tree as a dialogue wheel: conditions and consequences on a test state (flags, items, quest stages, SPECIAL, karma, time of day), what a turn changed, a jump into any node. **Ctrl+Z / Ctrl+Y** — undo and redo of edits.
+> - **Checking without the game.** **«▶ Try the dialogue»** — the tree as a dialogue wheel: conditions and consequences on a test state (flags, items, quest stages, SPECIAL, karma, time of day), what a turn changed, a jump into any node. **Ctrl+Z / Ctrl+Y** — undo and redo of edits, **«Versions»** — the file's earlier versions after a save ([3.3](#33-file-versions)).
 > - **A story of your own in a minute.** **«+ Story»**: who, where and when, which G.A.M. scenes to play and the reward — the studio makes the dialogue tree and two triggers, already connected. Or **«Take the example»** — the ready «Night parcel» with its own scenes ([12.8](#128--story-and-the-ready-example)).
 > - **Branches off the game.** Your own choice right on the wheel of a vanilla dialogue («From the game» → a scene → «Branch») and your own branch behind it.
 > - **Voice and animations.** Your own recordings or synthesized voice («Voice with AI»), G.A.M. gestures and scenes in the lines.
 > - **AI helps.** The AI helper writes branches and Papyrus scripts from a description, and in «AI dialogue» your person talks freely; you check the result in the test chat **«Check in AI mode»**.
-> - **What you get.** One `.ogmod` file in `Documents\BoopiMod\Mods`: dialogues, voice and scenes travel together; another player drops it into the boopi_mod window and presses «To the game».
+> - **What you get.** One `.ogmod` file in `Documents\BoopiMod\Mods`: dialogues, voice and scenes travel together; another player drops it into the boopi_mod window and presses «To the game». You can publish the mod to boopi.site right from the program ([9.7](#97-publish-to-boopisite)).
 
 <p align="center"><img src="../../docs/images/studio-tree-builder.en.png" alt="The dialogue tree builder: flags, the «AI dialogue» section, the check and the AI helper on the right" width="860"></p>
 <p align="center"><em>The tree builder: flags, the «AI dialogue» section, the check and the AI helper on the right.</em></p>
@@ -33,14 +33,17 @@
 3. [The studio tabs](#3-the-studio-tabs)
    - [3.1 Play: try a conversation without the game](#31-play-try-a-conversation-without-the-game)
    - [3.2 Undo and redo](#32-undo-and-redo)
+   - [3.3 File versions](#33-file-versions)
 4. [Bundled trees as a model](#4-bundled-trees-as-a-model)
 5. [Lines from the game and branches](#5-lines-from-the-game-and-branches)
    - [5.1 Start from a scene](#51-start-from-a-scene)
    - [5.2 A branch: your own choice on the game's wheel](#52-a-branch-your-own-choice-on-the-games-wheel)
+   - [5.3 Say a line of the game: its voice and subtitle from Fallout 4](#53-say-a-line-of-the-game-its-voice-and-subtitle-from-fallout-4)
 6. [Voice-over for lines](#6-voice-over-for-lines)
 7. [«Build and check»](#7-build-and-check)
 8. [AI dialogue: a person who talks on their own](#8-ai-dialogue-a-person-who-talks-on-their-own)
 9. [Your own mod: save and share](#9-your-own-mod-save-and-share)
+   - [9.7 Publish to boopi.site](#97-publish-to-boopisite)
 10. [The AI helper](#10-the-ai-helper)
 11. [Papyrus scripts for your own mod](#11-papyrus-scripts-for-your-own-mod)
 12. [Triggers: your own story](#12-triggers-your-own-story)
@@ -56,7 +59,7 @@ Tags and scenes are taken from what you already have installed in the game and i
 ## 1. How it works
 
 > [!IMPORTANT]
-> **In this version trees work reliably for boopi_mod's own characters** (Marge at the Red Rocket, Boopi's synths and our other NPCs). For the game's and the DLCs' characters it is **experimental**: their own scenes and greetings can take over the talk, and E opens their usual dialogue. The Studio check warns you about it. For game characters, **branches off their dialogues** are more reliable ([section 5](#5-lines-from-the-game-and-branches)).
+> **Trees work for boopi_mod's own characters and for the game's and the DLCs' characters alike.** A tree for a game character (Vadim and Hawthorne at the Dugout, Daisy in Goodneighbor, Allen Lee in Far Harbor — checked in the game) goes into their own everyday talk: E opens your tree, and once its greeting no longer fits (say, after a «talked already» flag) their usual dialogue is back, with all its quests and trading. If the character greets the hero first in the game as they walk up, the tree's greeting comes the same way. Two limits: while a quest of the game holds the character (a quest stage's talk, a story scene — Cassie Dalton at the start of Far Harbor, Kent Connolly with the Silver Shroud), that talk comes first; settlers and unnamed townsfolk get the tree through boopi_mod's own quest. The Studio check reminds you of this. To add a choice right into the wheel of their usual dialogue, use **branches** ([section 5](#5-lines-from-the-game-and-branches)).
 
 In the studio you make:
 - your own **dialogue trees** for the game's characters or for your own mod — in forms or in YAML;
@@ -87,7 +90,7 @@ The path from a file to the game:
 - Your trees are built into the plugin **after** the bundled ones. Every tree has a range of records of its own, pinned to it (`%APPDATA%\BoopiMod\plugin\tree_slots.json`): installing and removing mods and files never shifts the records of the trees that saves remember. A removed tree keeps its range — bring it back and it has the same ids. There are 767 ranges, the bundled trees take about 120; when none is left, «To the game» stops with a clear error.
 - `who`, the items of `give` / `take` / `has` and the quests of `quest` are looked up in boopi_mod, Fallout4.esm, the DLCs and the **enabled** plugins (plugins.txt). A name found nowhere is a check error: such a tree does not go into the game, and the check says why.
 - A tree with errors stays a draft: the file is saved, but the tree does not go into the game until the errors are fixed.
-- The hash of your files, recordings and installed mods is part of the plugin version (`2.4.4-u1a2b3c4d`). Change something — the manager sees an update, and «To the game» rebuilds the plugin.
+- The hash of your files, recordings, installed mods and the masters from the load order is part of the plugin version (`2.6.3-u1a2b3c4d`). Change something — the manager sees an update, and «To the game» rebuilds the plugin.
 
 > [!NOTE]
 > This guide is about working in the program.
@@ -118,10 +121,10 @@ You get a small working tree: a greeting, the question «Who are you?» with a n
 <p align="center"><img src="../../docs/images/studio-tree-builder.en.png" alt="The builder: the my_rr_marge tree — who speaks, title, flags and the «AI dialogue» section" width="860"></p>
 <p align="center"><em>The «Tree» section of the builder: who speaks, priority, title and flags; on the right — the «Check» and the «AI helper».</em></p>
 
-**Step 3. Add an animation to a line.** Every answer has an «Animation» field:
+**Step 3. Add an animation to a line.** Every answer has an «Animation» field. A scene is asked for in **one of three ways** — a line's `anim:` holds exactly one of them ([12.3](#123-actions-what-happens)):
 - *a scene of the G.A.M. library* — your own scene picked by its name (made in the G.A.M. editor or imported). The list shows how many roles a scene has and whether the game has it already; a scene that is only in the library goes into the game with «To the game». «Open in G.A.M.» takes you to it in the editor. A gesture of the character needs a scene of one role, «Who: both» one of two;
 - *by tags* — a gesture from the installed scenes. Under the field you see how many scenes fit. If it says «no scene in the game fits», install a pack with such tags;
-- *a Life context* — the core picks the scene. Intimate contexts are marked «consent only»;
+- *a Life context* — the core picks the scene. Intimate contexts are marked «consent only». No context fits the place — make **your own**: G.A.M. → Library → «Contexts» → «+ Own context» (a scene or a layer, tag queries, how many actors, the part of the body; [ANIMATION_IMPORT.md](ANIMATION_IMPORT.md)). It shows up in this list, and travels in a mod together with the files that name it ([9.1](#91-save-a-mod));
 - **Who**: the character, the hero or both (then it is a scene with a camera);
 - **Part of the body**: head — a nod, upper body — a gesture, arms, one arm…;
 - **When**: during the line (a gesture) or after the talk (a scene).
@@ -159,7 +162,7 @@ The list of keys is suggested as you type.
 The **«▶ Try the dialogue»** button (above the tabs; on a node's card — **«▶ Try from here»**) opens the **player**: the tree is played like the game's dialogue wheel, with no game and no plugin rebuild. It plays what is in the editor right now — saved or not.
 
 - **On the left — the conversation.** The greeting (the first whose conditions hold), then the wheel with 4 places, as in the game: ↑ question, ← left, → right, ↓ down. A choice that would not show now stays on screen, dimmed, with the reason («charisma must be >=6 (now 5)», «the slot shows … first», «an exhausted question»). The **«play anyway»** button says such a choice by force — to see where it leads.
-- **Lines.** Under each one — which text variant came up («variant 2 of 2», the others unfold) and the voice: a recorded WAV plays with **«▶ recording»**, a line without a recording has **«🔊 speak»** — with the speech engine from Settings, on a click. The «Play recordings» check box plays the recordings of the person's new lines by itself.
+- **Lines.** Under each one — which text variant came up («variant 2 of 2», the others unfold) and the voice: a recorded WAV plays with **«▶ recording»**, a line without a recording has **«🔊 speak»** — with the speech engine from Settings, on a click. The «Play recordings» check box plays the recordings of the person's new lines by itself. The lines said «in passing» (`hello`) that would sound before the talk in this state are shown on a line of their own. A branch tree has an entry instead of a greeting: «branch from the game's wheel, slot …» with the caption of your choice; if the entry's condition does not hold, it says so.
 - **On the right — the test state** you edit: the pair (stage, `affinity`, `trust`, `attraction`, `fear`, persona), the hero (sex, level, caps, karma, fame and infamy, intoxication, persuasion, wanted, companion, on a date…), S.P.E.C.I.A.L., the time of day, **flags** (the tree's own with one button, others as `story.x` or `tree.flag`), **items**, **quest stages**, the dice for `chance`. The wheel is read again as soon as you touch a value. The state is remembered for this tree; «Reset state» brings back the defaults.
 - **What a turn changed.** Under the lines — labels: `⚑ my_barman.met` (a flag), `caps 100 → 70`, `NukaCola ×0 → ×2`, `MQ102: 0 → 20`, `affinity 0 → 5`, a change of stage, a note in memory. Bottom right — everything the conversation changed as a whole.
 - **Buttons.** **«Restart»** — from the greeting, from your starting state; **«Back»** — one turn back (the state returns too); **«Open node»** — any node with the current state; **RU/EN** — the language of the lines; **🎲** — other dice (another variant of a line, another `chance` roll).
@@ -177,6 +180,16 @@ Every change to the file is a history step: in the builder, in YAML, the AI help
 - Back at the saved state — «All changes saved» again, the unsaved warning goes away.
 - The history lives while the file is open: another file, a new one or a restored draft start it over. Unsaved changes are not lost silently: the studio asks before switching to another file or deleting one, warns when the window is closed, and when you leave for another page of the program a draft stays (you are offered to restore it).
 
+### 3.3 File versions
+
+Undo lives while the file is open. The **«Versions»** button (in the bar above the tabs, next to «To the game») remembers longer: before every save the program keeps the file's previous version — **the last 12**.
+
+- The «Versions of …» window lists them from the newest: the time, the number of lines, the trees and the number of triggers in that version.
+- **«Restore»** → a confirmation. The file becomes what it was, and the version it replaces goes into the list itself, so you can bring it back too. Unsaved changes in the window are lost (the window warns you).
+- Earlier versions appear after the file is saved again: a file just created has none yet.
+- Deleting a file also keeps its last version. Create a file with the same name and «Versions» lists the deleted one's versions.
+- The versions are in `%APPDATA%\BoopiMod\talk\.history\<file name>\`. Scenes in the G.A.M. editor have the same kind of button, «History».
+
 ---
 
 ## 4. Bundled trees as a model
@@ -186,7 +199,7 @@ Every change to the file is a history step: in the builder, in YAML, the AI help
 - **«Start from this»** — a copy with a new id becomes yours.
 
 > [!WARNING]
-> If your tree speaks for the same character as a bundled one, the check warns you: in the game, on E, the one with the higher priority fires (`priority`, 45 by default). To have yours answer, give it your own character or use a branch (section 5): priority does not decide it here.
+> If your tree speaks for the same character as a bundled one, the check warns you: in the game, on E, the first greeting that fits fires, and the bundled trees come first in the plugin (the build does not read the `priority` field: all trees are one quest). To have yours answer, give it your own character or use a branch (section 5).
 
 ---
 
@@ -222,18 +235,34 @@ What you need to know:
 
 ---
 
+### 5.3 Say a line of the game: its voice and subtitle from Fallout 4
+
+If the line you need is already in the game (and voiced), you don't copy its words into your file: a reply group, a greeting or a «passing» line carries the **id of the game's line (INFO)** instead of text. The mod then keeps neither the text nor a recording: the game itself plays its voice with lip sync and shows its own subtitle in the player's language — from your copy of Fallout 4.
+
+1. «From the game» → the character → open the scene or the line; the INFO id is written in grey to the right of the line (for example `Fallout4.esm|198308`) — you can enter it as it is.
+2. In the builder, on a reply group (or a greeting), press **«♪ from the game»** and type the id; several ids, comma separated, make a random pool. A DLC's line is written `DLCCoast.esm|00A3B4`. In YAML it is one line: `- { vanilla: 0x198308, go: deeper }` (`when`, `result`, `go` and `do` work as usual). **«✎ own text»** brings back an ordinary text.
+3. **«Play»** shows the line's text read from your game, marked «game's voice» (without the game: the placeholder «(a line from the game)»).
+
+What you need to know:
+- `ru`, `en` and a recording do not go next to `vanilla`: such a line has no text or recording of its own.
+- The character the game recorded the line for is the one who plays it. The check warns when the speaker's voice type is another one: the subtitle shows, the voice doesn't. Take lines of the same character (or of the same voice type).
+- The check also looks the INFO up in your game: no such line (or the DLC is not installed) is an error, and the tree is not built. A mod with a DLC's line asks for that DLC when it is installed.
+- This is for the character's lines. The hero's words and the wheel captions are always your own.
+
+---
+
 ## 6. Voice-over for lines
 
-Greetings, the character's answers, the hero's phrases («More» → «The hero's full line») and the entrance of a branch have a **«Voice»** field: one recording per text variant, for Russian and English separately.
+Greetings, the character's answers, the hero's phrases («Conditions, consequences, the hero's full line» → «The hero's full line») and the entrance of a branch have a **«Voice»** field: one recording per text variant, for Russian and English separately.
 
 **Step 1. Add a recording.** «Voice» → at the variant you need press **«Upload…»** → choose a file:
-- **WAV** — PCM 16 bit, mono, 44100 or 48000 Hz (this is what all recording and voicing programs write);
+- **WAV** — PCM 16 bit (any other format is an error), mono, 44100 or 48000 Hz (this is what all recording and voicing programs write). 22050 Hz fits too; another rate, stereo and a recording longer than 60 seconds give a warning;
 - **XWM** — the game's already compressed sound;
 - **FUZ** — a ready line file of the game (sound and lip sync in one);
-- or the **«Voice with AI»** button: the text of this variant is voiced by the service selected in «Settings → LLM providers» (Edge, ElevenLabs, OpenAI, Piper, XTTS…; the «Who speaks» list picks the voice), and the WAV is put into the recordings at once. Voice setup — [VOICE.md](VOICE.md).
+- or the **«Voice with AI»** button: the text of this variant is voiced by the service selected in «Settings → LLM providers» (Edge, ElevenLabs, OpenAI, XTTS…; the «Who speaks» list picks the voice), and the WAV is put into the recordings at once. Voice setup — [VOICE.md](VOICE.md).
 
-<p align="center"><img src="../../docs/images/settings-voice-tts.en.png" alt="Settings: the Piper, XTTS-v2 and Silero TTS voice engines" width="860"></p>
-<p align="center"><em>The voice engines in the settings (here Piper, XTTS-v2 and Silero TTS): the one marked «Voice with this» speaks your lines when you press «Voice with AI».</em></p>
+<p align="center"><img src="../../docs/images/settings-voice-tts.en.png" alt="Settings: the XTTS-v2 and Silero TTS voice engines" width="860"></p>
+<p align="center"><em>The voice engines in the settings (here XTTS-v2 and Silero TTS): the one marked «Voice with this» speaks your lines when you press «Voice with AI».</em></p>
 
 **Step 2. Make the lip sync.** You make the `.lip` file (so that the lips move) yourself — in the Creation Kit (the 32-bit editor from `Tools\LipGen`), FaceFXWrapper (used by xVASynth and Yakitori Audio Converter) or another program — and upload it with the **«+ .lip»** button next to the recording. Without a `.lip` the sound plays, the lips don't move. A FUZ already has lip sync inside.
 
@@ -261,7 +290,8 @@ A button in the file list. The plugin is built the same way as for «To the game
 - **masters**: which DLCs and mods BoopiCorp.esp will depend on (your trees name their characters, items or quests);
 - **voice-over**: the file is there, the format plays, a `.lip` is next to it, an encoder for WAV is available;
 - **branches**: the slot's vanilla lines move a quest (a condition is needed); which mods of your load order change the same quest or topic and what follows from it;
-- **G.A.M. scenes** of the lines and triggers: by id — whether the game has the scene or only the library does so far («To the game» puts it there); by tags — whether any scene in the game answers the query, whether your library has such scenes («To the game» puts those there too), or nothing will play.
+- **G.A.M. scenes** of the lines and triggers: by id — whether the game has the scene or only the library does so far («To the game» puts it there); by tags — whether any scene in the game answers the query, whether your library has such scenes («To the game» puts those there too), or nothing will play;
+- **triggers** that did not make it into the plugin, and why (no such place, quest, item or person in `Fallout4.esm` / `BoopiCorp.esp`, [12.7](#127-when-a-trigger-does-not-fire)).
 
 > [!TIP]
 > Run «Build and check» before you save a mod for others: you will see the same thing the game will see at the recipient's.
@@ -288,6 +318,8 @@ In the builder, under the tree's flags; it unfolds on a click (see the builder s
 5. **Story hints** — short texts with a `when` condition («you have not met yet», «the deal was done, you are friends»); shown to the model while the condition holds.
 
 A closed kind is not offered to the player and does not start.
+
+A tree on a character of the game itself (`who: Codsworth`) also colours their free lines in the **game's own wheel** (the T key, [AI_DIALOGUE.md §5](AI_DIALOGUE.md#5-in-the-games-own-dialogues)): the model reads «Who it is» and the hints there too, but there are no outcomes there — the story goes on through the game's replies.
 
 > [!NOTE]
 > The check warns you if a text is written in only one language: write both in Russian and in English.
@@ -316,10 +348,10 @@ The test runs in a separate save, `studio-test`, and does not touch your real sa
 **«Save the mod»** (in the file list):
 1. Name, author, version (`1.0`), description.
 2. Mark the **dialogue files** (files with errors are not taken — fix them).
-3. The **G.A.M. scenes** your files play by id (lines and triggers) are ticked by themselves — «your files play it - goes into the mod». Tick other animations of your mod if you like (search by name or tags).
-4. «Save». The mod appears in `Documents\BoopiMod\Mods\<name>-<version>.ogmod`, with a «Show in folder» button.
+3. The **G.A.M. scenes** your files play by id (lines and triggers) are ticked by themselves — «your files play it - goes into the mod». Tick other animations of your mod if you like (search by name or tags). Scenes made of **somebody else's animations** (an imported pack, Skyrim animations, OAR gaits, a plugin's clips) are marked **«not yours»**: they may be shared only with their author's permission. The **«Only my own scenes»** check box (it appears when the library has such scenes) leaves them out of the mod. Without it the scene goes into the mod, but the program reminds you about the rights.
+4. «Save». The mod appears in `Documents\BoopiMod\Mods\<name in latin letters>-<version>.ogmod`, with the «Show in folder» and «Publish to boopi.site» buttons ([9.7](#97-publish-to-boopisite)). Below are the warnings: a voice recording you did not upload; a scene that is not in your library; a scene «made of somebody else's animations … you need the author's permission» (or «left out of the mod»); which of your contexts and race groups went into the mod.
 
-A mod contains: your trees and branches, triggers, `ai` blocks, the voice recordings they name (with `.lip`), and the selected G.A.M. scenes. If a scene plays clips from somebody else's pack, or the trees name characters, items and quests of the DLCs and other mods, the mod remembers which plugins are needed and shows it on install.
+A mod contains: your trees and branches, triggers, `ai` blocks, the voice recordings they name (with `.lip`), and the selected G.A.M. scenes. **Your own G.A.M. contexts** (from `gam\contexts`) that the mod's lines and triggers name (`anim.context`, `scene.context`) travel with it too, and **your race groups** (from `gam\race_groups.json`) that the roles of the packed scenes mention as `@group`. The program's own contexts and groups are not packed: everybody has them. If a scene plays clips from somebody else's pack, or the trees name characters, items and quests of the DLCs and other mods, the mod remembers which plugins are needed and shows it on install.
 
 The mod also records everything else it needs to work (§ 9.5): the **boopi_mod version** (at least the one it was made in), the **plugins** of its scenes and trees (the DLCs and mods whose characters, items and quests the trees name) and the **other studio mods** whose flags your trees read (`when: { flag: other_tree.flag }`). The studio finds the latter itself; if the mod you build on was installed from boopi.site, its address on the site goes into the file — whoever lacks it installs everything with one button. A mod installed from a file is named in a warning: whoever installs your mod will have to find it themselves.
 
@@ -331,6 +363,10 @@ The mod also records everything else it needs to work (§ 9.5): the **boopi_mod 
 Drag an `.ogmod` into the boopi_mod window — onto «Script studio» or onto the «Mods» page. The mod is checked (integrity, trees, id clashes with yours and with other mods) and appears in the studio in the **«Installed mods»** section: you can look at it and remove it (✕). Then **«To the game»** — and the mod works: it is built together with your trees, in the language of your game, with its own record numbers (it does not overlap with other mods).
 
 Before installing, the mod is checked against your computer: the boopi_mod version it needs, the plugins of its scenes, other mods (§ 9.5). If something is missing the program does not stay quiet: it shows a «The mod cannot be installed yet» window with the list and a button that fixes it.
+
+Once the mod is in, the program compares its trees with the ones already there (the bundled ones, yours and other mods') and **warns** without cancelling the install — it is your call. Two cases: the mod's trees speak **for the same people** as trees already there (on E the first greeting that fits fires: the bundled trees come first, the others by id), or they **branch from the same place** of the game's wheel (the game shows one of the two). The warning names the pairs «the mod's tree / the tree that was there». In the «Installed mods» list you can see how many trees, G.A.M. contexts and race groups a mod holds.
+
+A mod's contexts and race groups are installed into the mod's own folder (`studio_mods\<id>\gam\…`) and read from there next to the built-in ones: remove the mod (✕) and they go with it. A mod **cannot override** a context or group that the program, you or another mod already has — the install refuses and names the id that clashed. The safety checks (`gam.censor`) work for such contexts and groups just as for your own.
 
 ### 9.3 A mod's scenes go into the game at once
 
@@ -356,6 +392,23 @@ Installing a mod with the same id replaces the old one **as a whole**: trees, vo
 
 > [!NOTE]
 > Why a mod is the sources and not a finished esp: the trees work on boopi_mod's quests and scripts, so the mod is for boopi_mod anyway, and built at the recipient's it adapts to their game and their other mods.
+
+### 9.7 Publish to boopi.site
+
+A saved mod can be sent to [boopi.site](https://boopi.site) right from the program: once a moderator has checked it, it appears in the catalog («Mods» → «Community mods · boopi.site»), and other players install it with one button ([9.4](#94-a-mod-from-the-boopisite-catalog)).
+
+1. Sign in once: **«Settings → boopi.site account» → «Sign in with boopi.site»**. The sign-in is confirmed on the site; the password is typed only there. Without it the publish window offers to sign in.
+2. «Save the mod» ([9.1](#91-save-a-mod)) → at the end **«Publish to boopi.site»**.
+3. In the «Publish to boopi.site» window fill in:
+   - **«Publish as»**: «A new mod», or a mod you have already published (then a new version is added; the list shows when you have mods on the site);
+   - the new mod's **card**: title, category, «Summary» (up to 300 characters), description (Markdown or BBCode), tags separated by commas, links, requirements (other mods, DLC), credits, the 18+ mark;
+   - the **images**: an icon (square, 256×256 or more), a poster (wide, 1280 px or more, 16:9 or 2:1) and screenshots (up to 20);
+   - the **version** and «What is new in this version».
+
+   A new mod needs a title, a category, a summary, a description, an icon and a poster; any publish needs a version and «What is new». What is missing is told by «Fill in: …» under the form.
+4. **«Send to moderation»**. The program creates the card, uploads the images and the mod file (in parts) and sends everything to moderation. The status and the moderator's answer are on the site; once approved the mod appears in the catalog.
+
+By publishing you accept the site rules: only your own work or with the authors' permission, no minors in any intimate context. Do not publish scenes made of somebody else's animations ([9.1](#91-save-a-mod)) without their authors' permission.
 
 ---
 
@@ -413,10 +466,10 @@ A trigger answers three questions: **when**, **if** and **what happens**.
 
 - **When** is one event of the world (table below). It can be left out: then the trigger runs as soon as its conditions hold.
 - **If** is the conditions:
-  - flags: "all are set", "at least one", "none";
-  - a window of game hours ("from 19 to 3" wraps midnight);
-  - once, or **repeat** after a cooldown in game hours;
-  - a flag that switches the trigger off for good ("Switch off for good").
+  - flags: "all are set", "at least one", "none" (in YAML `if: { flags: […], any: […], not: […] }`);
+  - a window of game hours ("from 19 to 3" wraps midnight; `if: { hours: { from: 19, to: 3 } }`);
+  - once, or **repeat** after a cooldown in game hours (`repeat: true`, `cooldown: 3`);
+  - a flag that switches the trigger off for good ("Switch off for good", `until: flag`).
 
   The conditions are checked while the trigger waits for its event. If they stop holding, it waits again from the start (a timer starts over too).
 - **What happens** is actions **one after another**: the next one waits until the previous is over. The scene ends, then the message shows; the talk opens, then the flag is set.
@@ -453,15 +506,15 @@ Triggers live **in the same studio file** as the trees, on the **«Triggers»** 
 Places, interiors, quests and items are picked by **search** by name or editor id, from `Fallout4.esm` and `BoopiCorp.esp` (the first search reads the game for a few seconds). People are picked with the same search as "Who speaks" in trees. An editor id of your own mod can be typed as it is.
 
 > [!NOTE]
-> For now a trigger finds places, quests, items and people only in `Fallout4.esm` and `BoopiCorp.esp`. "Build and check" lists a trigger that was missing something as "left out of the plugin", with the reason.
+> For now a trigger finds places, quests, items and people only in `Fallout4.esm` and `BoopiCorp.esp` — unlike trees ([1.1](#11-characters-items-and-quests-of-the-dlcs-and-mods)). The search for people is shared with trees and may show a DLC's or a mod's character, but a trigger will not find them. "Build and check" lists a trigger that was missing something as "left out of the plugin", with the reason.
 
 ### 12.3 Actions («What happens»)
 
 | Action | In YAML | What it does in the game |
 |---|---|---|
 | Message | `message: { text: { ru, en }, from: hero \| pip \| core, box: false }` | a notification (the hero's thought, "Pip-Boy: …", "Core: …"); `box: true` or a long text shows a window |
-| Start a conversation | `talk: { npc: EDID, radius: 1000, tree: my_tree }` | when the person is near, alive and nobody fights, the talk opens by itself, as on E. The tree whose `who` names this person greets; `tree` is only for the check |
-| G.A.M. scene | `scene: { tags: "hug,pair", actors: [hero, EDID] }`, `scene: { id: my/wave, actors: [hero] }` or `scene: { context: drink_together, npc: EDID }` | by tags or id, G.A.M. plays it (`fade` to black, at most `seconds`); by context, the core picks the scene |
+| Start a conversation | `talk: { npc: EDID, radius: 1000, tree: my_tree }` (`at: REF` instead of `npc` works too) | when the person is near, alive and nobody fights, the talk opens by itself, as on E. **Name the `tree`**: without it the studio warns ("talk.tree: choose the tree…") — otherwise it is unclear whose story speaks. The tree whose `who` names this person and whose `when` fits greets; the studio checks that the chosen tree speaks for this person |
+| G.A.M. scene | `scene: { tags: "hug,pair", actors: [hero, EDID] }`, `scene: { id: my/wave, actors: [hero] }` or `scene: { context: drink_together, npc: EDID }` | **exactly one** of `id` / `tags` / `context` (one shape of «play a scene» everywhere — in lines, triggers and a mission's world rows, see below). By tags or id, G.A.M. plays it (`fade` to black, at most `seconds`); by context, the core picks the scene |
 | Quest stage | `stage: { quest: EDID, stage: 20 }` | sets a quest stage (yours or the game's; be careful with the game's main quest) |
 | Flags | `flag: { set: [..], clear: [..] }` | sets and clears flags |
 | Give / take an item | `give: { item: EDID, count: 1 }`, `take: { … }` | into or out of the hero's pack |
@@ -469,7 +522,9 @@ Places, interiors, quests and items are picked by **search** by name or editor i
 
 The game looks for a person named by editor id **near the hero** (a unique one wherever they are). If nobody is found, a talk waits, and a scene is skipped and the next actions run.
 
-A scene «by id» is picked from a list **by its name** — your own G.A.M. scenes and the ones the game has; the list shows how many roles a scene has (as many actors are needed) and whether the game has it already. The actors are «hero» and people found by name, in the order of the scene's roles. A library scene the game does not have yet goes there with «To the game».
+**One shape of «play a scene».** A line (`anim:`), a trigger (`scene:`) and a row of a mission's world (`scene:`, docs/story/MISSION_WORLD.md) ask for a scene the same way: exactly one of `id` (a scene of the library or the game), `tags` (a query like "hug,pair") or `context` (a context: the core picks the scene) — and the studio's check words a mistake the same way. A tag query written in `id` or `context` (`id: "hug,pair"`, as world rows used to be written) is read as `tags`. Around it a line has `who: npc | player | both`, `part`, `when`; a trigger or a world row has `actors` (for `id` / `tags`) or `npc` + `who: both | npc` + `part` (for `context`), `fade`, `seconds`.
+
+A scene «by id» is picked from a list **by its name** — your own G.A.M. scenes and the ones the game has; the list shows how many roles a scene has (as many actors are needed) and whether the game has it already. The actors are «hero» and people found by name, in the order of the scene's roles (three at most). A library scene the game does not have yet goes there with «To the game».
 
 ### 12.4 Safety
 
@@ -480,7 +535,7 @@ Every check lives in `gam.censor`, the same as for lines:
 
 ### 12.5 Example: «The night shift at the Dugout»
 
-> The example uses a game character (Vadim): by the note in [section 1](#1-how-it-works) that is experimental — if the talk does not open, set «Who speaks» to a boopi_mod character such as Marge (`BoopiRRBartender`) and the place to the Red Rocket.
+> The example uses a game character (Vadim): the tree goes into his everyday talk at the Dugout ([section 1](#1-how-it-works)). In the game Vadim greets the hero at the bar by himself — the tree's greeting can come as soon as you walk up, without pressing E.
 
 A small story that takes about 15 minutes. In the evening Vadim, the barman of the Dugout Inn in Diamond City, starts talking to the hero by himself: the bar is out of vodka. If the hero agrees, three hours later the Pip-Boy reminds them of the delivery. When the hero brings the vodka, Vadim has a drink with them and gives a bottle of moonshine.
 
@@ -579,7 +634,7 @@ triggers:
 
 ### 12.8 «+ Story» and the ready example
 
-> «Night Parcel» uses a game character (Daisy): by the note in [section 1](#1-how-it-works) that is experimental — if the talk does not open, set «Who speaks» to a boopi_mod character such as Marge (`BoopiRRBartender`) and the place to the Red Rocket.
+> «Night Parcel» uses a game character (Daisy): the tree goes into her everyday talk in Goodneighbor ([section 1](#1-how-it-works)); once its greeting no longer fits, Daisy talks and trades as usual again.
 
 So as not to wire the connections by hand, press **«+ Story»** (in the file list or on the studio's first screen):
 
@@ -614,7 +669,7 @@ All 767 record ranges are taken by the trees there are now. Remove studio mods o
 «▶ Try the dialogue» above the tabs ([section 3.1](#31-play-try-a-conversation-without-the-game)): the wheel, conditions and consequences on a test state; a choice that does not show is visible, dimmed, with the reason.
 
 **I deleted or broke something by accident — how do I get it back?**
-**Ctrl+Z** ([section 3.2](#32-undo-and-redo)): every change to the file can be undone while it is open, the AI helper's answer included.
+**Ctrl+Z** ([section 3.2](#32-undo-and-redo)): every change to the file can be undone while it is open, the AI helper's answer included. Already saved — the **«Versions»** button ([section 3.3](#33-file-versions)): the last 12 versions of the file, «Restore» in one click; a deleted file comes back the same way if you create a file with the same name.
 
 **The branch is not visible on the wheel.**
 Is its condition met; is it not the empty top slot of a trader; is another mod not overriding the topic (see «Build and check»). After edits — «To the game» and restart the game.
@@ -638,7 +693,7 @@ Search by the name your version of the game uses, or by the editor id. In Russia
 No installed scene matches the tags. Install «G.A.M.: gestures» (nods, «salute», «point», «hands up») or a pack with the tags you need ([ANIMATION_IMPORT.md](ANIMATION_IMPORT.md)).
 
 **The mod won't install: «id already taken».**
-You (or another installed mod) have a tree with the same id. Rename yours or remove the other mod.
+You (or another installed mod) have a tree with the same id. Rename yours or remove the other mod. The install also refuses when the id of the mod's G.A.M. context or race group is already taken by the program, by you or by another mod, and when you have a scene of your own with the same id: a mod overwrites nothing that is not its own, and the refusal says what clashed.
 
 **Where are my files?**
 `%APPDATA%\BoopiMod\talk` (recordings — `talk\audio`), the path is shown at the bottom of the file list. You can edit them in any editor too: the studio rereads the file when opened. Saved mods — `Documents\BoopiMod\Mods`.
