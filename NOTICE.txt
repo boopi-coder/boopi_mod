@@ -38,6 +38,10 @@ Shipped in the release archive (each under its own license):
   click (BSD-3), colorama (BSD), python-dotenv (BSD-3), truststore (MIT), openai (Apache-2.0),
   opentelemetry-api (Apache-2.0), packaging (Apache-2.0 / BSD-2), typing_extensions (PSF-2.0),
   annotated-types / annotated-doc / typing-inspection / jiter (MIT).
+  setuptools (MIT). Native parts of the Python runtime and libraries: OpenSSL (Apache-2.0), libffi (MIT), SQLite
+  (public domain), zlib (zlib License), bzip2 (bzip2 License), xz/liblzma (0BSD), expat (MIT); in numpy OpenBLAS
+  (BSD-3); in pillow libjpeg-turbo (IJG / BSD-3), libpng (libpng License), libtiff (libtiff License), libwebp (BSD-3),
+  FreeType (FreeType License), Little CMS (MIT), OpenJPEG (BSD-2), HarfBuzz (MIT), Brotli (MIT).
 
 NOT shipped — downloaded by the user from the official sources (the app only helps):
 F4SE, Address Library, Buffout 4 NG, Unofficial Fallout 4 Patch (UFO4P), High FPS Physics Fix, Mod Configuration Menu,

@@ -9,7 +9,7 @@
 > that you can share as a single file.
 
 > [!WARNING]
-> **This is a beta (0.1.8):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
+> **This is a beta (0.1.9):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
 > problems and ideas is very welcome. [Open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose)
 
 ## Where to start
@@ -17,14 +17,30 @@
 | I want to… | Read |
 |---|---|
 | install and launch | [Install and first run](../../README.en.md#install-and-first-run) |
+| choose the app's language | On the very first start the app asks for it (Русский / English; your Windows language is preselected) — later it changes in Settings → Language |
+| choose the game and the theme | After the language the app asks for the game — see [Other games](#other-games); later Settings → Games & theme |
 | make my own dialogue, scene, mod | [Script Studio](SCRIPT_STUDIO.md) |
 | check a dialogue without starting the game | [«▶ Try the dialogue»](SCRIPT_STUDIO.md#31-play-try-a-conversation-without-the-game) |
 | publish my mod to boopi.site | [Publish to boopi.site](SCRIPT_STUDIO.md#97-publish-to-boopisite) |
 | import animations or draw my own | [Animation import and the G.A.M. editor](ANIMATION_IMPORT.md) |
 | my own story: a world event → a talk, a scene, a quest | [Studio triggers](SCRIPT_STUDIO.md#12-triggers-your-own-story), quickest: [«+ Story» and the ready example](SCRIPT_STUDIO.md#128--story-and-the-ready-example) |
 | call animations from dialogues and scripts | [Animations in mods](ANIMATION_GUIDE.md) |
+| repaint a thing, clothes, furniture — your own textures | [F.O.R.G.E. — 3D objects and textures](FORGE.md) |
 | free conversation with people in the game | [AI dialogue](AI_DIALOGUE.md) |
 | voice and voice input | [Voice](VOICE.md) |
+
+## Other games
+
+boopi_mod is becoming a studio for several games. **Fallout 4 is available now**, and everything in these guides is for it.
+Next, in order: **Skyrim Special Edition** (the next one: its skeleton already converts), then **Starfield**,
+**Cyberpunk 2077** and **The Sims 4**. On the first start, after the language, the app asks for the game: Fallout 4 can be
+chosen, the others say "coming soon". Settings → Games & theme shows which games are on your computer and what each one
+still needs, and changes the **theme**: every game has its own colour scheme (Fallout 4's green terminal is the default),
+and you can turn on any of them now.
+
+Animations move between games: in the G.A.M. editor, **Other games** saves a scene for the Skyrim skeleton (or for the
+shared canonical rig) and brings a scene of another game back. A pose looks the same on the other body, and a round trip
+loses nothing. Details: [Animation import and the G.A.M. editor](ANIMATION_IMPORT.md).
 
 ## All guides
 
@@ -50,6 +66,13 @@
     checking in the game, safety.</td>
   </tr>
   <tr>
+    <td align="center"><img src="../../docs/images/icons/forge.png" width="64" alt=""></td>
+    <td><b><a href="FORGE.md">F.O.R.G.E. — 3D objects and textures</a></b> · <a href="../FORGE.md">RU</a><br>
+    Any 3D object of your game with its textures: a catalog with the game's names, the 3D view, texture slots, «Save as PNG»,
+    a new picture → DDS with mipmaps and a live preview, «My textures» in the game through the journal, a <code>.ogmod</code>
+    texture pack, your own OBJ / glTF / NIF models.</td>
+  </tr>
+  <tr>
     <td align="center"><img src="../../docs/images/icons/ai-dialogue.png" width="64" alt=""></td>
     <td><b><a href="AI_DIALOGUE.md">AI dialogue</a></b> · <a href="../AI_DIALOGUE.md">RU</a><br>
     The "Progressive AI dialogue" mode: how to switch it on, "Say your own…", keyboard input (Russian included), voice on
@@ -62,6 +85,27 @@
   </tr>
 </table>
 
+## If the core does not respond
+
+The app window works with the boopi_mod core (`core\oldgenai-core.exe`) at `http://127.0.0.1:47800`. The address is
+fixed: the game's plugins talk to the core there too, so the app never moves the core to another port. When there is no
+connection, the "Core is not responding" screen says why:
+
+| Title | What happened | What to do |
+|---|---|---|
+| **The core file is missing** | The program folder has no `core\oldgenai-core.exe` — almost always an antivirus removed it or put it in quarantine (a false alarm: the core is an unsigned program built with Python) | Restore the file from the quarantine, add the boopi_mod folder to the antivirus exclusions, or unpack the archive again |
+| **The core runs, but the app cannot connect to it** | The core is running, but the window is not let through to it: an antivirus web protection, a firewall or a proxy intercepts local connections to `127.0.0.1` | Add `boopi_mod.exe` and `core\oldgenai-core.exe` to the antivirus exclusions (or allow them local connections), or switch off HTTPS/web scanning for `localhost`; a system proxy must bypass local addresses |
+| **The core's port is used by another program** | The address `127.0.0.1:47800` is taken by another program (often an old OldGenAI or boopi_mod). The screen names it: "The port is held by: python.exe (PID: 4242)" | Close that program in Task Manager (the Details tab, PID column) |
+| **The core could not be started** / **The core keeps stopping** | The core started and crashed | The reason is in `core.log` and `errors.log` in the logs folder |
+
+After the fix press **"Check again"**. Every such screen has:
+
+- **"Details"** — what the app sees (the core port is free / taken by another program / the boopi_mod core answers) and
+  the last lines of `core.log` and `app.log`;
+- **"Open the logs folder"** — `%APPDATA%\BoopiMod\logs` in Explorer;
+- **"Copy diagnostics"** — the version, the problem code, what is on the port and the last lines of the logs as one text.
+  If nothing helps, paste it into an [issue](https://github.com/boopi-coder/boopi_mod/issues/new) or a message to the author.
+
 ## Paths used in the guides
 
 | What | Where |
@@ -73,6 +117,9 @@
 | Record ranges of the trees | `%APPDATA%\BoopiMod\plugin\tree_slots.json` |
 | G.A.M. scenes | `%APPDATA%\BoopiMod\gam\scenes` |
 | Your G.A.M. contexts | `%APPDATA%\BoopiMod\gam\contexts` |
+| Scenes for other games | `%APPDATA%\BoopiMod\gam\exports` |
 | Saved mods | `Documents\BoopiMod\Mods` |
+| Your F.O.R.G.E. textures | `%APPDATA%\BoopiMod\forge\textures` |
+| Textures saved as PNG | `Documents\BoopiMod\Textures` |
 | Logs | `%APPDATA%\BoopiMod\logs` |
 | The program | usually `C:\Games\boopi_mod` |

@@ -20,6 +20,8 @@
 > - Local engines are not part of the app: they are installed by the **Install** button and work offline. XTTS-v2 can
 >   **clone a voice**.
 > - XTTS-v2 and Silero have **non-commercial** licences, so they are installed only after your explicit consent.
+> - **Lip sync**: whatever is voiced — an AI reply in the game or a line of your studio mod — moves the speaker's lips with the
+>   voice. It is boopi_mod's own: nothing to install, no `.lip` files to make.
 
 ## Contents
 
@@ -38,8 +40,8 @@ Voice in boopi_mod is used in three places:
 
 - **the chat with a character** in the app — the answers can be voiced;
 - **the AI dialogue in the game** ([AI_DIALOGUE.md](AI_DIALOGUE.md)) — the person's answer sounds, and you can speak yourself by holding **V**;
-- **the Script studio** — "Voice with AI" records the lines for your own dialogues ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md), the section
-  about voicing lines).
+- **the Script studio** — **Voice all** says every line of a dialogue with each speaker's voice, "Voice with AI" says one line
+  ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md), the section about voicing lines).
 
 Nothing heavy ships with the app: online services connect with a key, local engines are installed by a button into the folder
 `%APPDATA%\BoopiMod\speech\` and work without a network.
@@ -97,9 +99,34 @@ edits. If nothing is chosen for the character, the default voice for the languag
 - **The chat in the app:** the **Voice the replies** box above the input field (or Settings → Voice → "Voice the replies in the chat");
   a single reply can be voiced with the **Listen** button next to the character's name.
 - **The AI dialogue in the game:** Settings → Dialogues → **Voice the replies**. The core gets the answer, synthesises a WAV and
-  hands it to the game, which plays it (not positional, no lip sync).
+  hands it to the game, which plays it (not positional) — and the person's lips move with it (2.5).
 - **WAV sample rate for the game** — 44100 Hz (like the game's lines) or 22050 Hz (half the size). Always mono, 16 bit — that is
   what the studio's voice build expects.
+
+### 2.5 Lip sync
+
+When a voiced line plays in the game, the lips of whoever says it move with the voice:
+
+- **an AI reply** (the AI dialogue, also a free reply in the game's own wheel) — from the moment its sound starts;
+- **a line of your studio mod** with a WAV recording (voiced by "Voice all", by "Voice with AI" or recorded by you) — when the
+  line begins.
+
+How it works — all of it boopi_mod's own, nothing to install or to make by hand:
+
+1. boopi_mod listens to the recording: where the voice is loud or quiet, where it hisses (s, sh), which vowel it is (a, e, i, o, u
+   by the voice's formants).
+2. With the text of the line known, its letters (Russian or English) become mouth shapes — closed lips for m, b, p, the lower lip
+   for f, v, round lips for o, u, a wide mouth for i, e, the tongue for t, d, l — spread over the time that is actually spoken. If the
+   built-in speech recognition (faster-whisper) is installed, the studio also stores the time of every word next to the recording,
+   and the words land exactly where they are said.
+3. The shapes become the weights of the face's own morphs (jaw, lips, tongue) thirty times a second; `BoopiUI.dll` plays them on the
+   speaker's face in the game, mixed with the person's expression and blinking.
+
+> [!NOTE]
+> A `.lip` file of your own (made in the Creation Kit or elsewhere) is still welcome but no longer needed: if one lies next to a
+> recording, the game uses it instead. A ready **FUZ** carries its own lip sync. Only an **XWM** without a `.lip` keeps the lips still.
+
+Switch it off: `Data\F4SE\Plugins\BoopiUI.ini` → `[Audio]` → `bLipSync=0`.
 
 ---
 
@@ -169,6 +196,7 @@ The text appears in the input line; **Enter** sends it (`bAutoSend=1` sends at o
 | "The provider's API key is not set" | Paste the provider's key and press "Save key" |
 | "Speech recognition is off" | Settings → Voice: choose built-in recognition or OpenAI Whisper |
 | No sound in the game | Settings → Dialogues → "Voice the replies"; in `BoopiUI.ini` `bPlayReply=1`; check "Listen" on the provider |
+| The voice plays but the lips stay still | `BoopiUI.ini` `bLipSync=1`; a studio line needs a WAV recording and "To the game" after it was voiced; `BoopiUI.log` says `face: ... speaks` when a track plays |
 | V records nothing | Settings → Voice: is recognition installed, "Test the microphone"; "No microphone found" — choose the default recording device in Windows |
 | Little disk space | Settings → Disk: speech engines and models can be deleted and installed again |
 

@@ -140,6 +140,14 @@ In the import list these are the kinds **Skyrim** (clips) and **Skyrim scenes**.
 The transfer was checked on ordinary Skyrim SE clips (dialogue, reading a book, sitting, drawing a bow): the poses look natural on a
 Fallout 4 body. Fingers, hands and pelvis are corrected separately so the palms do not flip over.
 
+**A scene for Skyrim and back.** The **Other games** button above the editor moves the open scene to another game's
+skeleton: Export saves it for Skyrim SE (or for the shared canonical rig every boopi_mod game understands) into
+`%APPDATA%\BoopiMod\gam\exports\<game>` (Show in folder opens it); Import takes another game's `.gam` file, converts
+it to Fallout 4 and saves it as a new scene of yours. A pose looks the same on the other body, and the bones the other
+game lacks (weapon bones, the Pip-Boy) stay in the scene and come back on the way home. Creatures and robots do not
+move: their skeletons belong to their own game. boopi_mod cannot play such a scene in Skyrim itself yet: that is the next
+game (see [Other games](README.md#other-games)).
+
 ---
 
 ## 4. Your own scene in the editor

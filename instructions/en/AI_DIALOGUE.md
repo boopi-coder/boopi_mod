@@ -23,7 +23,8 @@
 >   not in the model's hands.
 > - In the **game's own dialogues** (quests, Codsworth, Preston, traders, settlers) press **T** and answer in your own words:
 >   the AI picks the matching reply of the wheel and the quest goes on as written.
-> - Honest limits: no lip sync; a free line in the game's own dialogue does not move the story — only the game's replies do.
+> - A voiced reply comes with **lip sync**: the person's lips move with the voice (boopi_mod's own lip sync).
+> - An honest limit: a free line in the game's own dialogue does not move the story — only the game's replies do.
 
 ## Contents
 
@@ -152,7 +153,10 @@ lines.*
 | Cancel an answer | **Esc** while the person is "thinking" |
 | End the conversation | **Esc**. The conversation also ends by itself: if you said goodbye, a scene started, an "after the talk" action was chosen, or the conversation dragged on |
 
-The answer arrives as a **subtitle** and (if "Voice the replies" is on) as a voice.
+The answer arrives as a **subtitle** and (if "Voice the replies" is on) as a voice — and then the person's **lips move** with the
+speech: boopi_mod breaks the recorded answer into sounds itself and plays them on the speaker's face (more in
+[VOICE.md](VOICE.md), the "Lip sync" section). While the person speaks, the text line hides for a moment and the world runs (a
+paused world moves no face): the answer shows as a subtitle, and once it is spoken the line comes back with it — type on.
 
 <p align="center"><img src="../../docs/images/ingame-ai-reply.jpg" alt="In the game: Piper's reply as a subtitle and new reply ideas under it" width="860"></p>
 
@@ -174,6 +178,7 @@ Keys, the pause and the volume are set in `Data\F4SE\Plugins\BoopiUI.ini` (**clo
 | `bSuggestions` | reply ideas |
 | `bAutoSend` | send the recognised voice at once, without waiting for Enter |
 | `bPlayReply` | play the voiced reply (`1` — yes) |
+| `bLipSync` | the lips move with the voiced reply (`1` — yes, the default) |
 | `sLanguage` | language |
 | `iMaxChars` | the length limit of a line (default 400, from 20 to 600) |
 | `bSubtitles` | show the reply as a subtitle (the `[HUD]` section) |
@@ -282,7 +287,9 @@ something that is forbidden right now, the person refuses **in character** (not 
 > [!WARNING]
 > This is the first version, and here is honestly what it does not have yet:
 >
-> - No **lip sync**: the line goes as a subtitle and as voice, but the lips do not move.
+> - The lip sync is our own and simple: the lips, the jaw and the tongue follow the sounds of the reply, but there is no facial
+>   emotion with it — the expression stays what the person has now. The voice does not come from where the person stands
+>   (not positional).
 > - In the **game's own dialogues** the AI only picks one of the game's replies (or answers without changing anything): it has
 >   no outcomes of its own there — items, stages, flags; the story goes on through the game's replies.
 > - The AI sees a quest's objectives by the quest's stage (as in the journal), not by the game's own marks: now and then it may

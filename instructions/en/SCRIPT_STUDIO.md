@@ -64,7 +64,7 @@ Tags and scenes are taken from what you already have installed in the game and i
 In the studio you make:
 - your own **dialogue trees** for the game's characters or for your own mod — in forms or in YAML;
 - **branches off the game's own dialogues**: your own choice on the wheel of a vanilla conversation and your own branch behind it;
-- **voice-over** for lines: your own recordings, synthesized voice and lip sync;
+- **voice-over** for lines: your own recordings or a synthesized voice — one click for the whole dialogue — and lip sync that makes itself;
 - **animations right inside the lines**: a nod, a gesture, a scene of the two after the talk;
 - **Papyrus scripts** for your own mod in the Creation Kit: ready templates or written from a description by the AI;
 - **AI dialogue** for your own person: who they are, where the talk should lead, while the outcomes come from your nodes — checked in a test chat;
@@ -119,7 +119,7 @@ You get a small working tree: a greeting, the question «Who are you?» with a n
 - **The character's answers** — answer groups. If a choice has an action, a group can have an outcome: `ok` — it worked, `no` — a refusal, `later` — it was done recently… Text variants are written one per line, the game picks a random one.
 
 <p align="center"><img src="../../docs/images/studio-tree-builder.en.png" alt="The builder: the my_rr_marge tree — who speaks, title, flags and the «AI dialogue» section" width="860"></p>
-<p align="center"><em>The «Tree» section of the builder: who speaks, priority, title and flags; on the right — the «Check» and the «AI helper».</em></p>
+<p align="center"><em>The «Tree» section of the builder: who speaks, title and flags; on the right — the «Check» and the «AI helper».</em></p>
 
 **Step 3. Add an animation to a line.** Every answer has an «Animation» field. A scene is asked for in **one of three ways** — a line's `anim:` holds exactly one of them ([12.3](#123-actions-what-happens)):
 - *a scene of the G.A.M. library* — your own scene picked by its name (made in the G.A.M. editor or imported). The list shows how many roles a scene has and whether the game has it already; a scene that is only in the library goes into the game with «To the game». «Open in G.A.M.» takes you to it in the editor. A gesture of the character needs a scene of one role, «Who: both» one of two;
@@ -211,7 +211,7 @@ The **«From the game»** button is next to «Bundled». Find a character by nam
 
 ### 5.1 Start from a scene
 
-**«Start from this»** on a scene with a wheel creates a new file: the scene's wheels in order, the hero's choices and the answers as in the game. Choices that the game shows only under quest conditions are taken as they are visible by default; the answers for the heroine and the hero are kept through `when: { player: female }`. This is a new conversation for the same character — the vanilla one is not changed. If the character already has a bundled tree (Preston, Piper…), the check warns you about priority.
+**«Start from this»** on a scene with a wheel creates a new file: the scene's wheels in order, the hero's choices and the answers as in the game. Choices that the game shows only under quest conditions are taken as they are visible by default; the answers for the heroine and the hero are kept through `when: { player: female }`. This is a new conversation for the same character — the vanilla one is not changed. If the character already has a bundled tree (Preston, Piper…), the check warns you that on E the first fitting greeting fires (the bundled trees come first).
 
 ### 5.2 A branch: your own choice on the game's wheel
 
@@ -255,22 +255,47 @@ What you need to know:
 
 Greetings, the character's answers, the hero's phrases («Conditions, consequences, the hero's full line» → «The hero's full line») and the entrance of a branch have a **«Voice»** field: one recording per text variant, for Russian and English separately.
 
+### 6.1 Voice the whole dialogue in one click
+
+**«🎙 Voice all»** in the file's toolbar says every line of the file with each speaker's voice:
+
+1. Press **«Voice all»**. The window shows **who speaks with which voice**: every person of the file's trees and **the hero**,
+   a Russian and an English voice each, with **«▶»** to listen. The voices are those of the provider selected in «Settings →
+   LLM providers» (Edge TTS by default — no key needed; ElevenLabs, OpenAI, XTTS-v2, Silero). Nothing picked: the person speaks
+   with the voice of the boopi_mod character who plays them (or the provider's default), the hero with a voice of the hero's sex.
+   The choice is remembered for all your files.
+2. Choose what to voice: **the whole file**, **the tree** or **the node** selected in the builder. The window counts the lines:
+   «To voice: N · already recorded: M». Lines that have a recording are skipped; tick **«Say again the lines that have a
+   recording»** to redo them.
+3. Press **«Voice N»**. A progress bar shows the lines as they are said; the window can be hidden — the voicing goes on, and the
+   recordings go into the file when you open the window again. A line that fails is listed with the reason, the rest go on.
+4. The recordings are put into the lines' «Voice» fields exactly like files picked by hand. **Save** the file, then **«To the
+   game»**.
+
+Every line gets a WAV in `%APPDATA%\BoopiMod\talk\audio` (the same name for the same line: saying it again replaces the
+file). Who says what: greetings, hellos and the person's replies — the tree's person; the hero's choices (their full line,
+else the caption on the wheel without its `[tag]`) and the entrance of a branch — the hero. Lines of the game itself
+(«♪ from the game») keep the game's voice. To redo **one line**, press «Voice with AI» at that variant (step 1 below) — it
+speaks with the same studio voice of the speaker.
+
+### 6.2 One line by hand
+
 **Step 1. Add a recording.** «Voice» → at the variant you need press **«Upload…»** → choose a file:
 - **WAV** — PCM 16 bit (any other format is an error), mono, 44100 or 48000 Hz (this is what all recording and voicing programs write). 22050 Hz fits too; another rate, stereo and a recording longer than 60 seconds give a warning;
 - **XWM** — the game's already compressed sound;
 - **FUZ** — a ready line file of the game (sound and lip sync in one);
-- or the **«Voice with AI»** button: the text of this variant is voiced by the service selected in «Settings → LLM providers» (Edge, ElevenLabs, OpenAI, XTTS…; the «Who speaks» list picks the voice), and the WAV is put into the recordings at once. Voice setup — [VOICE.md](VOICE.md).
+- or the **«Voice with AI»** button: the text of this variant is voiced by the service selected in «Settings → LLM providers» (Edge, ElevenLabs, OpenAI, XTTS…) with the speaker's studio voice (6.1; the «Who speaks» list can pick a character's voice instead), and the WAV is put into the recordings at once. Voice setup — [VOICE.md](VOICE.md).
 
 <p align="center"><img src="../../docs/images/settings-voice-tts.en.png" alt="Settings: the XTTS-v2 and Silero TTS voice engines" width="860"></p>
 <p align="center"><em>The voice engines in the settings (here XTTS-v2 and Silero TTS): the one marked «Voice with this» speaks your lines when you press «Voice with AI».</em></p>
 
-**Step 2. Make the lip sync.** You make the `.lip` file (so that the lips move) yourself — in the Creation Kit (the 32-bit editor from `Tools\LipGen`), FaceFXWrapper (used by xVASynth and Yakitori Audio Converter) or another program — and upload it with the **«+ .lip»** button next to the recording. Without a `.lip` the sound plays, the lips don't move. A FUZ already has lip sync inside.
+**Step 2. Lip sync — nothing to do.** For a WAV, boopi_mod makes the lip sync itself when the mod is built: it listens to the recording and spreads the line's letters over the spoken time (with the word times of the built-in speech recognition when it is installed); in the game `BoopiUI.dll` moves the speaker's lips with the voice ([VOICE.md](VOICE.md), «Lip sync»). A `.lip` of your own is optional: upload it with **«+ .lip»** next to the recording and the game uses it instead. A FUZ already has lip sync inside; an XWM moves the lips only with a `.lip`.
 
 **Step 3. Listen.** A WAV can be played right in the studio.
 
 **Step 4. Save and send to the game.** «Save» → «To the game».
 
-On build, the WAV is compressed by `Tools\Audio\xwmaencode.exe` from the **Creation Kit** (it must be installed in the game folder; without it upload XWM or FUZ), glued with your `.lip` into a `.fuz` and put into the voice folder of whoever speaks: for a character — their voice type from the game (Arturo's is `NPCMArturo`), for the hero — `PlayerVoiceFemale01` / `PlayerVoiceMale01` (for a phrase with `{p:…|…}` — its own recording in its own folder). Checked in the game: the line sounds with your recording, and the subtitle stays as long as it lasts.
+On build, the WAV is compressed by `Tools\Audio\xwmaencode.exe` from the **Creation Kit** (it must be installed in the game folder; without it upload XWM or FUZ), glued with your `.lip` (if there is one) into a `.fuz` and put into the voice folder of whoever speaks: for a character — their voice type from the game (Arturo's is `NPCMArturo`), for the hero — `PlayerVoiceFemale01` / `PlayerVoiceMale01` (for a phrase with `{p:…|…}` — its own recording in its own folder). Checked in the game: the line sounds with your recording, and the subtitle stays as long as it lasts. Next to it goes the line's lip track (`Data\F4SE\Plugins\BoopiUI\Lips\BoopiCorp.esp\<line>_1.json`) — the lips move with the recording.
 
 The recordings are in `%APPDATA%\BoopiMod\talk\audio`.
 
@@ -288,7 +313,7 @@ A button in the file list. The plugin is built the same way as for «To the game
 - the errors and warnings of all files, the trees that did not make it into the plugin, and why;
 - the plugin is read back: how many records it has and how big it is;
 - **masters**: which DLCs and mods BoopiCorp.esp will depend on (your trees name their characters, items or quests);
-- **voice-over**: the file is there, the format plays, a `.lip` is next to it, an encoder for WAV is available;
+- **voice-over**: the file is there, the format plays, an encoder for WAV is available, an XWM has its `.lip`;
 - **branches**: the slot's vanilla lines move a quest (a condition is needed); which mods of your load order change the same quest or topic and what follows from it;
 - **G.A.M. scenes** of the lines and triggers: by id — whether the game has the scene or only the library does so far («To the game» puts it there); by tags — whether any scene in the game answers the query, whether your library has such scenes («To the game» puts those there too), or nothing will play;
 - **triggers** that did not make it into the plugin, and why (no such place, quest, item or person in `Fallout4.esm` / `BoopiCorp.esp`, [12.7](#127-when-a-trigger-does-not-fire)).
@@ -351,7 +376,7 @@ The test runs in a separate save, `studio-test`, and does not touch your real sa
 3. The **G.A.M. scenes** your files play by id (lines and triggers) are ticked by themselves — «your files play it - goes into the mod». Tick other animations of your mod if you like (search by name or tags). Scenes made of **somebody else's animations** (an imported pack, Skyrim animations, OAR gaits, a plugin's clips) are marked **«not yours»**: they may be shared only with their author's permission. The **«Only my own scenes»** check box (it appears when the library has such scenes) leaves them out of the mod. Without it the scene goes into the mod, but the program reminds you about the rights.
 4. «Save». The mod appears in `Documents\BoopiMod\Mods\<name in latin letters>-<version>.ogmod`, with the «Show in folder» and «Publish to boopi.site» buttons ([9.7](#97-publish-to-boopisite)). Below are the warnings: a voice recording you did not upload; a scene that is not in your library; a scene «made of somebody else's animations … you need the author's permission» (or «left out of the mod»); which of your contexts and race groups went into the mod.
 
-A mod contains: your trees and branches, triggers, `ai` blocks, the voice recordings they name (with `.lip`), and the selected G.A.M. scenes. **Your own G.A.M. contexts** (from `gam\contexts`) that the mod's lines and triggers name (`anim.context`, `scene.context`) travel with it too, and **your race groups** (from `gam\race_groups.json`) that the roles of the packed scenes mention as `@group`. The program's own contexts and groups are not packed: everybody has them. If a scene plays clips from somebody else's pack, or the trees name characters, items and quests of the DLCs and other mods, the mod remembers which plugins are needed and shows it on install.
+A mod contains: your trees and branches, triggers, `ai` blocks, the voice recordings they name (with a `.lip` where you added one), and the selected G.A.M. scenes. **Your own G.A.M. contexts** (from `gam\contexts`) that the mod's lines and triggers name (`anim.context`, `scene.context`) travel with it too, and **your race groups** (from `gam\race_groups.json`) that the roles of the packed scenes mention as `@group`. The program's own contexts and groups are not packed: everybody has them. If a scene plays clips from somebody else's pack, or the trees name characters, items and quests of the DLCs and other mods, the mod remembers which plugins are needed and shows it on install.
 
 The mod also records everything else it needs to work (§ 9.5): the **boopi_mod version** (at least the one it was made in), the **plugins** of its scenes and trees (the DLCs and mods whose characters, items and quests the trees name) and the **other studio mods** whose flags your trees read (`when: { flag: other_tree.flag }`). The studio finds the latter itself; if the mod you build on was installed from boopi.site, its address on the site goes into the file — whoever lacks it installs everything with one button. A mod installed from a file is named in a warning: whoever installs your mod will have to find it themselves.
 
@@ -513,7 +538,7 @@ Places, interiors, quests and items are picked by **search** by name or editor i
 | Action | In YAML | What it does in the game |
 |---|---|---|
 | Message | `message: { text: { ru, en }, from: hero \| pip \| core, box: false }` | a notification (the hero's thought, "Pip-Boy: …", "Core: …"); `box: true` or a long text shows a window |
-| Start a conversation | `talk: { npc: EDID, radius: 1000, tree: my_tree }` (`at: REF` instead of `npc` works too) | when the person is near, alive and nobody fights, the talk opens by itself, as on E. **Name the `tree`**: without it the studio warns ("talk.tree: choose the tree…") — otherwise it is unclear whose story speaks. The tree whose `who` names this person and whose `when` fits greets; the studio checks that the chosen tree speaks for this person |
+| Start a conversation | `talk: { npc: EDID, radius: 1000, tree: my_tree }` (`at: REF` instead of `npc` works too) | when the person is near, alive and nobody fights, the talk opens by itself, as on E. **Name the `tree`**: without it the studio warns ("talk.tree: choose the tree…") — otherwise it is unclear whose story speaks. **Exactly the chosen tree** greets: while the talk opens, only its greetings hold in the game (the one whose `when` is met), the other trees stay silent; the studio checks that it speaks for this person (its `who`) — otherwise the person's usual greeting opens. With no `tree` the first fitting greeting opens |
 | G.A.M. scene | `scene: { tags: "hug,pair", actors: [hero, EDID] }`, `scene: { id: my/wave, actors: [hero] }` or `scene: { context: drink_together, npc: EDID }` | **exactly one** of `id` / `tags` / `context` (one shape of «play a scene» everywhere — in lines, triggers and a mission's world rows, see below). By tags or id, G.A.M. plays it (`fade` to black, at most `seconds`); by context, the core picks the scene |
 | Quest stage | `stage: { quest: EDID, stage: 20 }` | sets a quest stage (yours or the game's; be careful with the game's main quest) |
 | Flags | `flag: { set: [..], clear: [..] }` | sets and clears flags |
@@ -678,7 +703,7 @@ Is its condition met; is it not the empty top slot of a trader; is another mod n
 The recording is uploaded and selected at this variant and this language (the language is the language of your game); for a WAV, the Creation Kit is in the game folder (`Tools\Audio\xwmaencode.exe`). «Build and check» shows what is missing.
 
 **The lips don't move.**
-The recording has no `.lip` — make the lip sync and upload it with «+ .lip».
+The recording is a WAV (an XWM needs a `.lip`); after voicing — «Save» and «To the game»; `BoopiUI.ini` has `bLipSync=1`. While the line plays, `BoopiUI.log` says `face: ... speaks`.
 
 **A gesture is not visible in the dialogue.**
 The dialogue camera holds a close-up. A nod (the head) is always visible; a gesture with the arms is better «after the talk» or as a scene.

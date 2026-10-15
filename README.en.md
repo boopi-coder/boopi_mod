@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img alt="version 0.1.8 beta" src="https://img.shields.io/badge/version-0.1.8%20beta-3cff6b?style=flat-square">
+  <img alt="version 0.1.9 beta" src="https://img.shields.io/badge/version-0.1.9%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20stars&color=f2b705"></a>
   <img alt="Fallout 4 1.10.163 Old-Gen" src="https://img.shields.io/badge/Fallout%204-1.10.163%20Old--Gen-f2b705?style=flat-square">
   <img alt="Windows 10/11 x64" src="https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-0078d4?style=flat-square">
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.1.8 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.1.8%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.1.9 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.1.9%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Support the author on Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -43,7 +43,7 @@
 </p>
 
 > [!WARNING]
-> **This is a beta (0.1.8).** Expect rough edges and bugs — please report them so I can fix them quickly:
+> **This is a beta (0.1.9).** Expect rough edges and bugs — please report them so I can fix them quickly:
 > [open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose) (the template tells you what to attach) — I read everything.
 > **Feedback on problems and ideas is very welcome — we'll sort it out.**
 
@@ -62,9 +62,12 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
 - **🗣 Win people over in your own words.** Switch on AI dialogue and just type or say whatever you want. The person answers
   in character and makes up their own mind. [More](#ai-help-and-ai-dialogue)
 - **🌃 Nightlife.** The Black Acorn night club with a singer you can win over, a VIP room and rooms upstairs, Boopi Corp. and
-  its Gen 4 synths, and the Red Rocket turned into a bar. [More](#boopi-corp-and-the-black-acorn)
+  its Gen 4 synths, and the Red Rocket turned into a bar. Our animations will bring the people there to life (soon, as
+  separate mods): dancing, cards, work. [More](#boopi-corp-and-the-black-acorn)
 - **🎬 Romantic and intimate scenes on our own engine.** G.A.M. plays scenes for two or more — and you can make your own:
   describe the scene in a sentence and the AI animator builds it. [More](#gam-create-and-import-animations)
+- **🧱 F.O.R.G.E.** A new module: look at the game's 3D objects and recolour their textures without leaving the app.
+  [More](#forge-3d-objects-and-textures)
 - **🛠 Make your own and share it.** Dialogues, quests and scenes in the Studio, packed into one file that anyone installs
   in one click. [More](#script-studio-dialogues-scenes-and-your-own-mod)
 
@@ -85,7 +88,7 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
     <td width="33%" align="center" valign="top">
       <a href="#gam-create-and-import-animations"><img src="docs/images/icons/gam.png" width="72" alt=""></a><br>
       <b><a href="#gam-create-and-import-animations">G.A.M.: your own animations</a></b><br>
-      <sub>3D editor with IK handles, an AI animator, scenes play in the game</sub>
+      <sub>3D editor with IK handles, an AI animator and AI polish, sounds on the timeline, scenes play in the game</sub>
     </td>
   </tr>
   <tr>
@@ -97,7 +100,7 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
     <td width="33%" align="center" valign="top">
       <a href="#script-studio-dialogues-scenes-and-your-own-mod"><img src="docs/images/icons/studio.png" width="72" alt=""></a><br>
       <b><a href="#script-studio-dialogues-scenes-and-your-own-mod">Script Studio</a></b><br>
-      <sub>Dialogues, scenes, branches off the game's wheels, voice, your own <code>.ogmod</code></sub>
+      <sub>Dialogues, scenes, branches off the game's wheels, one-click voicing, your own <code>.ogmod</code></sub>
     </td>
     <td width="33%" align="center" valign="top">
       <a href="#ai-help-and-ai-dialogue"><img src="docs/images/icons/ai-dialogue.png" width="72" alt=""></a><br>
@@ -119,7 +122,7 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
     <td width="33%" align="center" valign="top">
       <a href="#voice-speech-synthesis-and-recognition"><img src="docs/images/icons/voice.png" width="72" alt=""></a><br>
       <b><a href="#voice-speech-synthesis-and-recognition">Voice</a></b><br>
-      <sub>Text-to-speech, voice cloning, speech recognition, push-to-talk</sub>
+      <sub>Text-to-speech, lip sync, voice cloning, speech recognition, push-to-talk</sub>
     </td>
   </tr>
   <tr>
@@ -131,13 +134,22 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
     <td width="33%" align="center" valign="top">
       <a href="#oldgen-os-on-the-pip-boy"><img src="docs/images/icons/oldgen-os.png" width="72" alt=""></a><br>
       <b><a href="#oldgen-os-on-the-pip-boy">OldGen OS</a></b><br>
-      <sub>An app on the Pip-Boy: people, reputation, dossier, 57 achievements</sub>
+      <sub>An app on the Pip-Boy: people, reputation, dossier, 71 achievements (15 hidden)</sub>
     </td>
     <td width="33%" align="center" valign="top">
       <a href="#safety-is-built-in"><img src="docs/images/icons/safety.png" width="72" alt=""></a><br>
       <b><a href="#safety-is-built-in">Safety</a></b><br>
       <sub>Content rules live in the core, not in a setting</sub>
     </td>
+  </tr>
+  <tr>
+    <td width="33%" align="center" valign="top">
+      <a href="#forge-3d-objects-and-textures"><img src="docs/images/icons/forge.png" width="72" alt=""></a><br>
+      <b><a href="#forge-3d-objects-and-textures">F.O.R.G.E.</a></b><br>
+      <sub>The game's 3D objects and their textures: catalog, viewer, recolouring with rollback</sub>
+    </td>
+    <td width="33%"></td>
+    <td width="33%"></td>
   </tr>
 </table>
 
@@ -148,6 +160,7 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
 | Installing mods and load order | by hand | managers (MO2, Vortex): you arrange the order | base pack in one click, journal and rollback, smart sorting and **AI sort** |
 | Your own animation | no | external 3D packages, converters, hand-built files | a **3D editor inside** with IK handles and an AI animator |
 | Importing ready-made animations (Fallout 4 HKX animations and mod idles, Skyrim) | no | by hand, through converters | "drop it, it plays", retargeted onto the Fallout 4 skeleton |
+| The game's textures and 3D models | Creation Kit, external editors | format converters, manual paths | **F.O.R.G.E.** inside: a catalog, a 3D view, recolouring converted to the game's format, with rollback |
 | Your own dialogues and scenes | Creation Kit | CK, Papyrus scripts | **Script Studio**, no programming, branches right on the game's wheel |
 | AI help while creating | no | no | an AI assistant drafts a dialogue branch and builds a scene; the "Check in AI mode" chat |
 | Sharing your mod | an archive and instructions | an archive and instructions | **a single `.ogmod` file**: installs in one click and is removed as one |
@@ -161,6 +174,8 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
 ## What is new
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="What is new" width="100%"></p>
+
+**0.1.9** — F.O.R.G.E.: the game's 3D objects and textures with recolouring and rollback; sounds on the G.A.M. timeline (G.A.M. 0.5.0); a curve editor, ghosts, trails and before/after comparison; AI polish for animations and a motion check; living places: the system that makes the people of the club, the Red Rocket and the HQ move with G.A.M. scenes is in place and comes alive with our animations (out separately, soon); lip sync and "Voice all" in the Studio; a game picker and colour themes (only Fallout 4 is playable for now); a language choice on the first start. [0.1.9 notes](docs/release/v0.1.9.md).
 
 **0.1.8** — AI inside the game's own conversations (T: type your line, the AI picks the answer on the wheel) and free talk with anyone; AI dialogue outcomes reach the game; Studio trees on the game's and DLC characters; lines from the game itself by reference; LM Studio and any OpenAI-compatible server; "Lullaby" playable to all 9 endings; a sharper AI animator and a stricter anatomy check. [0.1.8 notes](docs/release/v0.1.8.md).
 
@@ -221,17 +236,32 @@ Details: [Install and first run](#install-and-first-run).
 - **AI animator:** describe a scene in a sentence ("make him wave in greeting", "they embrace and sway") and it builds it
   step by step; you see every step and polish the result by hand. It keeps elbows out of bodies, wrists natural and palms
   on the body they touch.
-- **Anatomy check:** arms going through bodies, twisted wrists, hands that miss, props out of the hand, sliding feet —
-  before you ever load the game.
+- **Anatomy check:** arms going through bodies (crossed arms are not an error), twisted wrists, hands that miss, props out
+  of the hand, bodies inside furniture, sliding feet — before you ever load the game. A pair can be any combination of sexes.
+- **AI polish in one click:** smooth easing, anticipation and overshoot, arcs instead of straight lines, weight shifts,
+  breathing and sway, a loop without a seam and fewer keys. Touches stay where they are (feet on the floor, a palm on the
+  body); the result is one undo step.
+- **Motion check:** jerks, balance, shaking contacts, "woodenness" — a 0–100 score before and after. A visual judge looks
+  at a storyboard of the finished scene if a model that can see images is connected. The AI animator runs the loop
+  "build → check → polish → fix" itself.
 - **Editing tools:** undo/redo, multi-select keys, copy a pose onto another actor, mirror, stretch or squeeze time, fix
   the loop seam, a key optimiser, fullscreen.
+- **Hand-polishing tools:** a curve editor (Bezier handles, ease), "Ghosts" of neighbouring frames, "Trails" of hands, feet
+  and head, "Compare" before/after (hold **B**), speed 0.25×–2× and frame steps.
+- **Couples of different height and fingers:** "Role height" 0.8–1.2; each finger curls and the grip follows the thickness
+  of the object.
 - **Face and camera tracks** that play in the game.
+- **Sounds on the timeline:** drop your own sounds (wav, ogg, mp3, flac, m4a) onto a role's or the scene's lane — they play
+  with the scene, both in the preview and in the game, from the actor's position. Trim, volume, waveform; 22 sounds of our
+  own (claps, steps, a door, glass…) are included. Sounds travel inside the `.ogmod`. Needs G.A.M. 0.5.0.
 - **▶ In game:** plays the scene in your running game on the hero or the NPC in front of you — no install, no restart.
 - **Scene events:** a sound, a line, an expression, an outfit change, a quest stage, your own script events.
 - **Library:** search, folders and packs, favourites, previews, version history.
 - **Import** animations you own: Fallout 4 mod animations (HKX, idles), **OAR** gait sets and **Skyrim SE** animations are
-  retargeted onto the Fallout 4 skeleton and become tagged scenes you can edit. Rights to imported animations stay with
-  their authors.
+  retargeted onto the Fallout 4 skeleton and become tagged scenes you can edit; clips of creatures and robots land on
+  their own skeletons. Rights to imported animations stay with their authors.
+- **Other games:** "Other games" in the G.A.M. panel saves a scene for Skyrim SE (or for the shared skeleton) and takes a
+  scene of another game back.
 - **Scenes work everywhere:** in dialogues and scripts (gestures, scenes, camera) and in "Life".
 
 <p align="center"><img src="docs/images/gam-library-import.en.png" alt="The scene library and pack import" width="560"></p>
@@ -239,6 +269,26 @@ Details: [Install and first run](#install-and-first-run).
 <p align="center"><sub>The scene library (here: the game's own animations imported from «Fallout 4 — Data», filtered by tag) and one-click import</sub></p>
 
 Guides: [import and the editor](instructions/en/ANIMATION_IMPORT.md) · [animations in dialogues and scripts](instructions/en/ANIMATION_GUIDE.md).
+
+## F.O.R.G.E.: 3D objects and textures
+
+**F.O.R.G.E.** is a new module (since 0.1.9, a menu entry right after G.A.M.): look at any object of the game in 3D and
+recolour its textures without leaving the app.
+
+- **The game's catalog:** furniture, items, weapons, clothing and armour, people and creatures — named in your language and
+  searchable; the "Files" tab lists every model. In 3D — the real textures (colour, normal, gloss, glow), click to pick a
+  part, a wireframe.
+- **Recolouring:** "Save as PNG" → edit in any editor → "New picture…". The app converts it to the game's format by itself
+  (the original's format and mips are kept, a normal map stays a normal map); you see the result at once, and "Show
+  original" compares.
+- **Two modes:** "texture file" (changes it everywhere) and "this material only" (only the chosen thing is recoloured).
+- **"My textures"** go in as a mod through the journal: remove an entry or the whole mod and the files come back byte for
+  byte. Install them with the game closed.
+- **Texture packs `.ogmod`:** share your recolours; a pack carries only your pictures. They install by drag and drop or from
+  boopi.site.
+- **Viewing:** OBJ, glTF/GLB and NIF open right in F.O.R.G.E. Putting a new model into the game is not possible yet.
+
+Guide: [instructions/en/FORGE.md](instructions/en/FORGE.md).
 
 ## Script Studio: dialogues, scenes and your own mod
 
@@ -256,12 +306,15 @@ Guides: [import and the editor](instructions/en/ANIMATION_IMPORT.md) · [animati
 - **Branch map and checker** that jumps straight to the mistake.
 - **Dialogue player:** click through your wheel in the app with a test state — no build, no game.
 - **Triggers:** when the hero enters a place, an hour comes, a timer ends, a quest stage is set, someone is killed or
-  something is used — show a message, start a talk, play a scene, give a reward, set a flag.
+  something is used — show a message, start a talk (it can open exactly the tree you chose), play a scene, give a reward,
+  set a flag.
 - **Your own dialogues for the game's and DLC characters** (Daisy, Vadim, settlers…) — they open first in that person's
   everyday talk.
 - **Branches off the game's wheels:** take a real Fallout 4 conversation and add your own line to its wheel.
 - **Lines from the game itself:** point a reply at a vanilla line and the character says it in their own voice with lip sync.
 - **Voice** from your recordings or a synthetic voice, with lip sync; Papyrus stubs for those who need a script.
+- **"🎙 Voice all":** every line of a file is voiced in one click — a voice for each speaker, progress, lines already
+  recorded are skipped.
 - **"+ Story":** a ready dialogue with two triggers to start from; an example story in one click.
 - **"Check in AI mode":** chat with your dialogue the way the AI will play it, before the game — it shows which goals and
   flags fired.
@@ -310,6 +363,9 @@ story so far — and the right words can lead to a date or to closeness, if they
   from a DLC — and start a free conversation. They know their faction, place and the quests they're part of.
 - **New in 0.1.8 — outcomes reach the game:** flags, items, quest stages and gestures from an AI conversation now fire in
   the game; "Say your own…" is in every authored dialogue. HUD widgets on **F10**.
+- **New in 0.1.9 — lip sync.** The speaker's lips move with the voice of an AI reply (and with voiced lines of Studio trees):
+  the motion is computed from the recording itself and, when the text is known, from its letters. The switch is
+  `BoopiUI.ini [Audio] bLipSync`.
 - **A modder's own trees** get the AI mode too: the "AI dialogue" section of the studio says who the person is and where
   the conversation should lead.
 
@@ -336,12 +392,12 @@ reputation, the law, jobs, even diseases.
 - **Partners, a proposal and a wedding**; partners and spouses live their own lives — and get jealous if they catch you.
 - **Faction reputation, law and bounties:** guards remember crimes, factions remember whose side you took. Settlers can
   be abducted.
-- **Jobs and shift work** for caps; **diseases** (cold, flu, fever, poisoning, radiation sickness) with their own walk —
-  caught from the weather, bites, food and people; settlement doctors treat them and cure addiction.
+- **Jobs and shift work** for caps; **diseases** (cold, flu, fever, poisoning, radiation sickness) —
+  caught from the weather, bites, food and people (their own walks come with our animations); settlement doctors treat them and cure addiction.
 - **Defeat is your choice:** death as in the vanilla game, captivity, or a "bad ending".
 - **27 key characters** with a backstory, character and memory — chat with them right in the app (with voice), even before
   you start the game; edit their cards or create your own.
-- **OldGen OS on the Pip-Boy** (**H**): people, reputation and karma, dossiers, health and **57 achievements**.
+- **OldGen OS on the Pip-Boy** (**H**): people, reputation and karma, dossiers, health and **71 achievements (15 hidden)**.
 
 ## Boopi Corp. and the Black Acorn
 
@@ -351,6 +407,11 @@ A new corner of the Commonwealth — living places with their own people and dia
   with her), a dance floor in soft coloured light, a VIP room and cosy rooms upstairs.
 - **The Boopi Corp. HQ** with its Gen 4 synths — each one with her own job, look and story.
 - **The Red Rocket** is now a bar for settlers.
+- **Living places** (the system is in place since 0.1.9): about a hundred people in the club, the bar and the HQ move with
+  G.A.M. scenes — dancers dance with their whole body, guests sit with a cigarette or a drink, card players play cards,
+  bartenders wash glasses, the cleaner scrubs the floor, at the HQ they type at terminals and water the garden. Talk to
+  someone and the scene stops and the conversation opens. The places come fully alive with our animations, which come out
+  as separate mods soon; until then, with no fitting scene a person goes on with what they did before.
 - The dates of "Life" take place in real places — a table at the club, for one. These places are also part of the story
   [«Lullaby»](#lullaby-the-new-story).
 
@@ -395,6 +456,8 @@ for you. To understand who you are you must find those who came, and remember th
 
 - **Text-to-speech (TTS):** Microsoft Edge TTS works out of the box with no key; ElevenLabs and OpenAI TTS online; XTTS-v2 and Silero locally.
 - **Voice cloning** (XTTS-v2): a clone is made from the game's own lines by an NPC's voice type, or from your recordings.
+- **Lip sync** (since 0.1.9): lips move with any voicing of AI replies and Studio lines — computed from the recording
+  itself, with no outside tools.
 - **Speech recognition (STT):** the built-in faster-whisper (runs locally, on the CPU) or OpenAI Whisper; in the game —
   push-to-talk on **V**.
 - The heavy engines are not part of the app: they install on a button, and the XTTS and Silero licences (non-commercial)
@@ -413,7 +476,7 @@ Guide: [instructions/en/VOICE.md](instructions/en/VOICE.md).
 ## OldGen OS on the Pip-Boy
 
 **OldGen OS** is an app on the Pip-Boy (press **H** with nobody in front of you): people, reputation and karma, a dossier,
-health and **57 achievements**.
+health and **71 achievements (15 hidden)**.
 
 ## Safety is built in
 
@@ -424,9 +487,18 @@ the core itself, whatever the AI says.
 
 ## Honest limitations
 
-- **The in-game AI dialogue is still a beta.** Since 0.1.8 the AI works in the vanilla quest dialogues too (**T** on an open
-  wheel), but AI replies have no **lip sync** yet: a reply arrives as a subtitle and a voice, and the lips do not move.
-  Lip sync is planned for 0.1.9.
+- **The in-game AI dialogue is still a beta.** The AI works in the vanilla quest dialogues too (**T** on an open wheel).
+  While an AI reply is spoken, the input line is hidden.
+- **Lip sync is simple:** the lips, the jaw and the tongue follow the sounds (on AI replies and on Studio tree lines
+  alike), but with no facial expression and no smooth blending between sounds; XWM voice without a `.lip` file does
+  not move the lips.
+- **Living places:** pair scenes (cards for two, a couple dance) are not wired yet; the Red Rocket card players sit at the
+  window counter, not at the tables; people hold almost no props.
+- **Other games are not playable yet:** 0.1.9 is Fallout 4 only. For Skyrim SE the scene transfer exists, but not playing
+  in the game itself.
+- **Role height** works in the editor and the checks, but in the game the actor is not scaled yet.
+- **F.O.R.G.E.:** a new model cannot be put into the game yet — viewing only; replacing textures for a single NPC and
+  palette-coloured armour come later.
 - **Your own dialogues on the game's and DLC characters:** while a story quest of the game holds the character (for
   example Cassie or Kent), that quest goes first and your tree comes after it.
 - **Next-Gen / Anniversary (1.10.98x, 1.11.x) are not supported.** The target is 1.10.163 (Old-Gen); Steam and GOG have
@@ -458,11 +530,12 @@ The full list is in the [release notes](docs/release/v0.1.0.md#known-limitations
 
 ### Step 0. Download and unpack
 
-1. Download **`boopi_mod-0.1.8-win-x64.zip`** from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   page and compare its SHA-256 with `SHA256SUMS.txt` from the same release (for 0.1.8 it is `5e45a90ac3f0e8ee1ddecde532db0d7ece31aaf5feb2b1493691f5530673b151`).
+1. Download **`boopi_mod-0.1.9-win-x64.zip`** from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   page and compare its SHA-256 with `SHA256SUMS.txt` from the same release (for 0.1.9 it is `3518cabcb8647e90f8f10a20516cc4f27a314ee696b4671a54b6a449a66cd037`).
 2. Unpack to a **short path** such as `C:\Games\boopi_mod` (not into "Downloads" or deep folders: Windows will not run
    programs whose path is longer than 260 characters).
-3. Run **`boopi_mod.exe`** — the app starts the core by itself.
+3. Run **`boopi_mod.exe`** — the app starts the core by itself. On the first start choose your language and game (only
+   Fallout 4 is playable for now; the others are marked "coming soon").
 4. On the Dashboard press **"Download and install"**: the app downloads our mods from [boopi.site](https://boopi.site)
    (≈ 215 MB; the catalog is signed and files are checked by SHA-256), then **"Restart the core"**. From then on the
    mods update on their own, separately from the app.
@@ -518,12 +591,15 @@ The answer length, voice and line suggestions are here too.
 2. **Graphics → "Apply recommended"** (edits the game's INI files and makes backups).
 3. Press **"Play"** — the game starts through F4SE. AI dialogue and "Life" work at once, the story from a new game.
 
-### "Core executable not found" or your antivirus complains
+### "The core file is missing" or your antivirus complains
+
+What each message of the "Core is not responding" screen means (including "The core runs, but the app cannot connect to
+it") — [Guides → If the core does not respond](instructions/en/README.md#if-the-core-does-not-respond).
 
 1. Your antivirus most likely moved `core\oldgenai-core.exe` to quarantine. It's a false alarm: the core is an unsigned
    program built with Python, and some antiviruses flag those by pattern.
 2. Download the archive only from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest) page and check
-   its SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.1.8-win-x64.zip`). For 0.1.8 it must be `5e45a90ac3f0e8ee1ddecde532db0d7ece31aaf5feb2b1493691f5530673b151`.
+   its SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.1.9-win-x64.zip`). For 0.1.9 it must be `3518cabcb8647e90f8f10a20516cc4f27a314ee696b4671a54b6a449a66cd037`.
 3. Restore the file from quarantine or add the boopi_mod folder to your antivirus exclusions, then unzip the archive again.
 4. Unzip to a normal folder (not Program Files) and don't run it from inside the zip.
 5. Tell me which antivirus it was and the detection name — I'll report the false positive.
@@ -573,6 +649,8 @@ Everything the app does can be extended — without programming and without othe
   mods you have installed.
 - **Your own conversation** — a dialogue tree with branching, gestures and scenes; a branch off the game's wheel; a dialogue on a game or DLC character; voice and lip sync.
 - **Your own scene** — actors, movement, camera, tags so that "Life", dialogues and other mods can find it.
+- **Your own sounds on a scene's timeline** and **your own textures** (F.O.R.G.E.): recolouring the game's objects with
+  rollback, texture packs as `.ogmod`.
 - **Your own mod as a single `.ogmod`** that others install in one click, and **your own AI dialogues** — checked in the test chat.
 
 | Guide | What it covers |
@@ -581,7 +659,8 @@ Everything the app does can be extended — without programming and without othe
 | [ANIMATION_IMPORT.md](instructions/en/ANIMATION_IMPORT.md) | Animation import and the G.A.M. scene editor |
 | [ANIMATION_GUIDE.md](instructions/en/ANIMATION_GUIDE.md) | Animations in dialogues and scripts: gestures, scenes, camera, contexts |
 | [AI_DIALOGUE.md](instructions/en/AI_DIALOGUE.md) | The AI dialogue mode: what the player sees, what the AI can and cannot do |
-| [VOICE.md](instructions/en/VOICE.md) | Text-to-speech and speech recognition: providers and voice cloning |
+| [VOICE.md](instructions/en/VOICE.md) | Text-to-speech and speech recognition: providers, voice cloning, lip sync |
+| [FORGE.md](instructions/en/FORGE.md) | F.O.R.G.E.: the game's 3D object catalog, recolouring textures, "My textures", texture packs |
 
 All the guides also exist [in Russian](instructions/README.md).
 
@@ -644,10 +723,17 @@ any person starts a free conversation.
 </details>
 
 <details>
-<summary><b>Why do AI replies have no lip sync yet?</b></summary>
+<summary><b>Do the lips move on AI replies?</b></summary>
 
-A reply arrives as a subtitle and a voice, but the lips do not move yet. Lip sync is planned for 0.1.9 — see
-[What's coming](#whats-coming).
+Yes, since 0.1.9: the lip motion is computed from the voice recording itself (and from the letters, when the text is known)
+and plays on the speaker's face — the same on the WAV-voiced lines of your Studio trees. The switch is `BoopiUI.ini [Audio] bLipSync`.
+</details>
+
+<details>
+<summary><b>Can I play other games, not only Fallout 4?</b></summary>
+
+Not yet: only Fallout 4 is playable. 0.1.9 lays the foundation — a game picker, colour themes, scene transfer between
+Fallout 4 and Skyrim SE. The other games are marked "coming soon"; I do not promise dates.
 </details>
 
 <details>
@@ -662,17 +748,17 @@ ideas, we'll fix them.**
 
 ## What's coming
 
-**0.1.9 — next:**
+**0.2.0 — next:**
 
-- **Our own animation packs as mods:** couples, romance and intimate scenes, everyday life, work, emotions, gaits for illnesses, smoking — installed in one click and working in the game.
-- **AI polish for animations:** smooth curves with easing, body parts that follow through, arcs instead of straight lines, weight shifts, breathing and small life movements, clean loops and fewer keys — in one click.
-- **The AI checks motion, not just poses:** jerks, balance, shaking contacts — and a visual judge that watches the rendered scene and fixes what looks wrong.
-- **Editor tools for hand polishing:** a curve editor, onion skin, motion trails, before/after comparison, slow motion.
-- **Couples of different height**, richer finger poses and grips that fit the object.
-- **Lip sync:** mouths move with AI replies and with your voiced lines.
-- **Auto-voicing in the dialogue editor:** every line of your dialogue voiced in one click, right in the Studio.
-- **Sounds on the animation timeline:** drop sounds onto the G.A.M. timeline and they play with the scene in the game.
-- **Our scenes for living places:** club dancers, card players at the Red Rocket and the Boopi HQ staff move with our own animations.
+- **Pair scenes in living places:** cards for two, a couple dance, a talk at a table; card players at the tables, props in hands.
+- **Our own animation packs** — couples and romance, everyday life, work, emotions, gaits and smoking — come out as
+  separate mods soon, after hand polish; then new pairs (including any combination of sexes) and polished gait sets for
+  illnesses.
+- **Better lip sync:** stronger lips on Studio tree lines, facial expression and smooth blending between sounds.
+- **Role height in the game:** couples of different height seen not only in the editor.
+- **F.O.R.G.E. further:** texture replacement for a single NPC, palette hair and armour in the 3D view, clothes on a skeleton;
+  then your own model in the game.
+- **Skyrim beyond the foundation:** reading the game's archives, writing animations, a player in the game.
 
 **Fallout 4 — lots more on the way:**
 
@@ -684,7 +770,8 @@ ideas, we'll fix them.**
 - Next-Gen and Anniversary editions of the game.
 
 **Soon — other games:** Cyberpunk 2077, Skyrim, Starfield and The Sims 4 — the same mod manager and the same creation of
-animations, scenes and dialogues by hand or with AI. What comes first and when depends on **interest in the project, support
+animations, scenes and dialogues by hand or with AI. The foundation is already in 0.1.9: a game picker, themes and scene
+transfer. What comes first and when depends on **interest in the project, support
 and stars on GitHub**:
 
 - ⭐ [Star the repo](https://github.com/boopi-coder/boopi_mod/stargazers) — the best way to show the project is wanted;
@@ -704,7 +791,7 @@ and stars on GitHub**:
 </p>
 
 boopi_mod is made by one person. If the project is useful to you, support it on **[Boosty](https://boosty.to/boopi_coder)**: it
-directly pays for development time (lip sync, new animation packs and scenes, Next-Gen support, other games).
+directly pays for development time (new animation packs and scenes, F.O.R.G.E., Next-Gen support, other games).
 Questions and requests posted on Boosty are handled **first**.
 
 ### ₿ Crypto

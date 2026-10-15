@@ -34,6 +34,10 @@ Importing other people's animations (Skyrim, OAR) and the scene editor are descr
 Everything described here was tested in the game (Fallout 4 1.10.163, G.A.M. 0.3.0, BoopiCorp 2.4.4): Stella's gesture in a dialogue,
 «hands up» on an NPC and on the hero, a nod with the head only, a hug with the camera in both modes.
 
+> [!NOTE]
+> New in **G.A.M. 0.5.0** - **your own sounds on the timeline** ([5.3](#53-sounds-on-the-timeline)): wav / ogg / mp3 files go onto a role's or the scene's
+> lane and play with the scene in the editor and in the game; built, tested and checked in the game.
+
 > [!IMPORTANT]
 > New in **G.A.M. 0.4.0** — scene events performed and external events for your scripts ([5.2](#52-scene-events)), the scene's face and
 > camera tracks ([6](#6-scene-camera)), «Play in game» and the game's log right in the editor ([11](#11-how-to-test-in-the-game)) — is
@@ -46,12 +50,12 @@ Everything described here was tested in the game (Fallout 4 1.10.163, G.A.M. 0.3
 2. [Quick start: 3 lines of Papyrus](#2-quick-start-3-lines-of-papyrus)
 3. [Where animations come from: scene id and tag query](#3-where-animations-come-from-scene-id-and-tag-query)
 4. [A one-off animation (gesture)](#4-a-one-off-animation-gesture)
-5. [Scene](#5-scene) — [stages](#51-stages-how-a-scene-develops), [events](#52-scene-events)
+5. [Scene](#5-scene) — [stages](#51-stages-how-a-scene-develops), [events](#52-scene-events), [sounds](#53-sounds-on-the-timeline)
 6. [Scene camera](#6-scene-camera)
 7. [Animation from a dialogue](#7-animation-from-a-dialogue) — [our trees](#71-our-dialogue-trees-datatalkyaml), [Creation Kit](#72-your-own-dialogue-in-creation-kit)
 8. [Through the «Life» system: contexts](#8-through-the-life-system-contexts)
 9. [Safety](#9-safety)
-10. [A mod for our manager](#10-a-mod-for-our-manager) — [editing a scene in the editor](#104-editing-a-scene-in-the-editor-undo-keys-mirror-time)
+10. [A mod for our manager](#10-a-mod-for-our-manager) — [editing a scene in the editor](#104-editing-a-scene-in-the-editor-undo-keys-mirror-time), [polishing](#105-polishing-curves-ghosts-trails-comparison-speed), [AI polish](#106-ai-polish-one-button-from-a-stiff-scene-to-a-natural-one)
 11. [How to test in the game](#11-how-to-test-in-the-game)
 12. [Common mistakes](#12-common-mistakes)
 13. [What next](#13-what-next)
@@ -139,6 +143,22 @@ The tag vocabulary is in `data/gam/tags.yaml`. The most useful tags:
 - No game files are copied into the pack: the clips are read from your archives during the build.
 - Ids: `gesture/talk_<mood>_<m|f>_<s1|s2|m1|m2>`, `gesture/hands_up`, `gesture/smoke_talk`, `gesture/salute`, `gesture/salute_military`,
   `gesture/salute_bos`, `gesture/point_<forward|back|left|right>`.
+
+**Our animation packs.** The scenes we made in G.A.M. install as mods: boopi_mod → «Mods» → **«boopi_mod animations»** →
+«Install» (also «Update to …» and «Remove» there). Five packs:
+
+| Pack | What is inside | Folder in the game |
+|---|---|---|
+| Couples & romance | hugs, slow dances, a kiss, holding hands, a head on a shoulder, a proposal on one knee, a flirt | `Data\GAM\Scenesoopi-anim-couples\` |
+| Everyday life | sitting, drinking, reading, cards, warming hands, solo dances, a handshake, passing a bottle | `…oopi-anim-life\` |
+| Work | hammer, saw, repairs, terminal, kitchen, garden, cleaning, guard duty | `…oopi-anim-work\` |
+| Emotions & reactions | laughter, applause, a cheer, impatience, threats, a quarrel, comfort | `…oopi-anim-emotions\` |
+| Gaits & smoking | 13 gaits of illness, withdrawal, hangover, exhaustion and wear; lighting up, smoking standing, at a wall, seated, putting it out | `…oopi-anim-gaits\` |
+
+A pack's scenes appear in the G.A.M. library and in the game; Life contexts, the living town, gaits and your own tag queries find
+them by themselves — the query `"hug,pair"` or `"smoke,upper_body,loop"` plays them when the pack is installed. Removing a pack
+takes it out of the library and the game, and a file that lay in the same place before (your own copy of a scene, say) comes back.
+You can open a pack's scene in the editor and save it as your own — it stays yours after the pack is removed.
 
 > [!NOTE]
 > A scene that does not exist in the game (for example «scratch the back of the head») cannot be played by G.A.M. Such an animation must
@@ -314,6 +334,50 @@ EndFunction
   is a warning `event say: no topic '…'`.
 
 ---
+
+### 5.3 Sounds on the timeline
+
+Since **G.A.M. 0.5.0** you can put **your own sounds** on the timeline: a clap, a footstep, a knock, a voice, music - any `wav`, `ogg` or `mp3`
+file (also `flac`, `m4a`). A sound is a clip on a lane: it has a **start** (a second of the scene), an optional **trim** (which part of the
+file plays) and a **volume**; it is attached to a **role** (in the game it comes from that actor's position, quieter with distance, left or
+right by the side the actor is on seen from the camera) or to the **scene** (heard in the head, not placed: music, ambience). The clips play
+together with the scene, both in the editor's preview and in the game.
+
+**In the editor** (the timeline at the bottom, the «🔊 Sounds» button):
+
+- Drop files with the mouse onto the lane of a role (or the «Scene» lane); onto the editor window in general works too - the sound lands at the
+  playhead. The «＋ File» button does the same. The browser reads any format itself and the core keeps the sound in one form (16-bit WAV, at most
+  two channels) - that is the «converted as needed». The same file dropped twice is kept once.
+- «Sound library» holds our own sounds (a clap, steps on concrete, boards, gravel, grass and metal, a knock, a door, a cup, glass, clothes and
+  paper rustle, a heartbeat, an arm swing, wind, applause); we made them from scratch, nothing was downloaded.
+- A clip: a click picks it, a drag moves it (also onto another lane - another role), its edges trim it, a double click listens to it alone. Below
+  is the clip's card: name, lane, start, trim from the start and end in the file, volume 0-200 %, «Mute», «Remove». Delete removes the picked clip.
+- «M» on a lane mutes all its sounds (this goes to the game, too), «S» listens to that lane only (the editor's preview only).
+- Play plays the sounds with the animation: from where the playhead stands, round and round with a loop. Everything goes through the common
+  undo (`Ctrl+Z`).
+
+**Files**: the scene keeps only the file's name, the sound itself lies beside the library (`<user folder>/gam/audio/`), so «Save as…», «Copy»
+and the history of versions lose nothing. A scene with a clip whose file the library does not have is saved, but the editor and «Play in game»
+name the problem.
+
+**In the game**: «To the game», installing a scene and «Play in game» put the sounds it needs into `Data\GAM\Audio\`; GAM.dll plays them with
+**its own mixer** (XAudio2 of Windows 10) - not through the game's sound system. So neither a plugin nor a sound descriptor per file is needed:
+a clip sounds the moment the scene reaches its start (every pass of a loop, too); the loudness follows the game's master volume slider and
+`GAM.ini [Sound] fVolume`; when the scene is stopped the clips fade out in a fraction of a second, and the game's pause pauses them. A sound of
+the game itself (a SNDR form) can still be called by the `sound` event ([5.2](#52-scene-events)) - that is for the game's own sounds; your files
+go in as clips. The log: `G.A.M.: scene N 'id' sound 'file' on 00000014 (0.60 s of it, volume 1.00)`; no file - `sound '...': no such file in
+Data\GAM\Audio`.
+
+`GAM.ini`, section `[Sound]`: `bSounds=0` - the clips stay silent; `fVolume` - the overall loudness (1 = as made); `fRefDistance` and
+`fMaxDistance` - at what distance (game units, about 70 to a metre) a sound is still full and where it is gone.
+
+**Mods and export**: «Save mod» puts the scene's sounds (`gam/audio/...`) into the `.ogmod` together with the scene; they land in the
+receiver's library and, with the scene, in their game, and leave the game's folder when the mod is removed. A clip that uses one of our library
+sounds takes it from the program.
+
+> [!NOTE]
+> The clip's format in `.gam` (`sounds`): `{"id", "file", "name", "target", "t", "in", "out", "volume", "mute"}`; `file` is a plain `.wav` name
+> (no folders), `target` a role id or empty (the scene), `out` empty or 0 means to the end of the file, volume 0..2. In detail: `docs/GAM.md`.
 
 ## 6. Scene camera
 
@@ -516,7 +580,8 @@ plays its own context by itself.
 the tags answers. The app needs no animation mod of anyone else: when nothing fits, the person walks with the game's own walk and
 the gesture simply does not play — nothing breaks. You can make a gait of your own in the editor: a set of scenes with
 `meta.gait` (a stance, a walk and a run by direction, male and female) in a `…/gait/<set>/` folder — details in `docs/GAM.md`,
-«Походка по условию» (gaits by condition).
+«Походка по условию» (gaits by condition). Ready gaits for all these contexts and the smoking scenes come with our «Gaits & smoking»
+pack ([section 3](#3-where-animations-come-from-scene-id-and-tag-query)).
 
 ---
 
@@ -692,6 +757,99 @@ button — they slide in over the picture. **«⤢ Screen»** takes the whole mo
 mode you used last. To leave, press `F11` or «Exit»; `Esc` closes the panel first, then lets the picked keys go, then leaves. The
 scene, the selection, the playhead and the undo history stay as they are.
 
+### 10.5 Polishing: curves, ghosts, trails, comparison, speed
+
+Tools for polishing a finished animation by hand. They are viewing aids of the editor: nothing is written into the scene (except the
+edits you make), and their settings are remembered between runs.
+
+**Curves.** The **«Curves»** button at the right of the timeline bar (next to «Keys») turns it into the curve view. It shows the tracks
+of the picked keys, or, when no keys are picked, of the picked bone in the 3D view; a click on a track's name in the key list picks all
+its keys and the bone. The **«Whole role»** box adds every track of the role.
+
+<p align="center"><img src="../../docs/images/gam-curves.en.png" alt="The curves of a shoulder's rotation: three axes, a key with its tangents, the interpolation buttons, speed and frame steps" width="860"></p>
+
+*The curves of a shoulder's rotation: three axes, a key with its tangents, the interpolation buttons, speed and frame steps.*
+
+- **Channels** — «Rotation» (three Euler angles X/Y/Z in degrees; by default as the bone's turn from its rest pose, the **«From rest
+  pose»** box), «Position», «Face», «Field of view». The **X Y Z** buttons hide axes.
+- **What you see is what plays.** The line is the curve as the core samples it (the same C++ library the game uses: Bezier, automatic
+  handles, squad with ease for rotations); it is recomputed under your hand while you drag a key. A mode the curve view does not know
+  (the core learned a new one) is drawn from the core's own samples, marked «≈», and never guessed.
+- **A key**: a click picks it (`Shift`/`Ctrl` add, a box over the empty part picks a group). Drag in time (snapped to frames, `Alt`
+  for free) and in value (the axis of the dot you took; `Shift` — only the way the mouse went further). Picked keys move in time
+  together. One drag is one step of undo.
+- **Tangents.** For positions, the face and the field of view, a picked key shows its Bezier handles: drag one and the key becomes a
+  «curve» key with your handles. For rotations the handles are small squares — the ease in and out (the further from the key, the
+  softer).
+- **Interpolation** of the picked keys — the buttons **«Smooth» / «Linear» / «Step» / «Curve»** and **«Ease»** (a soft start and
+  stop). The list of modes comes from the core and from the scene itself, so a mode the core learns later appears among the buttons
+  without updating the program.
+- **View.** The wheel zooms time, `Shift`+wheel zooms values, `Ctrl`+wheel and the middle mouse button pan, `F` or **«Frame»** frames
+  the picked keys, **«All»** — the whole curves. A click on the ruler at the top puts the playhead.
+
+**Ghosts (onion skin).** The **«Onion skin»** button over the 3D view draws translucent silhouettes of the poses *before* (blue) and
+*after* (orange) the playhead — the body from your game, or a stick figure without one. The little arrow next to it opens the
+settings: how many ghosts each side (1–8) and where they stand — every few frames, or at the neighbouring keys.
+
+**Trails.** The **«Trails»** button draws the path of the hands, feet and head (or of the picked bone) over the whole scene or ±1 s
+around the playhead; white dots are keys, the big dot is where the playhead is now. The left side is cyan, the right orange.
+
+<p align="center"><img src="../../docs/images/gam-onion-trails.en.png" alt="Ghosts and trails on a dance: blue poses before the playhead, orange after, the paths of hands and feet with their keys" width="860"></p>
+
+*Ghosts and trails on a dance: blue poses before the playhead, orange after, the paths of hands and feet with their keys.*
+
+**Before / after.** The **«Compare»** button puts the version of the scene from before your edit beside the scene. What to compare
+with is in its settings: before the last operation, as the scene was opened or saved, or any version from the history («History» in
+the tool bar). How to show it: as a pink ghost over the scene (only the part that changed shows), beside the scene, or instead of it.
+The **«Hold to compare»** button (or the `B` key) shows the old version for as long as it is held — flip between «was» and «is» quickly.
+
+<p align="center"><img src="../../docs/images/gam-compare.en.png" alt="Compare: the pink ghost is the arm before the edit" width="860"></p>
+
+*Compare: the pink ghost is the arm before the edit.*
+
+**Speed and steps.** The timeline bar has the playback speed **0.25× / 0.5× / 1× / 2×**, the frame back / forward buttons (`←` / `→`)
+and the previous / next key buttons (`[` / `]`). The speed is for watching in the editor only; it goes neither into the scene nor into
+the game.
+
+### 10.6 AI polish: one button from a stiff scene to a natural one
+
+A scene built by the AI animator or keyed by hand can be correct and still lifeless: every bone reaches its pose at the same
+moment, the motion between poses runs at one speed, the body freezes in the pauses. The **«AI polish»** section in the editor's
+right column brings it to life with one button, by the principles of animation rather than by eye:
+
+- **smoothness** — slow-in and slow-out between pauses, small jitter and jerks removed, the loop's seam closed;
+- **overlap** — the head, the arms and the fingers trail the torso by a few frames and overshoot a little when it stops (the spine
+  leads);
+- **anticipation** and **settle** — a small move the other way before a big one and a soft stop with a little overshoot;
+- **hand arcs** — a hand travels to its target along an arc, not along a ruler;
+- **weight shift** — the hips go over the standing leg while the other is up, and a pose that leans out of balance comes back over
+  the feet;
+- **life layer** — breathing, a slight sway and an occasional glance aside where the body stands still («Auto»; off for scenes that
+  already move a lot).
+
+**Contacts stay where they are**: standing feet do not slide, a hand on a partner's shoulder, on a table, on a tool's handle or in
+another hand stays there (it follows what it touches). Everything else is checked after the polish: where it spoiled the anatomy
+(an elbow, a wrist, a foot) that place is taken back by itself.
+
+How to use it:
+1. Open the scene. The sliders set the strength of each technique (0.5 by default); **«More settings»** — anticipation, settle, arcs,
+   weight.
+2. **«Whole scene»** or **«Range»** (from … to …; **«From the selected keys»** takes the time of the keys selected on the timeline).
+3. **«AI polish»**. The log shows the work; below it the motion score **before** and **after** (0–100) and the numbers: jerks,
+   balance, contact shake, stiffness. Not to your taste — `Ctrl+Z` (it is one step of undo); to compare by eye use **«Compare»**
+   (before the last operation, section 10.5).
+4. **«Check the motion»** — the same numbers for the scene as it is, without changing it.
+
+The **«Visual check»** box shows the scene's contact sheet to a model that reads images (the **«Vision»** route in Settings →
+Routing; DeepSeek reads no images — without such a model the check is simply skipped).
+
+**Role heights** are there too: a role shorter or taller (80–120 %) has its skeleton scaled, and the pair scene is built for that
+height (a short partner's head on a tall one's chest). In the game an actor's height is the game's own, so give such a scene to
+actors built that way.
+
+The AI animator (the «AI» section) polishes its own result after its operations and checks it; what is still wrong (anatomy,
+balance, the visual check's findings) it fixes in a separate round.
+
 ---
 
 ## 11. How to test in the game
@@ -755,6 +913,13 @@ That is the default limit for a looped scene. Set stages ([5.1](#51-stages-how-a
 
 **Nothing plays, the log is empty.**
 There is no suitable scene. Check `GAM.ListScenes("your,tags")` and install a pack with such tags.
+
+**A clip's sound is not heard in the game.**
+Open «Play in game» → the log: `sound '...': no such file in Data\GAM\Audio` - the file is not there (press «To the game» or «Play in
+game» again, they put the sounds in by themselves), `nobody plays role 'b'` - the clip's role has no actor, `the sound engine did not
+start` - the system has no `xaudio2_9.dll` (Windows 10 or newer is needed). A clip marked «Mute» and `bSounds=0` in `GAM.ini [Sound]` are
+silent on purpose. The loudness also follows the game's own sound slider and the distance to the role's actor (a scene clip is «in the
+head»: distance does not matter).
 
 ---
 
