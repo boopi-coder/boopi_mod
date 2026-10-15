@@ -66,7 +66,8 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
   separate mods): dancing, cards, work. [More](#boopi-corp-and-the-black-acorn)
 - **🎬 Romantic and intimate scenes on our own engine.** G.A.M. plays scenes for two or more — and you can make your own:
   describe the scene in a sentence and the AI animator builds it. [More](#gam-create-and-import-animations)
-- **🧱 F.O.R.G.E.** A new module: look at the game's 3D objects and recolour their textures without leaving the app.
+- **🧱 F.O.R.G.E.** A new module: look at the game's 3D objects and recolour their textures without leaving the app;
+  import your own models and whole texture mods.
   [More](#forge-3d-objects-and-textures)
 - **🛠 Make your own and share it.** Dialogues, quests and scenes in the Studio, packed into one file that anyone installs
   in one click. [More](#script-studio-dialogues-scenes-and-your-own-mod)
@@ -275,6 +276,8 @@ Guides: [import and the editor](instructions/en/ANIMATION_IMPORT.md) · [animati
 **F.O.R.G.E.** is a new module (since 0.1.9, a menu entry right after G.A.M.): look at any object of the game in 3D and
 recolour its textures without leaving the app.
 
+<p align="center"><img src="docs/images/forge-3d-catalog.en.webp" alt="F.O.R.G.E.: the game catalog and a dress in 3D with its real textures" width="880"></p>
+
 - **The game's catalog:** furniture, items, weapons, clothing and armour, people and creatures — named in your language and
   searchable; the "Files" tab lists every model. In 3D — the real textures (colour, normal, gloss, glow), click to pick a
   part, a wireframe.
@@ -286,7 +289,20 @@ recolour its textures without leaving the app.
   byte. Install them with the game closed.
 - **Texture packs `.ogmod`:** share your recolours; a pack carries only your pictures. They install by drag and drop or from
   boopi.site.
-- **Viewing:** OBJ, glTF/GLB and NIF open right in F.O.R.G.E. Putting a new model into the game is not possible yet.
+- **Import a whole texture mod:** drop a folder or a .zip laid out like `Textures\…` onto the page — before anything goes
+  in you see which textures replace the game's and which the game doesn't have; "Into the game" installs it all in one
+  click through the journal, and it comes out the same way.
+- **Model import:** OBJ (with MTL and pictures), glTF/GLB and NIF open right in F.O.R.G.E. — by drag and drop or a button;
+  missing pictures are listed. Putting a new model into the game is not possible yet.
+- **Handy bits:** a dark / grey / light background, a snapshot of the 3D view to PNG, search by name, editor id, form id
+  or model path.
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/forge-3d-retexture.en.webp" alt="Recolouring: a new texture in live preview"></td>
+    <td width="50%"><img src="docs/images/forge-3d-import.en.webp" alt="Texture mod import: what fits your game"></td>
+  </tr>
+</table>
 
 Guide: [instructions/en/FORGE.md](instructions/en/FORGE.md).
 
