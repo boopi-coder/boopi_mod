@@ -22,6 +22,7 @@
   <img alt="Windows 10/11 x64" src="https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-0078d4?style=flat-square">
   <a href="LICENSE.txt"><img alt="Бесплатно, все права защищены" src="https://img.shields.io/badge/лицензия-бесплатно%2C%20все%20права%20защищены-8a8a8a?style=flat-square"></a>
   <a href="https://boosty.to/boopi_coder"><img alt="Boosty" src="https://img.shields.io/badge/Boosty-поддержать-f15f2c?style=flat-square"></a>
+  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="DonationAlerts" src="https://img.shields.io/badge/донат-на%20сервер-f57d07?style=flat-square"></a>
   <img alt="18+" src="https://img.shields.io/badge/18%2B-для%20взрослых-b00020?style=flat-square">
 </p>
 
@@ -839,6 +840,11 @@ SKSE64 GAM for Skyrim, который играет сцены G.A.M. (он со�
 
 **Следующий выпуск:**
 
+- **Все версии Fallout 4:** Old-Gen, Next-Gen и Anniversary — программа сама определит версию и подберёт нужные
+  плагины.
+- **Быстрый импорт из Mod Organizer 2:** профиль, список и порядок модов переезжают в boopi_mod в пару щелчков.
+- **Импорт и экспорт анимаций** в форматах Havok (HKX), FBX, glTF и BVH — в обе стороны.
+- **Анимация из видео и поза из картинки:** загрузили ролик — получили сцену G.A.M.; загрузили картинку — получили позу.
 - **Наши паки анимаций — главное:** пары и романтика, быт, работа, эмоции, походки и курение, **в том числе взрослые сцены,
   сделанные в G.A.M.**, — после моей ручной доводки. Вместе с ними оживут парные сцены мест (карты вдвоём, танец,
   разговор за столиком) и походки при болезнях.
@@ -862,7 +868,7 @@ SKSE64 GAM for Skyrim, который играет сцены G.A.M. (он со�
 
 - ⭐ [Поставьте звезду](https://github.com/boopi-coder/boopi_mod/stargazers) — это лучший способ показать, что проект нужен;
 - 💬 [напишите](https://github.com/boopi-coder/boopi_mod/issues/new/choose), какую игру ждёте больше всего;
-- 🧡 [поддержите на Boosty](https://boosty.to/boopi_coder) — это напрямую ускоряет работу.
+- 🧡 [поддержите сервер разовым донатом](https://www.donationalerts.com/r/boopi_coder) или на [Boosty](https://boosty.to/boopi_coder) — это напрямую ускоряет работу.
 
 ## Обратная связь
 
@@ -873,48 +879,24 @@ SKSE64 GAM for Skyrim, который играет сцены G.A.M. (он со�
 ## Поддержать автора
 
 <p align="center">
-  <a href="https://boosty.to/boopi_coder"><img alt="Поддержать автора на Boosty" src="docs/images/support-button.png" width="360"></a>
+  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="Поддержать сервер — разовый донат" src="docs/images/support-button.png" width="360"></a>
 </p>
 
-boopi_mod делает один человек. Если проект вам полезен — поддержите его на **[Boosty](https://boosty.to/boopi_coder)**: это
-напрямую оплачивает время на развитие (новые паки анимаций и сцены, F.O.R.G.E., поддержка Next-Gen, другие игры).
-Вопросы и пожелания, написанные на Boosty, разбираются **в первую очередь**.
+boopi_mod делает один человек, и программа бесплатна. Сейчас я **собираю на сервер**: он нужен для стабильных
+обновлений, каталога модов и паков на boopi.site и для того, чтобы работа над проектом продолжалась. Любая сумма — это
+реальный вклад в следующие версии.
 
-### ₿ Криптовалюта
+### 💸 Разовый донат
 
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <img alt="Bitcoin" src="https://img.shields.io/badge/Bitcoin-BTC-f7931a?style=for-the-badge&logo=bitcoin&logoColor=white"><br>
-      <sub>сеть Bitcoin</sub><br><br>
-      <img alt="QR Bitcoin" src="docs/images/crypto/qr-btc.png" width="170"><br><br>
-      <code>bc1qw082qflzsw7qzpe6ghtv8uj4cga83ehqfxyx6a</code>
-    </td>
-    <td align="center" width="50%">
-      <img alt="Ethereum" src="https://img.shields.io/badge/Ethereum-ETH-627eea?style=for-the-badge&logo=ethereum&logoColor=white"><br>
-      <sub>сеть Ethereum (ERC-20)</sub><br><br>
-      <img alt="QR Ethereum" src="docs/images/crypto/qr-eth.png" width="170"><br><br>
-      <code>0x69a6Ccd27143F077EBC822f4Af8F8e8dB6371543</code>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="QR: донат через DonationAlerts" src="docs/images/crypto/qr-donationalerts.png" width="190"></a><br>
+  <a href="https://www.donationalerts.com/r/boopi_coder"><b>donationalerts.com/r/boopi_coder</b></a><br>
+  <sub>карта, СБП и другие способы оплаты — без регистрации</sub>
+</p>
 
-Адрес удобно скопировать кнопкой справа от блока ниже:
+Подписка с бонусами — на **[Boosty](https://boosty.to/boopi_coder)**: вопросы и пожелания оттуда разбираются
+**в первую очередь**. Спасибо! 🧡
 
-**Bitcoin (BTC)**
-
-```
-bc1qw082qflzsw7qzpe6ghtv8uj4cga83ehqfxyx6a
-```
-
-**Ethereum (ETH, ERC-20)**
-
-```
-0x69a6Ccd27143F077EBC822f4Af8F8e8dB6371543
-```
-
-> [!NOTE]
-> Отправляйте только в своей сети: BTC — на адрес Bitcoin, ETH и токены ERC-20 — на адрес Ethereum. Перевод в другой сети может потеряться. Спасибо за поддержку! 🧡
 
 ## Лицензия и благодарности
 

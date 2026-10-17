@@ -22,6 +22,7 @@
   <img alt="Windows 10/11 x64" src="https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-0078d4?style=flat-square">
   <a href="LICENSE.txt"><img alt="Freeware, all rights reserved" src="https://img.shields.io/badge/license-freeware%2C%20all%20rights%20reserved-8a8a8a?style=flat-square"></a>
   <a href="https://boosty.to/boopi_coder"><img alt="Boosty" src="https://img.shields.io/badge/Boosty-support-f15f2c?style=flat-square"></a>
+  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="DonationAlerts" src="https://img.shields.io/badge/donate-server%20fund-f57d07?style=flat-square"></a>
   <img alt="18+" src="https://img.shields.io/badge/18%2B-adults%20only-b00020?style=flat-square">
 </p>
 
@@ -849,6 +850,11 @@ ideas, we'll fix them.**
 
 **The next release:**
 
+- **Every Fallout 4 version:** Old-Gen, Next-Gen and Anniversary — the app detects the version and picks the right
+  plugins.
+- **Quick import from Mod Organizer 2:** your profile, mod list and load order move into boopi_mod in a couple of clicks.
+- **Animation import and export** in Havok (HKX), FBX, glTF and BVH — both ways.
+- **Animation from video and a pose from a picture:** drop a clip — get a G.A.M. scene; drop an image — get a pose.
 - **Our animation packs — the headline:** couples and romance, everyday life, work, emotions, gaits and smoking, **including
   the adult scenes made in G.A.M.**, after my hand polish. With them the pair scenes of the places (cards for two, a dance,
   a talk at a table) and the gaits for illnesses come alive.
@@ -875,7 +881,7 @@ and stars on GitHub**:
 
 - ⭐ [Star the repo](https://github.com/boopi-coder/boopi_mod/stargazers) — the best way to show the project is wanted;
 - 💬 [tell me](https://github.com/boopi-coder/boopi_mod/issues/new/choose) which game you want most;
-- 🧡 [support on Boosty](https://boosty.to/boopi_coder) — it directly speeds up the work.
+- 🧡 [support the server with a one-time donation](https://www.donationalerts.com/r/boopi_coder) or on [Boosty](https://boosty.to/boopi_coder) — it directly speeds up the work.
 
 ## Feedback
 
@@ -886,48 +892,24 @@ and stars on GitHub**:
 ## Support the author
 
 <p align="center">
-  <a href="https://boosty.to/boopi_coder"><img alt="Support the author on Boosty" src="docs/images/support-button.png" width="360"></a>
+  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="Support the server — one-time donation" src="docs/images/support-button.png" width="360"></a>
 </p>
 
-boopi_mod is made by one person. If the project is useful to you, support it on **[Boosty](https://boosty.to/boopi_coder)**: it
-directly pays for development time (new animation packs and scenes, F.O.R.G.E., Next-Gen support, other games).
-Questions and requests posted on Boosty are handled **first**.
+boopi_mod is made by one person and it's free. Right now I'm **raising money for a server**: it keeps updates stable,
+hosts the mod catalog and packs on boopi.site, and lets the work on the project go on. Any amount is a real contribution
+to the next versions.
 
-### ₿ Crypto
+### 💸 One-time donation
 
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <img alt="Bitcoin" src="https://img.shields.io/badge/Bitcoin-BTC-f7931a?style=for-the-badge&logo=bitcoin&logoColor=white"><br>
-      <sub>Bitcoin network</sub><br><br>
-      <img alt="QR Bitcoin" src="docs/images/crypto/qr-btc.png" width="170"><br><br>
-      <code>bc1qw082qflzsw7qzpe6ghtv8uj4cga83ehqfxyx6a</code>
-    </td>
-    <td align="center" width="50%">
-      <img alt="Ethereum" src="https://img.shields.io/badge/Ethereum-ETH-627eea?style=for-the-badge&logo=ethereum&logoColor=white"><br>
-      <sub>Ethereum network (ERC-20)</sub><br><br>
-      <img alt="QR Ethereum" src="docs/images/crypto/qr-eth.png" width="170"><br><br>
-      <code>0x69a6Ccd27143F077EBC822f4Af8F8e8dB6371543</code>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="QR: donate via DonationAlerts" src="docs/images/crypto/qr-donationalerts.png" width="190"></a><br>
+  <a href="https://www.donationalerts.com/r/boopi_coder"><b>donationalerts.com/r/boopi_coder</b></a><br>
+  <sub>card and other payment methods — no sign-up needed</sub>
+</p>
 
-Copy an address with the button on the right of the block below:
+A subscription with perks is on **[Boosty](https://boosty.to/boopi_coder)**: questions and requests from there are handled
+**first**. Thank you! 🧡
 
-**Bitcoin (BTC)**
-
-```
-bc1qw082qflzsw7qzpe6ghtv8uj4cga83ehqfxyx6a
-```
-
-**Ethereum (ETH, ERC-20)**
-
-```
-0x69a6Ccd27143F077EBC822f4Af8F8e8dB6371543
-```
-
-> [!NOTE]
-> Send only on the matching network: BTC to the Bitcoin address, ETH and ERC-20 tokens to the Ethereum address. A transfer on another network may be lost. Thank you for the support! 🧡
 
 ## License and credits
 
