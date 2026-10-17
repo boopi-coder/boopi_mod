@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img alt="версия 0.2.0 beta" src="https://img.shields.io/badge/версия-0.2.0%20beta-3cff6b?style=flat-square">
+  <img alt="версия 0.2.1 beta" src="https://img.shields.io/badge/версия-0.2.1%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="Звёзды на GitHub" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20%D0%B7%D0%B2%D1%91%D0%B7%D0%B4%D1%8B&color=f2b705"></a>
   <img alt="Fallout 4 1.10.163 Old-Gen" src="https://img.shields.io/badge/Fallout%204-1.10.163%20Old--Gen-f2b705?style=flat-square">
   <img alt="Windows 10/11 x64" src="https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-0078d4?style=flat-square">
@@ -27,7 +27,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.2.0 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.2.0%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.2.1 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.2.1%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Поддержать автора на Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -44,7 +44,7 @@
 </p>
 
 > [!WARNING]
-> **Это бета (0.2.0).** Возможны неточности и баги — пожалуйста, пишите о них, чтобы я мог оперативно исправить:
+> **Это бета (0.2.1).** Возможны неточности и баги — пожалуйста, пишите о них, чтобы я мог оперативно исправить:
 > [откройте issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose) (шаблон подскажет, что приложить) — я читаю всё.
 > **Жду обратной связи: о проблемах и идеях — будем решать.**
 
@@ -177,6 +177,11 @@
 ## Что нового
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="Что нового" width="100%"></p>
+
+**0.2.1** — исправления: старт «Колыбельной» после капсулы снова работает (окно S.P.E.C.I.A.L., управление, звук),
+«всё тело от первого лица» удалено совсем; обновления программы и наших модов проверяются при каждом запуске и каждые
+30 минут, окно «Что нового» ставит их одной кнопкой прямо в игру; G.A.M. и F.O.R.G.E. заполняют всё окно, границы панелей
+перетаскиваются, импорт удобнее, сообщения на русском.
 
 **0.2.0** — F.O.R.G.E.: чистый каталог, оружие из деталей, перекраска для одной вещи или одного человека, цвета палитры, одежда на скелете, генератор карт нормалей и блеска, «Перечитать изменённый PNG», шаблон UV и экспорт OBJ/GLB, **свои 3D-модели в игру как объекты мастерской**; G.A.M.: аудит целиком (без белого экрана, устойчивые прогоны ИИ, ИИ-аниматор первым, готовые позы, числа и привязка, таймлайн с группами и масштабом, импорт «сначала выбор», превью в GIF/WebM/PNG, быстрая библиотека) и **рост ролей в игре** (G.A.M. 0.6.1); липсинк с плавными звуками и мимикой (BoopiUI 1.3.0), Higgs TTS 3 и автоматический образец голоса; Студия скриптов: все исправления аудита; живые места: парные сцены, столы в «Ред Рокете», места живее и без паков; **Skyrim SE (бета)**: свой читатель архивов, скелет из игры, GAM for Skyrim; обновления проверяются при каждом запуске. [Заметки к 0.2.0](docs/release/v0.2.0.md).
 
@@ -609,8 +614,8 @@ Skyrim Special Edition в 0.2.0 — первый шаг от «фундамен�
 
 ### Шаг 0. Скачать и распаковать
 
-1. Скачайте **`boopi_mod-0.2.0-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   и сверьте SHA-256 с файлом `SHA256SUMS.txt` из того же релиза (для 0.2.0 это `3990f910b897f091d6852ed5fbb3a7e419c45139a0be3479a77b67fe0e10a267`).
+1. Скачайте **`boopi_mod-0.2.1-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   и сверьте SHA-256 с файлом `SHA256SUMS.txt` из того же релиза (для 0.2.1 это `6db7088d66073a2255e92d6b50fb750ceafb15e1dad30219f1a89b36cefa4ae9`).
 2. Распакуйте в **короткий путь**, например `C:\Games\boopi_mod` (не в «Загрузки» и не в глубокие папки: Windows не
    запускает программы с путём длиннее 260 символов).
 3. Запустите **`boopi_mod.exe`** — приложение само поднимет ядро. При первом запуске выберите язык и игру (играбельна
@@ -677,7 +682,7 @@ Fix, MCM, Baka ScrapHeap и наши части. Что скачивается �
 1. Скорее всего, антивирус убрал `core\oldgenai-core.exe` в карантин. Это ложная тревога: ядро — неподписанная программа
    на Python, а такие некоторые антивирусы помечают по шаблону.
 2. Скачивайте архив только со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest) и проверьте
-   SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.2.0-win-x64.zip`). Для 0.2.0 должно быть `3990f910b897f091d6852ed5fbb3a7e419c45139a0be3479a77b67fe0e10a267`.
+   SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.2.1-win-x64.zip`). Для 0.2.1 должно быть `6db7088d66073a2255e92d6b50fb750ceafb15e1dad30219f1a89b36cefa4ae9`.
 3. Верните файл из карантина или добавьте папку boopi_mod в исключения антивируса и распакуйте архив заново.
 4. Распаковывайте в обычную папку (не в Program Files) и не запускайте прямо из архива.
 5. Напишите, какой у вас антивирус и как он назвал угрозу, — я отправлю им ложное срабатывание.

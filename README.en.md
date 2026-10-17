@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img alt="version 0.2.0 beta" src="https://img.shields.io/badge/version-0.2.0%20beta-3cff6b?style=flat-square">
+  <img alt="version 0.2.1 beta" src="https://img.shields.io/badge/version-0.2.1%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20stars&color=f2b705"></a>
   <img alt="Fallout 4 1.10.163 Old-Gen" src="https://img.shields.io/badge/Fallout%204-1.10.163%20Old--Gen-f2b705?style=flat-square">
   <img alt="Windows 10/11 x64" src="https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-0078d4?style=flat-square">
@@ -27,7 +27,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.2.0 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.2.0%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.2.1 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.2.1%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Support the author on Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -44,7 +44,7 @@
 </p>
 
 > [!WARNING]
-> **This is a beta (0.2.0).** Expect rough edges and bugs — please report them so I can fix them quickly:
+> **This is a beta (0.2.1).** Expect rough edges and bugs — please report them so I can fix them quickly:
 > [open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose) (the template tells you what to attach) — I read everything.
 > **Feedback on problems and ideas is very welcome — we'll sort it out.**
 
@@ -177,6 +177,11 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
 ## What is new
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="What is new" width="100%"></p>
+
+**0.2.1** — fixes: the "Lullaby" start after the pod works again (the S.P.E.C.I.A.L. form, movement, sound), the
+first-person full body is removed completely; the app and our mods are checked on every start and every 30 minutes,
+and the "What's new" window installs them into the game with one button; G.A.M. and F.O.R.G.E. fill the whole window,
+pane borders can be dragged, Import is easier and its messages are in your language.
 
 **0.2.0** — F.O.R.G.E.: a clean catalog, weapons from parts, recolouring for one item or one person, palette colours, clothes on the skeleton, a generator of normal and gloss maps, "Re-read the changed PNG", a UV template and OBJ/GLB export, **your own 3D models into the game as workshop objects**; G.A.M.: a full audit (no white screen, robust AI runs, the AI animator first, ready poses, numbers and snapping, a timeline with groups and zoom, import "pick first", previews as GIF/WebM/PNG, a fast library) and **role height in the game** (G.A.M. 0.6.1); lip sync with smooth sounds and facial expression (BoopiUI 1.3.0), Higgs TTS 3 and an automatic voice sample; Script Studio: every fix of the audit; living places: pair scenes, tables in the Red Rocket, places livelier even without packs; **Skyrim SE (beta)**: our own archive reader, the skeleton from the game, GAM for Skyrim; updates checked on every start. [0.2.0 notes](docs/release/v0.2.0.md).
 
@@ -619,8 +624,8 @@ The full list is in the [release notes](docs/release/v0.1.0.md#known-limitations
 
 ### Step 0. Download and unpack
 
-1. Download **`boopi_mod-0.2.0-win-x64.zip`** from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   page and compare its SHA-256 with `SHA256SUMS.txt` from the same release (for 0.2.0 it is `3990f910b897f091d6852ed5fbb3a7e419c45139a0be3479a77b67fe0e10a267`).
+1. Download **`boopi_mod-0.2.1-win-x64.zip`** from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   page and compare its SHA-256 with `SHA256SUMS.txt` from the same release (for 0.2.1 it is `6db7088d66073a2255e92d6b50fb750ceafb15e1dad30219f1a89b36cefa4ae9`).
 2. Unpack to a **short path** such as `C:\Games\boopi_mod` (not into "Downloads" or deep folders: Windows will not run
    programs whose path is longer than 260 characters).
 3. Run **`boopi_mod.exe`** — the app starts the core by itself. On the first start choose your language and game (Fallout 4
@@ -688,7 +693,7 @@ it") — [Guides → If the core does not respond](instructions/en/README.md#if-
 1. Your antivirus most likely moved `core\oldgenai-core.exe` to quarantine. It's a false alarm: the core is an unsigned
    program built with Python, and some antiviruses flag those by pattern.
 2. Download the archive only from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest) page and check
-   its SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.2.0-win-x64.zip`). For 0.2.0 it must be `3990f910b897f091d6852ed5fbb3a7e419c45139a0be3479a77b67fe0e10a267`.
+   its SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.2.1-win-x64.zip`). For 0.2.1 it must be `6db7088d66073a2255e92d6b50fb750ceafb15e1dad30219f1a89b36cefa4ae9`.
 3. Restore the file from quarantine or add the boopi_mod folder to your antivirus exclusions, then unzip the archive again.
 4. Unzip to a normal folder (not Program Files) and don't run it from inside the zip.
 5. Tell me which antivirus it was and the detection name — I'll report the false positive.

@@ -9,7 +9,7 @@
 > that you can share as a single file.
 
 > [!WARNING]
-> **This is a beta (0.2.0):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
+> **This is a beta (0.2.1):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
 > problems and ideas is very welcome. [Open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose)
 
 ## Where to start
@@ -110,6 +110,33 @@ How to set it up:
     Text-to-speech (Edge, ElevenLabs, OpenAI, XTTS-v2, Silero), voice cloning, speech recognition and push-to-talk.</td>
   </tr>
 </table>
+
+## Updates
+
+The app keeps everything fresh by itself: **at every start** it checks for a new version of the app (GitHub releases)
+and new content of our mods (packs from boopi.site, signature checked), then **every 30 minutes** while it is open. No
+network — the check quietly tries again in a few minutes, nothing hangs.
+
+When something new is found, the **"What's new"** window opens:
+
+- **a new app version** — the release's list of changes; **"Install"** downloads it, **"Restart and update"** installs
+  it (your data in `%APPDATA%\BoopiMod` is never touched);
+- **new in our mods** — what changed in each pack; **"Install"** downloads the packs, the app reads them **at once** (no
+  restart) and right away updates our mods in the game (the OldGenAI and G.A.M. plugins, Boopi Corp., the posters, the
+  map icons…) through the mod manager's journal: the old version's files are replaced by the new ones;
+- **our mods in the game are older than the app** (after an app update, say) — the same update of the mods in the game;
+- **an old copy of one of our files sits in the game** that the app no longer counted as its own (say `OldGenStory.esp`
+  or `BoopiCorp.esp` installed before the journal, or a file the game held open during an earlier update) — the window
+  lists such files and **"Install"** replaces them with the mod's version. The app knows its files by their content: it
+  must be the exact build of one of our versions. The old copy is kept in the journal and comes back if the mod is removed;
+- **your own copy is used instead of the mod's file** (you edited `OldGenStory.esp` in an editor, or put someone else's
+  file with the same name there) — the app **never touches it** by itself and only asks: "Your own copy of … is used
+  instead of the file of … — replace it with the mod's version?". **"Replace with the mod's version"** swaps that one file
+  (through the journal: your file is kept and comes back when the mod is removed), **"Later"** keeps yours.
+
+While **Fallout 4 is running**, nothing in the game is touched: the window asks you to close the game — close it and
+press **"Retry"**. **"Later"** hides the window until a check finds something newer still. To check by hand: Settings →
+About → "Check now".
 
 ## If the core does not respond
 
