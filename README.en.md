@@ -891,25 +891,28 @@ and stars on GitHub**:
 
 ## Support the author
 
-<p align="center">
-  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="Support the server — one-time donation" src="docs/images/support-button.png" width="360"></a>
-</p>
+boopi_mod is made by one person and it's free. There are two ways to support it — pick the one that suits you:
 
-boopi_mod is made by one person and it's free. Right now I'm **raising money for a server**: it keeps updates stable,
-hosts the mod catalog and packs on boopi.site, and lets the work on the project go on. Any amount is a real contribution
-to the next versions.
+<table>
+  <tr>
+    <td align="center" width="50%" valign="top">
+      <h3>🧡 Boosty subscription</h3>
+      <a href="https://boosty.to/boopi_coder"><img alt="Support the author on Boosty" src="docs/images/support-button.png" width="300"></a><br><br>
+      Regular support for the author: it pays for development time — new animation packs and scenes, F.O.R.G.E.,
+      every Fallout 4 version and other games. Questions and requests from Boosty are handled <b>first</b>.<br><br>
+      <a href="https://boosty.to/boopi_coder"><b>boosty.to/boopi_coder</b></a>
+    </td>
+    <td align="center" width="50%" valign="top">
+      <h3>💸 One-time donation for the server</h3>
+      <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="QR: donate via DonationAlerts" src="docs/images/crypto/qr-donationalerts.png" width="170"></a><br><br>
+      A fund for a <b>server</b>: stable updates, the mod catalog and packs on boopi.site, and keeping the work going.
+      Card and other payment methods — no sign-up.<br><br>
+      <a href="https://www.donationalerts.com/r/boopi_coder"><b>donationalerts.com/r/boopi_coder</b></a>
+    </td>
+  </tr>
+</table>
 
-### 💸 One-time donation
-
-<p align="center">
-  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="QR: donate via DonationAlerts" src="docs/images/crypto/qr-donationalerts.png" width="190"></a><br>
-  <a href="https://www.donationalerts.com/r/boopi_coder"><b>donationalerts.com/r/boopi_coder</b></a><br>
-  <sub>card and other payment methods — no sign-up needed</sub>
-</p>
-
-A subscription with perks is on **[Boosty](https://boosty.to/boopi_coder)**: questions and requests from there are handled
-**first**. Thank you! 🧡
-
+Thank you for your support! 🧡
 
 ## License and credits
 

@@ -878,25 +878,28 @@ SKSE64 GAM for Skyrim, который играет сцены G.A.M. (он со�
 
 ## Поддержать автора
 
-<p align="center">
-  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="Поддержать сервер — разовый донат" src="docs/images/support-button.png" width="360"></a>
-</p>
+boopi_mod делает один человек, и программа бесплатна. Поддержать можно двумя способами — выберите удобный:
 
-boopi_mod делает один человек, и программа бесплатна. Сейчас я **собираю на сервер**: он нужен для стабильных
-обновлений, каталога модов и паков на boopi.site и для того, чтобы работа над проектом продолжалась. Любая сумма — это
-реальный вклад в следующие версии.
+<table>
+  <tr>
+    <td align="center" width="50%" valign="top">
+      <h3>🧡 Подписка на Boosty</h3>
+      <a href="https://boosty.to/boopi_coder"><img alt="Поддержать автора на Boosty" src="docs/images/support-button.png" width="300"></a><br><br>
+      Регулярная поддержка автора: она оплачивает время на развитие — новые паки анимаций и сцены, F.O.R.G.E.,
+      поддержку всех версий Fallout 4 и других игр. Вопросы и пожелания с Boosty разбираются <b>в первую очередь</b>.<br><br>
+      <a href="https://boosty.to/boopi_coder"><b>boosty.to/boopi_coder</b></a>
+    </td>
+    <td align="center" width="50%" valign="top">
+      <h3>💸 Разовый донат на сервер</h3>
+      <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="QR: донат через DonationAlerts" src="docs/images/crypto/qr-donationalerts.png" width="170"></a><br><br>
+      Сбор на <b>сервер</b>: стабильные обновления, каталог модов и паки на boopi.site, продолжение работы над
+      проектом. Карта, СБП и другие способы — без регистрации.<br><br>
+      <a href="https://www.donationalerts.com/r/boopi_coder"><b>donationalerts.com/r/boopi_coder</b></a>
+    </td>
+  </tr>
+</table>
 
-### 💸 Разовый донат
-
-<p align="center">
-  <a href="https://www.donationalerts.com/r/boopi_coder"><img alt="QR: донат через DonationAlerts" src="docs/images/crypto/qr-donationalerts.png" width="190"></a><br>
-  <a href="https://www.donationalerts.com/r/boopi_coder"><b>donationalerts.com/r/boopi_coder</b></a><br>
-  <sub>карта, СБП и другие способы оплаты — без регистрации</sub>
-</p>
-
-Подписка с бонусами — на **[Boosty](https://boosty.to/boopi_coder)**: вопросы и пожелания оттуда разбираются
-**в первую очередь**. Спасибо! 🧡
-
+Спасибо за поддержку! 🧡
 
 ## Лицензия и благодарности
 
