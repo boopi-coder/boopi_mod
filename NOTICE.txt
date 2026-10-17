@@ -29,6 +29,12 @@ Shipped in the release archive (each under its own license):
     rsm-mmio - Copyright (c) 2021 Ryan McKenzie, MIT;
     Boost header libraries (boost-stl-interfaces and the headers it needs) - Boost Software License 1.0,
         https://www.boost.org/LICENSE_1_0.txt (no notice is needed in compiled form).
+- Our SKSE plugin for Skyrim Special Edition (GAMSkyrim.dll, "GAM for Skyrim") is linked statically with:
+    CommonLibSSE-NG - Copyright (c) 2018 Ryan-rsm-McKenzie (and the CommonLibSSE-NG contributors), MIT.
+        https://github.com/CharmedBaryon/CommonLibSSE-NG (its Address Library based relocation and the game's class
+        layouts; the plugin's entry point uses its declaration macros);
+    fmt and spdlog (as above, MIT); rapidcsv - Copyright (c) 2017, Kristofer Berggren, BSD 3-Clause License (header
+        used by CommonLibSSE-NG; the license text is below).
   The plugins use the static Microsoft Visual C++ runtime (/MT, redistributable code under the Microsoft Visual Studio
   terms). The in-game menus (BoopiHUD.swf, BoopiInput.swf) are compiled from our ActionScript with the Apache Flex SDK
   (Apache License 2.0); only the compiler's metadata ends up in the SWF, no SDK classes.
@@ -44,7 +50,7 @@ Shipped in the release archive (each under its own license):
   FreeType (FreeType License), Little CMS (MIT), OpenJPEG (BSD-2), HarfBuzz (MIT), Brotli (MIT).
 
 NOT shipped — downloaded by the user from the official sources (the app only helps):
-F4SE, Address Library, Buffout 4 NG, Unofficial Fallout 4 Patch (UFO4P), High FPS Physics Fix, Mod Configuration Menu,
+SKSE64 and Address Library for SKSE plugins (for GAM for Skyrim), F4SE, Address Library, Buffout 4 NG, Unofficial Fallout 4 Patch (UFO4P), High FPS Physics Fix, Mod Configuration Menu,
 Baka ScrapHeap and any other third-party mod.
 
 Optional engines installed on demand, after you accept their licenses:
@@ -53,15 +59,17 @@ Optional engines installed on demand, after you accept their licenses:
 - Piper (MIT) and its voices (each voice under its own license, see the voice card).
 - faster-whisper (MIT) with Whisper models (MIT, OpenAI). Microsoft Edge TTS (online service, Microsoft terms).
 
-Fallout and related marks are trademarks of Bethesda Softworks / ZeniMax Media. boopi_mod is not affiliated with them.
+Fallout, The Elder Scrolls, Skyrim and related marks are trademarks of Bethesda Softworks / ZeniMax Media. boopi_mod is not
+affiliated with them.
 
 =======================================================================
 
 License texts / тексты лицензий
 
-CommonLibF4, fmt, spdlog and rsm-mmio are distributed under the MIT License. The copyright lines are:
+CommonLibF4, CommonLibSSE-NG, fmt, spdlog and rsm-mmio are distributed under the MIT License. The copyright lines are:
 
     CommonLibF4: Copyright (c) 2019 ryan-rsm-mckenzie
+    CommonLibSSE-NG: Copyright (c) 2018 Ryan-rsm-McKenzie
     fmt:         Copyright (c) 2012 - present, Victor Zverovich and {fmt} contributors
     spdlog:      Copyright (c) 2016 - present, Gabi Melman and spdlog contributors
     rsm-mmio:    Copyright (c) 2021 Ryan McKenzie
@@ -78,3 +86,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+rapidcsv is distributed under the BSD 3-Clause License:
+
+    Copyright (c) 2017, Kristofer Berggren
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+    following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+      disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote
+      products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+    WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

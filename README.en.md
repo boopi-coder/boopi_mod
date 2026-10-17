@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img alt="version 0.1.9 beta" src="https://img.shields.io/badge/version-0.1.9%20beta-3cff6b?style=flat-square">
+  <img alt="version 0.2.0 beta" src="https://img.shields.io/badge/version-0.2.0%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20stars&color=f2b705"></a>
   <img alt="Fallout 4 1.10.163 Old-Gen" src="https://img.shields.io/badge/Fallout%204-1.10.163%20Old--Gen-f2b705?style=flat-square">
   <img alt="Windows 10/11 x64" src="https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-0078d4?style=flat-square">
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.1.9 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.1.9%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.2.0 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.2.0%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Support the author on Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -43,7 +43,7 @@
 </p>
 
 > [!WARNING]
-> **This is a beta (0.1.9).** Expect rough edges and bugs — please report them so I can fix them quickly:
+> **This is a beta (0.2.0).** Expect rough edges and bugs — please report them so I can fix them quickly:
 > [open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose) (the template tells you what to attach) — I read everything.
 > **Feedback on problems and ideas is very welcome — we'll sort it out.**
 
@@ -62,13 +62,14 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
 - **🗣 Win people over in your own words.** Switch on AI dialogue and just type or say whatever you want. The person answers
   in character and makes up their own mind. [More](#ai-help-and-ai-dialogue)
 - **🌃 Nightlife.** The Black Acorn night club with a singer you can win over, a VIP room and rooms upstairs, Boopi Corp. and
-  its Gen 4 synths, and the Red Rocket turned into a bar. Our animations will bring the people there to life (soon, as
-  separate mods): dancing, cards, work. [More](#boopi-corp-and-the-black-acorn)
+  its Gen 4 synths, and the Red Rocket turned into a bar. The waitresses already walk their rounds, guests drink coffee and
+  smoke, card players sit at tables; pair scenes and dancing come alive with our animations (soon, as separate mods).
+  [More](#boopi-corp-and-the-black-acorn)
 - **🎬 Romantic and intimate scenes on our own engine.** G.A.M. plays scenes for two or more — and you can make your own:
   describe the scene in a sentence and the AI animator builds it. [More](#gam-create-and-import-animations)
-- **🧱 F.O.R.G.E.** A new module: look at the game's 3D objects and recolour their textures without leaving the app;
-  import your own models and whole texture mods.
-  [More](#forge-3d-objects-and-textures)
+- **🧱 F.O.R.G.E.** A workshop for 3D objects and textures: look at the game's objects in 3D, recolour them (for everyone,
+  for one item or for one person), build weapons from parts and put **your own 3D models** into the game as workshop
+  objects. [More](#forge-3d-objects-and-textures)
 - **🛠 Make your own and share it.** Dialogues, quests and scenes in the Studio, packed into one file that anyone installs
   in one click. [More](#script-studio-dialogues-scenes-and-your-own-mod)
 
@@ -89,7 +90,7 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
     <td width="33%" align="center" valign="top">
       <a href="#gam-create-and-import-animations"><img src="docs/images/icons/gam.png" width="72" alt=""></a><br>
       <b><a href="#gam-create-and-import-animations">G.A.M.: your own animations</a></b><br>
-      <sub>3D editor with IK handles, an AI animator and AI polish, sounds on the timeline, scenes play in the game</sub>
+      <sub>3D editor with IK handles, an AI animator and AI polish, sounds on the timeline, role height, scenes play in the game</sub>
     </td>
   </tr>
   <tr>
@@ -123,7 +124,7 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
     <td width="33%" align="center" valign="top">
       <a href="#voice-speech-synthesis-and-recognition"><img src="docs/images/icons/voice.png" width="72" alt=""></a><br>
       <b><a href="#voice-speech-synthesis-and-recognition">Voice</a></b><br>
-      <sub>Text-to-speech, lip sync, voice cloning, speech recognition, push-to-talk</sub>
+      <sub>Text-to-speech, lip sync with facial expression, voice cloning, speech recognition, push-to-talk</sub>
     </td>
   </tr>
   <tr>
@@ -147,7 +148,7 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
     <td width="33%" align="center" valign="top">
       <a href="#forge-3d-objects-and-textures"><img src="docs/images/icons/forge.png" width="72" alt=""></a><br>
       <b><a href="#forge-3d-objects-and-textures">F.O.R.G.E.</a></b><br>
-      <sub>The game's 3D objects and their textures: catalog, viewer, recolouring with rollback</sub>
+      <sub>The game's 3D objects and their textures: catalog, weapons from parts, recolouring for an item or a person, your own models into the game</sub>
     </td>
     <td width="33%"></td>
     <td width="33%"></td>
@@ -161,7 +162,7 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
 | Installing mods and load order | by hand | managers (MO2, Vortex): you arrange the order | base pack in one click, journal and rollback, smart sorting and **AI sort** |
 | Your own animation | no | external 3D packages, converters, hand-built files | a **3D editor inside** with IK handles and an AI animator |
 | Importing ready-made animations (Fallout 4 HKX animations and mod idles, Skyrim) | no | by hand, through converters | "drop it, it plays", retargeted onto the Fallout 4 skeleton |
-| The game's textures and 3D models | Creation Kit, external editors | format converters, manual paths | **F.O.R.G.E.** inside: a catalog, a 3D view, recolouring converted to the game's format, with rollback |
+| The game's textures and 3D models | Creation Kit, external editors | format converters, manual paths | **F.O.R.G.E.** inside: a catalog, a 3D view, recolouring converted to the game's format, with rollback, your own model into the game in one click |
 | Your own dialogues and scenes | Creation Kit | CK, Papyrus scripts | **Script Studio**, no programming, branches right on the game's wheel |
 | AI help while creating | no | no | an AI assistant drafts a dialogue branch and builds a scene; the "Check in AI mode" chat |
 | Sharing your mod | an archive and instructions | an archive and instructions | **a single `.ogmod` file**: installs in one click and is removed as one |
@@ -175,6 +176,8 @@ together by a **mod manager** that installs and runs your mods, prepares the gam
 ## What is new
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="What is new" width="100%"></p>
+
+**0.2.0** — F.O.R.G.E.: a clean catalog, weapons from parts, recolouring for one item or one person, palette colours, clothes on the skeleton, a generator of normal and gloss maps, "Re-read the changed PNG", a UV template and OBJ/GLB export, **your own 3D models into the game as workshop objects**; G.A.M.: a full audit (no white screen, robust AI runs, the AI animator first, ready poses, numbers and snapping, a timeline with groups and zoom, import "pick first", previews as GIF/WebM/PNG, a fast library) and **role height in the game** (G.A.M. 0.6.1); lip sync with smooth sounds and facial expression (BoopiUI 1.3.0), Higgs TTS 3 and an automatic voice sample; Script Studio: every fix of the audit; living places: pair scenes, tables in the Red Rocket, places livelier even without packs; **Skyrim SE (beta)**: our own archive reader, the skeleton from the game, GAM for Skyrim; updates checked on every start. [0.2.0 notes](docs/release/v0.2.0.md).
 
 **0.1.9** — F.O.R.G.E.: the game's 3D objects and textures with recolouring and rollback; sounds on the G.A.M. timeline (G.A.M. 0.5.0); a curve editor, ghosts, trails and before/after comparison; AI polish for animations and a motion check; living places: the system that makes the people of the club, the Red Rocket and the HQ move with G.A.M. scenes is in place and comes alive with our animations (out separately, soon); lip sync and "Voice all" in the Studio; a game picker and colour themes (only Fallout 4 is playable for now); a language choice on the first start. [0.1.9 notes](docs/release/v0.1.9.md).
 
@@ -234,35 +237,50 @@ Details: [Install and first run](#install-and-first-run).
 
 - **3D editor:** timeline, bones, the Rotate / Move / Character / Heading tools, **IK handles** on hands, feet and head,
   lighting, several actors, creatures, furniture and props. What you see in the editor is what plays in the game.
-- **AI animator:** describe a scene in a sentence ("make him wave in greeting", "they embrace and sway") and it builds it
-  step by step; you see every step and polish the result by hand. It keeps elbows out of bodies, wrists natural and palms
-  on the body they touch.
+- **AI animator** (in 0.2.0 it comes first in the inspector, and on an empty scene it tells you where to start): describe a
+  scene in a sentence ("make him wave in greeting", "they embrace and sway") and it builds it step by step; you see every
+  step and polish the result by hand. It keeps elbows out of bodies, wrists natural and palms on the body they touch. One
+  bad item in the model's answer no longer breaks the whole run.
+- **Ready poses without an AI key:** standing, sitting on a chair, kneeling, crouching, sitting on the floor, lying — feet on
+  the floor.
 - **Anatomy check:** arms going through bodies (crossed arms are not an error), twisted wrists, hands that miss, props out
-  of the hand, bodies inside furniture, sliding feet — before you ever load the game. A pair can be any combination of sexes.
+  of the hand, bodies inside furniture, sliding feet — before you ever load the game. A pair can be any combination of
+  sexes. The messages are in the interface language.
 - **AI polish in one click:** smooth easing, anticipation and overshoot, arcs instead of straight lines, weight shifts,
   breathing and sway, a loop without a seam and fewer keys. Touches stay where they are (feet on the floor, a palm on the
   body); the result is one undo step.
 - **Motion check:** jerks, balance, shaking contacts, "woodenness" — a 0–100 score before and after. A visual judge looks
   at a storyboard of the finished scene if a model that can see images is connected. The AI animator runs the loop
   "build → check → polish → fix" itself.
-- **Editing tools:** undo/redo, multi-select keys, copy a pose onto another actor, mirror, stretch or squeeze time, fix
-  the loop seam, a key optimiser, fullscreen.
+- **Editing tools:** undo/redo, multi-select keys, copy a pose onto another actor, mirror, stretch or squeeze time (the
+  sounds move along), fix the loop seam, a key optimiser, fullscreen.
+- **Numbers and snapping:** a key card with time, transition, weight and value in numbers; a role's place and heading in
+  numbers, "Face towards", "Stand at a distance"; "Angle step" and "Grid" for the rings and for dragging.
+- **Timeline:** tracks grouped by role and body part and foldable, a bone search, zoom with `Ctrl`+wheel, "Fit"; the editor
+  fills the window height at both 1080p and 720p.
 - **Hand-polishing tools:** a curve editor (Bezier handles, ease), "Ghosts" of neighbouring frames, "Trails" of hands, feet
   and head, "Compare" before/after (hold **B**), speed 0.25×–2× and frame steps.
-- **Couples of different height and fingers:** "Role height" 0.8–1.2; each finger curls and the grip follows the thickness
+- **Role height — in the editor and in the game:** "Role height" 0.5–1.5; in the game (G.A.M. 0.6.1) a pair is fitted to
+  the actors' real heights — places move apart, and the hands are led by IK to the spot on the partner's body they touched;
+  a scene can also give an actor the role's height for its duration. Each finger curls and the grip follows the thickness
   of the object.
 - **Face and camera tracks** that play in the game.
 - **Sounds on the timeline:** drop your own sounds (wav, ogg, mp3, flac, m4a) onto a role's or the scene's lane — they play
   with the scene, both in the preview and in the game, from the actor's position. Trim, volume, waveform; 22 sounds of our
   own (claps, steps, a door, glass…) are included. Sounds travel inside the `.ogmod`. Needs G.A.M. 0.5.0.
 - **▶ In game:** plays the scene in your running game on the hero or the NPC in front of you — no install, no restart.
+- **Previews as GIF, WebM and PNG** right from the editor.
 - **Scene events:** a sound, a line, an expression, an outfit change, a quest stage, your own script events.
-- **Library:** search, folders and packs, favourites, previews, version history.
+- **Library:** search, folders and packs, favourites, previews, version history; fast — a list of 3000 scenes opens in
+  0.15 s.
 - **Import** animations you own: Fallout 4 mod animations (HKX, idles), **OAR** gait sets and **Skyrim SE** animations are
   retargeted onto the Fallout 4 skeleton and become tagged scenes you can edit; clips of creatures and robots land on
-  their own skeletons. Rights to imported animations stay with their authors.
-- **Other games:** "Other games" in the G.A.M. panel saves a scene for Skyrim SE (or for the shared skeleton) and takes a
-  scene of another game back.
+  their own skeletons. The source is only scanned first — you tick what to convert, and the job runs in the background and
+  can be stopped. Rights to imported animations stay with their authors.
+- **Other games:** "Other games" in the G.A.M. panel saves a scene for Skyrim SE (or for the shared skeleton), takes a
+  scene of another game back and installs a scene into [Skyrim SE](#skyrim-se-beta).
+- **Robustness:** a damaged scene is mended on opening, and a failing panel shows a "Try again" card instead of a white
+  screen.
 - **Scenes work everywhere:** in dialogues and scripts (gestures, scenes, camera) and in "Life".
 
 <p align="center"><img src="docs/images/gam-library-import.en.png" alt="The scene library and pack import" width="560"></p>
@@ -273,31 +291,52 @@ Guides: [import and the editor](instructions/en/ANIMATION_IMPORT.md) · [animati
 
 ## F.O.R.G.E.: 3D objects and textures
 
-**F.O.R.G.E.** is a new module (since 0.1.9, a menu entry right after G.A.M.): look at any object of the game in 3D and
-recolour its textures without leaving the app.
+**F.O.R.G.E.** is the module for the game's 3D objects and textures (a menu entry right after G.A.M.): look at any object in
+3D, recolour it for everyone, for one item or for one person, build weapons from parts and put your own model into the
+game — without leaving the app.
 
 <p align="center"><img src="docs/images/forge-3d-catalog.en.webp" alt="F.O.R.G.E.: the game catalog and a dress in 3D with its real textures" width="880"></p>
 
-- **The game's catalog:** furniture, items, weapons, clothing and armour, people and creatures — named in your language and
-  searchable; the "Files" tab lists every model. In 3D — the real textures (colour, normal, gloss, glow), click to pick a
-  part, a wireframe.
-- **Recolouring:** "Save as PNG" → edit in any editor → "New picture…". The app converts it to the game's format by itself
-  (the original's format and mips are kept, a normal map stays a normal map); you see the result at once, and "Show
-  original" compares.
-- **Two modes:** "texture file" (changes it everywhere) and "this material only" (only the chosen thing is recoloured).
+- **The game's catalog:** furniture, items, weapons, clothing and armour, people and creatures — named in your language.
+  Technical records are hidden, there is a filter by plugin and sorting, search ignores case, "ё" and hyphens; the "Files"
+  tab lists every model. Keyboard control, "Rescan" after the load order changes. In 3D — the real textures (colour,
+  normal, gloss, glow), click to pick a part, an eye on every part, a wireframe.
+- **Weapons from parts:** the "Build" panel — any variant of a weapon from the game and any part in each slot from your
+  load order; parts sit by their attach points, and each one can be recoloured. "First person" — for weapons and clothes
+  whose first-person model the game keeps.
+- **Palette colours and clothes on the skeleton:** hair and armour show in their real colour; clothes are put on the G.A.M.
+  skeleton — in the "As made" pose, "Standing" or in a frame of any of your scenes.
+- **Recolouring:** "Save as PNG" → edit in any editor → "New picture…" (or the app re-reads the changed PNG by itself). It
+  converts the picture to the game's format (the original's format and mips are kept, a normal map stays a normal map, the
+  size never changes silently); you see the result at once, and "Show original" compares. There are no limits on your own
+  textures.
+- **Five scopes:** the texture file (everywhere) · this material only (the default) · this outfit only · this person only ·
+  this person's skin only. The records for an outfit or a person go into a small plugin, `BoopiForge.esp`, which is
+  installed and removed together with the mod.
+- **Maps from the main texture:** a generator makes relief (a normal map), reflections (specular/gloss, with presets for
+  cloth, leather, metal, wood…), cavities and glow — with a preview on the model; the result is an ordinary draft.
 - **"My textures"** go in as a mod through the journal: remove an entry or the whole mod and the files come back byte for
-  byte. Install them with the game closed.
+  byte. They stay fast on thousands of entries: thumbnails, search, groups. "Apply all drafts" installs everything in one
+  go. Install them with the game closed.
 - **Texture packs `.ogmod`:** share your recolours; a pack carries only your pictures. They install by drag and drop or from
   boopi.site.
 - **Import a whole texture mod:** drop a folder or a .zip laid out like `Textures\…` onto the page — before anything goes
   in you see which textures replace the game's and which the game doesn't have; "Into the game" installs it all in one
   click through the journal, and it comes out the same way.
-- **Model import:** OBJ (with MTL and pictures), glTF/GLB and NIF open right in F.O.R.G.E. — by drag and drop or a button;
-  missing pictures are listed. Putting a new model into the game is not possible yet.
-- **Handy bits:** a dark / grey / light background, a snapshot of the 3D view to PNG, search by name, editor id, form id
-  or model path.
+- **Your own model into the game ("My objects"):** OBJ, glTF or GLB becomes a new static object — the app writes the NIF,
+  the materials, the textures and the collision itself. Units, scale, axis and rotation, a "what the game will see" preview;
+  the object appears in the workshop menu ("Decorations"/"Furniture") through a free recipe and spawns from the console with
+  `player.placeatme`. It comes out through the journal without a trace.
+- **Out to other tools:** a UV template for painting a texture, an export of what you see to OBJ or GLB, a snapshot of the
+  3D view to PNG.
+- **Handy bits:** a dark / grey / light background, drag and drop of models and pictures onto the window, search by name,
+  editor id, form id or model path.
 
 <table>
+  <tr>
+    <td width="50%"><img src="docs/images/forge-person.en.png" alt="This person only: an item changes on one character"></td>
+    <td width="50%"><img src="docs/images/forge-object.en.png" alt="Your own model into the game: the preview and the My objects tab"></td>
+  </tr>
   <tr>
     <td width="50%"><img src="docs/images/forge-3d-retexture.en.webp" alt="Recolouring: a new texture in live preview"></td>
     <td width="50%"><img src="docs/images/forge-3d-import.en.webp" alt="Texture mod import: what fits your game"></td>
@@ -305,6 +344,22 @@ recolour its textures without leaving the app.
 </table>
 
 Guide: [instructions/en/FORGE.md](instructions/en/FORGE.md).
+
+## Skyrim SE: beta
+
+In 0.2.0 Skyrim Special Edition takes its first step from the "foundation" towards playing (a beta). You can choose it in
+"Settings → Games & theme"; the app finds the installed game by itself.
+
+- **Our own reader of Skyrim archives (BSA)** — SE and LE: F.O.R.G.E. and G.A.M. find files in the game's archives.
+- **The skeleton from the game itself:** your Skyrim's `skeleton.nif` is read by our own reader, and G.A.M. scenes are
+  transferred onto exactly that.
+- **GAM for Skyrim** — an SKSE64 plugin (SE 1.5.97 and AE 1.6.x through Address Library) that plays G.A.M. scenes in Skyrim:
+  the console command `gam` (`gam list`, `gam play <scene>`, `gam stop`) and Papyrus. It installs from a button in
+  "Settings → Games & theme" or "Install into Skyrim" in G.A.M. → "Other games".
+- **F.O.R.G.E. for Skyrim:** viewing of models and textures only for now.
+- **Honestly:** this is a beta. The plugin is built and checked without running the game — your reports are needed; scene
+  events, timeline sounds, props and the camera exist only in the Fallout 4 version for now. You download SKSE64 and
+  Address Library yourself.
 
 ## Script Studio: dialogues, scenes and your own mod
 
@@ -318,19 +373,25 @@ Guide: [instructions/en/FORGE.md](instructions/en/FORGE.md).
 </table>
 
 - **Dialogue trees** in forms or YAML: greetings, answers, conditions (SPECIAL, relationship, flags, items, time),
-  outcomes, gestures and G.A.M. scenes right inside a line.
-- **Branch map and checker** that jumps straight to the mistake.
+  outcomes, gestures and G.A.M. scenes right inside a line. Conditions and consequences are proper editors (flags from the
+  file, stages, items and quests by picker), and YAML comments are kept when you edit.
+- **Branch map and checker** that jumps straight to the mistake: triggers are matched against places, items, quests and
+  people the way the build does it; a "greeting that will never be heard" is found too.
 - **Dialogue player:** click through your wheel in the app with a test state — no build, no game.
-- **Triggers:** when the hero enters a place, an hour comes, a timer ends, a quest stage is set, someone is killed or
-  something is used — show a message, start a talk (it can open exactly the tree you chose), play a scene, give a reward,
-  set a flag.
+- **Triggers:** when the hero enters a place, an hour comes, a timer ends, a quest stage is set, someone is killed, an item
+  is picked up or something is used — show a message, start a talk (it can open exactly the tree you chose), play a scene,
+  give a reward, set a flag, show or hide, lock, move, change a faction.
+- **Copy, paste, duplicate** nodes and groups (across files too), **Ctrl+F** over texts and flags, renaming that carries
+  every reference, versions that show what differs.
 - **Your own dialogues for the game's and DLC characters** (Daisy, Vadim, settlers…) — they open first in that person's
   everyday talk.
 - **Branches off the game's wheels:** take a real Fallout 4 conversation and add your own line to its wheel.
 - **Lines from the game itself:** point a reply at a vanilla line and the character says it in their own voice with lip sync.
-- **Voice** from your recordings or a synthetic voice, with lip sync; Papyrus stubs for those who need a script.
-- **"🎙 Voice all":** every line of a file is voiced in one click — a voice for each speaker, progress, lines already
-  recorded are skipped.
+- **Voice** from your recordings or a synthetic voice, with lip sync and facial expression (a "Face" picker per line);
+  Papyrus stubs for those who need a script.
+- **"🎙 Voice all":** every line of a file is voiced in one click — a voice and a voice sample for each speaker, a cost
+  estimate for paid providers, progress; finished recordings of the same text are reused without new voicing, and changed
+  lines are voiced again.
 - **"+ Story":** a ready dialogue with two triggers to start from; an example story in one click.
 - **"Check in AI mode":** chat with your dialogue the way the AI will play it, before the game — it shows which goals and
   flags fired.
@@ -379,9 +440,9 @@ story so far — and the right words can lead to a date or to closeness, if they
   from a DLC — and start a free conversation. They know their faction, place and the quests they're part of.
 - **New in 0.1.8 — outcomes reach the game:** flags, items, quest stages and gestures from an AI conversation now fire in
   the game; "Say your own…" is in every authored dialogue. HUD widgets on **F10**.
-- **New in 0.1.9 — lip sync.** The speaker's lips move with the voice of an AI reply (and with voiced lines of Studio trees):
-  the motion is computed from the recording itself and, when the text is known, from its letters. The switch is
-  `BoopiUI.ini [Audio] bLipSync`.
+- **Lip sync and facial expression (0.1.9, much better in 0.2.0).** The speaker's lips move with the voice of an AI reply
+  and with voiced lines of Studio trees: sounds flow smoothly into each other, and the face plays the line's emotion —
+  brows, eyelids, blinks in the pauses. The switch is `BoopiUI.ini [Audio] bLipSync`.
 - **A modder's own trees** get the AI mode too: the "AI dialogue" section of the studio says who the person is and where
   the conversation should lead.
 
@@ -423,11 +484,17 @@ A new corner of the Commonwealth — living places with their own people and dia
   with her), a dance floor in soft coloured light, a VIP room and cosy rooms upstairs.
 - **The Boopi Corp. HQ** with its Gen 4 synths — each one with her own job, look and story.
 - **The Red Rocket** is now a bar for settlers.
-- **Living places** (the system is in place since 0.1.9): about a hundred people in the club, the bar and the HQ move with
-  G.A.M. scenes — dancers dance with their whole body, guests sit with a cigarette or a drink, card players play cards,
-  bartenders wash glasses, the cleaner scrubs the floor, at the HQ they type at terminals and water the garden. Talk to
-  someone and the scene stops and the conversation opens. The places come fully alive with our animations, which come out
-  as separate mods soon; until then, with no fitting scene a person goes on with what they did before.
+- **Living places:** about a hundred people in the club, the bar and the HQ move with G.A.M. scenes — dancers dance with
+  their whole body, guests sit with a cigarette or a drink, card players play cards, bartenders wash glasses, the cleaner
+  scrubs the floor, at the HQ they type at terminals and water the garden. Talk to someone and the scene stops and the
+  conversation opens.
+- **Pairs (since 0.2.0):** two people of one place can play a scene together — cards across a table, a couple dance, a talk
+  at a table. The mechanism is ready and checked in the game; the pair scenes themselves come with our animations. In the
+  Red Rocket the card players now sit at two tables facing each other.
+- **Alive even without packs:** the club's waitresses walk rounds between the bar and the lounges, "standing" furniture
+  appeared around the guests (coffee, a paper, a cigarette, noodles), and in the evening, 19:00 to 01:00, idlers spread
+  wider — to the bar, the dance floor, other tables. The places come fully alive with our animations, which come out as
+  separate mods soon; until a fitting scene exists, a person is busy with vanilla things.
 - The dates of "Life" take place in real places — a table at the club, for one. These places are also part of the story
   [«Lullaby»](#lullaby-the-new-story).
 
@@ -470,10 +537,15 @@ for you. To understand who you are you must find those who came, and remember th
   </tr>
 </table>
 
-- **Text-to-speech (TTS):** Microsoft Edge TTS works out of the box with no key; ElevenLabs and OpenAI TTS online; XTTS-v2 and Silero locally.
-- **Voice cloning** (XTTS-v2): a clone is made from the game's own lines by an NPC's voice type, or from your recordings.
-- **Lip sync** (since 0.1.9): lips move with any voicing of AI replies and Studio lines — computed from the recording
-  itself, with no outside tools.
+- **Text-to-speech (TTS):** Microsoft Edge TTS works out of the box with no key; ElevenLabs, OpenAI TTS and **Higgs TTS 3**
+  online (Boson AI: the cloud with your own key or your own server, about a hundred languages); XTTS-v2 and Silero locally.
+- **Voice cloning** (XTTS-v2, Higgs TTS 3): a clone is made from the game's own lines by an NPC's voice type, or from your
+  recordings. In the Studio a speaker who is a game NPC or the hero gets **a sample of their own game voice
+  automatically**.
+- **Lip sync** (since 0.1.9, smooth and with facial expression in 0.2.0): lips move with any voicing of AI replies and
+  Studio lines — computed from the recording itself, with no outside tools; the line's emotion, accents, a question and
+  blinks play on the face.
+- **The game's subtitles** show in the right code page (Russian and Polish tables, old code pages included).
 - **Speech recognition (STT):** the built-in faster-whisper (runs locally, on the CPU) or OpenAI Whisper; in the game —
   push-to-talk on **V**.
 - The heavy engines are not part of the app: they install on a button, and the XTTS and Silero licences (non-commercial)
@@ -505,16 +577,16 @@ the core itself, whatever the AI says.
 
 - **The in-game AI dialogue is still a beta.** The AI works in the vanilla quest dialogues too (**T** on an open wheel).
   While an AI reply is spoken, the input line is hidden.
-- **Lip sync is simple:** the lips, the jaw and the tongue follow the sounds (on AI replies and on Studio tree lines
-  alike), but with no facial expression and no smooth blending between sounds; XWM voice without a `.lip` file does
-  not move the lips.
-- **Living places:** pair scenes (cards for two, a couple dance) are not wired yet; the Red Rocket card players sit at the
-  window counter, not at the tables; people hold almost no props.
-- **Other games are not playable yet:** 0.1.9 is Fallout 4 only. For Skyrim SE the scene transfer exists, but not playing
-  in the game itself.
-- **Role height** works in the editor and the checks, but in the game the actor is not scaled yet.
-- **F.O.R.G.E.:** a new model cannot be put into the game yet — viewing only; replacing textures for a single NPC and
-  palette-coloured armour come later.
+- **Lip sync:** one emotion per line; XWM voice without a `.lip` file does not move the lips; sound without text guesses
+  vowels from formants, at lower quality.
+- **Living places:** pair scenes wait for our animation packs; guests do not come and go and do not lean on walls and rails;
+  stopping by a talk is not instant (the scene finishes its pass, up to ~8 s).
+- **Skyrim SE is a beta:** the plugin is checked without running it in Skyrim itself; no scene events, sounds, props or
+  camera; F.O.R.G.E. is viewing-only there. The other games are not playable yet.
+- **Role height in the game:** places and hands are fitted; the seat height is not fitted to the height.
+- **F.O.R.G.E.:** your own model is a static object only (not furniture you can sit on, not an item), its collision is a box
+  by the model's size; weapon paint swaps and blending the generated relief with the original are not done yet; items from
+  level lists are not taken for "this person only".
 - **Your own dialogues on the game's and DLC characters:** while a story quest of the game holds the character (for
   example Cassie or Kent), that quest goes first and your tree comes after it.
 - **Next-Gen / Anniversary (1.10.98x, 1.11.x) are not supported.** The target is 1.10.163 (Old-Gen); Steam and GOG have
@@ -546,12 +618,12 @@ The full list is in the [release notes](docs/release/v0.1.0.md#known-limitations
 
 ### Step 0. Download and unpack
 
-1. Download **`boopi_mod-0.1.9-win-x64.zip`** from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   page and compare its SHA-256 with `SHA256SUMS.txt` from the same release (for 0.1.9 it is `3518cabcb8647e90f8f10a20516cc4f27a314ee696b4671a54b6a449a66cd037`).
+1. Download **`boopi_mod-0.2.0-win-x64.zip`** from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   page and compare its SHA-256 with `SHA256SUMS.txt` from the same release (for 0.2.0 it is `3990f910b897f091d6852ed5fbb3a7e419c45139a0be3479a77b67fe0e10a267`).
 2. Unpack to a **short path** such as `C:\Games\boopi_mod` (not into "Downloads" or deep folders: Windows will not run
    programs whose path is longer than 260 characters).
-3. Run **`boopi_mod.exe`** — the app starts the core by itself. On the first start choose your language and game (only
-   Fallout 4 is playable for now; the others are marked "coming soon").
+3. Run **`boopi_mod.exe`** — the app starts the core by itself. On the first start choose your language and game (Fallout 4
+   is playable; Skyrim SE is a beta, the others are marked "coming soon").
 4. On the Dashboard press **"Download and install"**: the app downloads our mods from [boopi.site](https://boopi.site)
    (≈ 215 MB; the catalog is signed and files are checked by SHA-256), then **"Restart the core"**. From then on the
    mods update on their own, separately from the app.
@@ -615,7 +687,7 @@ it") — [Guides → If the core does not respond](instructions/en/README.md#if-
 1. Your antivirus most likely moved `core\oldgenai-core.exe` to quarantine. It's a false alarm: the core is an unsigned
    program built with Python, and some antiviruses flag those by pattern.
 2. Download the archive only from the [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest) page and check
-   its SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.1.9-win-x64.zip`). For 0.1.9 it must be `3518cabcb8647e90f8f10a20516cc4f27a314ee696b4671a54b6a449a66cd037`.
+   its SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.2.0-win-x64.zip`). For 0.2.0 it must be `3990f910b897f091d6852ed5fbb3a7e419c45139a0be3479a77b67fe0e10a267`.
 3. Restore the file from quarantine or add the boopi_mod folder to your antivirus exclusions, then unzip the archive again.
 4. Unzip to a normal folder (not Program Files) and don't run it from inside the zip.
 5. Tell me which antivirus it was and the detection name — I'll report the false positive.
@@ -649,8 +721,8 @@ built by the app and placed into the game for you.
 
 ### Updates
 
-At startup (at most once a day) the app checks whether a new version is out and shows a **"New version available"** banner
-on the Dashboard with a "Download" button. You can turn the check off in the settings. To hear about releases even without
+At every start (no once-a-day pause) the app checks whether a new version is out and shows a **"New version available"**
+banner on the Dashboard right away, with a "Download" button. You can turn the check off in the settings. To hear about releases even without
 the app, click **Watch → Custom → Releases** on GitHub and you'll get an email for every new version.
 
 ---
@@ -665,8 +737,8 @@ Everything the app does can be extended — without programming and without othe
   mods you have installed.
 - **Your own conversation** — a dialogue tree with branching, gestures and scenes; a branch off the game's wheel; a dialogue on a game or DLC character; voice and lip sync.
 - **Your own scene** — actors, movement, camera, tags so that "Life", dialogues and other mods can find it.
-- **Your own sounds on a scene's timeline** and **your own textures** (F.O.R.G.E.): recolouring the game's objects with
-  rollback, texture packs as `.ogmod`.
+- **Your own sounds on a scene's timeline**, **your own textures and models** (F.O.R.G.E.): recolouring the game's objects
+  for everyone, for one item or for one person, texture packs as `.ogmod`, your own 3D model as a workshop object.
 - **Your own mod as a single `.ogmod`** that others install in one click, and **your own AI dialogues** — checked in the test chat.
 
 | Guide | What it covers |
@@ -676,7 +748,7 @@ Everything the app does can be extended — without programming and without othe
 | [ANIMATION_GUIDE.md](instructions/en/ANIMATION_GUIDE.md) | Animations in dialogues and scripts: gestures, scenes, camera, contexts |
 | [AI_DIALOGUE.md](instructions/en/AI_DIALOGUE.md) | The AI dialogue mode: what the player sees, what the AI can and cannot do |
 | [VOICE.md](instructions/en/VOICE.md) | Text-to-speech and speech recognition: providers, voice cloning, lip sync |
-| [FORGE.md](instructions/en/FORGE.md) | F.O.R.G.E.: the game's 3D object catalog, recolouring textures, "My textures", texture packs |
+| [FORGE.md](instructions/en/FORGE.md) | F.O.R.G.E.: the game's 3D object catalog, recolouring (item, person, palette), the map generator, "My textures", texture packs, "My objects" |
 
 All the guides also exist [in Russian](instructions/README.md).
 
@@ -709,7 +781,7 @@ Adding and removing plugins mid-playthrough is the usual risk of any mods: back 
 
 There is no telemetry. Dialogue lines and the hero's and character's data go to **the AI provider you chose** (OpenRouter,
 DeepSeek, OpenAI; the text to be spoken goes to Microsoft Edge TTS or ElevenLabs/OpenAI if you chose them). If you want
-nothing to leave your PC, use a local model (Ollama, LM Studio) and local XTTS / Silero / Whisper. The update check is one request to github.com a day,
+nothing to leave your PC, use a local model (Ollama, LM Studio) and local XTTS / Silero / Whisper. The update check is one request to github.com at startup,
 with no data about you; it can be turned off in the settings. API keys are kept in the **Windows Credential
 Manager** (service `BoopiMod`) and are never written to files.
 </details>
@@ -741,15 +813,26 @@ any person starts a free conversation.
 <details>
 <summary><b>Do the lips move on AI replies?</b></summary>
 
-Yes, since 0.1.9: the lip motion is computed from the voice recording itself (and from the letters, when the text is known)
-and plays on the speaker's face — the same on the WAV-voiced lines of your Studio trees. The switch is `BoopiUI.ini [Audio] bLipSync`.
+Yes: the lip motion is computed from the voice recording itself (and from the letters, when the text is known) and plays on
+the speaker's face — the same on the WAV-voiced lines of your Studio trees. Since 0.2.0 the sounds flow smoothly into each
+other and the face plays the line's emotion (brows, eyelids, blinks). The switch is `BoopiUI.ini [Audio] bLipSync`.
 </details>
 
 <details>
 <summary><b>Can I play other games, not only Fallout 4?</b></summary>
 
-Not yet: only Fallout 4 is playable. 0.1.9 lays the foundation — a game picker, colour themes, scene transfer between
-Fallout 4 and Skyrim SE. The other games are marked "coming soon"; I do not promise dates.
+Fully — only Fallout 4. Skyrim SE gets a beta in 0.2.0: reading the game's archives, the skeleton from the game itself and
+the SKSE64 plugin GAM for Skyrim, which plays G.A.M. scenes (it is built without being run in Skyrim itself — I would be
+glad of your reports). The other games are marked "coming soon"; I do not promise dates.
+</details>
+
+<details>
+<summary><b>Can I put my own 3D model into the game?</b></summary>
+
+Yes, since 0.2.0: open an OBJ, glTF or GLB in F.O.R.G.E. and press "To the game as an object" — the app makes the NIF, the
+materials, the textures and a simple collision itself. The object appears in the workshop menu ("Decorations"/"Furniture")
+and spawns from the console (`player.placeatme`). For now it is a static decoration: not furniture you can sit on and not
+an inventory item; it comes out through the journal without a trace.
 </details>
 
 <details>
@@ -764,17 +847,17 @@ ideas, we'll fix them.**
 
 ## What's coming
 
-**0.2.0 — next:**
+**The next release:**
 
-- **Pair scenes in living places:** cards for two, a couple dance, a talk at a table; card players at the tables, props in hands.
-- **Our own animation packs** — couples and romance, everyday life, work, emotions, gaits and smoking — come out as
-  separate mods soon, after hand polish; then new pairs (including any combination of sexes) and polished gait sets for
-  illnesses.
-- **Better lip sync:** stronger lips on Studio tree lines, facial expression and smooth blending between sounds.
-- **Role height in the game:** couples of different height seen not only in the editor.
-- **F.O.R.G.E. further:** texture replacement for a single NPC, palette hair and armour in the 3D view, clothes on a skeleton;
-  then your own model in the game.
-- **Skyrim beyond the foundation:** reading the game's archives, writing animations, a player in the game.
+- **Our animation packs — the headline:** couples and romance, everyday life, work, emotions, gaits and smoking, **including
+  the adult scenes made in G.A.M.**, after my hand polish. With them the pair scenes of the places (cards for two, a dance,
+  a talk at a table) and the gaits for illnesses come alive.
+- **F.O.R.G.E. further:** weapon paint swaps, blending a generated map with the original normal, an exact collision and a
+  choice of material for your own objects.
+- **G.A.M. further:** BVH, glTF and FBX import, building an animation pack from the editor, fitting the seat height to the
+  height.
+- **Skyrim further:** testing in the game itself, scene events, sounds and props.
+- **NPCs talking to each other.**
 
 **Fallout 4 — lots more on the way:**
 
@@ -786,8 +869,8 @@ ideas, we'll fix them.**
 - Next-Gen and Anniversary editions of the game.
 
 **Soon — other games:** Cyberpunk 2077, Skyrim, Starfield and The Sims 4 — the same mod manager and the same creation of
-animations, scenes and dialogues by hand or with AI. The foundation is already in 0.1.9: a game picker, themes and scene
-transfer. What comes first and when depends on **interest in the project, support
+animations, scenes and dialogues by hand or with AI. The foundation is already here: a game picker, themes, scene
+transfer and the Skyrim SE beta. What comes first and when depends on **interest in the project, support
 and stars on GitHub**:
 
 - ⭐ [Star the repo](https://github.com/boopi-coder/boopi_mod/stargazers) — the best way to show the project is wanted;

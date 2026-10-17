@@ -34,6 +34,9 @@
    - [3.1 Play: try a conversation without the game](#31-play-try-a-conversation-without-the-game)
    - [3.2 Undo and redo](#32-undo-and-redo)
    - [3.3 File versions](#33-file-versions)
+   - [3.4 Copy, paste, duplicate](#34-copy-paste-duplicate)
+   - [3.5 Find and replace](#35-find-and-replace)
+   - [3.6 Rename and delete: the references follow](#36-rename-and-delete-the-references-follow)
 4. [Bundled trees as a model](#4-bundled-trees-as-a-model)
 5. [Lines from the game and branches](#5-lines-from-the-game-and-branches)
    - [5.1 Start from a scene](#51-start-from-a-scene)
@@ -151,11 +154,19 @@ You get a small working tree: a greeting, the question «Who are you?» with a n
 <p align="center"><img src="../../docs/images/studio-tree-map.en.png" alt="The «Map» tab: the dialogue tree's nodes, branches and transitions" width="860"></p>
 <p align="center"><em>The «Map» tab: the greeting, the nodes and the transitions between them. Red highlights a dead-end node.</em></p>
 
-**Conditions and consequences** in the builder are «key: value» lines:
-- a condition `flag` = `met`, `stage` = `">=friend"`, `trust` = `">=40"`, `time` = `night`;
-- a consequence `set` = `met`, `affinity` = `+5`, `give` = `{ item: NukaCola, count: 2 }`, `after` = `trade`.
+**Conditions and consequences** are shown at every greeting, hero's choice and answer group (not folded away): a row is a condition from a list with a plain name («flag is set», «relationship stage», «affinity», «the hero has an item»…) and a field for it:
+- **flags** — chips, a flag of the file is picked from «+ a flag of the file…» (own ones `met`, others' `tree.flag`), `story.x` can be typed;
+- **comparisons** (affinity, trust, caps, level, S.P.E.C.I.A.L.…) — a sign (≥ ≤ > < = ≠) and a number; a **stage** — a sign and a stage from the list;
+- an **item** and a **quest** — a search by name, as in the «Triggers» tab, plus a count or a stage; the **hero's sex**, the **time of day**, the **character** — a choice; yes / no — a choice;
+- consequences: **set / clear a flag**, **affinity +5 / −10**, **give / take an item**, **quest stage**, **after the talk** (trade, a date…), **the person's memory**.
 
-The list of keys is suggested as you type.
+The **«YAML»** button of a block shows the same conditions as «key: value» lines (for `any` — «any one of» — say); the choice is remembered. If a value there does not read, the field says what is wrong and where («a comma or ] expected in the list · character 14»).
+
+**Line texts.** In a multi-line field every line is a variant of the line (the game picks one at random): **Enter** starts a new variant, spaces type as usual. Spaces at the edges and empty lines are tidied away when you leave the field and on saving.
+
+**Greetings and answer groups.** The first that fits is the one, so «+ greeting» and «+ answer group» put the new one **before** the last one without a condition — give it a condition. If something stands after an entry without a condition and can never come, the check says «greeting #3 never comes…».
+
+**Comments** (`# a note`) in the file stay at their places after edits in the builder too: each comes back above the key or the list item (or at the end of the line) it stood at. A comment of a deleted node goes with it.
 
 ### 3.1 Play: try a conversation without the game
 
@@ -182,13 +193,31 @@ Every change to the file is a history step: in the builder, in YAML, the AI help
 
 ### 3.3 File versions
 
-Undo lives while the file is open. The **«Versions»** button (in the bar above the tabs, next to «To the game») remembers longer: before every save the program keeps the file's previous version — **the last 12**.
+Undo lives while the file is open. The **«Versions»** button (in the bar above the tabs, next to «To the game») remembers longer: before a save the program keeps the file's previous version — **the last 30**. Saves within a couple of minutes are one version, so an evening of Ctrl+S does not push the morning's file out.
 
 - The «Versions of …» window lists them from the newest: the time, the number of lines, the trees and the number of triggers in that version.
+- **«Show»** — what differs from the current text (unsaved changes included): «−» was in this version, «+» is there now, with a couple of unchanged lines around; the «the whole text» box shows the version entire. «Restore» is there too.
 - **«Restore»** → a confirmation. The file becomes what it was, and the version it replaces goes into the list itself, so you can bring it back too. Unsaved changes in the window are lost (the window warns you).
 - Earlier versions appear after the file is saved again: a file just created has none yet.
 - Deleting a file also keeps its last version. Create a file with the same name and «Versions» lists the deleted one's versions.
 - The versions are in `%APPDATA%\BoopiMod\talk\.history\<file name>\`. Scenes in the G.A.M. editor have the same kind of button, «History».
+
+### 3.4 Copy, paste, duplicate
+
+A node (next to its id), a hero's choice, an answer group and a greeting have **⧉ Duplicate** (the copy goes right after it) and **⎘ Copy**. What is copied is pasted with «Paste …» in the same file or **in another one**: the clipboard outlives a file switch and a restart of the program. A node is pasted under a free id (`start_2`), a choice into a node, an answer group into a choice.
+
+Keys: click a card (not a text field) — **Ctrl+C** copies it, **Ctrl+D** duplicates it, **Ctrl+V** pastes what is on the clipboard here. In a text field these keys work as usual, on the text.
+
+### 3.5 Find and replace
+
+**Ctrl+F** (or the **«Find»** button) searches the file: the texts of lines, labels and messages, the ids (trees, nodes, triggers, `go`, `who`, items) and the flags — the boxes keep what you need, «Aa» matches case. Every hit shows its place (`my_tree.start[0].reply[1] · ru`), a click opens it. **«Replace in texts: N»** replaces in the texts only; rename ids and flags in their fields — the references follow by themselves ([3.6](#36-rename-and-delete-the-references-follow)). In the YAML tab Ctrl+F is the browser's own search of the text.
+
+### 3.6 Rename and delete: the references follow
+
+- **Rename a tree** (the «Tree id» field): the same file's `talk.tree` of the triggers and every `tree.flag` follow; «Renamed … · references updated in the file: N» pops up. If the old name is used in **other files** or installed mods, a list follows — fix those yourself (the check there shows the errors).
+- **Rename a trigger** — the same: `done`, `start` of the other triggers and the `trigger.flag` flags.
+- **Rename a flag** — click the flag's chip at a tree or a trigger and type the new name: its conditions and consequences in its own tree / trigger and `owner.flag` in the whole file change. A node is renamed in the «Node id» field — every `go` follows.
+- **Delete** a tree, a node, a trigger or a flag: the confirmation says who refers to it («Referred to by: triggers.bar.do[0]…», «In other files: …») — after the delete those references become errors. A flag nobody refers to goes without a question.
 
 ---
 
@@ -253,7 +282,7 @@ What you need to know:
 
 ## 6. Voice-over for lines
 
-Greetings, the character's answers, the hero's phrases («Conditions, consequences, the hero's full line» → «The hero's full line») and the entrance of a branch have a **«Voice»** field: one recording per text variant, for Russian and English separately.
+Greetings, the character's answers, the hero's phrases (the folding «The hero's full line» block of a choice) and the entrance of a branch have a **«Voice»** field: one recording per text variant, for Russian and English separately.
 
 ### 6.1 Voice the whole dialogue in one click
 
@@ -261,14 +290,28 @@ Greetings, the character's answers, the hero's phrases («Conditions, consequenc
 
 1. Press **«Voice all»**. The window shows **who speaks with which voice**: every person of the file's trees and **the hero**,
    a Russian and an English voice each, with **«▶»** to listen. The voices are those of the provider selected in «Settings →
-   LLM providers» (Edge TTS by default — no key needed; ElevenLabs, OpenAI, XTTS-v2, Silero). Nothing picked: the person speaks
-   with the voice of the boopi_mod character who plays them (or the provider's default), the hero with a voice of the hero's sex.
-   The choice is remembered for all your files.
+   LLM providers» (Edge TTS by default — no key needed; ElevenLabs, OpenAI, Higgs TTS 3, XTTS-v2, Silero). Nothing picked: the
+   person speaks with the voice of the boopi_mod character who plays them (or the provider's default), the hero with a voice of
+   the hero's sex. The choice is remembered for all your files.
+
+   With a **cloning** provider (XTTS-v2, Higgs TTS 3) «— auto —» means **a sample from the game**: a game NPC (Piper, Nick, a
+   settler…) and the hero speak with their own voice. Under the speaker's name are their voice type and where it comes from
+   («from the game», «from the card», «hero»), under each voice what is used, for example «sample from the game (NPCFPiper) ·
+   seconds: 18.8 · with the lines' text». The sample is cut from the game's lines on the first voicing and kept on your computer
+   (until then: «cut on the first voicing»). **«Cut again»** takes the sample once more, **«Own recording…»** uses your WAV
+   (6–30 seconds) instead; the list can also pick another clone or a preset voice. Samples never go into the mod; clone only the
+   voices you have the right to ([VOICE.md](VOICE.md), section 3).
 2. Choose what to voice: **the whole file**, **the tree** or **the node** selected in the builder. The window counts the lines:
    «To voice: N · already recorded: M». Lines that have a recording are skipped; tick **«Say again the lines that have a
-   recording»** to redo them.
+   recording»** to redo them. Every recording remembers its text: a line fixed after it was voiced is voiced again («Text
+   changed after voicing: N»), and a recording already made for the same text (a voicing cut short by closing the program, a
+   line moved or put back) is taken without voicing — or paying — again («Recordings already made … are taken: N»). Below is
+   the **estimate**: the characters and, for a paid provider, the price (OpenAI in dollars, ElevenLabs in the plan's credits;
+   the cloud Higgs — characters only); before a paid voicing the window asks again.
 3. Press **«Voice N»**. A progress bar shows the lines as they are said; the window can be hidden — the voicing goes on, and the
-   recordings go into the file when you open the window again. A line that fails is listed with the reason, the rest go on.
+   recordings go into the file when you open the window again. A line that fails is listed with the reason, the rest go on. A
+   recording goes to the line that says its text: lines moved meanwhile find theirs; a line deleted or rewritten gets nothing
+   (the window says how many), and the file stays to be taken if the text comes back.
 4. The recordings are put into the lines' «Voice» fields exactly like files picked by hand. **Save** the file, then **«To the
    game»**.
 
@@ -316,7 +359,9 @@ A button in the file list. The plugin is built the same way as for «To the game
 - **voice-over**: the file is there, the format plays, an encoder for WAV is available, an XWM has its `.lip`;
 - **branches**: the slot's vanilla lines move a quest (a condition is needed); which mods of your load order change the same quest or topic and what follows from it;
 - **G.A.M. scenes** of the lines and triggers: by id — whether the game has the scene or only the library does so far («To the game» puts it there); by tags — whether any scene in the game answers the query, whether your library has such scenes («To the game» puts those there too), or nothing will play;
-- **triggers** that did not make it into the plugin, and why (no such place, quest, item or person in `Fallout4.esm` / `BoopiCorp.esp`, [12.7](#127-when-a-trigger-does-not-fire)).
+- **triggers** that did not make it into the plugin, and why (no such place, quest, item or person in `Fallout4.esm` / `BoopiCorp.esp`, [12.7](#127-when-a-trigger-does-not-fire)) — the live check catches the same now.
+
+The **built-in story's** branches that other plugins touch are one line: nothing to do in your files. In the live check the note «a character of the game or a DLC» is one per file, folded under «ℹ notes» (the usual case, not a mistake).
 
 > [!TIP]
 > Run «Build and check» before you save a mod for others: you will see the same thing the game will see at the recipient's.
@@ -525,13 +570,14 @@ Triggers live **in the same studio file** as the trees, on the **«Triggers»** 
 | Quest stage | `quest: { id: MQ102, stage: 10 }` | the quest stage is done |
 | Killed | `kill: { npc: EDID }` or `kill: { at: REF }` | the unique NPC is dead, or one more NPC of that base is killed, or that reference is dead |
 | Used | `use: { at: REF }` | the hero pressed E on a door, terminal or switch (the thing works as usual) |
+| Got an item | `got: { item: EDID, count: 1 }` | the hero carries this many of the item (found, bought, given) |
 | Flag | `flag: { name: my_tree.asked }` | the flag is set: a line of your dialogue set it, say |
 | Another one done | `done: { id: other_trigger }` | every action of that trigger is over (its scene ended) |
 
 Places, interiors, quests and items are picked by **search** by name or editor id, from `Fallout4.esm` and `BoopiCorp.esp` (the first search reads the game for a few seconds). People are picked with the same search as "Who speaks" in trees. An editor id of your own mod can be typed as it is.
 
 > [!NOTE]
-> For now a trigger finds places, quests, items and people only in `Fallout4.esm` and `BoopiCorp.esp` — unlike trees ([1.1](#11-characters-items-and-quests-of-the-dlcs-and-mods)). The search for people is shared with trees and may show a DLC's or a mod's character, but a trigger will not find them. "Build and check" lists a trigger that was missing something as "left out of the plugin", with the reason.
+> For now a trigger finds places, quests, items and people only in `Fallout4.esm` and `BoopiCorp.esp` — unlike trees ([1.1](#11-characters-items-and-quests-of-the-dlcs-and-mods)). The search for people is shared with trees and may show a DLC's or a mod's character, but a trigger will not find them. The live check looks each such name up where the build does: a typo or a place of another plugin is an error at once («no interior cell 'NoSuchCell' in Fallout4.esm or boopi_mod - a typo?»), and «To the game» stays off while it is there.
 
 ### 12.3 Actions («What happens»)
 
@@ -544,6 +590,10 @@ Places, interiors, quests and items are picked by **search** by name or editor i
 | Flags | `flag: { set: [..], clear: [..] }` | sets and clears flags |
 | Give / take an item | `give: { item: EDID, count: 1 }`, `take: { … }` | into or out of the hero's pack |
 | Start a trigger | `start: other_trigger` | lets a trigger with `when: start` run |
+| Show / Hide | `enable: REF`, `disable: { at: REF }` | a reference of the world appears or disappears (it can be brought back) |
+| Lock | `lock: { at: REF, level: 50 }` (`level: open` unlocks) | locks a door or a container at this level, or unlocks it |
+| Move | `move: { who: hero \| REF, to: REF, fx: teleport }` | moves the hero or a reference of the world to a place (`fx: teleport` — the Institute's flash) |
+| Faction | `faction: { who: hero \| REF, add: FactionEdid, rank: 0 }` (or `remove:`) | adds to a faction or takes out of it: this changes hostility and attitude |
 
 The game looks for a person named by editor id **near the hero** (a unique one wherever they are). If nobody is found, a talk waits, and a scene is skipped and the next actions run.
 
@@ -651,7 +701,7 @@ triggers:
 
 ### 12.7 When a trigger does not fire
 
-- **"Build and check"** shows a trigger that was "left out of the plugin" and why: no such reference, person, item, quest or interior in `Fallout4.esm` / `BoopiCorp.esp`.
+- **The live check** and **"Build and check"** show it when there is no such reference, person, item, quest or interior in `Fallout4.esm` / `BoopiCorp.esp`.
 - **Conditions.** While the «If» conditions do not hold, the event is not waited for. A window "from 19 to 3" wraps midnight.
 - **Once.** A trigger without "Repeat" does not fire again in that save once it has fired. To test it again, start a new game or keep a save from before it.
 - **No conversation.** The person must be near (the radius), alive and not fighting, and the hero must have no menu or other talk open. One of your tree's greetings must have its conditions met.
@@ -694,7 +744,7 @@ All 767 record ranges are taken by the trees there are now. Remove studio mods o
 «▶ Try the dialogue» above the tabs ([section 3.1](#31-play-try-a-conversation-without-the-game)): the wheel, conditions and consequences on a test state; a choice that does not show is visible, dimmed, with the reason.
 
 **I deleted or broke something by accident — how do I get it back?**
-**Ctrl+Z** ([section 3.2](#32-undo-and-redo)): every change to the file can be undone while it is open, the AI helper's answer included. Already saved — the **«Versions»** button ([section 3.3](#33-file-versions)): the last 12 versions of the file, «Restore» in one click; a deleted file comes back the same way if you create a file with the same name.
+**Ctrl+Z** ([section 3.2](#32-undo-and-redo)): every change to the file can be undone while it is open, the AI helper's answer included. Already saved — the **«Versions»** button ([section 3.3](#33-file-versions)): the last 30 versions of the file, what changed, «Restore» in one click; a deleted file comes back the same way if you create a file with the same name.
 
 **The branch is not visible on the wheel.**
 Is its condition met; is it not the empty top slot of a trader; is another mod not overriding the topic (see «Build and check»). After edits — «To the game» and restart the game.

@@ -149,11 +149,11 @@ The tag vocabulary is in `data/gam/tags.yaml`. The most useful tags:
 
 | Pack | What is inside | Folder in the game |
 |---|---|---|
-| Couples & romance | hugs, slow dances, a kiss, holding hands, a head on a shoulder, a proposal on one knee, a flirt | `Data\GAM\Scenesoopi-anim-couples\` |
-| Everyday life | sitting, drinking, reading, cards, warming hands, solo dances, a handshake, passing a bottle | `…oopi-anim-life\` |
-| Work | hammer, saw, repairs, terminal, kitchen, garden, cleaning, guard duty | `…oopi-anim-work\` |
-| Emotions & reactions | laughter, applause, a cheer, impatience, threats, a quarrel, comfort | `…oopi-anim-emotions\` |
-| Gaits & smoking | 13 gaits of illness, withdrawal, hangover, exhaustion and wear; lighting up, smoking standing, at a wall, seated, putting it out | `…oopi-anim-gaits\` |
+| Couples & romance | hugs, slow dances, a kiss, holding hands, a head on a shoulder, a proposal on one knee, a flirt | `Data\GAM\Scenes\boopi-anim-couples\` |
+| Everyday life | sitting, drinking, reading, cards, warming hands, solo dances, a handshake, passing a bottle | `…\boopi-anim-life\` |
+| Work | hammer, saw, repairs, terminal, kitchen, garden, cleaning, guard duty | `…\boopi-anim-work\` |
+| Emotions & reactions | laughter, applause, a cheer, impatience, threats, a quarrel, comfort | `…\boopi-anim-emotions\` |
+| Gaits & smoking | 13 gaits of illness, withdrawal, hangover, exhaustion and wear; lighting up, smoking standing, at a wall, seated, putting it out | `…\boopi-anim-gaits\` |
 
 A pack's scenes appear in the G.A.M. library and in the game; Life contexts, the living town, gaits and your own tag queries find
 them by themselves — the query `"hug,pair"` or `"smoke,upper_body,loop"` plays them when the pack is installed. Removing a pack
@@ -719,9 +719,17 @@ previous version is kept (the last 12), and the **«History»** button in the to
 | Delete the picked keys | `Delete` |
 | All keys / the keys at this moment | `Ctrl+A` / the «Keys at the playhead» button |
 | Playhead | the ruler on top; `←/→` — a frame, `Shift+←/→` — 10 frames, `Home`/`End`, `[`/`]` — previous / next key |
+| Zoom and pan | `Ctrl` + wheel — closer / wider at the mouse, `Shift` + wheel (or the wheel over the ruler) — along the time; «Fit» — the whole scene |
 
-Interpolation and ease in the Key section change on every picked key at once. The **track weight** is there too — how much of the
-track applies over the rest (a layer).
+**Tracks in groups.** The timeline shows the tracks by role and, inside a role, by body part: place, spine and head, arms, hands,
+fingers, legs, face. A click on a role's or a group's header folds it to one summary row (the moments of its keys show), «Fold the
+groups» / «Unfold all» does every one. The «Find a bone…» field and the «Show» list (all tracks / the picked role only / without
+fingers) hide the rest. A scene the AI made, with a hundred tracks, is no longer a sheet of fingers.
+
+**The key card** is a strip right over the timeline (not in the middle of the right column): time, interpolation, ease, track weight
+and **the value in numbers** — a bone's turn as three angles (from the rest pose, as on the curves), a place as X / Y / Z, a role's
+place as a heading in degrees, a face as its weight. A number is typed freely (the field can be emptied, «-12.5» typed) and taken on
+`Enter` or when the field is left; ↑ / ↓ step it (with `Shift` — by 10). Interpolation and ease change on every picked key at once.
 
 **Pose.** `Ctrl+C` copies a role's pose at this moment (every animated bone), `Ctrl+V` pastes it as keys at this moment — onto the
 same role or another one (the «→ role» choice in Edit): this is how a pose moves from actor to actor or from one scene to another.
@@ -737,10 +745,24 @@ Bone pairs come from the skeleton's names (`LArm_*` ↔ `RArm_*`, `LLeg_*` ↔ `
 pose, so the mirrored pose is an exact mirror image, not «roughly alike». The face and the helper bones (weapon, camera) are not
 mirrored.
 
+**Numbers and snapping.** The role's card («Roles») has its place X / Y / Z and heading at the playhead: type a number and a place
+key is set. The pair is set up exactly there too: pick the partner (or an object), **«Face it»** turns the role toward it, **«Stand at
+the distance»** puts the role at the distance facing it (presets: talk 90, handshake 56, hug 26 units). Over the view are **«Angle
+step»** (1° / 5° / 15° / 45°: bone turns by the rings and the character's heading snap to it) and **«Grid»** (1 / 5 / 10 / 25 units:
+the character's place snaps to the floor grid while dragged).
+
+**A ready pose without the AI.** «Edit» has a list of poses (standing, sitting on a chair, kneeling, crouching, sitting on the floor,
+lying) and «Put the pose on role …»: a whole-body pose is keyed at the playhead (the AI animator's own presets; no LLM key needed).
+On an empty scene the same poses are on the «Where to start» card — a new scene no longer has to start as the A-pose mannequin.
+
 **Time.** The «Time factor» field: `2` — twice as slow, `0.5` — twice as fast.
 - «Stretch picked keys» — only the picked keys, from the first of them; with «Shift what follows» everything after them (keys,
-  events, markers, stages) moves along.
-- «Stretch the scene» — the whole scene: keys, events, markers, stages, props and the length.
+  events, sounds, markers, stages) moves along.
+- «Stretch the scene» — the whole scene: keys, events, the timeline's sounds, markers, stages, props and the length. A sound is not
+  stretched: only the moment it starts moves, the clip's length and trim stay.
+
+**The scene's length** («Length, s») is typed as a number; when it gets shorter than the last keys or sounds, the field says how
+many are past the end and offers «Length to the last key».
 
 **Loop seam.** A looping scene (the Loop box or the loop markers) jerks when the loop's last frame does not match its first — a
 common trouble of imported clips. «Fix loop seam» makes the loop's end equal to its start and bends the keys in the «blend window»
@@ -843,12 +865,28 @@ How to use it:
 The **«Visual check»** box shows the scene's contact sheet to a model that reads images (the **«Vision»** route in Settings →
 Routing; DeepSeek reads no images — without such a model the check is simply skipped).
 
-**Role heights** are there too: a role shorter or taller (80–120 %) has its skeleton scaled, and the pair scene is built for that
-height (a short partner's head on a tall one's chest). In the game an actor's height is the game's own, so give such a scene to
-actors built that way.
+**Role heights** are in the role's card («Roles»): a number and a slider 0.5–1.5 (the same range as the core, the AI animator and
+GAM.dll) with about how tall that is in centimetres; the role's skeleton is scaled, and the pair scene is built for that height (a
+short partner's head on a tall one's chest). The **«Heights in the game»** switch over the roles picks what the game does: fit to the
+actors' heights (the default), do not fit (play as made) or give the actors the roles' heights (`meta.heights`: `fit` / `off` /
+`apply`). In the game an actor's height is the game's own, and G.A.M. fits the scene
+to the real heights: the places shift, and the hands that touch the partner (the back, the shoulders, the head, a palm) land on
+the same spot, so a hug with a short companion no longer floats. "Set this height on the actor in the game" makes the actor the
+role's height for the scene (put back afterwards and before any save).
 
-The AI animator (the «AI» section) polishes its own result after its operations and checks it; what is still wrong (anatomy,
-balance, the visual check's findings) it fixes in a separate round.
+The AI animator (the «AI animator» section, the first one in the right column) polishes its own result after its operations and
+checks it; what is still wrong (anatomy, balance, the visual check's findings) it fixes in a separate round — and when the fix round
+fails or makes it worse, the checked result of the first pass stays.
+
+The findings of «Check the motion» and of the AI's log are written in the app's language and in plain words («the motion is wooden —
+body parts move in lockstep (67 %) … The AI polish helps», «the right elbow bends backwards (1.20–1.60 s, -34°)»); the score is
+0–100, the check passes when nothing is found. A long polish can be stopped with **«Cancel»** — the scene stays as it was. A polish
+or AI result belongs to the scene it was asked for: when another scene was opened meanwhile, it is not applied to it.
+
+**A preview for a mod page.** The **«Preview…»** list in the editor's bar records the scene's view: **GIF** (480 px, 15 fps, our own
+encoder), **WebM** (as on the screen) or a **PNG** still. The scene plays from the start, joints and rings are not in the picture; the
+file goes to `%APPDATA%\BoopiMod\gam\previews`, «Show in the folder» opens it. Previews of your scenes are yours to make; only an
+intimate scene with a child in it gets none (the same locked line as everywhere).
 
 ---
 

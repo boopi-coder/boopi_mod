@@ -9,7 +9,7 @@
 > that you can share as a single file.
 
 > [!WARNING]
-> **This is a beta (0.1.9):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
+> **This is a beta (0.2.0):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
 > problems and ideas is very welcome. [Open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose)
 
 ## Where to start
@@ -32,15 +32,41 @@
 ## Other games
 
 boopi_mod is becoming a studio for several games. **Fallout 4 is available now**, and everything in these guides is for it.
-Next, in order: **Skyrim Special Edition** (the next one: its skeleton already converts), then **Starfield**,
-**Cyberpunk 2077** and **The Sims 4**. On the first start, after the language, the app asks for the game: Fallout 4 can be
-chosen, the others say "coming soon". Settings → Games & theme shows which games are on your computer and what each one
-still needs, and changes the **theme**: every game has its own colour scheme (Fallout 4's green terminal is the default),
-and you can turn on any of them now.
+**Skyrim Special Edition is a beta**: its BSA archives are read, its skeleton comes from the game itself, and G.A.M.
+scenes convert to it and play in the game through our SKSE plugin **GAM for Skyrim**. Next, in order: **Starfield**,
+**Cyberpunk 2077** and **The Sims 4**. On the first start, after the language, the app asks for the game: Fallout 4 and
+Skyrim (beta) can be chosen, the others say "coming soon". Settings → Games & theme shows which games are on your computer
+and what each one still needs, and changes the **theme**: every game has its own colour scheme (Fallout 4's green terminal
+is the default), and you can turn on any of them now.
 
 Animations move between games: in the G.A.M. editor, **Other games** saves a scene for the Skyrim skeleton (or for the
 shared canonical rig) and brings a scene of another game back. A pose looks the same on the other body, and a round trip
 loses nothing. Details: [Animation import and the G.A.M. editor](ANIMATION_IMPORT.md).
+
+### Skyrim (beta)
+
+What works:
+- **Archives.** boopi_mod reads the game's archives itself (Special Edition and Legendary Edition BSA), no other tools.
+  With Skyrim chosen in Games & theme, F.O.R.G.E. shows Skyrim's models and textures (viewing only for now).
+- **Skeleton.** Settings → Games & theme → Skyrim (beta) → Read the skeleton from the game takes `skeleton.nif` from your
+  game (a skeleton mod installed as a loose file wins over the archive). Scenes convert onto this skeleton.
+- **The in-game player.** **GAM for Skyrim** is our SKSE plugin. It drives the character's bones from a G.A.M. scene
+  itself, like GAM.dll in Fallout 4: no HKX files and no behaviour graphs are needed.
+
+How to set it up:
+1. Install **SKSE64** and **Address Library for SKSE plugins** yourself from their official pages (boopi_mod does not
+   ship other authors' files).
+2. Settings → Games & theme → Skyrim (beta) → Install GAM for Skyrim. Only our files go into the game's `Data`
+   (`SKSE\Plugins\GAMSkyrim.dll`, `Scripts\GAMSkyrim.pex`); Remove our files takes them out again.
+3. In G.A.M., open a scene → Other games → Skyrim Special Edition → **Install into Skyrim**.
+4. In the game open the console (`~`), select a character and type `gam play boopi/<scene>`. With nobody selected the
+   scene plays on you. More commands: `gam list` (the scenes), `gam stop`, `gam stopall`, `gam reload` (read the scenes
+   again without leaving the game). From Papyrus scripts: `GAMSkyrim.PlayOn(akActor, "boopi/<scene>")`.
+
+> [!WARNING]
+> This is a beta. The player was built and tested without running the game: if something behaves oddly, send
+> `Documents\My Games\Skyrim Special Edition\SKSE\GAMSkyrim.log`. The mod manager, launching the game and Script Studio
+> still work for Fallout 4 only.
 
 ## All guides
 

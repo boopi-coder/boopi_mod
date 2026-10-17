@@ -17,7 +17,7 @@ Skyrim / OAR / Fallout 4 mods, the AI animator, and playback of scenes right in 
 >
 > - Every animation in boopi_mod is a **G.A.M. scene** (a `.gam` file in your library): roles, bones, furniture and props, camera, tags.
 > - The fastest way: open **G.A.M.** and **drag** a mod archive, folder, plugin, BA2 or HKX into the window — the pack
->   converts itself into tagged scenes and goes into the game («All into the game»).
+>   is scanned, you tick what you need, and it becomes tagged scenes (into the game when «and install into the game» is ticked).
 > - It reads Fallout 4 mods (HKX, idles, OAR gaits) and **Skyrim SE** mods (FNIS, SexLab Animation Loader).
 > - Importing is your choice: the app itself depends on no animation mod of anyone else. When no scene fits, the game's
 >   own animation plays.
@@ -61,12 +61,19 @@ the dialogue studio: [SCRIPT_STUDIO.md](SCRIPT_STUDIO.md).
 1. Open **G.A.M.** in the boopi_mod menu.
 2. Drag a mod archive (zip / 7z / rar), its folder, a plugin (ESP / ESM / ESL), a BA2 or a single HKX into the window.
    A hint appears: «Drop the file: Skyrim and Fallout 4 animations — the import sorts it out».
-3. The pack is parsed and **«All into the game»** runs in the background: every clip, pair, SexLab scene and OAR gait
-   set becomes tagged scenes (from the pack's tags, from words in names and, for single clips, from the motion itself) and is put
-   into the game straight away. Progress shows as «Converting the pack: N / M…», and at the end you see how many scenes and gait
-   sets are in the game.
+3. The pack is **only scanned**: «Library → Import» opens the list of what was found, with kinds and counts (pairs: 73, clips:
+   16168…). No scene is made by itself and nothing goes into the game.
+4. Tick what you need (a name filter, «all kinds» / pairs / clips…, «Tick the shown») and press **«Convert the ticked»** (or «Convert
+   all»). Every clip, pair, SexLab scene and OAR gait set becomes tagged scenes (from the pack's tags, from words in names and, for
+   single clips, from the motion itself). The **«and install into the game»** box puts them into the game at the end (off by
+   default). More than 200 items or installing into the game — the app asks first and says how long it takes.
+5. The conversion runs in the background: «Converting the pack: N / M… · ≈ K min left», with a **«Stop»** button (what is done stays
+   in the library, nothing goes into the game). You can leave for another tab or page and come back — the job is still there.
 
-After that «Life» and dialogues find the new scenes by tags at once.
+A single scene file **`.gam`** (a friend's scene, an export from another game) is no pack: drop it into the window or pick it in
+«Upload a file…» — it goes into the library as a scene of its own (`my/<name>`, a taken name gets a suffix) and opens.
+
+Once installed into the game, «Life» and dialogues find the new scenes by tags at once.
 
 **The same pack again makes no duplicates.** The same file (it is recognised by its content, whatever it is called) or the same
 folder is the same source: it is parsed again in place and its scenes are updated under their old ids. Scenes you changed yourself
@@ -98,7 +105,7 @@ The source is unpacked once into your folder (`%APPDATA%\BoopiMod\gam\imports`) 
 
 <p align="center"><img src="../../docs/images/gam-library-import.en.png" alt="G.A.M. library: a scene list filtered by tag on the left, the Import tab with a list of packs on the right" width="860"></p>
 
-*The scene library (filtered by tag) and pack import: each pack shows how many pairs, idles and clips it holds, and the «All into the game» button.*
+*The scene library (filtered by tag) and pack import: each pack shows how many pairs, idles and clips it holds, and the «Choose…» button.*
 
 What you can do with the list:
 
@@ -107,8 +114,9 @@ What you can do with the list:
   library **and from the game**) or keep them. The scenes you changed always stay, as your own.
 - **«To a scene»** on an item: it opens in the editor — roles from the clips (a pair faces each other), bones from the HKX.
   Edit it from there ([section 4](#4-your-own-scene-in-the-editor)) and press «Save» / «To the game».
-- **«All into the game»** — the whole pack as tagged scenes straight into the game (same as dragging it in).
-- **«Build gaits (N)»** — turns OAR sets into G.A.M. gaits.
+- **«Choose…»** on a source opens its list: ticks, filters, «Convert the ticked» / «Convert all», the «and install into the game» box
+  (section 1).
+- **«Build gaits (N)»** — turns OAR sets into G.A.M. gaits (into the game only with «and install into the game» ticked).
 
 > [!NOTE]
 > Parsing hints: variants of the same action for a man and a woman (a `Female` subfolder) are variants, not a pair; numbers
@@ -121,10 +129,13 @@ What you can do with the list:
 Drag a **Skyrim Special Edition** mod (an archive, folder or file) straight into G.A.M. The motion is transferred to the
 Fallout 4 skeleton automatically.
 
-**The Skyrim skeleton.** The motion is transferred from its rest pose, so a skeleton is needed:
-- drag the **XPMSE** archive in once (or any mod with `character assets\skeleton.hkx`) — the male and female skeletons are remembered;
-- without it, boopi_mod downloads the vanilla SE skeleton itself at startup (from the open PyNifly project) — a mod you drop is
-  converted immediately.
+**The Skyrim skeleton.** The motion is transferred from its rest pose, so a skeleton is needed — it comes from your computer:
+- from your installed Skyrim SE (`skeleton.hkx` from its archives or its Data folder) first;
+- else from a mod you drop in yourself: drag the **XPMSE** archive in once (or any mod with `character assets\skeleton.hkx`) — the
+  male and female skeletons are remembered.
+
+The app downloads nothing itself. With neither the game nor such a mod, the source shows «No Skyrim skeleton…», and opening a clip
+gives a clear error saying what to do.
 
 **What is read:**
 - SE clips (64-bit); 32-bit Legendary Edition clips are skipped with a note — packs usually have an SE version;
@@ -145,8 +156,11 @@ skeleton: Export saves it for Skyrim SE (or for the shared canonical rig every b
 `%APPDATA%\BoopiMod\gam\exports\<game>` (Show in folder opens it); Import takes another game's `.gam` file, converts
 it to Fallout 4 and saves it as a new scene of yours. A pose looks the same on the other body, and the bones the other
 game lacks (weapon bones, the Pip-Boy) stay in the scene and come back on the way home. Creatures and robots do not
-move: their skeletons belong to their own game. boopi_mod cannot play such a scene in Skyrim itself yet: that is the next
-game (see [Other games](README.md#other-games)).
+move: their skeletons belong to their own game.
+
+**Playing the scene in Skyrim itself (beta).** With Skyrim SE installed, **Install into Skyrim** in the same window
+converts the scene onto your game's skeleton and puts it into `Data\GAM\Scenes\boopi`. Our SKSE plugin **GAM for Skyrim**
+finds it there: in the game's console, `gam play boopi/<scene>`. How to install the plugin: [Skyrim (beta)](README.md#skyrim-beta).
 
 ---
 
@@ -252,8 +266,10 @@ when it plays; the light blue pyramid in the window is where the scene camera st
 
 #### The AI animator
 
-It needs a key in «Settings → LLM providers». Describe the scene in words, for example «put a man and a woman face to face and have
-them shake hands», and press **«Do it»**.
+The **«AI animator»** section is the first in the right column, and an empty scene has a **«Where to start»** card over the view
+(describe a scene, open one from the library or put a pose without the AI). It needs a key in «Settings → LLM providers». Describe the
+scene in words, for example «put a man and a woman face to face and have them shake hands», and press **«Do it»** (`Ctrl+Enter`). The
+AI knows the picked bone and the current moment — the line under the field says what it sees.
 
 - You can see what is happening: a time counter and «Cancel», and a log («request sent → the model answered → N operations parsed →
   applied / skipped (with reasons) → check»).
@@ -262,6 +278,13 @@ them shake hands», and press **«Do it»**.
 - The AI places participants itself — people, children («father and son»), creatures («a dog nearby») — and moves them: arms (including
   «arm to a point» through IK), head, gaze, crouch, knee, sitting.
 - After the first request a creature can be brought to life with the next ones («let the dog wag its tail»).
+- A new scene is named from the answer («Handshake») — and gets its id from that when saved.
+- One wrong value in the model's answer (a time of `null`, «1.2 s», a point as text) skips only that operation, with a clear reason in
+  the log; the rest is applied. The motion polish says in the log what it does (the score before, a pass, fixing the anatomy) instead
+  of going silent.
+- The result belongs to the scene it was asked for: when another one was opened while the request ran, it is not applied to it (the
+  log says so). Under the result you see how many tokens it took.
+- No key? Ready poses (standing, sitting, kneeling, lying…) work without the AI — [ANIMATION_GUIDE.md](ANIMATION_GUIDE.md) §10.4.
 
 > [!TIP]
 > Use the AI as a first draft: let it place the participants and sketch the motion, then refine the result with the IK handles and «Optimise».
@@ -347,8 +370,14 @@ The **Library → «G.A.M. scenes»** tab holds everything you have: your own sc
 The G.A.M. animation library is missing — reinstall boopi_mod.
 
 **«No skeleton: …».**
-The skeleton is extracted from the game files; check the game path in the settings. For Skyrim, drag XPMSE in or wait until the app
-downloads the vanilla SE skeleton at startup.
+The skeleton is extracted from the game files; check the game path in the settings. For Skyrim, an installed Skyrim SE gives the
+skeleton itself (set its folder in «Other games»); without it, drag an XPMSE archive (or any mod with the skeleton) in once.
+
+**The editor showed «This part could not be shown: …».**
+A part of the editor failed on this scene, the rest of the app works: «Try again», «Reset the G.A.M. state» (a new empty scene) or
+«Details» for a bug report. The scene the editor failed on is not opened by itself at the next start («Open it anyway»). Errors in a
+scene file (an object without a place, a key without a time…) are mended while reading, and a note over the view says what was
+mended.
 
 **Import: «some parts could not be read».**
 Some files of the pack are damaged or in an unfamiliar format; the rest was imported, the list is in the message.
