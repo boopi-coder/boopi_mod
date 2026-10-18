@@ -20,7 +20,7 @@ labels: bug
 ## Окружение / Environment
 
 - Версия boopi_mod (Настройки → О программе) / boopi_mod version (Settings → About):
-- Версия игры (должна быть 1.10.163 Old-Gen) / Game version (should be 1.10.163 Old-Gen):
+- Версия игры (проверена 1.10.163 Old-Gen; Next-Gen / Anniversary — укажите какая) / Game version (1.10.163 Old-Gen is tested; Next-Gen / Anniversary: say which):
 - Windows:
 - ИИ-провайдер и модель (если важно) / AI provider and model (if relevant):
 

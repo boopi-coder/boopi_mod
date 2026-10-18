@@ -9,7 +9,7 @@
 > that you can share as a single file.
 
 > [!WARNING]
-> **This is a beta (0.2.1):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
+> **This is a beta (0.2.2):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
 > problems and ideas is very welcome. [Open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose)
 
 ## Where to start
@@ -39,6 +39,13 @@ Skyrim (beta) can be chosen, the others say "coming soon". Settings → Games & 
 and what each one still needs, and changes the **theme**: every game has its own colour scheme (Fallout 4's green terminal
 is the default), and you can turn on any of them now.
 
+**Fallout 4 versions.** Everything in the guides is tested on **1.10.163 (Old-Gen)**; on **Anniversary 1.11.191** the
+Papyrus bridge, Life, the AI dialogue with the text line and lip sync, the HUD and G.A.M.'s scenes are tested in the game.
+Next-Gen (1.10.980 / 1.10.984) and Anniversary 1.11.221 / 1.11.240 get the same build with everything on: if something does
+not work, please send us the logs from `Documents\My Games\Fallout4\F4SE`; `[NextGen] bSafeMode=1` in `BoopiUI.ini` / `GAM.ini`
+turns off what was not yet checked on your version. 1.11.137 … 1.11.169 get no in-game plugins of ours — update the game. The
+pre-launch check tells you which F4SE and Address Library your version needs.
+
 Animations move between games: in the G.A.M. editor, **Other games** saves a scene for the Skyrim skeleton (or for the
 shared canonical rig) and brings a scene of another game back. A pose looks the same on the other body, and a round trip
 loses nothing. Details: [Animation import and the G.A.M. editor](ANIMATION_IMPORT.md).
@@ -55,16 +62,21 @@ What works:
 
 How to set it up:
 1. Install **SKSE64** and **Address Library for SKSE plugins** yourself from their official pages (boopi_mod does not
-   ship other authors' files).
+   ship other authors' files). SKSE64 must match your game version exactly: the Skyrim panel in Settings names the file
+   (`skse64_1_6_1170.dll` for 1.6.1170, which is SKSE64 2.2.6 from the archive of builds on the SKSE site). If Skyrim
+   is in an unusual folder, set it there too (Game folder).
 2. Settings → Games & theme → Skyrim (beta) → Install GAM for Skyrim. Only our files go into the game's `Data`
    (`SKSE\Plugins\GAMSkyrim.dll`, `Scripts\GAMSkyrim.pex`); Remove our files takes them out again.
 3. In G.A.M., open a scene → Other games → Skyrim Special Edition → **Install into Skyrim**.
-4. In the game open the console (`~`), select a character and type `gam play boopi/<scene>`. With nobody selected the
-   scene plays on you. More commands: `gam list` (the scenes), `gam stop`, `gam stopall`, `gam reload` (read the scenes
+4. In the game open the console (`~`), select a character (a click or `prid`) and type `gam play <scene>`, by name
+   (`gam play wave`) or by id in quotes (`gam play "boopi/wave"`; without quotes the console reads `/` as a division).
+   With nobody selected a scene of one plays on you; a scene of two takes you and the selected character. More commands: `gam list` (the scenes), `gam stop`, `gam stopall`, `gam reload` (read the scenes
    again without leaving the game). From Papyrus scripts: `GAMSkyrim.PlayOn(akActor, "boopi/<scene>")`.
 
 > [!WARNING]
-> This is a beta. The player was built and tested without running the game: if something behaves oddly, send
+> This is a beta. Checked in the game on Skyrim Anniversary Edition 1.6.1170 with SKSE64 2.2.6: a gesture and a dance on
+> you and on an NPC, a hug and a handshake for two. If Skyrim crashes when it loads any world (even without mods), look at
+> the Skyrim panel: most often your `Skyrim.ini` lists none of the game's archives. If something behaves oddly, send
 > `Documents\My Games\Skyrim Special Edition\SKSE\GAMSkyrim.log`. The mod manager, launching the game and Script Studio
 > still work for Fallout 4 only.
 
@@ -107,7 +119,7 @@ How to set it up:
   <tr>
     <td align="center"><img src="../../docs/images/icons/voice.png" width="64" alt=""></td>
     <td><b><a href="VOICE.md">Voice</a></b> · <a href="../VOICE.md">RU</a><br>
-    Text-to-speech (Edge, ElevenLabs, OpenAI, XTTS-v2, Silero), voice cloning, speech recognition and push-to-talk.</td>
+    Text-to-speech (Edge, ElevenLabs, OpenAI, Qwen3-TTS, Higgs TTS 3, XTTS-v2, Silero), voice cloning, speech recognition and push-to-talk.</td>
   </tr>
 </table>
 
@@ -175,4 +187,5 @@ After the fix press **"Check again"**. Every such screen has:
 | Your F.O.R.G.E. textures | `%APPDATA%\BoopiMod\forge\textures` |
 | Textures saved as PNG | `Documents\BoopiMod\Textures` |
 | Logs | `%APPDATA%\BoopiMod\logs` |
+| The list of installed mods and the journal of files in the game | `%APPDATA%\BoopiMod\mods.json`, `%APPDATA%\BoopiMod\deploy\deploy_state.json` (with `.bak` copies beside them; keep them — they let a mod leave the game byte for byte) |
 | The program | usually `C:\Games\boopi_mod` |

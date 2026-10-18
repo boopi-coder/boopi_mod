@@ -14,13 +14,17 @@
 > ### ⏱ In 1 minute
 >
 > - **Voicing (TTS)** decides who speaks the lines: online (Edge TTS, ElevenLabs, OpenAI, Higgs TTS 3) or local (XTTS-v2,
->   Silero; Higgs TTS 3 on your own server too).
+>   Silero, **Qwen3-TTS** and **Higgs TTS 3 on your graphics card** — one button, or on your own server). Qwen3-TTS
+>   (Apache-2.0) is the recommended engine for "This PC" and for real-time replies.
+> - An AI reply in the game sounds **at once**: the first syllables come within a fraction of a second while the rest is still
+>   being voiced (2.4).
+> - The lines of "Lullaby", Boopi Corp., the club and the Red Rocket can be heard **in Russian and in English** — voiced (2.8).
 > - The easiest start is **Microsoft Edge TTS**: free, no key, Russian voices Dmitry and Svetlana.
 > - Choose the provider: Settings → LLM providers → the "Text to speech (TTS)" block → **Use for voicing**.
 > - **Speech recognition (STT)** — Settings → Voice: built in (faster-whisper) or OpenAI Whisper; in the game, hold **V**.
 > - Local engines are not part of the app: they are installed by the **Install** button and work offline. XTTS-v2 and
->   Higgs TTS 3 can **clone a voice**; in the studio the sample of a game NPC's or the hero's voice is cut from the game's lines by
->   itself.
+>   Qwen3-TTS can **clone a voice**; Qwen3-TTS already has built-in voices that sound like the hero and the game's people (2.6).
+>   Higgs TTS 3 clones too (2.7) — it has a research and non-commercial licence.
 > - XTTS-v2 and Silero have **non-commercial** licences, so they are installed only after your explicit consent.
 > - **Lip sync**: whatever is voiced — an AI reply in the game or a line of your studio mod — moves the speaker's lips with the
 >   voice. It is boopi_mod's own: nothing to install, no `.lip` files to make.
@@ -29,7 +33,7 @@
 
 1. [Where voice is used](#1-where-voice-is-used)
 2. [Voicing (TTS)](#2-voicing-tts)
-3. [Voice cloning (XTTS-v2, Higgs TTS 3)](#3-voice-cloning-xtts-v2-higgs-tts-3)
+3. [Voice cloning (XTTS-v2, Qwen3-TTS, Higgs TTS 3)](#3-voice-cloning-xtts-v2-qwen3-tts-higgs-tts-3)
 4. [Speech recognition (STT)](#4-speech-recognition-stt)
 5. [Troubleshooting](#5-troubleshooting)
 6. [Other guides](#6-other-guides)
@@ -61,7 +65,8 @@ Settings → LLM providers → the **"Text to speech (TTS)"** block. The provide
 | **Microsoft Edge TTS** | online | nothing (no key), internet | Free, Russian voices Dmitry and Svetlana; speed is adjustable in percent. A good start |
 | **ElevenLabs** | online | an API key | Voices and models come from your account (Multilingual v2, Turbo, Flash, v3); streaming output |
 | **OpenAI TTS** | online | the same key as the OpenAI provider | Models gpt-4o-mini-tts, tts-1, tts-1-hd |
-| **Higgs TTS 3** | online (Boson cloud) or your own server | a Boson AI key or your server's address | Preset voices and **voice cloning** from a sample with its text; about a hundred languages (2.6) |
+| **Qwen3-TTS** | locally on your NVIDIA card or on your own server | "This PC": "Install" (about 8.5 GB: the environment and the weights), an NVIDIA card with ~7 GB of free memory; your own server: its address | An open model (Apache-2.0). Built-in designed voices (our characters and voices that sound like the game's people) and **voice cloning** from a sample with its text; Russian, English and 8 more languages; on this PC a reply sounds in parts, at once (2.6). The recommended local engine |
+| **Higgs TTS 3** | locally on your NVIDIA card, Boson cloud or your own server | "This PC": nothing (a ~12 GB card); a Boson AI key or your server's address | Preset voices and **voice cloning** from a sample with its text; about a hundred languages; on this PC a reply sounds in parts, at once (2.7). A research and non-commercial licence |
 | **XTTS-v2** | local | "Install" (about 4.7 GB), accept the licence | The best quality and **voice cloning**; an NVIDIA graphics card (CUDA) is desirable |
 | **Silero TTS** | local | "Install" (about 280 MB), accept the licence | Russian voices, light |
 
@@ -88,21 +93,26 @@ Settings → LLM providers → the **"Text to speech (TTS)"** block. The provide
 
 > [!IMPORTANT]
 > **Engine licences.** XTTS-v2 is distributed under the Coqui Public Model License, Silero under CC BY-NC-SA 4.0: both are
-> **non-commercial**. That is why they are not in the archive and are installed only after your explicit consent; Edge TTS
-> and Whisper have no such restrictions.
+> **non-commercial**. That is why they are not in the archive and are installed only after your explicit consent; Edge TTS,
+> Whisper and Qwen3-TTS (Apache-2.0, commercial use allowed) have no such restrictions.
 
 ### 2.3 A particular character's voice
 
 Characters → the character → **Profile**: the voice card shows the fields of the chosen provider (ElevenLabs voice, OpenAI voice,
-Edge voice, Silero speaker, XTTS speaker). Choose and press **Listen** — the choice is saved in your layer of
-edits. If nothing is chosen for the character, the default voice for the language from the provider settings is used.
+Edge voice, Silero speaker, XTTS speaker, Qwen3-TTS voice, Higgs voice). Choose and press **Listen** — the choice is saved in your layer of
+edits. If nothing is chosen for the character, the default voice for the language from the provider settings is used (Qwen3-TTS
+first looks for the voice that sounds like the character's game voice type, 2.6).
 
 ### 2.4 Voicing in the chat and in the game
 
 - **The chat in the app:** the **Voice the replies** box above the input field (or Settings → Voice → "Voice the replies in the chat");
   a single reply can be voiced with the **Listen** button next to the character's name.
-- **The AI dialogue in the game:** Settings → Dialogues → **Voice the replies**. The core gets the answer, synthesises a WAV and
-  hands it to the game, which plays it (not positional) — and the person's lips move with it (2.5).
+- **The AI dialogue in the game:** Settings → Dialogues → **Voice the replies**. The core gets the answer and voices it **in
+  parts**: the first part (with Qwen3-TTS on this PC the first 0.24 s of speech; once the server is loaded, the first sound is
+  ready about 0.45–0.5 s after the request; with Higgs TTS 3 on this PC a third of a second of speech, ready about 0.5–0.7 s
+  after the reply) goes to the game at once and plays while the next ones are still being made;
+  the game queues the parts back to back without a gap (not positional), each with its own lip movement from the very
+  moment it starts (2.5). With other providers a part is a sentence: the first one plays while the rest are voiced.
 - **WAV sample rate for the game** — 44100 Hz (like the game's lines) or 22050 Hz (half the size). Always mono, 16 bit — that is
   what the studio's voice build expects.
 
@@ -146,10 +156,66 @@ happy, amused, flirty, shy, nervous, sad, angry, afraid, annoyed, suspicious, se
 (the default) lets the face follow the line by itself: a question lifts the brows, so do the loud syllables. In the tree file
 it is the line's `emotion:`. The face shows on lines with a WAV recording (our lip sync plays those).
 
-### 2.6 Higgs TTS 3 (Boson AI)
+### 2.6 Qwen3-TTS: your own model on this PC
+
+**Qwen3-TTS** is an open voicing model by the Qwen team (the weights `Qwen/Qwen3-TTS-12Hz-1.7B-Base`). Its licence is
+**Apache-2.0**: commercial use is allowed and there is no licence box to tick. It is **the recommended engine** for "This
+PC" and for real-time replies; Higgs TTS 3 is also available (2.7). The model speaks **from a sample** — a short,
+clean recording of a voice and its exact text. The same sample speaks Russian, English and eight more languages (German,
+French, Spanish, Italian, Portuguese, Japanese, Korean, Chinese): Whisper understands the Russian made from those samples
+almost without a mistake. There are no service preset voices and no emotion tags: a voice is always a sample.
+
+The **Qwen3-TTS** card has two options:
+
+- **This PC** (the default) — the model on your NVIDIA graphics card, **offline and without a key**. Press **Install**: the
+  engine's environment (PyTorch with CUDA and the `qwen-tts` package) is set up, then the weights (~4.5 GB) are downloaded
+  from Hugging Face. If you already have the weights (another program downloaded them), point to their folder when you
+  install or later — **Take from the folder**: the files are hard-linked, not copied, and take no space a second time; a
+  Hugging Face cache folder works too.
+  The core starts the model's server by itself with the first line (loading takes ~5–15 s when the model's files were read
+  from the disk recently; **Start** does it in advance) and stops it after 30 minutes of nothing to do and when the core
+  exits. **Graphics cards**: "One card" (the one with the most free memory), "All cards" — a server on each card, the lines
+  are shared between them — or the cards you pick. A server takes ~7 GB of video memory. Advanced → **Lines at once per
+  card** is how many lines one server says at the same time: more is faster for the studio's bulk voicing but needs more
+  memory.
+- **Own server** — Qwen3-TTS on your computer or your network with an OpenAI-like `POST <address>/v1/audio/speech` that
+  takes a voice sample (`ref_audio` + `ref_text`) and the language (`language`). Enter the address (for example
+  `http://127.0.0.1:8095`) and press **Save address**; the model may stay empty (the server's own is used), a key only if
+  the server asks for one (it is kept only in Windows Credential Manager).
+
+The **Test** button really voices a short phrase, so you see at once that the model and the address are fine.
+
+**Voices.** The Qwen3-TTS voice list has two kinds:
+
+- **Designed voices** `designed:<name>` ship with the app (`data/speech/voices/designed`). They are our own characters (the
+  Boopi synths, the club's and the Red Rocket's people, Nora, the core's voice, the story's new NPCs — 51 voices) and **33
+  voices that sound like the game's people**: the hero (male and female), Nick Valentine, Piper, Codsworth, Preston, X6-88,
+  Deacon, Virgil, Shaun, McDonough, Geneva and the rest. Each was made from a text description of the character with
+  Qwen3-TTS VoiceDesign: a similar age, timbre, accent and attitude, but a voice of its own — **never made from the game's
+  audio**. The descriptions are in `data/speech/voices/designed.yaml`.
+- **Clones** `clone:<name>` are your own samples (section 3): your recording, or a sample cut from your own game for your
+  personal use.
+
+**Which voice speaks a person.** The voice picked in the studio; else the character card's "Qwen3-TTS voice"; else the
+person's designed voice — the one their bundled lines are voiced with, or, when they have none, the voice that sounds like
+their game voice type (the hero: of the hero's sex); else your own sample of their voice type; else the default voice
+(`designed:nora`).
+
+**Speed** (RTX 2080 Ti, approximate figures). An AI reply is voiced in parts: the first part is 3 audio frames (0.24 s of
+speech); once the server is loaded, the first sound is ready about 0.45–0.5 s after the request, and the next parts are made
+while it plays. The model's codec is causal, so a part never waits for what follows, and the card computes each frame of all
+the server's lines as one pre-recorded pass. Bulk voicing in the studio: 16 lines at once per card, about 13–17 times faster
+than real time.
+
+> [!IMPORTANT]
+> **The Qwen3-TTS licence.** The weights are open under Apache-2.0 — nothing to accept, commercial use allowed. Clone only the
+> voices you have the right to. boopi_mod does not distribute the model: it is downloaded to your computer from Hugging Face.
+
+### 2.7 Higgs TTS 3 (Boson AI)
 
 **Higgs TTS 3** is Boson AI's voicing model: preset voices, **cloning from a sample** (a 5–30 second recording and, optionally,
-its text — the voice comes out closer with it) and about a hundred languages. The **Higgs TTS 3** card has two options:
+its text — the voice comes out closer with it) and about a hundred languages. You may voice your own mods and characters with
+it — under its licence and on your own responsibility. The **Higgs TTS 3** card has three options:
 
 - **Boson cloud** — voicing goes through `api.boson.ai`. Paste your own Boson AI key and press **Save key**: it is kept only in
   Windows Credential Manager, never in a file. Preset voices: Oliver, Marcus, Jake, Chloe, Eleanor, Nora. It works under your
@@ -160,40 +226,78 @@ its text — the voice comes out closer with it) and about a hundred languages. 
   sample is sent": `ref_audio` for vLLM-Omni (as Boson does), `references` for SGLang-Omni on the same computer (the sample goes
   into a temporary file the server reads itself).
 
+- **This PC** — the open model on your NVIDIA graphics card, **offline and without a key**, like XTTS-v2. It needs a card
+  with about 12 GB of video memory (a 22 GB 2080 Ti has room to spare). Tick the licence and press **Install**: the
+  environment (~3.6 GB) is set up, then the weights `bosonai/higgs-tts-3-4b` (~9.3 GB) are downloaded. If you already have
+  the weights (another program downloaded them), point to their folder — **Take from the folder**: the files are linked, not
+  copied, and take no space a second time. The model's server starts by itself with the first line (loading takes ~0.5–2
+  minutes; **Start** does it in advance) and stops after 30 minutes of nothing to do. **All GPUs** runs a server on each card
+  and shares the lines between them (useful when the studio voices many lines); "lines at once per card" is how many lines
+  one card says at the same time. Speed on an RTX 2080 Ti: one line faster than real time (~0.6–0.7 s of work per second of
+  speech), an AI reply's first sound after ~0.5–0.7 s; many lines at once 7–9 times faster than real time per card.
+
 The **Test** button really voices a short phrase, so you see at once that the key, address and model are fine. The default voice
-for the language is in the list below; the clones `clone:<name>` are there too — the same samples XTTS uses (section 3).
+for the language is in the list below; the clones `clone:<name>` are there too — the same samples XTTS and Qwen3-TTS use
+(section 3). An AI reply's emotion (warm, sad, angry…) goes to Higgs as its own tag, and the voice carries that feeling.
 
 > [!IMPORTANT]
 > **The Higgs TTS 3 licence.** The open model is for research and non-commercial use only (Boson Higgs TTS 3 Research and
 > Non-Commercial License). Clone only the voices you have the right to. The cloud API is under your own Boson terms. boopi_mod
 > distributes none of it: the model and the key are yours.
 
+### 2.8 "Lullaby" voiced
+
+The lines of the boopi_mod dialogue trees — the "Lullaby" story, Boopi Corp., the Black Acorn club, the Red Rocket and the
+story's new lines in the game's own quests — are voiced **in Russian and in English**. The recordings of both languages come in the story's content pack
+("Lullaby" — the story, from 0.6.0) and go into the mod by themselves when it is built: in a Russian or English game those
+lines sound and move the lips. An update of the pack replaces the recordings as a whole.
+
+- **Every voice is designed** from a description of the character (2.6): our own characters have voices of their own, the
+  hero (a take for each sex) and the game's people (Nick, Piper, Codsworth, Shaun, X6-88, Deacon, Virgil…) voices that sound
+  like them. Nobody's recordings were cloned and no game audio was used. Who speaks with which voice is in
+  `data/speech/voices/cast.yaml` and `designed.yaml`.
+- Both languages were voiced locally with Qwen3-TTS. Every voice has two samples, English and **Russian**: the Russian
+  one is designed from the same description as a native speaker's voice, with a natural Russian sample text, so the
+  Russian lines have no accent (Whisper hears Russian at 0.97+ for every sample).
+- When a line in a tree is changed, its recording no longer fits: the line is subtitled again until it is voiced again.
+
+For authors: the voice bank is built by `scripts/voice_bank.py` for `--lang ru` or `--lang en`: `plan` → `say` (local
+Qwen3-TTS servers) → `check` (Whisper in the line's language; bad takes are said again, up to 3 times) (for Russian it compares the sound - reduced vowels, devoicing, names in Latin letters are no error; the best take
+of a line stays) → `bad` (the ones that stayed bad) → `finish` (xWMA and lips into `data/voice/<lang>`; the encoder from
+`--encoder`, `OLDGENAI_XWMAENCODE` or the game folder); Russian lines with `say --native` (only from a voice's Russian
+sample, `design_voices.py --lang ru`); `redo --voices <id>` voices a character again. A designed
+voice: `scripts/design_voices.py --only <id>`. The story pack with the bank, to check: `python scripts/publish_content.py --build story`. The
+details are in those scripts' docstrings.
+
 ---
 
-## 3. Voice cloning (XTTS-v2, Higgs TTS 3)
+## 3. Voice cloning (XTTS-v2, Qwen3-TTS, Higgs TTS 3)
 
-Both "cloning" providers — **XTTS-v2** and **Higgs TTS 3** — speak with the voice of a sample `clone:<name>`: a clean recording
-of speech **6–30 seconds** long. The samples are shared by both and live in `%APPDATA%\BoopiMod\speech\voices\<name>\`.
-There are three sources:
+All the "cloning" providers — **XTTS-v2**, **Qwen3-TTS** and **Higgs TTS 3** — speak with the voice of a sample
+`clone:<name>`: a clean recording of speech **6–30 seconds** long (Qwen3-TTS takes up to 20 seconds of it). The samples are
+shared by all of them and live in
+`%APPDATA%\BoopiMod\speech\voices\<name>\`. There are three sources:
 
 1. **By itself, in the studio.** When the studio voices the lines of a game NPC (Piper, Nick, Cait, a settler…) or of the hero
-   with a cloning provider, the sample is picked by itself: the speaker's voice type comes from the NPC record in your load order
-   (for a boopi_mod character with a `game_voice_type` — from its card; for the hero — the player's voice of the hero's sex), a
-   sample is cut from that type's lines and kept — it is not cut again. Details in [SCRIPT_STUDIO.md](SCRIPT_STUDIO.md),
+   with a cloning provider and there is no built-in voice that sounds like that person (Qwen3-TTS takes one first, 2.6), the
+   sample is picked by itself: the speaker's voice type comes from the NPC record in your load order (for a boopi_mod
+   character with a `game_voice_type` — from its card; for the hero — the player's voice of the hero's sex), a sample is cut
+   from that type's lines in your game and kept — it is not cut again. Details in [SCRIPT_STUDIO.md](SCRIPT_STUDIO.md),
    section 6.1.
 2. **Cut from the game by hand.** In the "Voice samples" block enter an **NPC voice type** (for example `NPCMNickValentine`) and
    press **Cut from the game**.
-3. **Your own recording.** Enter a voice name and press **Upload a recording (WAV)…**; for Higgs you can type what the recording
-   says, word for word (**Save text**).
+3. **Your own recording.** Enter a voice name and press **Upload a recording (WAV)…**; for Qwen3-TTS type what the recording
+   says, word for word (**Save text**) — the voice comes out closer with it; for Higgs it is optional.
 
 How a sample is cut: lines of that type of 2–17 seconds each are taken from the game's voice archives until about 15 seconds
 (at most 30) are there. When the game's strings have the subtitles of these lines, only lines with a clean text (no stage
-directions) are taken and the text of each is kept next to it — Higgs gets it together with the sample. The game's sound is
-decoded by an installed XTTS-v2, or without it by the Creation Kit's `xWMAEncode.exe` (`Tools\Audio` in the game folder).
+directions) are taken and the text of each is kept next to it — Qwen3-TTS and Higgs get it together with the sample. The game's sound
+is decoded by an installed XTTS-v2, or without it by the Creation Kit's `xWMAEncode.exe` (`Tools\Audio` in the game folder).
 Whether a sample is "with text" or "no text" shows in the list.
 
-To make a character always speak with a clone, put the XTTS speaker or the Higgs voice `clone:<name>` in the voice card; if the
-character has a `game_voice_type`, the clone is picked up by itself.
+To make a character always speak with a clone, put the XTTS speaker or the Qwen3-TTS / Higgs voice `clone:<name>` in the
+voice card; if the character has a `game_voice_type`, Qwen3-TTS picks the designed voice that sounds like that type by itself,
+and XTTS and Higgs the clone.
 
 > [!WARNING]
 > Clone only the voices you have the right to. The game's lines are used as a sample for personal use on your computer; they are
@@ -247,7 +351,13 @@ The text appears in the input line; **Enter** sends it (`bAutoSend=1` sends at o
 | "The voice or model is not downloaded" | Download a Silero or a Whisper model in the provider block |
 | "You need to accept the licence terms" | Tick the XTTS or Silero terms box and repeat the install |
 | "The provider's API key is not set" | Paste the provider's key and press "Save key" |
+| Qwen3-TTS: "Nothing answers at this Qwen3-TTS server address" / "no /v1/audio/speech" | Start your server and check the address: just `http://host:port` |
+| Qwen3-TTS "This PC": "The Qwen3-TTS weights are not on this PC yet" | In the Qwen3-TTS card press "Download" or "Take from the folder" with weights you already have |
+| Qwen3-TTS "This PC": "did not start" | Close programs that hold video memory (games, other neural networks) and press Start; the log is `logs\speech-qwen-gpu*.log` |
+| Qwen3-TTS "This PC": "needs an NVIDIA graphics card with about 7 GB of free video memory" | Free some video memory, or use Edge TTS, XTTS-v2 or your own Qwen3-TTS server on another computer |
 | Higgs: "Nothing answers at this Higgs server address" / "no /v1/audio/speech" | Start your server (vLLM-Omni, SGLang-Omni) and check the address: just `http://host:port` |
+| Higgs "This PC": "did not start" | Close programs that hold video memory (games, other neural networks) and press Start; the log is `logs\speech-higgs-gpu*.log` |
+| Higgs "This PC": "needs an NVIDIA graphics card with about 12 GB" | The model does not fit on this card — use Qwen3-TTS, Edge TTS, XTTS-v2 or the cloud |
 | Higgs: "Boson refused the request for payment reasons" | Claim the trial credit or top up at boson.ai |
 | "This voice has no sample" / "needs XTTS-v2 or xWMAEncode" | Cut a sample from the game or upload your own recording; cutting needs XTTS-v2 or the Creation Kit (`Tools\Audio\xwmaencode.exe`) |
 | "Speech recognition is off" | Settings → Voice: choose built-in recognition or OpenAI Whisper |

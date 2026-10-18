@@ -290,13 +290,16 @@ Greetings, the character's answers, the hero's phrases (the folding «The hero's
 
 1. Press **«Voice all»**. The window shows **who speaks with which voice**: every person of the file's trees and **the hero**,
    a Russian and an English voice each, with **«▶»** to listen. The voices are those of the provider selected in «Settings →
-   LLM providers» (Edge TTS by default — no key needed; ElevenLabs, OpenAI, Higgs TTS 3, XTTS-v2, Silero). Nothing picked: the
+   LLM providers» (Edge TTS by default — no key needed; ElevenLabs, OpenAI, Qwen3-TTS, Higgs TTS 3, XTTS-v2, Silero). Nothing picked: the
    person speaks with the voice of the boopi_mod character who plays them (or the provider's default), the hero with a voice of
    the hero's sex. The choice is remembered for all your files.
 
-   With a **cloning** provider (XTTS-v2, Higgs TTS 3) «— auto —» means **a sample from the game**: a game NPC (Piper, Nick, a
-   settler…) and the hero speak with their own voice. Under the speaker's name are their voice type and where it comes from
-   («from the game», «from the card», «hero»), under each voice what is used, for example «sample from the game (NPCFPiper) ·
+   With **Qwen3-TTS** «— auto —» means **a built-in designed voice**: the one this person's bundled lines are voiced with,
+   else the voice that sounds like their game voice type (Nick, Piper, Codsworth, Preston… and the hero by their sex); under
+   the voice it says «designed voice: …». It was made from a description of the character, not from the game's audio
+   ([VOICE.md](VOICE.md), section 2.6). When there is no such voice, and with **XTTS-v2** and **Higgs TTS 3**, «— auto —» means **a sample from
+   the game**: a game NPC (Piper, Nick, a settler…) and the hero speak with their own voice. Under the speaker's name are
+   their voice type and where it comes from («from the game», «from the card», «hero»), under each voice what is used, for example «sample from the game (NPCFPiper) ·
    seconds: 18.8 · with the lines' text». The sample is cut from the game's lines on the first voicing and kept on your computer
    (until then: «cut on the first voicing»). **«Cut again»** takes the sample once more, **«Own recording…»** uses your WAV
    (6–30 seconds) instead; the list can also pick another clone or a preset voice. Samples never go into the mod; clone only the
@@ -306,8 +309,8 @@ Greetings, the character's answers, the hero's phrases (the folding «The hero's
    recording»** to redo them. Every recording remembers its text: a line fixed after it was voiced is voiced again («Text
    changed after voicing: N»), and a recording already made for the same text (a voicing cut short by closing the program, a
    line moved or put back) is taken without voicing — or paying — again («Recordings already made … are taken: N»). Below is
-   the **estimate**: the characters and, for a paid provider, the price (OpenAI in dollars, ElevenLabs in the plan's credits;
-   the cloud Higgs — characters only); before a paid voicing the window asks again.
+   the **estimate**: the characters and, for a paid provider, the price (OpenAI in dollars, ElevenLabs in the plan's
+   credits; the cloud Higgs — characters only); before a paid voicing the window asks again.
 3. Press **«Voice N»**. A progress bar shows the lines as they are said; the window can be hidden — the voicing goes on, and the
    recordings go into the file when you open the window again. A line that fails is listed with the reason, the rest go on. A
    recording goes to the line that says its text: lines moved meanwhile find theirs; a line deleted or rewritten gets nothing

@@ -139,9 +139,12 @@ one: red is the strength of the shine, green the glossiness; a grey picture make
    channel…), and the model updates. Without the tick — the **«Re-read the changed PNG»** button. Works in the app and in the
    browser; several slots can be watched at once.
 
-### Maps from the main texture
+### Recolour and maps from the main texture
 
-The **«Color (diffuse)»** slot's panel has **«Maps from the main texture»**: F.O.R.G.E. makes the missing maps from it (our own
+The **«Color (diffuse)»** slot's panel has **«Recolour and maps from the main texture»**. The first tab, **«Recolour»**, is the
+same item in another colour with no image editor: **hue** (a turn round the colour wheel), **saturation** (×0 grey, ×2
+brighter), **darker ↔ lighter**. Greys and whites (seams, buttons) stay as they were, and so does the transparency. The other
+tabs are the missing maps: F.O.R.G.E. makes them (our own
 code, no third-party generators). The source is the main texture as the game draws it now, or the new picture you just gave
 the slot.
 
@@ -149,6 +152,7 @@ the slot.
 |---|---|---|
 | **Relief** | the relief (normal) slot | A normal map in the game's style (DirectX). The height comes from brightness (or one channel); **strength**, **blur** (noise and JPEG blocks out), **fine detail** on top of the blur, **sharpen**, **invert the height** (bright is low), green channel DirectX / OpenGL. |
 | **Reflections** | the specular slot | Fallout 4's map: red is the highlight's strength, green the smoothness. **Material**: cloth, leather, metal, skin, plastic, wood — or your own values: highlight and its contrast, smoothness and its contrast, **metal ↔ rough**, invert. |
+| **Recolour** | the main texture itself | Hue −180…180°, saturation ×0…×2, darker ↔ lighter. Always from the game's texture (not from an earlier recolour). |
 | **Cavities** | the main texture itself | Darkens the crevices (much like ambient occlusion): depth and width. |
 | **Glow** | the glow slot, when there is one | A mask of the bright pixels: threshold, edge softness, in the texture's colour or white. |
 

@@ -27,6 +27,14 @@ Shipped in the release archive (each under its own license):
     fmt - Copyright (c) 2012 - present, Victor Zverovich and {fmt} contributors, MIT;
     spdlog - Copyright (c) 2016 - present, Gabi Melman and spdlog contributors, MIT;
     rsm-mmio - Copyright (c) 2021 Ryan McKenzie, MIT;
+    The Next-Gen / Anniversary build of the same plugins (bundled/oldgenai-plugin-ng-*.zip, bundled/gam-ng-*.zip) is
+        linked instead with alandtse/CommonLibF4 ("CommonLibF4 NG") - Copyright (c) 2019 ryan-rsm-mckenzie (and its
+        contributors), MIT, https://github.com/alandtse/CommonLibF4 (its Old-Gen and Next-Gen Address Library ids; a
+        small fix kept in game-plugin/patches). Its tables of Next-Gen ids for the ids that library names only for
+        Old-Gen (game-plugin/common/NgIdMap.inc) and of Anniversary 1.11.191+ ids for its Next-Gen ids
+        (game-plugin/common/AeIdMap.inc) are taken from LucaDotGit/CommonLibF4 ("CommonLibF4 AV"), Copyright (c) 2019
+        ryan-rsm-mckenzie, MIT, https://github.com/LucaDotGit/CommonLibF4. (libxse/commonlibf4, GPL-3.0, was only read
+        to compare class sizes; nothing of it is copied or linked.)
     Boost header libraries (boost-stl-interfaces and the headers it needs) - Boost Software License 1.0,
         https://www.boost.org/LICENSE_1_0.txt (no notice is needed in compiled form).
 - Our SKSE plugin for Skyrim Special Edition (GAMSkyrim.dll, "GAM for Skyrim") is linked statically with:
@@ -58,6 +66,18 @@ Optional engines installed on demand, after you accept their licenses:
 - Silero TTS / VAD — CC BY-NC-SA 4.0 (TTS models, non-commercial) / MIT (VAD).
 - Piper (MIT) and its voices (each voice under its own license, see the voice card).
 - faster-whisper (MIT) with Whisper models (MIT, OpenAI). Microsoft Edge TTS (online service, Microsoft terms).
+- Higgs TTS 3 on this PC — the open weights bosonai/higgs-tts-3-4b by Boson AI under the Boson Higgs TTS 3 Research and
+  Non-Commercial License (research and non-commercial use; clone only voices you have the right to), run by our own server
+  code; its environment uses PyTorch (BSD-3-Clause) and Hugging Face transformers (Apache-2.0: the model's audio codec).
+- Qwen3-TTS on this PC — the open weights Qwen/Qwen3-TTS-12Hz-1.7B-Base by the Qwen team (Alibaba Cloud), Apache-2.0,
+  run by our own server code; its environment uses PyTorch (BSD-3-Clause), the qwen-tts package (Apache-2.0: the prompt,
+  the speaker encoder and the 12 Hz audio codec) and Hugging Face transformers (Apache-2.0).
+
+Voice recordings (in the story content pack, story/voice; built in data/voice) were made with Qwen3-TTS
+(Qwen/Qwen3-TTS-12Hz-1.7B-Base, Apache-2.0), run locally on the author's computer. Every voice in them is a designed one
+(data/speech/voices/designed): made from a text description of the character with Qwen3-TTS VoiceDesign
+(Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign, Apache-2.0) - our own characters, and sound-alikes of the game's characters
+(similar in age, timbre, accent and attitude, but their own voices). No one's recordings were used to make them.
 
 Fallout, The Elder Scrolls, Skyrim and related marks are trademarks of Bethesda Softworks / ZeniMax Media. boopi_mod is not
 affiliated with them.
