@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img alt="версия 0.2.2 beta" src="https://img.shields.io/badge/версия-0.2.2%20beta-3cff6b?style=flat-square">
+  <img alt="версия 0.2.3 beta" src="https://img.shields.io/badge/версия-0.2.3%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="Звёзды на GitHub" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20%D0%B7%D0%B2%D1%91%D0%B7%D0%B4%D1%8B&color=f2b705"></a>
   <img alt="Fallout 4: Old-Gen · Next-Gen · Anniversary" src="https://img.shields.io/badge/Fallout%204-Old--Gen%20%C2%B7%20Next--Gen%20%C2%B7%20Anniversary-f2b705?style=flat-square">
   <img alt="Skyrim SE / AE: бета" src="https://img.shields.io/badge/Skyrim%20SE%20%2F%20AE-бета-6f8fa8?style=flat-square">
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.2.2 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.2.2%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.2.3 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.2.3%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Поддержать автора на Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -43,7 +43,7 @@
 </p>
 
 > [!WARNING]
-> **Это бета (0.2.2).** Возможны ошибки. Пишите о них и о своих идеях в
+> **Это бета (0.2.3).** Возможны ошибки. Пишите о них и о своих идеях в
 > [issues](https://github.com/boopi-coder/boopi_mod/issues/new/choose): шаблон подскажет, что приложить. Я читаю всё.
 
 ---
@@ -140,6 +140,11 @@
 ## Что нового
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="Что нового" width="100%"></p>
+
+**0.2.3** — исправления для Next-Gen и юбилейной: на главной видно, если наши моды не стоят в игре, и одна кнопка их
+ставит; после переустановки игры моды ставятся заново (возвращается логотип в меню); свежие UFO4P, MCM, High FPS Physics
+Fix и Buffout 4 AE в базовом пакете; озвученный «Boopi Corp.» ставится намного быстрее.
+[Заметки к 0.2.3](docs/release/v0.2.3.md).
 
 **0.2.2** — поддержка Next-Gen 1.10.980 / 1.10.984 и Anniversary 1.11.191 / 1.11.221 / 1.11.240: одна сборка наших
 плагинов, всё включено, на 1.11.191 проверено в игре. «Колыбельная» озвучена целиком на русском и английском, у каждого
@@ -520,9 +525,9 @@ Skyrim Special Edition выбирается в «Настройки → Игры
 
 ### Шаг 0. Скачать и распаковать
 
-1. Скачайте **`boopi_mod-0.2.2-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   и сверьте SHA-256 с `SHA256SUMS.txt` из того же релиза. Для 0.2.2:
-   `6aba92e3d745c8aa7760460e805de017cb00ee7dfc093e47f1cf798c4cd816ed`.
+1. Скачайте **`boopi_mod-0.2.3-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   и сверьте SHA-256 с `SHA256SUMS.txt` из того же релиза. Для 0.2.3:
+   `872639c36263f9e1d49a0dba05c2b3fd0514d81075088bdfc9803837778dfa60`.
 2. Распакуйте в **короткий путь**, например `C:\Games\boopi_mod`. Windows не запускает программы с путём длиннее 260
    символов.
 3. Запустите **`boopi_mod.exe`** и выберите язык и игру.
@@ -591,8 +596,8 @@ download» в окне Nexus внутри программы. Установле
 
 1. Скорее всего, антивирус убрал `core\oldgenai-core.exe` в карантин. Это ложная тревога: ядро — неподписанная программа на
    Python, такие программы некоторые антивирусы помечают по шаблону.
-2. Проверьте SHA-256 архива (PowerShell: `Get-FileHash .\boopi_mod-0.2.2-win-x64.zip`). Для 0.2.2:
-   `6aba92e3d745c8aa7760460e805de017cb00ee7dfc093e47f1cf798c4cd816ed`.
+2. Проверьте SHA-256 архива (PowerShell: `Get-FileHash .\boopi_mod-0.2.3-win-x64.zip`). Для 0.2.3:
+   `872639c36263f9e1d49a0dba05c2b3fd0514d81075088bdfc9803837778dfa60`.
 3. Верните файл из карантина или добавьте папку boopi_mod в исключения и распакуйте архив заново.
 4. Распаковывайте в обычную папку (не в Program Files) и не запускайте из архива.
 5. Напишите, какой у вас антивирус и как он назвал угрозу, — я сообщу о ложном срабатывании.
@@ -737,7 +742,7 @@ boopi.site при запуске и раз в 30 минут, без данных
 
 ## Что дальше
 
-**Следующий выпуск:**
+**Выпуск 0.2.4:**
 
 - **Mod Organizer 2 и Vortex:** boopi_mod будет работать рядом с ними и импортировать вашу сборку (список модов, порядок
   загрузки, настройки).

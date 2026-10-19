@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img alt="version 0.2.2 beta" src="https://img.shields.io/badge/version-0.2.2%20beta-3cff6b?style=flat-square">
+  <img alt="version 0.2.3 beta" src="https://img.shields.io/badge/version-0.2.3%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20stars&color=f2b705"></a>
   <img alt="Fallout 4: Old-Gen · Next-Gen · Anniversary" src="https://img.shields.io/badge/Fallout%204-Old--Gen%20%C2%B7%20Next--Gen%20%C2%B7%20Anniversary-f2b705?style=flat-square">
   <img alt="Skyrim SE / AE: beta" src="https://img.shields.io/badge/Skyrim%20SE%20%2F%20AE-beta-6f8fa8?style=flat-square">
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.2.2 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.2.2%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.2.3 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.2.3%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Support the author on Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -43,7 +43,7 @@
 </p>
 
 > [!WARNING]
-> **This is a beta (0.2.2).** There may be bugs. Please report bugs and ideas in the
+> **This is a beta (0.2.3).** There may be bugs. Please report bugs and ideas in the
 > [issues](https://github.com/boopi-coder/boopi_mod/issues/new/choose). The template tells you what to attach. I read everything.
 
 ---
@@ -139,6 +139,11 @@ Russian and English. Skyrim SE / AE has a [beta](#skyrim-se--ae-beta): G.A.M. sc
 ## What's new
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="What's new" width="100%"></p>
+
+**0.2.3** — fixes for Next-Gen and Anniversary: Home shows when our mods are not in the game, and one button installs
+them; after a game reinstall the mods install again (the menu logo comes back); the latest UFO4P, MCM, High FPS Physics Fix
+and Buffout 4 AE in the base pack; the voiced Boopi Corp. installs much faster.
+[0.2.3 notes](docs/release/v0.2.3.md).
 
 **0.2.2** — support for Next-Gen 1.10.980 / 1.10.984 and Anniversary 1.11.191 / 1.11.221 / 1.11.240: one build of our
 plugins, everything on, checked in the game on 1.11.191. "Lullaby" is fully voiced in Russian and English, with a voice of
@@ -524,9 +529,9 @@ The limitations of this release are in the [0.2.2 notes](docs/release/v0.2.2.md#
 
 ### Step 0. Download and unpack
 
-1. Download **`boopi_mod-0.2.2-win-x64.zip`** from [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   and compare its SHA-256 with `SHA256SUMS.txt` from the same release. For 0.2.2:
-   `6aba92e3d745c8aa7760460e805de017cb00ee7dfc093e47f1cf798c4cd816ed`.
+1. Download **`boopi_mod-0.2.3-win-x64.zip`** from [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   and compare its SHA-256 with `SHA256SUMS.txt` from the same release. For 0.2.3:
+   `872639c36263f9e1d49a0dba05c2b3fd0514d81075088bdfc9803837778dfa60`.
 2. Unpack to a **short path**, for example `C:\Games\boopi_mod`. Windows does not run programs with a path longer than 260
    characters.
 3. Run **`boopi_mod.exe`** and choose your language and game.
@@ -596,8 +601,8 @@ What the messages on the "Core is not responding" screen mean: [Guides → If th
 
 1. Most likely your antivirus moved `core\oldgenai-core.exe` to quarantine. This is a false alarm: the core is an unsigned
    Python program, and some antiviruses flag such programs by pattern.
-2. Check the archive's SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.2.2-win-x64.zip`). For 0.2.2:
-   `6aba92e3d745c8aa7760460e805de017cb00ee7dfc093e47f1cf798c4cd816ed`.
+2. Check the archive's SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.2.3-win-x64.zip`). For 0.2.3:
+   `872639c36263f9e1d49a0dba05c2b3fd0514d81075088bdfc9803837778dfa60`.
 3. Restore the file from quarantine or add the boopi_mod folder to the exclusions, then unpack the archive again.
 4. Unpack to a normal folder (not Program Files) and do not run the app from inside the zip.
 5. Tell me your antivirus and the name of the detection, and I will report the false positive.
@@ -742,7 +747,7 @@ About → Diagnostics → Copy logs for a report". Questions from [Boosty](https
 
 ## What's coming
 
-**The next release:**
+**Release 0.2.4:**
 
 - **Mod Organizer 2 and Vortex:** boopi_mod will work alongside them and import your setup (mod list, load order,
   settings).
