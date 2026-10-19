@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img alt="version 0.2.3 beta" src="https://img.shields.io/badge/version-0.2.3%20beta-3cff6b?style=flat-square">
+  <img alt="version 0.2.4 beta" src="https://img.shields.io/badge/version-0.2.4%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20stars&color=f2b705"></a>
   <img alt="Fallout 4: Old-Gen · Next-Gen · Anniversary" src="https://img.shields.io/badge/Fallout%204-Old--Gen%20%C2%B7%20Next--Gen%20%C2%B7%20Anniversary-f2b705?style=flat-square">
   <img alt="Skyrim SE / AE: beta" src="https://img.shields.io/badge/Skyrim%20SE%20%2F%20AE-beta-6f8fa8?style=flat-square">
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.2.3 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.2.3%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Download boopi_mod 0.2.4 beta" src="https://img.shields.io/badge/DOWNLOAD-boopi__mod%200.2.4%20beta%20for%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Support the author on Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -43,7 +43,7 @@
 </p>
 
 > [!WARNING]
-> **This is a beta (0.2.3).** There may be bugs. Please report bugs and ideas in the
+> **This is a beta (0.2.4).** There may be bugs. Please report bugs and ideas in the
 > [issues](https://github.com/boopi-coder/boopi_mod/issues/new/choose). The template tells you what to attach. I read everything.
 
 ---
@@ -140,6 +140,11 @@ Russian and English. Skyrim SE / AE has a [beta](#skyrim-se--ae-beta): G.A.M. sc
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="What's new" width="100%"></p>
 
+**0.2.4** — move from Mod Organizer 2 and Vortex in a couple of clicks (and export back to MO2); any mod can be
+switched off; FOMOD installers; installs check compatibility (F4SE plugins made for another game version, missing
+masters); a smarter load order (overlapping records, limits, the LOOT list); MCM on Anniversary only on 1.11.240.
+[0.2.4 notes](docs/release/v0.2.4.md).
+
 **0.2.3** — fixes for Next-Gen and Anniversary: Home shows when our mods are not in the game, and one button installs
 them; after a game reinstall the mods install again (the menu logo comes back); the latest UFO4P, MCM, High FPS Physics Fix
 and Buffout 4 AE in the base pack; the voiced Boopi Corp. installs much faster.
@@ -201,6 +206,12 @@ expression. A beta for Skyrim SE. [0.2.0 notes](docs/release/v0.2.0.md).
   G.A.M., boopi_hud, "G.A.M.: gestures", "OldGen: the new story", "Boopi Corp.: Gen 4 synths".
 - **Rollback.** Mods are installed with hard links and a journal. When you remove a mod, the original files come back byte
   for byte.
+- **Moving over from Mod Organizer 2 and Vortex.** The app finds their Fallout 4 mods by itself and offers "Move them here":
+  the mods come enabled and disabled as they were, with the same winners of shared files and the same plugin order; files
+  are not copied (the same files on disk), MO2 and Vortex keep working. "Undo the move" puts everything back. "Export to
+  MO2" is the way back (and Vortex takes mods over from MO2 itself).
+- **Any mod can be switched off** - its files leave the game (whatever it covered comes back), its priority and plugins
+  stay; switching it on puts everything back.
 - You can drop zip, 7z and rar archives onto the window. A Nexus Mods window is built into the app; no API key is needed.
 - **Load order:** "Sort" shows the plan first and applies it only after that. "Sort with AI" also explains each plugin.
 
@@ -493,8 +504,9 @@ setting**.
     come from a second library (LucaDotGit/CommonLibF4), spot-checked against F4SE 0.7.7.
   - If the game crashes or something does not work, press "Settings → About → Diagnostics → Copy logs for a report" and
     attach the zip to your report.
-  - **Buffout 4 NG** is offered on Old-Gen and Next-Gen. It is not offered on Anniversary, and the game writes no crash log
-    by itself. UFO4P, High FPS Physics Fix, MCM and Baka ScrapHeap are for Old-Gen only.
+  - **Buffout 4** is offered on every version: NG on Old-Gen and Next-Gen, AE on Anniversary. UFO4P and High FPS Physics
+    Fix too. **MCM** on Anniversary is offered for 1.11.240 only: its "1.11.240" build runs on that version alone, and F4SE
+    disables it on 1.11.191 / 1.11.221. Baka ScrapHeap is for Old-Gen only.
   - Anniversary 1.11.137 / 1.11.159 / 1.11.169: **our game plugins do not run** (no library has their addresses); F4SE
     will not load them. Update the game to 1.11.240.
   - F4SE 0.7.x and the Address Library for Next-Gen and Anniversary come from Nexus, through your own account. The app
@@ -529,9 +541,9 @@ The limitations of this release are in the [0.2.2 notes](docs/release/v0.2.2.md#
 
 ### Step 0. Download and unpack
 
-1. Download **`boopi_mod-0.2.3-win-x64.zip`** from [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   and compare its SHA-256 with `SHA256SUMS.txt` from the same release. For 0.2.3:
-   `872639c36263f9e1d49a0dba05c2b3fd0514d81075088bdfc9803837778dfa60`.
+1. Download **`boopi_mod-0.2.4-win-x64.zip`** from [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   and compare its SHA-256 with `SHA256SUMS.txt` from the same release. For 0.2.4:
+   `acae4126c28400a39c7b4ce13aa205dd2f4c8d4dd9baf286a88674f5dbdf766a`.
 2. Unpack to a **short path**, for example `C:\Games\boopi_mod`. Windows does not run programs with a path longer than 260
    characters.
 3. Run **`boopi_mod.exe`** and choose your language and game.
@@ -601,8 +613,8 @@ What the messages on the "Core is not responding" screen mean: [Guides → If th
 
 1. Most likely your antivirus moved `core\oldgenai-core.exe` to quarantine. This is a false alarm: the core is an unsigned
    Python program, and some antiviruses flag such programs by pattern.
-2. Check the archive's SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.2.3-win-x64.zip`). For 0.2.3:
-   `872639c36263f9e1d49a0dba05c2b3fd0514d81075088bdfc9803837778dfa60`.
+2. Check the archive's SHA-256 (PowerShell: `Get-FileHash .\boopi_mod-0.2.4-win-x64.zip`). For 0.2.4:
+   `acae4126c28400a39c7b4ce13aa205dd2f4c8d4dd9baf286a88674f5dbdf766a`.
 3. Restore the file from quarantine or add the boopi_mod folder to the exclusions, then unpack the archive again.
 4. Unpack to a normal folder (not Program Files) and do not run the app from inside the zip.
 5. Tell me your antivirus and the name of the detection, and I will report the false positive.
@@ -747,10 +759,8 @@ About → Diagnostics → Copy logs for a report". Questions from [Boosty](https
 
 ## What's coming
 
-**Release 0.2.4:**
+**Next release:**
 
-- **Mod Organizer 2 and Vortex:** boopi_mod will work alongside them and import your setup (mod list, load order,
-  settings).
 - **The first animation pack**, after my hand polish.
 
 **After that, no dates:**

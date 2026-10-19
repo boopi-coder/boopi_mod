@@ -9,7 +9,7 @@
 > that you can share as a single file.
 
 > [!WARNING]
-> **This is a beta (0.2.3):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
+> **This is a beta (0.2.4):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
 > problems and ideas is very welcome. [Open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose)
 
 ## Where to start

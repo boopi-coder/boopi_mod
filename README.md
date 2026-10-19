@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img alt="версия 0.2.3 beta" src="https://img.shields.io/badge/версия-0.2.3%20beta-3cff6b?style=flat-square">
+  <img alt="версия 0.2.4 beta" src="https://img.shields.io/badge/версия-0.2.4%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="Звёзды на GitHub" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20%D0%B7%D0%B2%D1%91%D0%B7%D0%B4%D1%8B&color=f2b705"></a>
   <img alt="Fallout 4: Old-Gen · Next-Gen · Anniversary" src="https://img.shields.io/badge/Fallout%204-Old--Gen%20%C2%B7%20Next--Gen%20%C2%B7%20Anniversary-f2b705?style=flat-square">
   <img alt="Skyrim SE / AE: бета" src="https://img.shields.io/badge/Skyrim%20SE%20%2F%20AE-бета-6f8fa8?style=flat-square">
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.2.3 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.2.3%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.2.4 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.2.4%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Поддержать автора на Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -43,7 +43,7 @@
 </p>
 
 > [!WARNING]
-> **Это бета (0.2.3).** Возможны ошибки. Пишите о них и о своих идеях в
+> **Это бета (0.2.4).** Возможны ошибки. Пишите о них и о своих идеях в
 > [issues](https://github.com/boopi-coder/boopi_mod/issues/new/choose): шаблон подскажет, что приложить. Я читаю всё.
 
 ---
@@ -141,6 +141,11 @@
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="Что нового" width="100%"></p>
 
+**0.2.4** — переезд из Mod Organizer 2 и Vortex в пару кнопок (и экспорт обратно в MO2); любой мод можно выключить
+переключателем; установщики FOMOD; установка проверяет совместимость (F4SE-плагины под другую версию игры, нет
+файлов-мастеров); умнее порядок загрузки (пересечения записей, лимиты, список LOOT); MCM на юбилейной — только на 1.11.240.
+[Заметки к 0.2.4](docs/release/v0.2.4.md).
+
 **0.2.3** — исправления для Next-Gen и юбилейной: на главной видно, если наши моды не стоят в игре, и одна кнопка их
 ставит; после переустановки игры моды ставятся заново (возвращается логотип в меню); свежие UFO4P, MCM, High FPS Physics
 Fix и Buffout 4 AE в базовом пакете; озвученный «Boopi Corp.» ставится намного быстрее.
@@ -200,6 +205,12 @@ Fix и Buffout 4 AE в базовом пакете; озвученный «Boopi
 - **Наши части** ставятся тем же пакетом и собираются на вашем ПК из файлов вашей игры: плагин для игры, G.A.M.,
   boopi_hud, «G.A.M.: жесты», «OldGen: новый сюжет», «Boopi Corp.: синты 4-го поколения».
 - **Откат.** Моды ставятся хардлинками через журнал. При удалении исходные файлы возвращаются байт в байт.
+- **Переезд из Mod Organizer 2 и Vortex.** Программа сама находит их моды для Fallout 4 и предлагает «Перенести»: моды
+  приходят включёнными и отключёнными как там, с теми же победителями в пересечениях файлов и тем же порядком плагинов;
+  файлы не копируются (те же файлы на диске), MO2 и Vortex остаются рабочими. «Отменить перенос» возвращает всё как было.
+  «Экспорт в MO2» — обратный путь (а из MO2 моды забирает и Vortex).
+- **Любой мод можно отключить переключателем** — его файлы уходят из игры (возвращается то, что он перекрывал), место в
+  приоритете и плагины сохраняются; включение возвращает всё на место.
 - Архивы zip, 7z и rar можно перетащить в окно. Окно Nexus Mods есть прямо в программе, ключ API не нужен.
 - **Порядок загрузки:** «Упорядочить» сначала показывает план и только потом применяет. «Упорядочить через ИИ» ещё и
   поясняет каждый плагин.
@@ -489,8 +500,9 @@ Skyrim Special Edition выбирается в «Настройки → Игры
     второй библиотеки (LucaDotGit/CommonLibF4) и выборочно сверены с F4SE 0.7.7.
   - Если игра упадёт или что-то не заработает, нажмите «Настройки → О программе → Диагностика → Логи для отчёта» и
     приложите zip к отчёту.
-  - **Buffout 4 NG** базовый пакет предлагает на Old-Gen и Next-Gen. На Anniversary его нет, а сама игра журнал падений не
-    пишет. UFO4P, High FPS Physics Fix, MCM и Baka ScrapHeap — только для Old-Gen.
+  - **Buffout 4** базовый пакет предлагает на всех версиях: NG на Old-Gen и Next-Gen, AE на Anniversary. UFO4P и High FPS
+    Physics Fix — тоже на всех. **MCM** на Anniversary есть только для 1.11.240: его сборка «1.11.240» работает лишь на
+    этой версии, на 1.11.191 / 1.11.221 F4SE её отключает. Baka ScrapHeap — только для Old-Gen.
   - Anniversary 1.11.137 / 1.11.159 / 1.11.169: **наши игровые плагины не работают** (их адресов нет ни в одной
     библиотеке), F4SE их не загрузит. Обновите игру до 1.11.240.
   - F4SE 0.7.x и Address Library для Next-Gen и Anniversary скачиваются с Nexus через ваш аккаунт; программа предлагает
@@ -525,9 +537,9 @@ Skyrim Special Edition выбирается в «Настройки → Игры
 
 ### Шаг 0. Скачать и распаковать
 
-1. Скачайте **`boopi_mod-0.2.3-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   и сверьте SHA-256 с `SHA256SUMS.txt` из того же релиза. Для 0.2.3:
-   `872639c36263f9e1d49a0dba05c2b3fd0514d81075088bdfc9803837778dfa60`.
+1. Скачайте **`boopi_mod-0.2.4-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   и сверьте SHA-256 с `SHA256SUMS.txt` из того же релиза. Для 0.2.4:
+   `acae4126c28400a39c7b4ce13aa205dd2f4c8d4dd9baf286a88674f5dbdf766a`.
 2. Распакуйте в **короткий путь**, например `C:\Games\boopi_mod`. Windows не запускает программы с путём длиннее 260
    символов.
 3. Запустите **`boopi_mod.exe`** и выберите язык и игру.
@@ -596,8 +608,8 @@ download» в окне Nexus внутри программы. Установле
 
 1. Скорее всего, антивирус убрал `core\oldgenai-core.exe` в карантин. Это ложная тревога: ядро — неподписанная программа на
    Python, такие программы некоторые антивирусы помечают по шаблону.
-2. Проверьте SHA-256 архива (PowerShell: `Get-FileHash .\boopi_mod-0.2.3-win-x64.zip`). Для 0.2.3:
-   `872639c36263f9e1d49a0dba05c2b3fd0514d81075088bdfc9803837778dfa60`.
+2. Проверьте SHA-256 архива (PowerShell: `Get-FileHash .\boopi_mod-0.2.4-win-x64.zip`). Для 0.2.4:
+   `acae4126c28400a39c7b4ce13aa205dd2f4c8d4dd9baf286a88674f5dbdf766a`.
 3. Верните файл из карантина или добавьте папку boopi_mod в исключения и распакуйте архив заново.
 4. Распаковывайте в обычную папку (не в Program Files) и не запускайте из архива.
 5. Напишите, какой у вас антивирус и как он назвал угрозу, — я сообщу о ложном срабатывании.
@@ -742,10 +754,8 @@ boopi.site при запуске и раз в 30 минут, без данных
 
 ## Что дальше
 
-**Выпуск 0.2.4:**
+**Следующий выпуск:**
 
-- **Mod Organizer 2 и Vortex:** boopi_mod будет работать рядом с ними и импортировать вашу сборку (список модов, порядок
-  загрузки, настройки).
 - **Первый пак анимаций**, после моей ручной доводки.
 
 **Потом, без дат:**
