@@ -23,13 +23,15 @@ Skyrim / OAR / Fallout 4 mods, the AI animator, and playback of scenes right in 
 >   own animation plays.
 > - Make your own in the editor: set up roles, drag **IK handles**, place keys — or ask the **AI animator** in plain words.
 > - Then the scene is found by «Life», by dialogue lines (via tags) and by Papyrus scripts, and your mod (`.ogmod`) carries it to other players.
+> - Play it yourself right in the game: look at a person and **hold "="** — the animation menu opens
+>   ([4.6](#46-play-it-in-the-game-the-animation-menu)).
 
 ## Contents
 
 1. [The fastest way: drag in and play](#1-the-fastest-way-drag-in-and-play)
 2. [Importing Fallout 4 mods](#2-importing-fallout-4-mods)
 3. [Skyrim animations](#3-skyrim-animations)
-4. [Your own scene in the editor](#4-your-own-scene-in-the-editor)
+4. [Your own scene in the editor](#4-your-own-scene-in-the-editor) — [play it in the game: the animation menu](#46-play-it-in-the-game-the-animation-menu)
 5. [How animations reach the player](#5-how-animations-reach-the-player)
 6. [FAQ](#6-faq)
 7. [What next](#7-what-next)
@@ -315,7 +317,8 @@ means exactly that: add tags. The list of contexts, and your own contexts, are i
   none. The list shows the time, the name and the length; **«Restore»** makes the scene what it was. The current version is not lost:
   it goes into the history itself, so a restore can be undone the same way. Unsaved changes in the window are lost on a restore (the
   app warns you). Until the scene has been saved again there are no versions.
-- **«To the game»** — the scene is installed and available in the game at once (the game re-reads the library).
+- **«To the game»** — the scene is installed and available in the game at once (the game re-reads the library); play it there
+  from the animation menu ([4.6](#46-play-it-in-the-game-the-animation-menu)).
 - **«▶ In game»** — play what is in the editor right now in the running game on the player or an NPC nearby, without saving or
   installing it; the game's log about this scene is there too: why it did not play and what to do
   ([ANIMATION_GUIDE.md](ANIMATION_GUIDE.md) §11).
@@ -341,10 +344,47 @@ The **Library → «G.A.M. scenes»** tab holds everything you have: your own sc
   own tag query so that lines, triggers and «Life» find your scenes (how contexts work:
   [ANIMATION_GUIDE.md](ANIMATION_GUIDE.md#8-through-the-life-system-contexts)).
 
+### 4.6 Play it in the game: the animation menu
+
+Your own scene (or a scene of a pack) plays in the game with no scripts and no AI (G.A.M. 0.7.0):
+
+1. Put the scene into the game with **«To the game»** (the scenes of packs, and imports with «and install into the game», are
+   there already).
+2. In the game, look at a person and **hold "="** for about half a second. A menu opens in the top right corner; the world
+   is paused.
+3. At the top choose **who plays**: **Me** · **the person in front** · **them and someone nearby** (a pair scene of two NPCs:
+   for each scene the nearest person who fits its roles is taken) · **Me + them** (a pair scene with you). With nobody in
+   front the menu opens for you alone.
+4. The list holds only what fits: solo scenes for one, pair scenes for two, the roles by race and sex (the app turns a pair
+   round when the "man / woman" roles are the other way). **Favourites** and **recent** come first, then the sections
+   (gestures, dances, social…). To find a scene, just type its name.
+5. **Enter** (or a double click) plays it; the menu closes and the scene starts.
+
+| Key | What it does |
+|---|---|
+| ↑ ↓, PgUp / PgDn, the wheel | move in the list |
+| ← → | who plays |
+| Tab / Shift+Tab | the section |
+| letters and digits, Backspace | search |
+| Space (or a click on the star) | favourite / not |
+| Del (or «Stop») | end the scene that plays on you or on the person in front |
+| F2 (or «Camera») | the scene camera: G.A.M.'s choice → auto → free → the scene's → off (a gesture leaves the camera alone) |
+| Esc | clear the search; again — close the menu |
+
+- **The menu key** is set in the app: **Settings → Game → «G.A.M. in the game: the animation menu»**. A running game takes it
+  within seconds while boopi_mod is open; without the app the last one it got stays (or `GAM.ini` `[Menu] iKey`).
+- **Without the app** the menu works too: every scene except the scenes of closeness (those are listed by a running
+  boopi_mod — the app's protection decides which are allowed for these people). The menu says how many it leaves out.
+- **A looping scene** runs until «Stop» (or 60 seconds — `GAM.ini` `[Menu] fLoopSeconds`); while you are in a whole-body
+  scene your controls are off, as in any G.A.M. scene.
+- **FPS**: the closed menu does nothing in the game's frame; the open one pauses the game (`GAM.ini` `[Menu] bPause`).
+  Favourites and recent ones are kept in `Documents\My Games\Fallout4\F4SE\GAM_Menu.json`.
+
 ---
 
 ## 5. How animations reach the player
 
+- **The menu in the game**: look at a person, hold "=" and pick a scene ([4.6](#46-play-it-in-the-game-the-animation-menu)).
 - **«Life»**: contexts («Hug», «Sit together», «Closeness»…) pick scenes by tags, furniture and participants.
 - **Dialogues**: in Script studio a line has an «Animation» field — your own scene of the library picked by name, by tags (you see
   how many scenes fit) or by a «Life» context ([SCRIPT_STUDIO.md](SCRIPT_STUDIO.md#2-your-first-conversation-in-5-minutes), step 3).

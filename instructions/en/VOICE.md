@@ -271,6 +271,19 @@ details are in those scripts' docstrings.
 
 ---
 
+### Own engines and voices: Piper and XTTS you already have
+
+In **Settings → Voice**, enable **My own engines and folders (advanced)**. For Piper, choose your `piper.exe` and
+voices folder: `.onnx` + `.onnx.json` pairs are found recursively, including Mantella `piper/models`. For XTTS, choose
+**My Python installation**, its Python executable with Coqui TTS, and the model folder containing `config.json`,
+`model.pth`, `vocab.json` and `speakers_xtts.pth`; or choose **My XTTS server** and its running address (usually
+`http://127.0.0.1:8020`). In any XTTS mode you can add your WAV reference folder, such as Mantella `xtts/speakers`:
+voices appear as `clone:<name>` and the files stay where they are. **Check** saves the paths and reports the voice
+count or the problem. Then press **Use for voicing** and choose a language default in Providers or a voice in the
+character's profile. Nothing is downloaded again; the app never installs Piper. For a server on another PC, choose
+its speaker or a shared folder it can read. The server must return a WAV rather than play sound on its own machine.
+**boopi_mod installation** keeps the normal XTTS setup; clearing the checkbox only hides these controls.
+
 ## 3. Voice cloning (XTTS-v2, Qwen3-TTS, Higgs TTS 3)
 
 All the "cloning" providers — **XTTS-v2**, **Qwen3-TTS** and **Higgs TTS 3** — speak with the voice of a sample

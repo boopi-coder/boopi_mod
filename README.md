@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img alt="версия 0.2.4 beta" src="https://img.shields.io/badge/версия-0.2.4%20beta-3cff6b?style=flat-square">
+  <img alt="версия 0.2.5 beta" src="https://img.shields.io/badge/версия-0.2.5%20beta-3cff6b?style=flat-square">
   <a href="https://github.com/boopi-coder/boopi_mod/stargazers"><img alt="Звёзды на GitHub" src="https://img.shields.io/github/stars/boopi-coder/boopi_mod?style=flat-square&label=%E2%AD%90%20%D0%B7%D0%B2%D1%91%D0%B7%D0%B4%D1%8B&color=f2b705"></a>
   <img alt="Fallout 4: Old-Gen · Next-Gen · Anniversary" src="https://img.shields.io/badge/Fallout%204-Old--Gen%20%C2%B7%20Next--Gen%20%C2%B7%20Anniversary-f2b705?style=flat-square">
   <img alt="Skyrim SE / AE: бета" src="https://img.shields.io/badge/Skyrim%20SE%20%2F%20AE-бета-6f8fa8?style=flat-square">
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.2.4 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.2.4%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
+  <a href="https://github.com/boopi-coder/boopi_mod/releases/latest"><img alt="Скачать boopi_mod 0.2.5 beta" src="https://img.shields.io/badge/СКАЧАТЬ-boopi__mod%200.2.5%20beta%20для%20Windows-3cff6b?style=for-the-badge&labelColor=0d1210" height="54"></a>
   &nbsp;
   <a href="https://boosty.to/boopi_coder"><img alt="Поддержать автора на Boosty" src="docs/images/support-button.png" height="54"></a>
 </p>
@@ -43,7 +43,7 @@
 </p>
 
 > [!WARNING]
-> **Это бета (0.2.4).** Возможны ошибки. Пишите о них и о своих идеях в
+> **Это бета (0.2.5).** Возможны ошибки. Пишите о них и о своих идеях в
 > [issues](https://github.com/boopi-coder/boopi_mod/issues/new/choose): шаблон подскажет, что приложить. Я читаю всё.
 
 ---
@@ -140,6 +140,11 @@
 ## Что нового
 
 <p align="center"><img src="docs/images/banners/whats-new.jpg" alt="Что нового" width="100%"></p>
+
+**0.2.5** — меню анимаций в игре: посмотрите на человека и удерживайте «=» — сцена для себя, для него, для двух NPC
+или для вас двоих; наши моды ставятся архивами BA2, а не россыпью файлов в Data, и убираются из игры без следа (в том числе
+из «Приложений» Windows); лимит FPS; маркеры заданий; исправлены названия сохранений, «Ред Рокет» и завод синтов; вежливые
+спутники садятся по просьбе; запуск через MO2; свои Piper и XTTS. [Заметки к 0.2.5](docs/release/v0.2.5.md).
 
 **0.2.4** — переезд из Mod Organizer 2 и Vortex в пару кнопок (и экспорт обратно в MO2); любой мод можно выключить
 переключателем; установщики FOMOD; установка проверяет совместимость (F4SE-плагины под другую версию игры, нет
@@ -537,9 +542,9 @@ Skyrim Special Edition выбирается в «Настройки → Игры
 
 ### Шаг 0. Скачать и распаковать
 
-1. Скачайте **`boopi_mod-0.2.4-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
-   и сверьте SHA-256 с `SHA256SUMS.txt` из того же релиза. Для 0.2.4:
-   `acae4126c28400a39c7b4ce13aa205dd2f4c8d4dd9baf286a88674f5dbdf766a`.
+1. Скачайте **`boopi_mod-0.2.5-win-x64.zip`** со страницы [Releases](https://github.com/boopi-coder/boopi_mod/releases/latest)
+   и сверьте SHA-256 с `SHA256SUMS.txt` из того же релиза. Для 0.2.5:
+   `9ba1eecdf97687201621a150c5d42394f8d1b3844a6a021b6fb4b2ce3314cea7`.
 2. Распакуйте в **короткий путь**, например `C:\Games\boopi_mod`. Windows не запускает программы с путём длиннее 260
    символов.
 3. Запустите **`boopi_mod.exe`** и выберите язык и игру.
@@ -608,8 +613,8 @@ download» в окне Nexus внутри программы. Установле
 
 1. Скорее всего, антивирус убрал `core\oldgenai-core.exe` в карантин. Это ложная тревога: ядро — неподписанная программа на
    Python, такие программы некоторые антивирусы помечают по шаблону.
-2. Проверьте SHA-256 архива (PowerShell: `Get-FileHash .\boopi_mod-0.2.4-win-x64.zip`). Для 0.2.4:
-   `acae4126c28400a39c7b4ce13aa205dd2f4c8d4dd9baf286a88674f5dbdf766a`.
+2. Проверьте SHA-256 архива (PowerShell: `Get-FileHash .\boopi_mod-0.2.5-win-x64.zip`). Для 0.2.5:
+   `9ba1eecdf97687201621a150c5d42394f8d1b3844a6a021b6fb4b2ce3314cea7`.
 3. Верните файл из карантина или добавьте папку boopi_mod в исключения и распакуйте архив заново.
 4. Распаковывайте в обычную папку (не в Program Files) и не запускайте из архива.
 5. Напишите, какой у вас антивирус и как он назвал угрозу, — я сообщу о ложном срабатывании.

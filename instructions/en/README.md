@@ -9,7 +9,7 @@
 > that you can share as a single file.
 
 > [!WARNING]
-> **This is a beta (0.2.4):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
+> **This is a beta (0.2.5):** expect rough edges and bugs — please report them so I can fix them quickly. Feedback on
 > problems and ideas is very welcome. [Open an issue](https://github.com/boopi-coder/boopi_mod/issues/new/choose)
 
 ## Where to start
@@ -28,6 +28,7 @@
 | repaint a thing, clothes, furniture — your own textures | [F.O.R.G.E. — 3D objects and textures](FORGE.md) |
 | free conversation with people in the game | [AI dialogue](AI_DIALOGUE.md) |
 | voice and voice input | [Voice](VOICE.md) |
+| remove boopi_mod from the game (or what is left after deleting it by hand) | [Removing boopi_mod](REMOVE.md) |
 
 ## Other games
 

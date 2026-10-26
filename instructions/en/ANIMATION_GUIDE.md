@@ -892,6 +892,10 @@ intimate scene with a child in it gets none (the same locked line as everywhere)
 
 ## 11. How to test in the game
 
+**The simplest is the animation menu in the game** (G.A.M. 0.7.0): put the scene into the game, look at a person and hold
+**"="** — the scene for yourself, for the person, for them and someone near, or for you both, Stop and the camera
+([ANIMATION_IMPORT.md](ANIMATION_IMPORT.md#46-play-it-in-the-game-the-animation-menu)).
+
 **Quickest — right from the G.A.M. editor** (G.A.M. 0.4.0):
 
 1. Start the game and load a save; boopi_mod is open.
